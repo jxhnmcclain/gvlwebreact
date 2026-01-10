@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Growth Video Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              gvl: {
+                black: '#111111',
+                yellow: '#DFFF00', // Neon yellow
+                blue: '#1E90FF',   // Chat bubble blue
+                green: '#32CD32',  // Whatsapp green
+                cream: '#FDFBF7',  // Off-white background
+              }
+            },
+            fontFamily: {
+              sans: ['"Neue Machina"', '"Space Grotesk"', 'system-ui', 'sans-serif'],
+            },
+            animation: {
+              scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+            },
+            keyframes: {
+              scroll: {
+                to: {
+                  transform: "translate(calc(-50% - 0.5rem))",
+                },
+              },
+            },
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Custom utility for hiding scrollbars if needed for horizontal scrolling strips */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      /* Allow local usage if installed */
+      @font-face {
+        font-family: 'Neue Machina';
+        src: local('Neue Machina'), local('NeueMachina-Regular');
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Neue Machina';
+        src: local('Neue Machina Ultrabold'), local('NeueMachina-Ultrabold');
+        font-weight: 800;
+        font-style: normal;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0?external=react,react-dom",
+    "react": "https://esm.sh/react@18.2.0",
+    "react/": "https://esm.sh/react@18.2.0/",
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "react-dom/": "https://esm.sh/react-dom@18.2.0/",
+    "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?external=react,react-dom",
+    "framer-motion": "https://esm.sh/framer-motion@10.16.4?external=react,react-dom",
+    "gsap": "https://esm.sh/gsap@3.12.5",
+    "gsap/ScrollTrigger": "https://esm.sh/gsap@3.12.5/ScrollTrigger",
+    "gsap/": "https://esm.sh/gsap@^3.14.2/",
+    "react-turnstile": "https://esm.sh/react-turnstile@1.1.3?external=react,react-dom",
+    "clsx": "https://esm.sh/clsx",
+    "tailwind-merge": "https://esm.sh/tailwind-merge"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-gvl-cream text-gvl-black antialiased overflow-x-hidden">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
