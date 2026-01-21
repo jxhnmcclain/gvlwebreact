@@ -77,7 +77,7 @@ const Hero = () => {
           >
             {/* Background Image */}
             <img
-              src="public/assets/images/me.png"
+              src="/assets/images/me.png"
               alt="John Mcclain"
               className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:blur-sm"
             />
