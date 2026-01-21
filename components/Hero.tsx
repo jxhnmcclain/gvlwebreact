@@ -1,192 +1,186 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { ArrowUpRight, Star } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { BubbleBackground } from './BubbleBackground';
 import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
-  const containerRef = useRef(null);
   const navigate = useNavigate();
-  const [isDraggable, setIsDraggable] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    // Enable drag after entrance animations complete (approx 2s)
-    const timer = setTimeout(() => {
-      setIsDraggable(true);
-    }, 2200);
-
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-      clearTimeout(timer);
-    };
-  }, []);
-
-  const cardProps = {
-    drag: !isMobile && isDraggable, // Disable drag on mobile for better scroll experience
-    dragConstraints: containerRef,
-    dragElastic: 0.2,
-    dragSnapToOrigin: false,
-    whileHover: isMobile ? {} : { scale: 1.25, cursor: isDraggable ? 'grab' : 'pointer', zIndex: 50 },
-    whileTap: isMobile ? { scale: 0.95 } : { scale: 1.20, cursor: isDraggable ? 'grabbing' : 'default' },
-    whileDrag: { scale: 1.1, cursor: 'grabbing', zIndex: 100 },
-  };
 
   const containerVariants = {
-    hidden: { opacity: isMobile ? 1 : 0 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: isMobile ? 0 : 0.5
+        delayChildren: 0.3
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: isMobile ? 0 : 100, opacity: isMobile ? 1 : 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 1.2,
-        ease: [0.22, 1, 0.36, 1] as [number, number, number, number]
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1]
       }
     }
   };
 
   return (
-    <section
-      ref={containerRef}
-      className="relative w-full pt-32 pb-20 md:pt-48 md:pb-32 px-4 md:px-8 bg-white overflow-hidden h-auto min-h-screen md:min-h-0 md:h-[95vh] md:max-h-[1200px] flex flex-col justify-center"
-    >
-      <BubbleBackground className="absolute inset-0 pointer-events-none z-0" interactive={!isMobile} />
-
-      <div className="absolute inset-0 opacity-20 pointer-events-none z-0"
-        style={{
-          backgroundImage: 'radial-gradient(circle at 50% 50%, white 0%, transparent 60%)'
-        }}>
-      </div>
-
+    <section className="relative w-full py-20 px-4 md:px-8 bg-white overflow-hidden min-h-screen flex flex-col justify-center">
       <motion.div
-        className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-12 gap-4 md:gap-6 relative z-10 w-full h-full content-center pointer-events-none"
+        className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 relative z-10 w-full"
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true }}
         variants={containerVariants}
       >
 
-        {/* Top Left: Reels -> Mobile: Order 2, Col 1 */}
-        <motion.div
-          className="order-2 col-span-1 md:order-none md:col-span-3 md:row-span-1 flex flex-col items-center justify-center md:justify-end relative z-20"
-          variants={itemVariants}
-        >
-          <motion.div
-            {...cardProps}
-            className="relative w-full aspect-[3/4] md:aspect-auto md:w-full md:h-72 rounded-3xl overflow-hidden border-2 border-black shadow-lg rotate-0 md:rotate-[-2deg] pointer-events-auto bg-white touch-none"
-          >
-            <img src="https://picsum.photos/400/600?random=1" alt="Redes Sociales" className="w-full h-full object-cover pointer-events-none select-none" />
-            <div
-              onClick={(e) => { e.stopPropagation(); navigate('/reels'); }}
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4 py-1.5 md:px-6 md:py-2 rounded-full border border-black text-xs md:text-sm font-black shadow-sm z-10 pointer-events-auto cursor-pointer select-none whitespace-nowrap hover:bg-gray-100 transition-colors"
-            >
-              redes sociales
-            </div>
+        {/* LEFT COLUMN: Text & CTA */}
+        <div className="col-span-1 md:col-span-12 lg:col-span-5 flex flex-col justify-center text-left py-8 md:py-0">
+          <motion.div variants={itemVariants} className="flex items-center gap-2 mb-6">
+            <span className="font-bold text-lg tracking-tight">Hey, bienvenidos. Acá Creamos</span>
           </motion.div>
-        </motion.div>
 
-        {/* Center Main Card -> Mobile: Order 1, Col 2 (Full Width) */}
-        <motion.div
-          className="order-1 col-span-2 md:order-none md:col-span-6 flex flex-col items-center justify-center relative z-50 pointer-events-auto mb-2 md:mb-0"
-          variants={itemVariants}
-        >
-          <div className="bg-gvl-cream/80 backdrop-blur-sm border-2 border-black rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 text-center shadow-xl w-full relative">
-            <div className="flex justify-center mb-4 md:mb-6">
-              <div className="relative">
-                <Star className="text-gvl-yellow w-16 h-16 md:w-20 md:h-20 fill-current rotate-12" />
-                <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-black text-2xl md:text-3xl tracking-tighter">
-                  GVL
-                </span>
-              </div>
-            </div>
+          {/* Main Headline */}
+          <motion.h1 variants={itemVariants} className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tighter mb-8 text-black">
+            Creamos <span className="text-gvl-orange">Contenido</span> y Diseño para Marcas.
+          </motion.h1>
 
-            <h1 className="text-3xl md:text-5xl font-black leading-tight mb-6 md:mb-8 tracking-tighter">
-              Creamos <span className="underline decoration-[6px] decoration-gvl-yellow">contenido</span> y diseño para marcas con personalidad
-            </h1>
+          <motion.p variants={itemVariants} className="text-lg md:text-xl font-medium text-gray-600 mb-10 max-w-md leading-relaxed flex items-start gap-4">
+            <ArrowRight className="shrink-0 mt-1" />
+            Explora el mundo digital con estrategias visuales que conectan y convierten.
+          </motion.p>
 
+          <motion.div variants={itemVariants}>
             <button
               onClick={() => navigate('/contacto')}
-              className="bg-white border-2 border-black rounded-full px-6 py-2 md:px-8 md:py-3 text-base md:text-lg font-black flex items-center gap-2 mx-auto hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-y-1 active:shadow-none"
+              className="bg-black text-white rounded-full px-8 py-4 text-lg font-bold flex items-center gap-3 hover:bg-gray-800 transition-all hover:scale-105 active:scale-95 shadow-xl"
             >
-              conversemos
+              Empezar Proyecto
               <ArrowUpRight size={20} />
             </button>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
-        {/* Top Right: Branding -> Mobile: Order 3, Col 1 */}
-        <motion.div
-          className="order-3 col-span-1 md:order-none md:col-span-3 flex items-center md:items-end justify-center z-20"
-          variants={itemVariants}
-        >
+        {/* RIGHT COLUMN: Bento Grid */}
+        <div className="col-span-1 md:col-span-12 lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[minmax(240px,auto)]">
+
+          {/* Card 1: Redes Sociales (Text + Icon style) */}
           <motion.div
-            {...cardProps}
-            className="relative w-full aspect-[3/4] md:aspect-auto md:w-56 md:h-56 rounded-3xl overflow-hidden border-2 border-black shadow-lg rotate-0 md:rotate-[3deg] bg-orange-400 pointer-events-auto touch-none"
+            variants={itemVariants}
+            onClick={() => window.open('https://www.linkedin.com/in/john-mcclain-1a5546187/', '_blank')}
+            className="group relative rounded-3xl overflow-hidden cursor-pointer aspect-[4/3] md:aspect-auto"
           >
-            <img src="https://picsum.photos/400/400?random=2" alt="Branding" className="w-full h-full object-cover pointer-events-none select-none" />
-            <div
-              onClick={(e) => { e.stopPropagation(); navigate('/branding'); }}
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4 py-1.5 md:px-6 md:py-2 rounded-full border border-black text-xs md:text-sm font-black shadow-sm z-10 pointer-events-auto cursor-pointer select-none hover:bg-gray-100 transition-colors"
-            >
-              branding
+            {/* Background Image */}
+            <img
+              src="public/assets/images/me.png"
+              alt="John Mcclain"
+              className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:blur-sm"
+            />
+
+            {/* Subtle Gradient Overlay - Bottom Left centric */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/20 to-transparent z-10"></div>
+
+            {/* Darker Overlay on Hover */}
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 z-10"></div>
+
+            {/* Content - Absolute Bottom Left */}
+            <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 text-left pointer-events-none">
+              <h3 className="font-black text-white text-3xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                Quién soy
+              </h3>
+
+              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                <p className="text-xs md:text-sm text-gray-200 leading-relaxed font-medium mt-1 max-w-[85%]">
+                  Soy John Mcclain, marketer, productor audiovisual y creativo. Tengo más de 7 años de experiencia en el marketing y más de 15 en el internet.
+                </p>
+              </div>
+            </div>
+
+            {/* Icon */}
+            <div className="absolute top-6 right-6 bg-white/20 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-md z-20">
+              <ArrowUpRight size={20} />
             </div>
           </motion.div>
-        </motion.div>
 
-        {/* Bottom Left: Content -> Mobile: Order 4, Col 1 */}
-        <motion.div
-          className="order-4 col-span-1 md:order-none md:col-span-4 flex justify-center md:justify-end md:-mt-12 z-20"
-          variants={itemVariants}
-        >
+          {/* Card 2: Branding (Gradient + Strong Text) */}
           <motion.div
-            {...cardProps}
-            className="relative w-full aspect-[3/4] md:aspect-auto md:w-64 md:h-72 rounded-3xl overflow-hidden border-2 border-black shadow-lg rotate-0 md:rotate-[2deg] pointer-events-auto bg-white touch-none"
+            variants={itemVariants}
+            onClick={() => navigate('/branding')}
+            className="rounded-3xl overflow-hidden relative cursor-pointer group aspect-[4/3] md:aspect-auto bg-gvl-cream p-8 flex flex-col justify-between border border-black/5 hover:border-black/10 transition-colors shadow-sm"
           >
-            <img src="https://picsum.photos/400/600?random=3" alt="Producción" className="w-full h-full object-cover pointer-events-none select-none" />
-            <div
-              onClick={(e) => { e.stopPropagation(); navigate('/contenido'); }}
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4 py-1.5 md:px-6 md:py-2 rounded-full border border-black text-xs md:text-sm font-black shadow-sm whitespace-nowrap z-10 pointer-events-auto cursor-pointer select-none hover:bg-gray-100 transition-colors"
-            >
-              producción audiovisual
+            {/* Gradient Blob */}
+            <div className="absolute top-0 right-0 w-48 h-48 bg-gvl-orange/30 blur-[60px] rounded-full -mr-10 -mt-10 group-hover:scale-125 transition-transform duration-700"></div>
+
+            <div className="relative z-10">
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gvl-orange mb-2 block">Branding</span>
+              <h3 className="text-3xl font-black leading-tight text-black">
+                Identidad <br />
+                <span className="text-gvl-orange">con Alma.</span>
+              </h3>
+            </div>
+
+            <div className="relative z-10 self-end">
+              <span className="text-xs font-bold text-gray-400 group-hover:text-black transition-colors flex items-center gap-2">
+                Ver proyectos <ArrowRight size={14} />
+              </span>
             </div>
           </motion.div>
-        </motion.div>
 
-        {/* Bottom Right: Websites -> Mobile: Order 5, Col 1 */}
-        <motion.div
-          className="order-5 col-span-1 md:order-none md:col-span-8 flex justify-center md:justify-start md:-mt-8 md:pl-12 z-20"
-          variants={itemVariants}
-        >
+          {/* Card 3: Producción (Gradient + Strong Text) */}
           <motion.div
-            {...cardProps}
-            className="relative w-full aspect-[3/4] md:aspect-auto md:w-full md:max-w-md md:h-64 bg-white rounded-3xl border-2 border-black shadow-lg overflow-hidden pointer-events-auto touch-none"
+            variants={itemVariants}
+            onClick={() => navigate('/contenido')}
+            className="rounded-3xl overflow-hidden relative cursor-pointer group aspect-[4/3] md:aspect-auto bg-white p-8 flex flex-col justify-between border border-black/5 hover:border-black/10 transition-colors shadow-sm"
           >
-            <img src="https://picsum.photos/800/600?random=4" alt="Websites" className="w-full h-full object-cover select-none pointer-events-none" />
-            <div className="absolute inset-0 flex items-center justify-center bg-black/10 pointer-events-none">
-              <div
-                onClick={(e) => { e.stopPropagation(); navigate('/websites'); }}
-                className="bg-white px-4 py-1.5 md:px-6 md:py-2 rounded-full border border-black text-xs md:text-sm font-black shadow-sm flex items-center gap-2 pointer-events-auto cursor-pointer select-none hover:bg-gray-100 transition-colors"
-              >
-                websites
+            {/* Gradient Blob */}
+            <div className="absolute bottom-0 left-0 w-56 h-56 bg-blue-500/10 blur-[70px] rounded-full -ml-16 -mb-16 group-hover:scale-110 transition-transform duration-700"></div>
+
+            <div className="relative z-10">
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 mb-2 block">Producción</span>
+              <h3 className="text-3xl font-black leading-tight text-black">
+                Historias <br />
+                <span className="text-blue-500">que Impactan.</span>
+              </h3>
+            </div>
+
+            <div className="relative z-10 self-end">
+              <div className="bg-black text-white p-3 rounded-full hover:bg-blue-600 transition-colors">
+                <ArrowUpRight size={20} />
               </div>
             </div>
           </motion.div>
-        </motion.div>
+
+          {/* Card 4: Websites (Modern Gradient) */}
+          <motion.div
+            variants={itemVariants}
+            onClick={() => navigate('/websites')}
+            className="bg-zinc-900 rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden cursor-pointer group aspect-[4/3] md:aspect-auto shadow-2xl"
+          >
+            {/* Dark technical gradient */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gvl-yellow/20 blur-[90px] rounded-full -mr-20 -mt-20 group-hover:opacity-40 transition-opacity"></div>
+
+            <div className="relative z-10">
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gvl-yellow/60 mb-2 block">Websites</span>
+              <h3 className="text-3xl font-black leading-tight text-white">
+                Presencia <br />
+                <span className="text-gvl-yellow">Digital Única.</span>
+              </h3>
+            </div>
+
+            <div className="relative z-10 flex items-center justify-between">
+              <p className="text-xs text-gray-400 max-w-[150px]">
+                Diseño UI/UX y desarrollo web moderno.
+              </p>
+              <ArrowRight size={20} className="text-white group-hover:translate-x-2 transition-transform" />
+            </div>
+          </motion.div>
+
+        </div>
 
       </motion.div>
     </section>

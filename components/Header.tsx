@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import Logo from './Logo';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -39,63 +40,70 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[100] bg-gvl-cream/90 backdrop-blur-sm border-b border-gray-200 py-4 px-6 md:px-12 flex justify-between items-center">
-      <Link to="/" className="text-2xl font-black tracking-tighter hover:opacity-70 transition-opacity z-[110]">
-        Growth Video Lab
-      </Link>
+    <header className="fixed top-0 left-0 right-0 z-[50]">
+      <div className="w-full bg-gvl-cream/90 backdrop-blur-sm border-b border-gray-200 py-4 px-6 md:px-12 flex justify-between items-center relative z-[110]">
+        <Link to="/" className="hover:opacity-90 transition-opacity">
+          <Logo />
+        </Link>
 
-      {/* Desktop Navigation */}
-      <nav className="hidden md:flex items-center gap-8">
-        {navLinks.map((link) => (
-          <Link
-            key={link.path}
-            to={link.path}
-            className={`text-sm font-bold tracking-tight hover:text-gvl-yellow transition-colors ${location.pathname === link.path ? 'text-gvl-yellow' : ''}`}
-          >
-            {link.name}
-          </Link>
-        ))}
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`text-sm font-bold tracking-tight hover:text-gvl-yellow transition-colors ${location.pathname === link.path
+                ? link.path === '/servicios'
+                  ? 'text-black italic'
+                  : 'text-black line-through decoration-black decoration-2'
+                : ''
+                }`}
+            >
+              {link.name}
+            </Link>
+          ))}
 
-        <div className="relative group">
-          <button className="flex items-center gap-1 text-sm font-bold tracking-tight hover:text-gvl-yellow transition-colors focus:outline-none">
-            Recursos
-            <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-200" />
-          </button>
+          <div className="relative group">
+            <button className="flex items-center gap-1 text-sm font-bold tracking-tight hover:text-gvl-yellow transition-colors focus:outline-none">
+              Recursos
+              <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-200" />
+            </button>
 
-          {/* Dropdown Menu */}
-          <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-56 hidden group-hover:block">
-            <div className="bg-white border-2 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden flex flex-col">
-              {resourceLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className="px-5 py-3 text-sm font-bold hover:bg-gvl-cream hover:text-black transition-colors border-b border-gray-100 last:border-0 flex items-center justify-between group/item"
-                >
-                  {link.name}
-                  <ArrowUpRight size={14} className="opacity-0 group-hover/item:opacity-100 transition-opacity" />
-                </Link>
-              ))}
+            {/* Dropdown Menu */}
+            <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-56 hidden group-hover:block">
+              <div className="bg-white border-2 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden flex flex-col">
+                {resourceLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="px-5 py-3 text-sm font-bold hover:bg-gvl-cream hover:text-black transition-colors border-b border-gray-100 last:border-0 flex items-center justify-between group/item"
+                  >
+                    {link.name}
+                    <ArrowUpRight size={14} className="opacity-0 group-hover/item:opacity-100 transition-opacity" />
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
+          <button
+            onClick={goToContact}
+            className="px-6 py-2 rounded-full border-2 border-black bg-white flex items-center gap-2 hover:bg-black hover:text-white transition-all hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-sm font-bold group"
+          >
+            Contacto
+            <ArrowUpRight size={16} className="group-hover:rotate-45 transition-transform" />
+          </button>
+        </nav>
+
+        {/* Mobile Menu Toggle */}
         <button
-          onClick={goToContact}
-          className="px-6 py-2 rounded-full border-2 border-black bg-white flex items-center gap-2 hover:bg-black hover:text-white transition-all hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-sm font-bold group"
+          className="md:hidden p-2 hover:bg-black/5 rounded-full transition-colors relative z-[110]"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle Menu"
         >
-          Contacto
-          <ArrowUpRight size={16} className="group-hover:rotate-45 transition-transform" />
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
-      </nav>
-
-      {/* Mobile Menu Toggle */}
-      <button
-        className="md:hidden z-[110] p-2 hover:bg-black/5 rounded-full transition-colors"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        aria-label="Toggle Menu"
-      >
-        {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-      </button>
+      </div>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
@@ -105,7 +113,7 @@ const Header = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 bg-gvl-cream z-[105] md:hidden flex flex-col p-8 pt-24"
+            className="fixed inset-0 bg-gvl-cream z-[105] md:hidden flex flex-col p-8 pt-32 h-[100dvh] w-full"
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (

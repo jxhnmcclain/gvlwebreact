@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import { ArrowUpRight, Check, CheckCircle, AlertCircle } from 'lucide-react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -14,6 +15,18 @@ interface ServiceDetailCardProps {
     index: number;
     path: string;
 }
+
+const TextSplit = ({ children }: { children: string }) => {
+    return (
+        <span className="inline-block overflow-hidden align-bottom">
+            {children.split("").map((char, i) => (
+                <span key={i} className="char-anim inline-block will-change-transform">
+                    {char === " " ? "\u00A0" : char}
+                </span>
+            ))}
+        </span>
+    );
+};
 
 const ServiceDetailCard: React.FC<ServiceDetailCardProps> = ({ title, description, features, index, path }) => {
     const navigate = useNavigate();
@@ -82,6 +95,15 @@ const ServicesPage = () => {
                 duration: 1,
                 ease: "power3.out",
                 stagger: 0.1
+            });
+
+            gsap.from(".char-anim", {
+                y: 100,
+                opacity: 0,
+                rotateZ: 5,
+                duration: 1,
+                ease: "power4.out",
+                stagger: 0.05
             });
 
             // Use batch to ensure items animate as they enter the viewport
@@ -197,9 +219,11 @@ const ServicesPage = () => {
                 <div className="max-w-5xl mx-auto">
                     <div className="form-anim text-center mb-12">
                         <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6">
-                            Hagamos <span className="text-transparent bg-clip-text bg-gradient-to-r from-gvl-blue to-gvl-green">Click</span>
+                            Hagamos <motion.span>
+                                <TextSplit>algo lindo</TextSplit>
+                            </motion.span>
                         </h1>
-                        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                        <p className="form-anim text-xl text-gray-600 max-w-2xl mx-auto">
                             Cuéntanos sobre tu proyecto. Ya sea que tengas una idea clara o solo un borrador, estamos aquí para ayudarte a construirla.
                         </p>
                     </div>

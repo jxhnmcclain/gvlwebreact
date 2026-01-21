@@ -1,67 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Growth Video Lab</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              gvl: {
-                black: '#111111',
-                yellow: '#DFFF00', // Neon yellow
-                blue: '#1E90FF',   // Chat bubble blue
-                green: '#32CD32',  // Whatsapp green
-                cream: '#FDFBF7',  // Off-white background
-              }
-            },
-            fontFamily: {
-              sans: ['"Neue Machina"', '"Space Grotesk"', 'system-ui', 'sans-serif'],
-            },
-            animation: {
-              scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
-            },
-            keyframes: {
-              scroll: {
-                to: {
-                  transform: "translate(calc(-50% - 0.5rem))",
-                },
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Growth Video Lab</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/sfv4lyg.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gvl: {
+              black: '#111111',
+              yellow: '#DFFF00', // Neon yellow
+              blue: '#1E90FF',   // Chat bubble blue
+              green: '#32CD32',  // Whatsapp green
+              cream: '#FDFBF7',  // Off-white background
+              orange: '#ff002b', // Brand Orange Red
+            }
+          },
+          fontFamily: {
+            sans: ['"Neue Machina"', '"Space Grotesk"', 'system-ui', 'sans-serif'],
+            pixel: ['"pf-pixelscript"', 'monospace'],
+          },
+          animation: {
+            scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+          },
+          keyframes: {
+            scroll: {
+              to: {
+                transform: "translate(calc(-50% - 0.5rem))",
               },
             },
-          }
+          },
         }
       }
-    </script>
-    <style>
-      /* Custom utility for hiding scrollbars if needed for horizontal scrolling strips */
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
+    }
+  </script>
+  <style>
+    /* Custom utility for hiding scrollbars if needed for horizontal scrolling strips */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
 
-      /* Allow local usage if installed */
-      @font-face {
-        font-family: 'Neue Machina';
-        src: local('Neue Machina'), local('NeueMachina-Regular');
-        font-weight: 400;
-        font-style: normal;
-      }
-      @font-face {
-        font-family: 'Neue Machina';
-        src: local('Neue Machina Ultrabold'), local('NeueMachina-Ultrabold');
-        font-weight: 800;
-        font-style: normal;
-      }
-    </style>
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Neue Machina - Local Files */
+    @font-face {
+      font-family: 'Neue Machina';
+      src: url('/assets/fonts/NeueMachina-Light.otf') format('opentype'),
+        local('Neue Machina Light');
+      font-weight: 300;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Neue Machina';
+      src: url('/assets/fonts/NeueMachina-Regular.otf') format('opentype'),
+        url('/assets/fonts/NeueMachina-Regular.ttf') format('truetype'),
+        local('Neue Machina');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Neue Machina';
+      src: url('/assets/fonts/NeueMachina-Ultrabold.otf') format('opentype'),
+        url('/assets/fonts/NeueMachina-Ultrabold.ttf') format('truetype'),
+        local('Neue Machina Ultrabold');
+      font-weight: 800;
+      font-style: normal;
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -81,10 +100,12 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-gvl-cream text-gvl-black antialiased overflow-x-hidden">
-    <div id="root"></div>
+
+<body class="bg-gvl-cream text-gvl-black antialiased overflow-x-hidden">
+  <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>
