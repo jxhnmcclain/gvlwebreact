@@ -42,17 +42,17 @@ const Hero = () => {
         {/* LEFT COLUMN: Text & CTA */}
         <div className="col-span-1 md:col-span-12 lg:col-span-5 flex flex-col justify-center text-left py-8 md:py-0">
           <motion.div variants={itemVariants} className="flex items-center gap-2 mb-6">
-            <span className="font-bold text-lg tracking-tight">Hey, bienvenidos. Acá Creamos</span>
+            <span className="font-bold text-lg tracking-tight">Hey, bienvenido</span>
           </motion.div>
 
           {/* Main Headline */}
           <motion.h1 variants={itemVariants} className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tighter mb-8 text-black">
-            Creamos <span className="text-gvl-orange">Contenido</span> y Diseño para Marcas.
+            Somos una agencia de <span className="text-gvl-orange">Contenido</span> y Marketing Digital.
           </motion.h1>
 
           <motion.p variants={itemVariants} className="text-lg md:text-xl font-medium text-gray-600 mb-10 max-w-md leading-relaxed flex items-start gap-4">
             <ArrowRight className="shrink-0 mt-1" />
-            Explora el mundo digital con estrategias visuales que conectan y convierten.
+            Potenciamos tu negocio con estrategias creativas y efectivas, enfocadas en tus resultados.
           </motion.p>
 
           <motion.div variants={itemVariants}>
@@ -119,8 +119,8 @@ const Hero = () => {
             <div className="relative z-10">
               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gvl-orange mb-2 block">Branding</span>
               <h3 className="text-3xl font-black leading-tight text-black">
-                Identidad <br />
-                <span className="text-gvl-orange">con Alma.</span>
+                Marcas <br />
+                <span className="text-gvl-orange">con caracter.</span>
               </h3>
             </div>
 
@@ -141,10 +141,10 @@ const Hero = () => {
             <div className="absolute bottom-0 left-0 w-56 h-56 bg-blue-500/10 blur-[70px] rounded-full -ml-16 -mb-16 group-hover:scale-110 transition-transform duration-700"></div>
 
             <div className="relative z-10">
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 mb-2 block">Producción</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 mb-2 block">Producción audiovisual</span>
               <h3 className="text-3xl font-black leading-tight text-black">
-                Historias <br />
-                <span className="text-blue-500">que Impactan.</span>
+                Cuenta tu idea <br />
+                <span className="text-blue-500">en video</span>
               </h3>
             </div>
 
@@ -165,16 +165,16 @@ const Hero = () => {
             <div className="absolute top-0 right-0 w-64 h-64 bg-gvl-yellow/20 blur-[90px] rounded-full -mr-20 -mt-20 group-hover:opacity-40 transition-opacity"></div>
 
             <div className="relative z-10">
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gvl-yellow/60 mb-2 block">Websites</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gvl-yellow/60 mb-2 block">Desarrollo</span>
               <h3 className="text-3xl font-black leading-tight text-white">
-                Presencia <br />
-                <span className="text-gvl-yellow">Digital Única.</span>
+                Tu página web <br />
+                <span className="text-gvl-yellow">adaptada a ti</span>
               </h3>
             </div>
 
             <div className="relative z-10 flex items-center justify-between">
               <p className="text-xs text-gray-400 max-w-[150px]">
-                Diseño UI/UX y desarrollo web moderno.
+                Landings, blogs y tiendas.
               </p>
               <ArrowRight size={20} className="text-white group-hover:translate-x-2 transition-transform" />
             </div>

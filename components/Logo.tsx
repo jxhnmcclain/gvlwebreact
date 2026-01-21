@@ -70,9 +70,9 @@ const Logo = () => {
 
     // Increased the height and font sizes to accommodate the "large" look
     const words = [
-        { text: "GROWTH", font: "text-[3rem] font-[800] font-sans uppercase text-black" },
-        { text: "video", font: "text-[3.5rem] font-pixel lowercase text-black" },
-        { text: "LAB", font: "text-[3.5rem] font-[300] font-sans uppercase text-black" }
+        { text: "GROWTH", font: "text-[3rem] font-[800] font-sans uppercase text-black tracking-tighter" },
+        { text: "Video", font: "text-[3.5rem] font-pixel text-black" },
+        { text: "LAB", font: "text-[3.5rem] font-[300] font-sans uppercase text-black tracking-tighter" }
     ];
 
     const timelineIdle = useRef<gsap.core.Timeline | null>(null);
@@ -133,10 +133,10 @@ const Logo = () => {
                     GROWTH
                 </span>
                 <div className="flex items-baseline -mt-2">
-                    <span className="text-[2.2rem] font-pixel lowercase mr-1">
-                        video
+                    <span className="text-[2.2rem] font-pixel mr-1">
+                        Video
                     </span>
-                    <span className="text-[2.2rem] font-[300] uppercase font-sans tracking-tight">
+                    <span className="text-[2.2rem] font-[300] uppercase font-sans tracking-tighter">
                         LAB
                     </span>
                 </div>
