@@ -47,7 +47,7 @@ const Hero = () => {
 
           {/* Main Headline */}
           <motion.h1 variants={itemVariants} className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tighter mb-8 text-black">
-            Somos una agencia de <span className="text-gvl-orange">Contenido</span> y Marketing Digital.
+            Agencia de <span className="text-gvl-orange">Contenido</span> y Marketing Digital.
           </motion.h1>
 
           <motion.p variants={itemVariants} className="text-lg md:text-xl font-medium text-gray-600 mb-10 max-w-md leading-relaxed flex items-start gap-4">
