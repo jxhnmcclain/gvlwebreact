@@ -39,6 +39,8 @@ export default defineConfig(({ mode }) => {
         renderer: new puppeteerRenderer({
           renderAfterTime: 2000, // Wait for animations
           maxConcurrentRoutes: 1,
+          headless: true,
+          args: ['--no-sandbox', '--disable-setuid-sandbox'],
         }),
         postProcess(renderedRoute) {
           // Optional: You can minify or modify HTML here
@@ -46,7 +48,6 @@ export default defineConfig(({ mode }) => {
             'id="root"',
             'id="root" data-prerendered="true"'
           );
-          return renderedRoute;
         },
       }),
     ],
