@@ -8,7 +8,7 @@ import {
     getAllCategories,
     BlogMetadata,
 } from '../lib/blogUtils';
-import { setMetaTags } from '../lib/seo';
+import { setMetaTags, SITE_URL } from '../lib/seo';
 
 const Blog: React.FC = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -31,9 +31,9 @@ const Blog: React.FC = () => {
             title: 'Blog - Growth Video Lab | Marketing Digital, Video y Branding',
             description:
                 'Descubre estrategias de video marketing, branding, redes sociales y contenido digital. Guías prácticas y tips para hacer crecer tu negocio online.',
-            canonical: window.location.href,
+            canonical: `${SITE_URL}/blog`,
             ogType: 'website',
-            ogUrl: window.location.href,
+            ogUrl: `${SITE_URL}/blog`,
             ogImage: '/og-blog.jpg',
         });
     }, []);

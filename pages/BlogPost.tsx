@@ -14,6 +14,7 @@ import {
     generateBlogPostStructuredData,
     generateBreadcrumbStructuredData,
     injectStructuredData,
+    SITE_URL,
 } from '../lib/seo';
 import { Calendar, Clock, ArrowLeft, Share2, Tag } from 'lucide-react';
 import BlogCard from '../components/BlogCard';
@@ -27,7 +28,7 @@ const BlogPost: React.FC = () => {
     useEffect(() => {
         if (!post) return;
 
-        const currentUrl = window.location.href;
+        const currentUrl = `${SITE_URL}/blog/${post.slug}`;
 
         // Set meta tags
         setMetaTags({
@@ -54,8 +55,8 @@ const BlogPost: React.FC = () => {
         });
 
         const breadcrumbData = generateBreadcrumbStructuredData([
-            { name: 'Inicio', url: window.location.origin },
-            { name: 'Blog', url: `${window.location.origin}/blog` },
+            { name: 'Inicio', url: SITE_URL },
+            { name: 'Blog', url: `${SITE_URL}/blog` },
             { name: post.title, url: currentUrl },
         ]);
 

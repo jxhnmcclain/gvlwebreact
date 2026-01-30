@@ -2,6 +2,8 @@
  * SEO utilities for meta tags, Open Graph, and structured data
  */
 
+export const SITE_URL = 'https://growthvideolab.com';
+
 export interface SEOMetadata {
     title: string;
     description: string;
@@ -155,7 +157,11 @@ export function setMetaTags(metadata: SEOMetadata) {
     setMetaTag('twitter:description', metadata.description);
 
     if (metadata.ogImage) {
-        setMetaTag('twitter:image', metadata.ogImage);
+        const absoluteImageUrl = metadata.ogImage.startsWith('http')
+            ? metadata.ogImage
+            : `${SITE_URL}${metadata.ogImage.startsWith('/') ? '' : '/'}${metadata.ogImage}`;
+        setMetaTag('og:image', absoluteImageUrl, 'property');
+        setMetaTag('twitter:image', absoluteImageUrl);
     }
 }
 

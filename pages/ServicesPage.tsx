@@ -8,7 +8,7 @@ import FAQ from '../components/FAQ';
 import { useNavigate } from 'react-router-dom';
 import { N8N_WEBHOOKS } from '../lib/config';
 import TurnstileWidget from '../components/TurnstileWidget';
-import { Helmet } from 'react-helmet-async';
+import { setMetaTags, SITE_URL } from '../lib/seo';
 
 const TextSplit = ({ children }: { children: string }) => {
     return (
@@ -148,13 +148,20 @@ const ServicesPage = () => {
         }
     ];
 
+    // Set SEO meta tags
+    React.useEffect(() => {
+        setMetaTags({
+            title: 'Servicios de Marketing Digital y Producción | Growth Video Lab',
+            description: 'Agencia creativa en Santiago de Chile. Ofrecemos producción audiovisual, branding, diseño web y gestión de redes sociales para impulsar tu marca.',
+            canonical: `${SITE_URL}/servicios`,
+            ogType: 'website',
+            ogUrl: `${SITE_URL}/servicios`,
+            ogImage: '/og-image.jpg',
+        });
+    }, []);
+
     return (
         <div ref={container} className="pt-32 min-h-screen bg-gvl-cream">
-            <Helmet>
-                <title>Servicios de Marketing Digital y Producción | Growth Video Lab</title>
-                <meta name="description" content="Agencia creativa en Santiago de Chile. Ofrecemos producción audiovisual, branding, diseño web y gestión de redes sociales para impulsar tu marca." />
-                <meta name="keywords" content="agencia digital, diseño web chile, producción video, branding corporativo, marketing redes sociales santiago" />
-            </Helmet>
 
             {/* Split Hero Section */}
             <section className="px-4 md:px-12 mb-24 md:mb-32">
