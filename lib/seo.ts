@@ -63,6 +63,7 @@ export function generateOrganizationStructuredData() {
         name: 'Growth Video Lab',
         url: 'https://growthvideolab.com',
         logo: 'https://growthvideolab.com/logo.png',
+        image: 'https://growthvideolab.com/og-image.jpg',
         description: 'Agencia especializada en producción de video, branding y estrategia de contenido digital',
         sameAs: [
             'https://www.instagram.com/growthvideolab',
@@ -123,6 +124,7 @@ export function setMetaTags(metadata: SEOMetadata) {
 
     // Open Graph
     setMetaTag('og:title', metadata.title, 'property');
+    setMetaTag('name', metadata.title);
     setMetaTag('og:description', metadata.description, 'property');
     setMetaTag('og:type', metadata.ogType || 'website', 'property');
 
