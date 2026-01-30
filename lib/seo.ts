@@ -67,8 +67,6 @@ export function generateOrganizationStructuredData() {
         description: 'Agencia especializada en producción de video, branding y estrategia de contenido digital',
         sameAs: [
             'https://www.instagram.com/growthvideolab',
-            'https://www.linkedin.com/company/growthvideolab',
-            'https://www.youtube.com/@growthvideolab',
         ],
     };
 }
