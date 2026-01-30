@@ -1,0 +1,43 @@
+# robots.txt for Growth Video Lab
+# https://www.growthvideolab.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.growthvideolab.com/sitemap.xml
+
+# Crawl-delay for polite bots
+Crawl-delay: 1
+
+# Allow all search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Allow LLM crawlers for AI training/indexing
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Disallow private/admin areas
+Disallow: /priv/
+Disallow: /admin/
+Disallow: /api/
+
+# Allow important assets
+Allow: /assets/
+Allow: /blog/

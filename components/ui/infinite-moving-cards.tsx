@@ -1,5 +1,6 @@
 import { cn } from "../../lib/utils";
 import React, { useEffect, useState } from "react";
+import { Star } from "lucide-react";
 
 export const InfiniteMovingCards = ({
   items,
@@ -12,6 +13,7 @@ export const InfiniteMovingCards = ({
     quote: string;
     name: string;
     title: string;
+    rating?: number;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -85,7 +87,7 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="relative w-[350px] max-w-full shrink-0 rounded-[2rem] border-2 border-black bg-white px-8 py-8 md:w-[450px] shadow-sm"
+            className="relative w-[350px] max-w-full shrink-0 rounded-[2rem] border-2 border-black bg-white px-8 py-8 md:w-[450px] shadow-sm flex flex-col justify-between"
             key={`${item.name}-${idx}`}
           >
             <blockquote>
@@ -93,6 +95,13 @@ export const InfiniteMovingCards = ({
                 aria-hidden="true"
                 className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               ></div>
+
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-gvl-blue text-gvl-blue" />
+                ))}
+              </div>
+
               <span className="relative z-20 text-lg leading-[1.6] font-medium text-black">
                 "{item.quote}"
               </span>

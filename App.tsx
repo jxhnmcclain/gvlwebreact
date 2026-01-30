@@ -9,6 +9,7 @@ import SplitServices from './components/SplitServices';
 import CtaBanner from './components/CtaBanner';
 import ServiceGrid from './components/ServiceGrid';
 import LeadMagnet from './components/LeadMagnet';
+import RecentPosts from './components/RecentPosts';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
 import InfiniteMovingCardsDemo from './components/InfiniteMovingCardsDemo';
@@ -24,6 +25,15 @@ import LeadFormPage from './pages/LeadFormPage';
 import NotFoundPage from './pages/NotFoundPage';
 import WebPortfolioLanding from './pages/WebPortfolioLanding';
 import EbooksLanding from './pages/EbooksLanding';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
+import MarketingAdvisory from './pages/MarketingAdvisory';
+
+// Private Pages
+import PrivateIndex from './pages/priv/PrivateIndex';
+import SocialMediaPrivate from './pages/priv/SocialMediaPrivate';
+import MarcaDisenoPrivate from './pages/priv/MarcaDisenoPrivate';
+import BrandingPrivate from './pages/priv/BrandingPrivate';
 
 // Register ScrollTrigger globally
 gsap.registerPlugin(ScrollTrigger);
@@ -83,6 +93,17 @@ const AppContent = () => {
             <Route path="/web-portfolio" element={<WebPortfolioLanding />} />
             <Route path="/ebooks-creadores" element={<EbooksLanding />} />
 
+            {/* Blog Routes */}
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/asesoria" element={<MarketingAdvisory />} />
+
+            {/* Private Routes */}
+            <Route path="/priv" element={<PrivateIndex />} />
+            <Route path="/priv/social-media" element={<SocialMediaPrivate />} />
+            <Route path="/priv/marca-diseno" element={<MarcaDisenoPrivate />} />
+            <Route path="/priv/branding" element={<BrandingPrivate />} />
+
             {/* 
                           We still need this route for direct access (refresh on /contacto) 
                           or if state.background is missing 
@@ -93,7 +114,7 @@ const AppContent = () => {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
-        {/* 
+        {/*
                     Only show Footer if we are NOT on the contact page primarily (direct access)
                     OR if we are in modal mode (background exists), the footer is part of the background (Home),
                     so it's rendered by Home -> Layout? No, Footer is outside Routes.
@@ -114,7 +135,10 @@ const AppContent = () => {
 };
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  // Skip preloader during pre-rendering (Puppeteer/HeadlessChrome)
+  const isPrerendering = typeof navigator !== 'undefined' &&
+    navigator.userAgent.includes('HeadlessChrome');
+  const [isLoading, setIsLoading] = useState(!isPrerendering);
 
   return (
     <BrowserRouter>

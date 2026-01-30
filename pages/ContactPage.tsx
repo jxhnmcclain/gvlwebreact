@@ -261,7 +261,7 @@ const ContactPage = () => {
 
       {/* Footer Info */}
       <div className="p-6 md:p-8 text-center relative z-10">
-        <p className="font-bold text-sm md:text-base">HOLA@GVL.COM • SANTIAGO, CHILE</p>
+        <p className="font-bold text-sm md:text-base">HOLA@GROWTHVIDEOLAB.COM • SANTIAGO, CHILE</p>
       </div>
 
     </motion.div>

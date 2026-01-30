@@ -32,6 +32,7 @@ const Header = () => {
   const navLinks = [
     { name: 'Inicio', path: '/' },
     { name: 'Servicios', path: '/servicios' },
+    { name: 'Blog', path: '/blog' },
   ];
 
   const resourceLinks = [
@@ -41,7 +42,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[50]">
-      <div className="w-full bg-gvl-cream/90 backdrop-blur-sm border-b border-gray-200 py-4 px-6 md:px-12 flex justify-between items-center relative z-[110]">
+      <div className="w-full bg-gvl-cream/90 backdrop-blur-sm border-b border-gray-200 py-3 px-6 md:px-12 flex justify-between items-center relative z-[110]">
         <Link to="/" className="hover:opacity-90 transition-opacity">
           <Logo />
         </Link>

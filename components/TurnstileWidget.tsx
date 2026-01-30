@@ -10,6 +10,14 @@ type TurnstileWidgetProps = {
 const TurnstileWidget: React.FC<TurnstileWidgetProps> = ({ onVerify, onError, theme = 'light' }) => {
     const SITE_KEY = import.meta.env.VITE_CLOUDFLARE_TURNSTILE_SITE_KEY;
 
+    // Check if we are pre-rendering (HeadlessChrome)
+    const isPrerendering = typeof navigator !== 'undefined' &&
+        navigator.userAgent.includes('HeadlessChrome');
+
+    if (isPrerendering) {
+        return <div className="p-4 bg-gray-100 rounded text-gray-400 text-sm">Captcha Placeholder</div>;
+    }
+
     if (!SITE_KEY) {
         console.error("Cloudflare Turnstile Site Key is missing in .env");
         return <div className="text-red-500 text-sm">Error: Captcha configuration missing.</div>;

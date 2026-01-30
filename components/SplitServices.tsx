@@ -19,7 +19,6 @@ const MotionCarousel = ({ items }: { items: ServiceItemData[] }) => {
         <motion.div
           key={idx}
           layout
-          onClick={() => setActive(idx)}
           onHoverStart={() => setActive(idx)}
           animate={{
             flex: active === idx ? 4 : 1,
@@ -28,7 +27,7 @@ const MotionCarousel = ({ items }: { items: ServiceItemData[] }) => {
           transition={{
             layout: { duration: 0.4, type: "spring", stiffness: 100, damping: 20 }
           }}
-          className={`relative h-full rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer border border-black shadow-sm hover:shadow-lg transition-shadow group ${active === idx ? 'z-10' : 'z-0'}`}
+          className={`relative h-full rounded-2xl md:rounded-3xl overflow-hidden border border-black shadow-sm hover:shadow-lg transition-shadow group ${active === idx ? 'z-10' : 'z-0'}`}
         >
           <motion.img
             layoutId={`img-${item.src}-${idx}`}
