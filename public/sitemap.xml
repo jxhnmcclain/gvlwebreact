@@ -2,62 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
-    <loc>https://www.growthvideolab.com/</loc>
+    <loc>https://growthvideolab.com/</loc>
+    <lastmod>2026-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <!-- Main Pages -->
   <url>
-    <loc>https://www.growthvideolab.com/servicios</loc>
+    <loc>https://growthvideolab.com/servicios</loc>
+    <lastmod>2026-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.growthvideolab.com/contacto</loc>
+    <loc>https://growthvideolab.com/contacto</loc>
+    <lastmod>2026-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.growthvideolab.com/asesoria</loc>
+    <loc>https://growthvideolab.com/asesoria</loc>
+    <lastmod>2026-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <!-- Blog -->
   <url>
-    <loc>https://www.growthvideolab.com/blog</loc>
+    <loc>https://growthvideolab.com/blog</loc>
+    <lastmod>2026-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <!-- Blog Posts -->
   <url>
-    <loc>https://www.growthvideolab.com/blog/2026-01-30-content-creation-tips</loc>
+    <loc>https://growthvideolab.com/blog/2026-01-30-content-creation-tips</loc>
     <lastmod>2026-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.growthvideolab.com/blog/2026-01-28-website-conversion</loc>
+    <loc>https://growthvideolab.com/blog/2026-01-28-website-conversion</loc>
     <lastmod>2026-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.growthvideolab.com/blog/2026-01-25-social-media-strategy</loc>
+    <loc>https://growthvideolab.com/blog/2026-01-25-social-media-strategy</loc>
     <lastmod>2026-01-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.growthvideolab.com/blog/2026-01-20-branding-mistakes</loc>
+    <loc>https://growthvideolab.com/blog/2026-01-20-branding-mistakes</loc>
     <lastmod>2026-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.growthvideolab.com/blog/2026-01-15-video-marketing-trends</loc>
+    <loc>https://growthvideolab.com/blog/2026-01-15-video-marketing-trends</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

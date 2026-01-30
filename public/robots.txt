@@ -1,11 +1,11 @@
 # robots.txt for Growth Video Lab
-# https://www.growthvideolab.com
+# https://growthvideolab.com
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://www.growthvideolab.com/sitemap.xml
+Sitemap: https://growthvideolab.com/sitemap.xml
 
 # Crawl-delay for polite bots
 Crawl-delay: 1
