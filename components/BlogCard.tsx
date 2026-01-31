@@ -32,12 +32,20 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
 
             {/* Featured Image */}
             <div className="relative h-48 w-full overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200">
-                    {/* Placeholder for actual image */}
-                    <div className="w-full h-full flex items-center justify-center text-gray-300">
-                        <span className="text-6xl opacity-20 font-black">{category.charAt(0)}</span>
+                {post.image ? (
+                    <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200">
+                        {/* Placeholder for actual image */}
+                        <div className="w-full h-full flex items-center justify-center text-gray-300">
+                            <span className="text-6xl opacity-20 font-black">{category.charAt(0)}</span>
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
 
             {/* Meta Footer */}

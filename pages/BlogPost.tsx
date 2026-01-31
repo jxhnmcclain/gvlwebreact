@@ -162,6 +162,17 @@ const BlogPost: React.FC = () => {
                     </button>
                 </div>
 
+                {/* Featured Image */}
+                {post.image && (
+                    <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl">
+                        <img
+                            src={post.image}
+                            alt={post.title}
+                            className="w-full h-auto object-cover max-h-[500px]"
+                        />
+                    </div>
+                )}
+
                 {/* Article Content */}
                 <div className="prose prose-lg max-w-none">
                     <ReactMarkdown

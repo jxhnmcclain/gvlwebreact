@@ -6,7 +6,7 @@ description: "Guía completa de CRO (Conversion Rate Optimization) para transfor
 excerpt: "Tu sitio web recibe tráfico pero no convierte. Aprende las técnicas de optimización de conversión que aumentarán tus ventas sin necesidad de más visitas."
 category: "Websites"
 tags: ["CRO", "conversion rate optimization", "diseño web", "UX", "landing pages"]
-image: "/blog/website-conversion.jpg"
+image: "/blog/2026-01-28-website-conversion.jpg"
 readTime: 9
 ---
 
