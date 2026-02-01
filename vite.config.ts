@@ -31,6 +31,13 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 1234,
       host: '0.0.0.0',
+      proxy: {
+        '/api/n8n': {
+          target: 'https://n8n.jxhnmcclain.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api\/n8n/, '/webhook'),
+        },
+      },
     },
     plugins: [
       react(),

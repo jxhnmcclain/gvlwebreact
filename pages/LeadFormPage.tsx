@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { N8N_WEBHOOKS } from '../lib/config';
 import TurnstileWidget from '../components/TurnstileWidget';
 
+import { getUTMParams } from '../lib/utm';
+
 type FormState = {
     // Required
     nameAndCompany: string;
@@ -84,16 +86,18 @@ const LeadFormPage = () => {
         }
 
         setIsSubmitting(true);
+        const utmParams = getUTMParams();
 
         try {
             await fetch(N8N_WEBHOOKS.LEAD_FORM, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ...formData, turnstileToken })
+                body: JSON.stringify({ ...formData, turnstileToken, ...utmParams })
             });
         } catch (error) {
             console.error('Error sending form:', error);
         }
+
 
         // Simulate delay for UX
         setTimeout(() => {

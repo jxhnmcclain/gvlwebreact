@@ -6,6 +6,8 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import { N8N_WEBHOOKS } from '../lib/config';
 import TurnstileWidget from '../components/TurnstileWidget';
 
+import { getUTMParams } from '../lib/utm';
+
 const WebPortfolioLanding = () => {
     const navigate = useNavigate();
     const containerRef = useRef<HTMLDivElement>(null);
@@ -78,17 +80,19 @@ const WebPortfolioLanding = () => {
 
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        const utmParams = getUTMParams();
 
         try {
             await fetch(N8N_WEBHOOKS.WEB_PORTFOLIO, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
 
-                body: JSON.stringify({ ...formState, turnstileToken })
+                body: JSON.stringify({ ...formState, turnstileToken, ...utmParams })
             });
         } catch (error) {
             console.error('Error sending form:', error);
         }
+
 
         console.log("Form POSTed to n8n:", formState);
         alert("¡Gracias! Te contactaremos pronto.");

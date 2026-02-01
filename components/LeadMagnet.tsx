@@ -5,6 +5,8 @@ import { Check, ArrowRight } from 'lucide-react';
 import { N8N_WEBHOOKS } from '../lib/config';
 import TurnstileWidget from './TurnstileWidget';
 
+import { getUTMParams } from '../lib/utm';
+
 const LeadMagnet = () => {
   const container = useRef(null);
   const [formState, setFormState] = useState({
@@ -35,15 +37,17 @@ const LeadMagnet = () => {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const utmParams = getUTMParams();
     try {
       await fetch(N8N_WEBHOOKS.EBOOKS, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formState, turnstileToken })
+        body: JSON.stringify({ ...formState, turnstileToken, ...utmParams })
       });
     } catch (error) {
       console.error('Error sending form:', error);
     }
+
     setIsSubmitted(true);
   };
 

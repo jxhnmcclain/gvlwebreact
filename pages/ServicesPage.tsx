@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 import { N8N_WEBHOOKS } from '../lib/config';
 import TurnstileWidget from '../components/TurnstileWidget';
 import { setMetaTags, SITE_URL } from '../lib/seo';
+import { getUTMParams } from '../lib/utm';
+
 
 const TextSplit = ({ children }: { children: string }) => {
     return (
@@ -105,6 +107,7 @@ const ServicesPage = () => {
         if (!validate()) return;
 
         setStatus('submitting');
+        const utmParams = getUTMParams();
 
         try {
             const response = await fetch(N8N_WEBHOOKS.CONTACT, {
@@ -113,9 +116,11 @@ const ServicesPage = () => {
                 body: JSON.stringify({
                     ...formData,
                     turnstileToken,
-                    source: 'services_page'
+                    source: 'services_page',
+                    ...utmParams
                 })
             });
+
 
             if (response.ok) {
                 setStatus('success');

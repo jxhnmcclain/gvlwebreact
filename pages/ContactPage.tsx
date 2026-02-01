@@ -5,6 +5,8 @@ import { X, ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
 import { N8N_WEBHOOKS } from '../lib/config';
 import TurnstileWidget from '../components/TurnstileWidget';
 
+import { getUTMParams } from '../lib/utm';
+
 type FormState = {
   name: string;
   email: string;
@@ -75,16 +77,18 @@ const ContactPage = () => {
     if (!validate()) return;
 
     setStatus('submitting');
+    const utmParams = getUTMParams();
 
     try {
       await fetch(N8N_WEBHOOKS.CONTACT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, turnstileToken })
+        body: JSON.stringify({ ...formData, turnstileToken, ...utmParams })
       });
     } catch (error) {
       console.error('Error sending form:', error);
     }
+
 
     // Simulate delay for UX
     setTimeout(() => {
