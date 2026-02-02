@@ -99,7 +99,7 @@ const ContentPage = () => {
                     {/* Column 1 */}
                     <div className="flex flex-col gap-4 md:gap-8 mt-0">
                         <div className="anim-img group relative aspect-square overflow-hidden rounded-3xl border border-black shadow-lg cursor-pointer">
-                            <img src="public\assets\images\photography-example.png" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Vertical Still 1" />
+                            <img src="assets\images\photography-example.png" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Vertical Still 1" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                             <div className="absolute inset-0 z-20 p-8 flex flex-col justify-end text-white">
                                 <h3 className="font-black text-2xl translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">Photography</h3>
@@ -135,7 +135,7 @@ const ContentPage = () => {
                             </div>
                         </div>
                         <div className="anim-img group relative aspect-square overflow-hidden rounded-3xl border border-black shadow-lg cursor-pointer">
-                            <img src="public\assets\images\Marca y Diseño\hydraville\branding-example.png" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Vertical Still 2" />
+                            <img src="assets\images\Marca y Diseño\hydraville\branding-example.png" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Vertical Still 2" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                             <div className="absolute inset-0 z-20 p-8 flex flex-col justify-end text-white">
                                 <h3 className="font-black text-2xl translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">Branding: Tu marca</h3>
