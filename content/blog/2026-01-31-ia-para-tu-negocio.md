@@ -6,7 +6,7 @@ description: "La IA ya no es el futuro, es el presente. Aprende cómo implementa
 excerpt: "No dejes que tu negocio se quede atrás. Descubre las aplicaciones prácticas de la IA que están transformando la eficiencia de las pequeñas empresas este año."
 category: "AI & Business"
 tags: ["ia para negocios", "inteligencia artificial", "automatización", "productividad empresarial", "marketing con ia"]
-image: "/blog/ia-negocios-2026.jpg"
+image: "/blog/usar-ia-para-negocio-teoria-accion.jpg"
 readTime: 10
 featured: false
 ---

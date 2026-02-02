@@ -6,7 +6,7 @@ description: "Descubre cómo las herramientas de IA agencial y los flujos de tra
 excerpt: "¿Sientes que no te da la vida? La IA no es solo para chatear; es tu nuevo equipo de trabajo. Aprende a construir tu propio flujo de productividad."
 category: "Productivity"
 tags: ["productividad con ia", "ia agencial", "flujos de trabajo", "herramientas ia", "gestión del tiempo"]
-image: "/blog/productividad-ia-2026.jpg"
+image: "/blog/productividad-ia-sistemas-emprendedores.jpg"
 readTime: 7
 featured: false
 ---

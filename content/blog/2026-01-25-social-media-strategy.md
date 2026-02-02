@@ -6,7 +6,7 @@ description: "Aprende a construir una estrategia de redes sociales que genere re
 excerpt: "Tener muchos seguidores no significa nada si no generan ventas. Descubre cómo transformar tu presencia en redes sociales en un motor de crecimiento rentable."
 category: "Social Media"
 tags: ["redes sociales", "estrategia digital", "community management", "marketing de contenidos"]
-image: "/blog/2026-01-25-social-media-strategy.jpg"
+image: "/blog/strategy-2026-marketing.jpg"
 readTime: 7
 ---
 

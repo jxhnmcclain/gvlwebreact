@@ -6,7 +6,7 @@ description: "Cómo los agentes inmobiliarios pueden usar el SEO local para atra
 excerpt: "¿Quieres que tu inmobiliaria aparezca la primera cuando alguien busca 'casas en venta en [Tu Ciudad]'? Domina el SEO local con estos 5 pasos."
 category: "Local SEO"
 tags: ["seo local inmobiliaria", "marketing inmobiliario", "bienes raices", "google business", "agentes inmobiliarios"]
-image: "/blog/seo-local-inmobiliaria.jpg"
+image: "/blog/seo-local-inmobiliario.jpg"
 readTime: 8
 featured: false
 ---

@@ -136,17 +136,17 @@ const SplitServices = () => {
   // Data for Left Column (Producción)
   const productionItems: ServiceItemData[] = [
     { src: "/assets/images/photography-example.png", title: "Fotografía", subtitle: "Producto & Editorial" },
-    { src: "/assets/images/Post 4.png", title: "Redes Sociales", subtitle: "Contenido que genera leads" },
-    { src: "/assets/images/reels.jpg", title: "TikToks & Reels", subtitle: "Contenido vertical viral" },
-    { src: "https://picsum.photos/600/800?random=99", title: "Campañas", subtitle: "Comerciales & Spots" },
+    { src: "/social-media/redes-sociales.jpg", title: "Redes Sociales", subtitle: "Contenido que genera leads" },
+    { src: "/assets/images/reels.jpg", title: "TikToks & Reels", subtitle: "Contenido vertical para TikTok o Instagram Reels" },
+    { src: "/ai-avatar.jpg", title: "Avatar IA", subtitle: "Contenido automatizado con Inteligencia Artificial" },
   ];
 
   // Data for Right Column (Creación)
   const designItems: ServiceItemData[] = [
     { src: "/assets/images/KeyVisual 1.png", title: "Branding", subtitle: "Identidad Corporativa" },
-    { src: "https://picsum.photos/600/800?random=14", title: "Sitios Web", subtitle: "UI/UX & Desarrollo" },
+    { src: "/webs.jpg", title: "Sitios Web", subtitle: "UI/UX & Desarrollo" },
     { src: "/assets/images/merch.jpeg", title: "Merch & Print", subtitle: "Flyers & Packaging" },
-    { src: "https://picsum.photos/600/800?random=98", title: "Logotipos", subtitle: "Diseño vectorial único" },
+    { src: "/marca-diseno/logos.jpg", title: "Logotipos", subtitle: "Diseño vectorial único" },
   ];
 
   return (

@@ -6,7 +6,7 @@ description: "Evita estos errores comunes de branding que alejan a tus clientes.
 excerpt: "Tu marca es más que un logo. Descubre los errores que cometen el 80% de las empresas y cómo corregirlos para construir una marca memorable y rentable."
 category: "Branding"
 tags: ["branding", "identidad de marca", "diseño", "estrategia de marca"]
-image: "/blog/2026-01-20-branding-mistakes.jpg"
+image: "/blog/branding-mistakes.jpg"
 readTime: 6
 ---
 

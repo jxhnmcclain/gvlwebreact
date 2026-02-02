@@ -6,7 +6,7 @@ description: "Descubre las estrategias de video marketing más efectivas para 20
 excerpt: "El video marketing evoluciona constantemente. Conoce las tendencias que transformarán tu estrategia de contenido este año y cómo implementarlas en tu negocio."
 category: "Video Marketing"
 tags: ["video marketing", "tendencias 2026", "contenido digital", "redes sociales"]
-image: "/blog/2026-01-15-video-marketing-trends.jpg"
+image: "/blog/10-trends-video-marketing.jpg"
 readTime: 8
 ---
 

@@ -6,7 +6,7 @@ description: "Aprende a crear contenido que no solo atrae audiencia, sino que ge
 excerpt: "Crear contenido es fácil. Crear contenido que convierte visitantes en clientes es un arte y una ciencia. Domina ambos con esta guía completa."
 category: "Content Marketing"
 tags: ["content marketing", "creación de contenido", "copywriting", "estrategia de contenido", "video marketing"]
-image: "/blog/2026-01-30-content-creation-tips.jpg"
+image: "/blog/content-guide-2026.jpg"
 readTime: 10
 featured: true
 ---

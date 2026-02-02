@@ -6,7 +6,7 @@ description: "Estrategias de marketing y tendencias visuales para que tu salón 
 excerpt: "El mercado de las uñas es más competitivo que nunca. Descubre cómo el branding y el contenido estratégico pueden ayudarte a cobrar lo que vales."
 category: "Branding"
 tags: ["marketing para manicuristas", "salones de belleza", "branding", "tendencias uñas 2026", "estética"]
-image: "/blog/marketing-manicuristas.jpg"
+image: "/blog/marketing-manicurista-premium-clients.jpg"
 readTime: 7
 featured: false
 ---

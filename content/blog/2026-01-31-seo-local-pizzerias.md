@@ -6,7 +6,7 @@ description: "Aprende a optimizar el perfil de Google Business de tu pizzería p
 excerpt: "¿Quieres que tu pizzería sea la primera opción cuando alguien busca 'pizza cerca de mí'? Esta guía de SEO local te muestra cómo lograrlo paso a paso."
 category: "Local SEO"
 tags: ["seo local", "pizzerias", "marketing para pizzerias", "google maps", "negocios locales"]
-image: "/blog/seo-local-pizzerias.jpg"
+image: "/blog/google-pizza-maps-seo-2026.jpg"
 readTime: 6
 featured: false
 ---

@@ -13,6 +13,7 @@ import RecentPosts from './components/RecentPosts';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
 import InfiniteMovingCardsDemo from './components/InfiniteMovingCardsDemo';
+import HomeFaq from './components/HomeFaq';
 
 // Import New Pages
 import ContentPage from './pages/ContentPage';
@@ -43,8 +44,9 @@ const Home = () => (
     <Hero />
     <SplitServices />
     <InfiniteMovingCardsDemo />
+    <HomeFaq />
     <CtaBanner />
-    <LeadMagnet />
+    {/* <LeadMagnet /> */}
   </>
 );
 

@@ -6,9 +6,9 @@ description: "Descubre cómo usar Instagram Reels para atraer más clientes a tu
 excerpt: "¿Tu feed de Instagram se siente aburrido? Aquí tienes 7 ideas de Reels diseñadas específicamente para pizzerías que quieren destacar en 2026."
 category: "Social Media"
 tags: ["marketing para pizzerias", "instagram reels", "branding", "video marketing", "pizzerias"]
-image: "/blog/marketing-digital-pizzerias.jpg"
+image: "/blog/reels-ideas-pizzerias-hambre-ventas.jpg"
 readTime: 5
-featured: false
+featured: true
 ---
 
 # 7 Ideas de Reels para pizzerías que despiertan el hambre (y las ventas)

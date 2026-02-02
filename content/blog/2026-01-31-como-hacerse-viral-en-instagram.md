@@ -6,7 +6,7 @@ description: "Descubre las claves para dominar el algoritmo de Instagram en 2026
 excerpt: "¿Buscas el secreto de la viralidad? En 2026, Instagram ha cambiado. Te contamos cómo surfear la ola del nuevo algoritmo con estrategias probadas."
 category: "Social Media"
 tags: ["viralidad instagram", "algoritmo instagram 2026", "reels", "branding digital", "estrategia de contenido"]
-image: "/blog/viralidad-instagram-2026.jpg"
+image: "/blog/como-hacerse-viral-mkt.jpg"
 readTime: 8
 featured: true
 ---

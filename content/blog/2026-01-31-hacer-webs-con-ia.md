@@ -6,7 +6,7 @@ description: "Crear una página web profesional en 2026 es más rápido que nunc
 excerpt: "¿Necesitas una web y no sabes programar? Descubre cómo las nuevas herramientas de IA te permiten lanzar tu sitio en cuestión de minutos, no semanas."
 category: "Web Design"
 tags: ["webs con ia", "diseño web no-code", "framer ia", "lovable", "landing pages"]
-image: "/blog/webs-ia-2026.jpg"
+image: "/blog/web-dev-ia-lovable-seo.jpg"
 readTime: 6
 featured: false
 ---
