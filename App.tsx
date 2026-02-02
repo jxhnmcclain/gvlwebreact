@@ -14,6 +14,7 @@ import Footer from './components/Footer';
 import Preloader from './components/Preloader';
 import InfiniteMovingCardsDemo from './components/InfiniteMovingCardsDemo';
 import HomeFaq from './components/HomeFaq';
+import { setMetaTags, SITE_URL } from './lib/seo';
 
 // Import New Pages
 import ContentPage from './pages/ContentPage';
@@ -39,16 +40,29 @@ import BrandingPrivate from './pages/priv/BrandingPrivate';
 // Register ScrollTrigger globally
 gsap.registerPlugin(ScrollTrigger);
 
-const Home = () => (
-  <>
-    <Hero />
-    <SplitServices />
-    <InfiniteMovingCardsDemo />
-    <HomeFaq />
-    <CtaBanner />
-    {/* <LeadMagnet /> */}
-  </>
-);
+const Home = () => {
+  useEffect(() => {
+    setMetaTags({
+      title: 'Growth Video Lab | Producción de Video, Branding y Contenido Digital en Chile',
+      description: 'Agencia creativa especializada en producción de video, branding, diseño de marca y estrategia de contenido digital. Transformamos tu marca con contenido que conecta y convierte. Santiago, Chile.',
+      canonical: SITE_URL,
+      ogType: 'website',
+      ogUrl: SITE_URL,
+      ogImage: '/og-image.jpg',
+    });
+  }, []);
+
+  return (
+    <>
+      <Hero />
+      <SplitServices />
+      <InfiniteMovingCardsDemo />
+      <HomeFaq />
+      <CtaBanner />
+      {/* <LeadMagnet /> */}
+    </>
+  );
+};
 
 // Scroll to top on route change wrapper
 const ScrollToTop = () => {
