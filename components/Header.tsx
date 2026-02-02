@@ -37,7 +37,7 @@ const Header = () => {
 
   const resourceLinks = [
     { name: 'Webs UGC', path: '/web-portfolio' },
-    { name: 'Ebooks para creadores', path: '/ebooks-creadores' },
+    // { name: 'Ebooks para creadores', path: '/ebooks-creadores' },
   ];
 
   return (

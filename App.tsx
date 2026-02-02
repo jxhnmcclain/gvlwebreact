@@ -24,7 +24,7 @@ import ContactPage from './pages/ContactPage';
 import LeadFormPage from './pages/LeadFormPage';
 import NotFoundPage from './pages/NotFoundPage';
 import WebPortfolioLanding from './pages/WebPortfolioLanding';
-import EbooksLanding from './pages/EbooksLanding';
+// import EbooksLanding from './pages/EbooksLanding';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import MarketingAdvisory from './pages/MarketingAdvisory';
@@ -91,7 +91,7 @@ const AppContent = () => {
             <Route path="/servicios" element={<ServicesPage />} />
             <Route path="/cotizacion-web" element={<LeadFormPage />} />
             <Route path="/web-portfolio" element={<WebPortfolioLanding />} />
-            <Route path="/ebooks-creadores" element={<EbooksLanding />} />
+            {/* <Route path="/ebooks-creadores" element={<EbooksLanding />} /> */}
 
             {/* Blog Routes */}
             <Route path="/blog" element={<Blog />} />

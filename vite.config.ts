@@ -16,7 +16,7 @@ const routes = [
   '/branding',
   '/cotizacion-web',
   '/web-portfolio',
-  '/ebooks-creadores',
+  // '/ebooks-creadores',
   '/blog',
   '/blog/2026-01-30-content-creation-tips',
   '/blog/2026-01-28-website-conversion',

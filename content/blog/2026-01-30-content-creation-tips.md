@@ -84,7 +84,7 @@ Pregunta:
 **3. Lead Generation (Generación de leads):**
 - Objetivo: Capturar contactos
 - Métrica: Suscriptores, descargas, registros
-- Ejemplo: Lead magnet, [Ebooks para Creadores](/ebooks-creadores), checklist
+- Ejemplo: Lead magnet, ebooks o guías PDF, checklist
 
 **4. Conversion (Venta):**
 - Objetivo: Generar ventas
