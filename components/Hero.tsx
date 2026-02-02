@@ -42,17 +42,17 @@ const Hero = () => {
         {/* LEFT COLUMN: Text & CTA */}
         <div className="col-span-1 md:col-span-12 lg:col-span-5 flex flex-col justify-center text-left py-8 md:py-0">
           <motion.div variants={itemVariants} className="flex items-center gap-2 mb-6">
-            <span className="font-bold text-lg tracking-tight">Hey, bienvenido</span>
+            <span className="font-bold text-lg tracking-tight">Hey, bienvenido a</span>
           </motion.div>
 
           {/* Main Headline */}
           <motion.h1 variants={itemVariants} className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tighter mb-8 text-black">
-            Agencia de <span className="text-gvl-orange">Contenido</span> y Marketing Digital.
+            Mi laboratorio de <span className="text-gvl-orange">Contenido</span> y marketing
           </motion.h1>
 
           <motion.p variants={itemVariants} className="text-lg md:text-xl font-medium text-gray-600 mb-10 max-w-md leading-relaxed flex items-start gap-4">
             <ArrowRight className="shrink-0 mt-1" />
-            Potenciamos tu negocio con estrategias creativas y efectivas, enfocadas en tus resultados.
+            Ayudo a empresas a potenciar su negocio con estrategias creativas y efectivas, enfocadas en tus resultados.
           </motion.p>
 
           <motion.div variants={itemVariants}>
@@ -60,7 +60,7 @@ const Hero = () => {
               onClick={() => navigate('/contacto')}
               className="bg-black text-white rounded-full px-8 py-4 text-lg font-bold flex items-center gap-3 hover:bg-gray-800 transition-all hover:scale-105 active:scale-95 shadow-xl"
             >
-              Empezar Proyecto
+              Contactame
               <ArrowUpRight size={20} />
             </button>
           </motion.div>
