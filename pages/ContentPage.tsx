@@ -84,10 +84,12 @@ const ContentPage = () => {
                     <div className="lg:col-span-5 anim-title">
                         <div className="aspect-video w-full rounded-3xl border-2 border-black overflow-hidden shadow-[20px_20px_0px_0px_rgba(0,0,0,0.05)] bg-black">
                             <video
-                                src="/videos/ai-production-hero.mp4"
                                 className="w-full h-full object-cover"
                                 autoPlay loop muted playsInline
-                            />
+                            >
+                                <source src="/videos/ai-production-hero.webm" type="video/webm" />
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
                 </div>
@@ -108,10 +110,12 @@ const ContentPage = () => {
                         </div>
                         <div className="anim-img group relative aspect-video overflow-hidden rounded-3xl border border-black shadow-lg bg-black cursor-pointer">
                             <video
-                                src="/videos/motion.mp4"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 autoPlay loop muted playsInline
-                            />
+                            >
+                                <source src="/videos/motion.webm" type="video/webm" />
+                                Your browser does not support the video tag.
+                            </video>
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                             <div className="absolute inset-0 z-20 p-8 flex flex-col justify-end text-white">
                                 <h3 className="font-black text-2xl translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">Motion Graphics</h3>
@@ -124,10 +128,12 @@ const ContentPage = () => {
                     <div className="flex flex-col gap-4 md:gap-8 mt-0 md:mt-24">
                         <div className="anim-img group relative aspect-video overflow-hidden rounded-3xl border border-black shadow-lg bg-black cursor-pointer">
                             <video
-                                src="/videos/production.mp4"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 autoPlay loop muted playsInline
-                            />
+                            >
+                                <source src="/videos/production.webm" type="video/webm" />
+                                Your browser does not support the video tag.
+                            </video>
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                             <div className="absolute inset-0 z-20 p-8 flex flex-col justify-end text-white">
                                 <h3 className="font-black text-2xl translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">Contenido para Redes Sociales</h3>
@@ -148,10 +154,12 @@ const ContentPage = () => {
                     <div className="flex flex-col gap-4 md:gap-8 mt-0 md:mt-12">
                         <div className="anim-img group relative aspect-[9/16] overflow-hidden rounded-3xl border border-black shadow-lg bg-black cursor-pointer">
                             <video
-                                src="/videos/videos-verticales.mp4"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 autoPlay loop muted playsInline
-                            />
+                            >
+                                <source src="/videos/videos-verticales.webm" type="video/webm" />
+                                Your browser does not support the video tag.
+                            </video>
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                             <div className="absolute inset-0 z-20 p-8 flex flex-col justify-end text-white">
                                 <h3 className="font-black text-2xl translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">Anuncios Pagados</h3>

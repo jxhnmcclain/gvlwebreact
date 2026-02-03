@@ -43,7 +43,7 @@ const WebsitesPage = () => {
       id: '01',
       title: "E-commerce de Rendimiento",
       category: "Ventas & Conversión Chile",
-      video: "/videos/web 1.mp4",
+      video: "/videos/web 1.webm",
       description: "Desarrollo de tiendas online en Santiago optimizadas para vender más. Experiencia de usuario (UX) diseñada para el consumidor chileno.",
       color: "bg-[#f3f3f3]"
     },
@@ -51,7 +51,7 @@ const WebsitesPage = () => {
       id: '02',
       title: "Portfolio Creativo Pro",
       category: "Branding & Motion Design",
-      video: "/videos/coffe_web.mp4",
+      video: "/videos/coffe_web.webm",
       description: "Sitios web para agencias y profesionales con animaciones premium que elevan la percepción de marca en el mercado nacional.",
       color: "bg-[#e2e2e2]"
     },
@@ -59,7 +59,7 @@ const WebsitesPage = () => {
       id: '03',
       title: "Corporativo Premium",
       category: "Soluciones Enterprise",
-      video: "/videos/web-placeholder-3.mp4",
+      video: "/videos/web-placeholder-3.webm",
       description: "Arquitectura web robusta e institucional para empresas líderes en Santiago de Chile que buscan autoridad digital.",
       color: "bg-[#f9f9f9]"
     }
