@@ -59,7 +59,7 @@ const WebsitesPage = () => {
       id: '03',
       title: "Corporativo Premium",
       category: "Soluciones Enterprise",
-      video: "/videos/web-placeholder-3.webm",
+      video: "/videos/web 1.webm",
       description: "Arquitectura web robusta e institucional para empresas líderes en Santiago de Chile que buscan autoridad digital.",
       color: "bg-[#f9f9f9]"
     }
@@ -127,10 +127,12 @@ const WebsitesPage = () => {
                   {/* Video Container */}
                   <div className="absolute inset-0 pt-10 overflow-hidden pointer-events-none">
                     <video
-                      src={project.video}
                       className="w-full h-full object-cover"
                       autoPlay loop muted playsInline
-                    />
+                    >
+                      <source src={project.video} type="video/webm" />
+                      Your browser does not support the video tag.
+                    </video>
                     <div className="absolute inset-0 bg-black/5"></div>
                   </div>
                 </div>
