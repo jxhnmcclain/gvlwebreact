@@ -37,6 +37,9 @@ import SocialMediaPrivate from './pages/priv/SocialMediaPrivate';
 import MarcaDisenoPrivate from './pages/priv/MarcaDisenoPrivate';
 import BrandingPrivate from './pages/priv/BrandingPrivate';
 
+// Presentation
+import Presentation from './pages/Presentation';
+
 // Register ScrollTrigger globally
 gsap.registerPlugin(ScrollTrigger);
 
@@ -94,8 +97,8 @@ const AppContent = () => {
     <>
       <ScrollToTop />
       <div className="min-h-screen flex flex-col w-full overflow-x-hidden font-sans bg-gvl-cream">
-        {/* Header is hidden on LeadFormPage as it has its own minimal header */}
-        {!isLeadPage && <Header />}
+        {/* Header is hidden on LeadFormPage and Presentation as they have specific headers */}
+        {(!isLeadPage && location.pathname !== '/presentacion') && <Header />}
 
         <main className="flex-grow">
           <Routes location={locationToRender}>
@@ -120,6 +123,9 @@ const AppContent = () => {
             <Route path="/priv/marca-diseno" element={<MarcaDisenoPrivate />} />
             <Route path="/priv/branding" element={<BrandingPrivate />} />
 
+            {/* Presentation Route */}
+            <Route path="/presentacion" element={<Presentation />} />
+
             {/* 
                           We still need this route for direct access (refresh on /contacto) 
                           or if state.background is missing 
@@ -137,7 +143,7 @@ const AppContent = () => {
                     So Footer is always visible. ContactPage is fixed z-60 covering it.
                     ALSO hide on LeadFormPage
                 */}
-        {!isLeadPage && <Footer />}
+        {(!isLeadPage && location.pathname !== '/presentacion') && <Footer />}
       </div>
 
       {/* Render ContactPage as an overlay if we have a background location and we are at /contacto */}

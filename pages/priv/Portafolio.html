@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolio — Growth Video Lab</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ─── FONTS ─────────────────────────────────────────────── */
+        @font-face {
+            font-family: 'Neue Machina';
+            src: url('/assets/fonts/NeueMachina-Regular.otf') format('opentype'),
+                url('/assets/fonts/NeueMachina-Regular.ttf') format('truetype');
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: 'Neue Machina';
+            src: url('/assets/fonts/NeueMachina-Ultrabold.otf') format('opentype'),
+                url('/assets/fonts/NeueMachina-Ultrabold.ttf') format('truetype');
+            font-weight: 800;
+        }
+
+        /* ─── TOKENS ────────────────────────────────────────────── */
+        :root {
+            --cream: #FDFBF7;
+            --black: #111111;
+            --orange: #ff002b;
+            --yellow: #DFFF00;
+            --blue: #1E90FF;
+            --green: #32CD32;
+            --gray: #6B7280;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            /* Force all backgrounds/colors to print */
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            background: var(--cream);
+            color: var(--black);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background: var(--yellow);
+            color: var(--black);
+        }
+
+        /* ─── TOOLBAR ───────────────────────────────────────────── */
+        #toolbar {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            display: flex;
+            gap: 10px;
+            z-index: 9999;
+        }
+
+        #toolbar button {
+            background: var(--black);
+            color: #fff;
+            border: none;
+            border-radius: 999px;
+            padding: 10px 22px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .18);
+            transition: background .2s, transform .15s;
+        }
+
+        #toolbar button:hover {
+            background: #2a2a2a;
+            transform: scale(1.04);
+        }
+
+        #btn-edit.active {
+            background: var(--orange);
+        }
+
+        #toolbar button svg {
+            width: 15px;
+            height: 15px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ─── EDIT MODE ─────────────────────────────────────────── */
+        .editable:focus {
+            outline: 2px dashed var(--orange);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* hint de imagen cuando está en modo edición */
+        .img-wrapper.edit-active::after {
+            content: '📷 Haz clic para cambiar imagen';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, .55);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: inherit;
+        }
+
+        /* ─── PAGE ──────────────────────────────────────────────── */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 14mm 13mm 12mm;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        /* ─── HEADER ────────────────────────────────────────────── */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 8mm;
+            border-bottom: 2px solid var(--black);
+            margin-bottom: 8mm;
+        }
+
+        .header img {
+            height: 32px;
+            width: auto;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
+        }
+
+        .header-title {
+            font-family: 'Neue Machina', sans-serif;
+            font-weight: 800;
+            font-size: 11px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            background: var(--black);
+            color: var(--yellow);
+            padding: 6px 16px;
+            border-radius: 999px;
+        }
+
+        .header-sub {
+            font-size: 10px;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* ─── SECTION INTRO ─────────────────────────────────────── */
+        .intro {
+            margin-bottom: 8mm;
+        }
+
+        .intro-label {
+            font-size: 9.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .22em;
+            color: var(--orange);
+            margin-bottom: 2mm;
+        }
+
+        .intro-title {
+            font-family: 'Neue Machina', sans-serif;
+            font-weight: 800;
+            font-size: 26px;
+            letter-spacing: -.015em;
+            line-height: 1.1;
+            margin-bottom: 2.5mm;
+        }
+
+        .intro-body {
+            font-size: 13px;
+            color: var(--gray);
+            line-height: 1.6;
+            max-width: 80%;
+        }
+
+        /* ─── PROJECT CARDS ─────────────────────────────────────── */
+        .projects {
+            display: flex;
+            flex-direction: column;
+            gap: 6mm;
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 63% 1fr;
+            gap: 5mm;
+            background: #fff;
+            border: 1.5px solid rgba(0, 0, 0, .07);
+            border-radius: 20px;
+            overflow: hidden;
+            /* Removed fixed min-height to let aspect-ratio drive it */
+        }
+
+        /* Alternate image side for every other card */
+        .project-card.reverse {
+            direction: rtl;
+        }
+
+        .project-card.reverse>* {
+            direction: ltr;
+        }
+
+        /* ─── IMAGE SIDE ────────────────────────────────────────── */
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #E5E7EB;
+            aspect-ratio: 4 / 3;
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            background: #F3F4F6;
+        }
+
+        /* placeholder when no real image */
+        .img-placeholder {
+            width: 100%;
+            height: 100%;
+            min-height: 54mm;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #f0f0ee 0%, #e4e3de 100%);
+        }
+
+        .img-placeholder svg {
+            width: 32px;
+            height: 32px;
+            stroke: #9CA3AF;
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .img-placeholder span {
+            font-size: 10px;
+            font-weight: 600;
+            color: #9CA3AF;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+        }
+
+        /* accent color strip on the left */
+        .img-wrapper::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 4px;
+            height: 40%;
+            background: var(--accent, var(--orange));
+            border-radius: 0 4px 4px 0;
+            z-index: 2;
+        }
+
+        /* ─── TEXT SIDE ─────────────────────────────────────────── */
+        .project-body {
+            padding: 6mm 5mm;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2.5mm;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-glow {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            filter: blur(45px);
+            opacity: .14;
+            background: var(--accent, var(--orange));
+        }
+
+        .project-num {
+            font-family: 'Neue Machina', sans-serif;
+            font-weight: 800;
+            font-size: 10px;
+            letter-spacing: .2em;
+            color: var(--accent, var(--orange));
+            text-transform: uppercase;
+        }
+
+        .project-title {
+            font-family: 'Neue Machina', sans-serif;
+            font-weight: 800;
+            font-size: 17px;
+            line-height: 1.15;
+            color: var(--black);
+        }
+
+        .project-desc {
+            font-size: 12px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 1mm;
+        }
+
+        .tag {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, .05);
+            color: var(--black);
+            letter-spacing: .02em;
+        }
+
+        /* ─── FOOTER ────────────────────────────────────────────── */
+        .footer {
+            margin-top: auto;
+            padding-top: 5mm;
+            border-top: 1px solid rgba(0, 0, 0, .08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer p {
+            font-size: 10px;
+            color: rgba(0, 0, 0, .3);
+        }
+
+        .footer .cta-chip {
+            font-size: 11px;
+            font-weight: 700;
+            background: var(--yellow);
+            color: var(--black);
+            padding: 5px 14px;
+            border-radius: 999px;
+        }
+
+        /* ─── PRINT ──────────────────────────────────────────────── */
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        @media print {
+
+            html,
+            body {
+                background: var(--cream) !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            #toolbar {
+                display: none !important;
+            }
+
+            html,
+            body {
+                background: #fff !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .page {
+                width: 210mm;
+                min-height: 297mm;
+                padding: 10mm 11mm 8mm;
+                margin: 0;
+            }
+
+            #toolbar {
+                display: none !important;
+            }
+
+            .header {
+                margin-bottom: 4mm;
+            }
+
+            .intro {
+                margin-bottom: 4mm;
+            }
+
+            .intro-title {
+                font-size: 24px;
+                margin-bottom: 2mm;
+                line-height: 1.1;
+            }
+
+            .projects {
+                display: flex;
+                flex-direction: column;
+                gap: 3.5mm;
+            }
+
+            .project-card {
+                display: grid;
+                grid-template-columns: 48% 1fr;
+                break-inside: avoid;
+                page-break-inside: avoid;
+                min-height: unset;
+                border-radius: 12px;
+            }
+
+            .img-wrapper,
+            .img-placeholder {
+                min-height: unset;
+                aspect-ratio: 4 / 3;
+            }
+
+            .project-body {
+                padding: 4mm 5mm;
+            }
+
+            .project-num {
+                font-size: 9px;
+                margin-bottom: 1mm;
+            }
+
+            .project-title {
+                font-size: 16px;
+                margin-bottom: 2mm;
+            }
+
+            .project-desc {
+                font-size: 10px;
+                line-height: 1.3;
+            }
+
+            .tag {
+                font-size: 8px;
+                padding: 2px 7px;
+            }
+
+            .footer {
+                padding-top: 3mm;
+                margin-top: auto;
+            }
+        }
+
+        /* ─── SCREEN CHROME ─────────────────────────────────────── */
+        @media screen {
+            body {
+                background: #E5E7EB;
+                padding: 30px 20px 60px;
+            }
+
+            .page {
+                background: var(--cream);
+                box-shadow: 0 8px 60px rgba(0, 0, 0, .14);
+                border-radius: 4px;
+                max-width: 793px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ─── FLOATING TOOLBAR ─────────────────────────────── -->
+    <div id="toolbar">
+        <button id="btn-edit" onclick="toggleEdit()">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
+            </svg>
+            Editar texto
+        </button>
+        <button onclick="window.print()">
+            <svg viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+            </svg>
+            Exportar PDF
+        </button>
+    </div>
+
+    <!-- hidden file input for image swapping -->
+    <input type="file" id="img-picker" accept="image/*" style="display:none">
+
+    <!-- ─── PAGE ─────────────────────────────────────────── -->
+    <div class="page">
+
+        <!-- HEADER -->
+        <header class="header">
+            <img src="../../public/logo.png" alt="Growth Video Lab" />
+            <div class="header-right">
+                <span class="header-title">Portafolio de proyectos</span>
+                <span class="header-sub editable">Growth Video Lab · growthvideolab.com</span>
+            </div>
+        </header>
+
+        <!-- INTRO -->
+        <div class="intro">
+            <p class="intro-label editable">Trabajos seleccionado</p>
+            <h1 class="intro-title editable">Proyectos web para negocios locales y emprendedores</h1>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="projects">
+
+            <!-- PROJECT 1 -->
+            <div class="project-card" style="--accent: var(--orange);">
+                <div class="img-wrapper" data-project="1">
+                    <img src="../../public/portfolio-webs-pdf/gvl.jpg" alt="Growth Video Lab — Identidad digital" />
+                </div>
+                <div class="project-body">
+                    <div class="project-glow"></div>
+                    <span class="project-num editable">Proyecto 01</span>
+                    <h2 class="project-title editable">Growth Video Lab — Identidad digital</h2>
+                    <p class="project-desc editable">
+                        Diseño y desarrollo completo de la identidad web de la agencia. Arquitectura de contenido
+                        orientada a conversión, sistema de diseño consistente y presencia digital que refleja el
+                        posicionamiento de marca.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag editable">Web y Diseño</span>
+                        <span class="tag editable">React + Vite</span>
+                        <span class="tag editable">Identidad profesional</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT 2 (reversed) -->
+            <div class="project-card reverse" style="--accent: var(--blue);">
+                <div class="img-wrapper" data-project="2">
+                    <img src="../../public/portfolio-webs-pdf/vsl-webs.png"
+                        alt="LeadFlow — Landing de alta conversión" />
+                </div>
+                <div class="project-body">
+                    <div class="project-glow"></div>
+                    <span class="project-num editable">Proyecto 02</span>
+                    <h2 class="project-title editable">LeadFlow — Landing de alta conversión</h2>
+                    <p class="project-desc editable">
+                        Landing page con estructura VSL diseñada para capturar leads calificados en frío. Paleta oscura,
+                        jerarquía visual agresiva y copy directo orientado a una sola acción.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag editable">Web</span>
+                        <span class="tag editable">HTML/CSS</span>
+                        <span class="tag editable">Diseño orientado a conversión</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT 3 -->
+            <div class="project-card" style="--accent: #32CD32;">
+                <div class="img-wrapper" data-project="3">
+                    <img src="../../public/portfolio-webs-pdf/pizzeria.jpg"
+                        alt="Pizzería — Web con menú y pedidos integrados" />
+                </div>
+                <div class="project-body">
+                    <div class="project-glow"></div>
+                    <span class="project-num editable">Proyecto 03</span>
+                    <h2 class="project-title editable">Pizzería — Web con menú y pedidos integrados</h2>
+                    <p class="project-desc editable">
+                        Sitio web para negocio gastronómico con menú visual, integración de WhatsApp para pedidos y
+                        diseño mobile-first. En desarrollo activo.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag editable">Web para negocios locales</span>
+                        <span class="tag editable">En desarrollo</span>
+                        <span class="tag editable">Presencia digital + canal de ventas directo</span>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /projects -->
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div>
+                <p style="font-size:11px;font-weight:700;color:var(--black);margin-bottom:2px;" class="editable">¿Tu
+                    negocio es el próximo?</p>
+                <p style="font-size:10px;color:var(--gray);" class="editable">Esta semana tengo 2 cupos disponibles.
+                    Escríbeme hoy.</p>
+            </div>
+            <div style="text-align:right;">
+                <p style="font-size:10px;color:var(--gray);margin-bottom:2px;" class="editable">+56 9 7383 2208 ·
+                    hola@growthvideolab.com · growthvideolab.com</p>
+                <p style="font-size:10px;color:rgba(0,0,0,.3);" class="editable">Growth Video Lab · Santiago, Chile</p>
+            </div>
+        </footer>
+
+    </div><!-- /page -->
+
+    <script>
+        let editMode = false;
+        let targetWrapper = null;
+
+        /* ─── Edit toggle ─────────────────────────────────── */
+        function toggleEdit() {
+            editMode = !editMode;
+            const btn = document.getElementById('btn-edit');
+            const editables = document.querySelectorAll('.editable');
+            const wrappers = document.querySelectorAll('.img-wrapper');
+
+            if (editMode) {
+                btn.classList.add('active');
+                btn.innerHTML = `<svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v14a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> Guardar`;
+                editables.forEach(el => el.setAttribute('contenteditable', 'true'));
+                wrappers.forEach(w => {
+                    w.classList.add('edit-active');
+                    w.style.cursor = 'pointer';
+                });
+            } else {
+                btn.classList.remove('active');
+                btn.innerHTML = `<svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg> Editar texto`;
+                editables.forEach(el => el.removeAttribute('contenteditable'));
+                wrappers.forEach(w => {
+                    w.classList.remove('edit-active');
+                    w.style.cursor = '';
+                });
+            }
+        }
+
+        /* ─── Click on image to swap ──────────────────────── */
+        document.querySelectorAll('.img-wrapper').forEach(wrapper => {
+            wrapper.addEventListener('click', () => {
+                if (!editMode) return;
+                targetWrapper = wrapper;
+                document.getElementById('img-picker').click();
+            });
+        });
+
+        document.getElementById('img-picker').addEventListener('change', function () {
+            if (!this.files || !this.files[0] || !targetWrapper) return;
+            const url = URL.createObjectURL(this.files[0]);
+
+            /* Remove placeholder, add <img> */
+            const placeholder = targetWrapper.querySelector('.img-placeholder');
+            let img = targetWrapper.querySelector('img');
+
+            if (placeholder) placeholder.remove();
+
+            if (!img) {
+                img = document.createElement('img');
+                targetWrapper.insertBefore(img, targetWrapper.firstChild);
+            }
+            img.src = url;
+            img.alt = 'Imagen del proyecto';
+            this.value = ''; // reset so the same file can be re-selected
+        });
+    </script>
+
+</body>
+
+</html>
