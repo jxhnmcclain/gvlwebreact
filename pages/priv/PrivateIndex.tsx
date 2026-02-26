@@ -7,6 +7,7 @@ const PrivateIndex = () => {
         { name: 'Social Media', path: '/priv/social-media', color: 'bg-gvl-orange' },
         { name: 'Marca & Diseño', path: '/priv/marca-diseno', color: 'bg-gvl-blue' },
         { name: 'Branding Collection', path: '/priv/branding', color: 'bg-gvl-yellow' },
+        { name: 'Propuesta GradoClima', path: '/priv/propuesta-gradoclima', color: 'bg-gvl-orange' },
     ];
 
     return (

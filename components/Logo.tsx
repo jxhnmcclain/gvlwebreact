@@ -51,7 +51,7 @@ const AnimatedWord = ({ word, fontClass, onComplete }: {
                 {word.split('').map((char, i) => (
                     <span
                         key={i}
-                        ref={el => lettersRef.current[i] = el}
+                        ref={el => { lettersRef.current[i] = el; }}
                         className="inline-block"
                     >
                         {char === ' ' ? '\u00A0' : char}
@@ -62,7 +62,7 @@ const AnimatedWord = ({ word, fontClass, onComplete }: {
     );
 };
 
-const Logo = () => {
+const Logo = ({ textColor = "text-black" }: { textColor?: string }) => {
     const logoRef = useRef<HTMLDivElement>(null);
     const normalViewRef = useRef<HTMLDivElement>(null);
     const [isHovered, setIsHovered] = useState(false);
@@ -70,9 +70,9 @@ const Logo = () => {
 
     // Increased the height and font sizes to accommodate the "large" look
     const words = [
-        { text: "GROWTH", font: "text-[3rem] font-[800] font-sans uppercase text-black tracking-tighter" },
-        { text: "Video", font: "text-[3.5rem] font-pixel text-black" },
-        { text: "LAB", font: "text-[3.5rem] font-[300] font-sans uppercase text-black tracking-tighter" }
+        { text: "GROWTH", font: `text-[3rem] font-[800] font-sans uppercase ${textColor} tracking-tighter` },
+        { text: "Video", font: `text-[3.5rem] font-pixel ${textColor}` },
+        { text: "LAB", font: `text-[3.5rem] font-[300] font-sans uppercase ${textColor} tracking-tighter` }
     ];
 
     const timelineIdle = useRef<gsap.core.Timeline | null>(null);
@@ -127,7 +127,7 @@ const Logo = () => {
             {/* Normal View */}
             <div
                 ref={normalViewRef}
-                className="flex flex-col leading-none items-center"
+                className={`flex flex-col leading-none items-center ${textColor}`}
             >
                 <span className="text-[2.1rem] font-[600] tracking-[-0.05em] uppercase font-sans">
                     GROWTH
