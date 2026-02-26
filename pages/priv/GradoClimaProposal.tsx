@@ -39,9 +39,9 @@ const GradoClimaProposal = () => {
       }} />
 
       {/* Navigation */}
-      <nav className={`fixed top - 0 left - 0 right - 0 z - [100] flex justify - between items - center px - 8 py - 4 transition - all duration - 300 ${isScrolled ? 'bg-[#080808]/95 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'} no - print`}>
+      <nav className={`fixed top-0 left-0 right-0 z-[100] flex justify-between items-center px-8 py-2.5 transition-all duration-300 ${isScrolled ? 'bg-[#080808]/95 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'} no-print`}>
         <div className="flex items-center gap-2">
-          <div className="scale-[0.85] origin-left">
+          <div className="scale-[0.75] origin-left">
             <Logo textColor="text-white" />
           </div>
         </div>
@@ -50,26 +50,14 @@ const GradoClimaProposal = () => {
             {['Diagnóstico', 'Solución', 'Contenido', 'Inversión'].map((item) => (
               <li key={item}>
                 <a
-                  href={`#${item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")} `}
-                  className="text-[10px] font-machina tracking-[0.1em] text-[#777] uppercase no-underline transition-colors hover:text-[#C8F55A]"
+                  href={`#${item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}
+                  className="text-[9px] font-machina tracking-[0.1em] text-[#666] uppercase no-underline transition-colors hover:text-[#C8F55A]"
                 >
                   {item}
                 </a>
               </li>
             ))}
           </ul>
-          <PDFDownloadLink
-            document={<GradoClimaPDF />}
-            fileName="Propuesta_GradoClima_GVL.pdf"
-            className="flex items-center gap-2 px-4 py-2 bg-white text-black hover:bg-[#C8F55A] transition-colors font-machina text-[11px] font-bold uppercase tracking-tight"
-          >
-            {({ loading }) => (
-              <>
-                <Download className="w-4 h-4" />
-                {loading ? 'Preparando PDF...' : 'Descargar PDF'}
-              </>
-            )}
-          </PDFDownloadLink>
         </div>
       </nav>
 
