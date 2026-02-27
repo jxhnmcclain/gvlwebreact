@@ -558,8 +558,7 @@ const GradoClimaProposal = () => {
             { period: 'Semana 0', title: 'Acuerdo Técnico', desc: 'Firma de contrato y pago de setup initial.' },
             { period: 'Semana 1–2', title: 'Infraestructura', desc: 'Setup de emails, segmentación y primera sesión de grabación.' },
             { period: 'Semana 3', title: 'Lanzamiento', desc: 'Activación de outreach y primer contenido publicado.' },
-            { period: 'Mes 2–3', title: 'Optimización y Resultados', desc: 'Primeras reuniones agendadas y ajustes de oferta.' },
-            { period: 'Mes 3', title: 'Implementación de Canal 2', desc: 'Expansión de outreach y contenido estratégico.' },
+            { period: 'Mes 2–3', title: 'Optimización y Resultados', desc: 'Primeras reuniones agendadas y ajustes de oferta. Implementamos canal de cold email, LinkedIn y contenido orgánico.' },
             { period: 'Mes 4–6', title: 'Escalamiento', desc: 'Consolidación de autoridad y meta de 50 edificios.' },
           ].map((item, i) => (
             <motion.div
