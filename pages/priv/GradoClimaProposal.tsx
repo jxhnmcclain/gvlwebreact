@@ -371,19 +371,34 @@ const GradoClimaProposal = () => {
               <div>
                 <span className="font-machina text-[8px] tracking-[0.2em] text-[#C8F55A] uppercase mb-4 block font-bold">Inversión Inicial</span>
                 <h3 className="font-machina text-[32px] font-extrabold text-white leading-none mb-4 tracking-tight uppercase">Setup Estratégico</h3>
-                <ul className="list-none grid md:grid-cols-2 gap-x-8 gap-y-3">
-                  {[
-                    'Infraestructura técnica de email (3 dominios)',
-                    'Estrategia de segmentación ICP (Administradores)',
-                    'Primeras secuencias de outreach automatizadas',
-                    'Setup de marca y línea editorial de contenido',
-                    'Optimización de web y oferta comercial técnica'
-                  ].map((item, i) => (
-                    <li key={i} className="text-[12px] text-[#888] flex gap-2 items-start leading-[1.4] before:content-['→'] before:text-[#C8F55A] before:font-machina before:text-[9px]">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                <details className="group">
+                  <summary className="flex items-center gap-2 w-fit cursor-pointer list-none [&::-webkit-details-marker]:hidden font-machina text-[10px] font-bold text-[#C8F55A] uppercase tracking-widest hover:text-white transition-colors select-none">
+                    Ver entregables al detalle
+                    <span className="transition-transform duration-300 group-open:rotate-180 text-[10px]">▼</span>
+                  </summary>
+                  <div className="pt-5 mt-4 border-t border-white/10">
+                    <ul className="list-none grid md:grid-cols-2 gap-x-8 gap-y-3">
+                      {[
+                        'Configuración de Mailchimp: listas, segmentos y automatizaciones básicas',
+                        'Setup de Instantly (cold email) + calentamiento de 2-3 dominios nuevos',
+                        'Configuración técnica de SPF, DKIM y DMARC para entregabilidad',
+                        'Segmentación de base actual: clasificación en contactos fríos, tibios y calientes',
+                        'Definición de ICP y criterios de segmentación por perfil de prospecto',
+                        'Creación de secuencias de cold outreach (3-5 emails por prospecto)',
+                        'Copywriting de primeras campañas y plantillas de email',
+                        'Rediseño de 3 PDFs de oferta comercial de GradoClima',
+                        '3-4 VSLs grabados y editados en primera sesión de producción',
+                        'Optimización de sitio web: copy, fotos y mejoras simples',
+                        'Creación de línea editorial y calendario de contenido para redes',
+                        'Primeros 10 posts programados: clips de video, fotos estáticas y copy'
+                      ].map((item, i) => (
+                        <li key={i} className="text-[12px] text-[#888] flex gap-2 items-start leading-[1.4] before:content-['→'] before:text-[#C8F55A] before:font-machina before:text-[9px]">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </details>
               </div>
               <div className="bg-[#1a1a1a] p-8 border border-white/5 flex flex-col justify-center items-center text-center">
                 <div className="font-machina text-[36px] font-extrabold text-white leading-none mb-1 tracking-tight">$775.000</div>
@@ -404,19 +419,32 @@ const GradoClimaProposal = () => {
               <div>
                 <span className="font-machina text-[8px] tracking-[0.2em] text-[#C8F55A] uppercase mb-4 block font-bold">Servicio Mensual</span>
                 <h3 className="font-machina text-[32px] font-extrabold text-white leading-none mb-4 tracking-tight uppercase">Gestión & Contenido</h3>
-                <ul className="list-none grid md:grid-cols-2 gap-x-8 gap-y-3">
-                  {[
-                    'Gestión campañas outreach (Administradores)',
-                    '2 sesiones de grabación mensuales in situ',
-                    '6 a 8 piezas de contenido editadas para LinkedIn/IG',
-                    'Copywriting técnico para newsletters/mailings',
-                    'Reporte de métricas y optimización bimensual'
-                  ].map((item, i) => (
-                    <li key={i} className="text-[12px] text-[#FAFAF8]/80 flex gap-2 items-start leading-[1.4] before:content-['→'] before:text-[#C8F55A] before:font-machina before:text-[9px]">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                <details className="group">
+                  <summary className="flex items-center gap-2 w-fit cursor-pointer list-none [&::-webkit-details-marker]:hidden font-machina text-[10px] font-bold text-[#C8F55A] uppercase tracking-widest hover:text-white transition-colors select-none">
+                    Ver entregables al detalle
+                    <span className="transition-transform duration-300 group-open:rotate-180 text-[10px]">▼</span>
+                  </summary>
+                  <div className="pt-5 mt-4 border-t border-white/10">
+                    <ul className="list-none grid md:grid-cols-2 gap-x-8 gap-y-3">
+                      {[
+                        'Gestión y optimización de campañas de cold outreach activas',
+                        'A/B testing de mensajes y segmentos según métricas reales',
+                        'Gestión de Mailchimp: campañas a base opted-in y nurturing de leads',
+                        '2 sesiones de grabación mensuales en oficinas GradoClima',
+                        '6-8 piezas de video editadas para mailings, LinkedIn, Instagram y YouTube',
+                        '10 posts mensuales publicados: clips de video, fotos estáticas con copy e ideas orgánicas sencillas',
+                        'Programación y agenda de publicaciones del mes',
+                        'Copywriting técnico para emails y secuencias del mes',
+                        'Reporte mensual de métricas: aperturas, respuestas, reuniones agendadas y alcance en redes',
+                        'Reunión bimensual de revisión y ajuste de estrategia'
+                      ].map((item, i) => (
+                        <li key={i} className="text-[12px] text-[#FAFAF8]/80 flex gap-2 items-start leading-[1.4] before:content-['→'] before:text-[#C8F55A] before:font-machina before:text-[9px]">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </details>
               </div>
               <div className="bg-[#C8F55A]/5 p-8 border border-[#C8F55A]/20 flex flex-col justify-center items-center text-center">
                 <div className="font-machina text-[36px] font-extrabold text-[#C8F55A] leading-none mb-1 tracking-tight">$600.000</div>
