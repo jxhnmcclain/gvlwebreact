@@ -11,6 +11,7 @@ type FormState = {
   name: string;
   email: string;
   company: string;
+  phone: string;
   message: string;
 };
 
@@ -22,6 +23,7 @@ const ContactPage = () => {
     name: '',
     email: '',
     company: '',
+    phone: '',
     message: ''
   });
   const [errors, setErrors] = useState<Errors>({});
@@ -44,6 +46,11 @@ const ContactPage = () => {
       isValid = false;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Ingresa un correo válido';
+      isValid = false;
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'El teléfono es obligatorio';
       isValid = false;
     }
 
@@ -193,6 +200,24 @@ const ContactPage = () => {
                   {errors.email && (
                     <div className="absolute right-0 top-1/2 -translate-y-1/2 text-red-600 flex items-center gap-1 font-bold text-xs md:text-sm pointer-events-none">
                       <AlertCircle size={16} /> {errors.email}
+                    </div>
+                  )}
+                </div>
+
+                {/* Phone Field */}
+                <div className="group relative">
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="TU TELÉFONO / WHATSAPP"
+                    className={`w-full bg-transparent border-b-2 text-xl md:text-3xl font-bold placeholder-black/30 focus:outline-none py-3 uppercase tracking-tight transition-colors
+                            ${errors.phone ? 'border-red-600 text-red-600 focus:border-red-600' : 'border-black focus:border-white'}`}
+                  />
+                  {errors.phone && (
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 text-red-600 flex items-center gap-1 font-bold text-xs md:text-sm pointer-events-none">
+                      <AlertCircle size={16} /> {errors.phone}
                     </div>
                   )}
                 </div>

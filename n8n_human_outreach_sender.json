@@ -1,0 +1,217 @@
+{
+    "name": "GVL: Cold Outreach - Fase 2 (Aprobación y Despacho Humano a Goteo)",
+    "nodes": [
+        {
+            "parameters": {
+                "rule": {
+                    "interval": [
+                        {
+                            "field": "minutes",
+                            "minutesInterval": 45
+                        }
+                    ]
+                }
+            },
+            "id": "1",
+            "name": "Cron (Cada 45 mins)",
+            "type": "n8n-nodes-base.scheduleTrigger",
+            "typeVersion": 1,
+            "position": [
+                200,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "read",
+                "documentId": {
+                    "__rl": true,
+                    "value": "",
+                    "mode": "id"
+                },
+                "sheetName": {
+                    "__rl": true,
+                    "value": "",
+                    "mode": "name"
+                },
+                "options": {
+                    "returnAll": false,
+                    "limit": 1
+                }
+            },
+            "id": "2",
+            "name": "Leer 1 Lead Aprobado",
+            "type": "n8n-nodes-base.googleSheets",
+            "typeVersion": 4,
+            "position": [
+                400,
+                300
+            ],
+            "credentials": {
+                "googleSheetsOAuth2Api": {
+                    "id": "",
+                    "name": "Google Sheets account"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "conditions": {
+                    "string": [
+                        {
+                            "value1": "={{ $json.Status }}",
+                            "value2": "Aprobado"
+                        }
+                    ]
+                }
+            },
+            "id": "3",
+            "name": "Solo Status 'Aprobado'",
+            "type": "n8n-nodes-base.if",
+            "typeVersion": 1,
+            "position": [
+                600,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "amount": "={{ Math.floor(Math.random() * (15 - 1 + 1)) + 1 }}",
+                "unit": "minutes"
+            },
+            "id": "4",
+            "name": "Espera Aleatoria (1-15 min)",
+            "type": "n8n-nodes-base.wait",
+            "typeVersion": 1,
+            "position": [
+                800,
+                280
+            ]
+        },
+        {
+            "parameters": {
+                "sendTo": "={{ $json.Email }}",
+                "subject": "={{ $json.Subject }}",
+                "message": "={{ $json.Email_Draft.replace(/\\n/g, '<br>') }}",
+                "options": {
+                    "appendAttribution": false
+                }
+            },
+            "id": "5",
+            "name": "Enviar Correo (Gmail Personal)",
+            "type": "n8n-nodes-base.gmail",
+            "typeVersion": 2,
+            "position": [
+                1000,
+                280
+            ],
+            "credentials": {
+                "gmailOAuth2": {
+                    "id": "",
+                    "name": "Gmail account"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "operation": "update",
+                "documentId": {
+                    "__rl": true,
+                    "value": "",
+                    "mode": "id"
+                },
+                "sheetName": {
+                    "__rl": true,
+                    "value": "",
+                    "mode": "name"
+                },
+                "columns": {
+                    "mappingMode": "defineBelow",
+                    "value": {
+                        "Status": "Enviado",
+                        "Fecha_Envio": "={{ new Date().toISOString() }}"
+                    }
+                },
+                "options": {}
+            },
+            "id": "6",
+            "name": "Marcar como Enviado",
+            "type": "n8n-nodes-base.googleSheets",
+            "typeVersion": 4,
+            "position": [
+                1200,
+                280
+            ],
+            "credentials": {
+                "googleSheetsOAuth2Api": {
+                    "id": "",
+                    "name": "Google Sheets account"
+                }
+            }
+        }
+    ],
+    "pinData": {},
+    "connections": {
+        "Cron (Cada 45 mins)": {
+            "main": [
+                [
+                    {
+                        "node": "Leer 1 Lead Aprobado",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Leer 1 Lead Aprobado": {
+            "main": [
+                [
+                    {
+                        "node": "Solo Status 'Aprobado'",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Solo Status 'Aprobado'": {
+            "main": [
+                [
+                    {
+                        "node": "Espera Aleatoria (1-15 min)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Espera Aleatoria (1-15 min)": {
+            "main": [
+                [
+                    {
+                        "node": "Enviar Correo (Gmail Personal)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Enviar Correo (Gmail Personal)": {
+            "main": [
+                [
+                    {
+                        "node": "Marcar como Enviado",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "active": false,
+    "settings": {
+        "executionOrder": "v1"
+    },
+    "versionId": "b6a716c5-ee1d-407b-8302-bc899990fb10",
+    "id": "gvl-human-controlled-outreach"
+}

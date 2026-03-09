@@ -14,6 +14,7 @@ type FormState = {
     websiteStatus: string;
     websiteGoal: string;
     contactInfo: string;
+    phone: string;
 
     // Optional
     brandIdentity: string;
@@ -30,6 +31,7 @@ const LeadFormPage = () => {
         websiteStatus: '',
         websiteGoal: '',
         contactInfo: '',
+        phone: '',
         brandIdentity: '',
         brandPersonality: [],
         materials: [],
@@ -70,7 +72,8 @@ const LeadFormPage = () => {
         if (!formData.businessDescription.trim()) { newErrors.businessDescription = "Cuéntanos de qué trata tu negocio"; isValid = false; }
         if (!formData.websiteStatus) { newErrors.websiteStatus = "Selecciona una opción"; isValid = false; }
         if (!formData.websiteGoal) { newErrors.websiteGoal = "Selecciona un objetivo principal"; isValid = false; }
-        if (!formData.contactInfo.trim()) { newErrors.contactInfo = "Necesitamos un medio para contactarte"; isValid = false; }
+        if (!formData.contactInfo.trim()) { newErrors.contactInfo = "Necesitamos tu email para contactarte"; isValid = false; }
+        if (!formData.phone.trim()) { newErrors.phone = "El número telefónico es obligatorio"; isValid = false; }
         if (!turnstileToken) { newErrors.turnstile = "Por favor verifica que no eres un robot"; isValid = false; }
 
         setErrors(newErrors);
@@ -252,19 +255,35 @@ const LeadFormPage = () => {
                             </div>
 
                             {/* Pregunta 5 */}
-                            <div className="group">
-                                <label className="block text-lg font-bold mb-3 uppercase tracking-wide">
-                                    Email y teléfono de contacto <span className="text-red-500">*</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    name="contactInfo"
-                                    value={formData.contactInfo}
-                                    onChange={handleTextChange}
-                                    placeholder="Email / WhatsApp"
-                                    className={`w-full bg-gvl-cream border-2 rounded-xl p-4 text-lg font-medium outline-none focus:ring-4 focus:ring-gvl-yellow/50 transition-all ${errors.contactInfo ? 'border-red-500' : 'border-black'}`}
-                                />
-                                {errors.contactInfo && <p className="text-red-500 text-sm mt-1 font-bold">{errors.contactInfo}</p>}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="group">
+                                    <label className="block text-lg font-bold mb-3 uppercase tracking-wide">
+                                        Email <span className="text-red-500">*</span>
+                                    </label>
+                                    <input
+                                        type="email"
+                                        name="contactInfo"
+                                        value={formData.contactInfo}
+                                        onChange={handleTextChange}
+                                        placeholder="tu@email.com"
+                                        className={`w-full bg-gvl-cream border-2 rounded-xl p-4 text-lg font-medium outline-none focus:ring-4 focus:ring-gvl-yellow/50 transition-all ${errors.contactInfo ? 'border-red-500' : 'border-black'}`}
+                                    />
+                                    {errors.contactInfo && <p className="text-red-500 text-sm mt-1 font-bold">{errors.contactInfo}</p>}
+                                </div>
+                                <div className="group">
+                                    <label className="block text-lg font-bold mb-3 uppercase tracking-wide">
+                                        WhatsApp / Teléfono <span className="text-red-500">*</span>
+                                    </label>
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleTextChange}
+                                        placeholder="+56 9 1234 5678"
+                                        className={`w-full bg-gvl-cream border-2 rounded-xl p-4 text-lg font-medium outline-none focus:ring-4 focus:ring-gvl-yellow/50 transition-all ${errors.phone ? 'border-red-500' : 'border-black'}`}
+                                    />
+                                    {errors.phone && <p className="text-red-500 text-sm mt-1 font-bold">{errors.phone}</p>}
+                                </div>
                             </div>
                         </div>
                     </section>

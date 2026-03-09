@@ -12,7 +12,8 @@ const LeadMagnet = () => {
   const [formState, setFormState] = useState({
     name: '',
     email: '',
-    company: ''
+    company: '',
+    phone: ''
   });
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -103,17 +104,31 @@ const LeadMagnet = () => {
                     />
                   </div>
                 </div>
-                <div>
-                  <label htmlFor="email" className="block text-xs font-bold uppercase mb-1 ml-1 text-gray-500">Email</label>
-                  <input
-                    id="email"
-                    required
-                    type="email"
-                    placeholder="tu@email.com"
-                    className="w-full bg-white border border-black/10 rounded-xl p-3 outline-none focus:border-black transition-all font-medium"
-                    value={formState.email}
-                    onChange={e => setFormState({ ...formState, email: e.target.value })}
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="email" className="block text-xs font-bold uppercase mb-1 ml-1 text-gray-500">Email</label>
+                    <input
+                      id="email"
+                      required
+                      type="email"
+                      placeholder="tu@email.com"
+                      className="w-full bg-white border border-black/10 rounded-xl p-3 outline-none focus:border-black transition-all font-medium"
+                      value={formState.email}
+                      onChange={e => setFormState({ ...formState, email: e.target.value })}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-xs font-bold uppercase mb-1 ml-1 text-gray-500">Teléfono (WhatsApp)</label>
+                    <input
+                      id="phone"
+                      required
+                      type="tel"
+                      placeholder="+56 9 1234 5678"
+                      className="w-full bg-white border border-black/10 rounded-xl p-3 outline-none focus:border-black transition-all font-medium"
+                      value={formState.phone}
+                      onChange={e => setFormState({ ...formState, phone: e.target.value })}
+                    />
+                  </div>
                 </div>
 
                 <div className="py-2">

@@ -1,0 +1,183 @@
+{
+    "name": "GVL: Cold Outreach - Fase 1 (Generación de Borradores IA)",
+    "nodes": [
+        {
+            "parameters": {
+                "rule": {
+                    "interval": [
+                        {
+                            "field": "hours"
+                        }
+                    ]
+                }
+            },
+            "id": "1",
+            "name": "Cron (Cada Hora)",
+            "type": "n8n-nodes-base.scheduleTrigger",
+            "typeVersion": 1,
+            "position": [
+                200,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "read",
+                "documentId": {
+                    "__rl": true,
+                    "value": "",
+                    "mode": "id"
+                },
+                "sheetName": {
+                    "__rl": true,
+                    "value": "",
+                    "mode": "name"
+                },
+                "options": {}
+            },
+            "id": "2",
+            "name": "Leer Leads Sin Borrador",
+            "type": "n8n-nodes-base.googleSheets",
+            "typeVersion": 4,
+            "position": [
+                400,
+                300
+            ],
+            "credentials": {
+                "googleSheetsOAuth2Api": {
+                    "id": "",
+                    "name": "Google Sheets account"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "conditions": {
+                    "string": [
+                        {
+                            "value1": "={{ $json.Status }}",
+                            "value2": ""
+                        }
+                    ]
+                }
+            },
+            "id": "3",
+            "name": "Solo Filas Vacías",
+            "type": "n8n-nodes-base.if",
+            "typeVersion": 1,
+            "position": [
+                600,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "prompt": "={{ 'Eres el dueño de una agencia de diseño web y desarrollo B2B en Santiago llamada Growth Video Lab. Tu tono es casual, directo y sin rodeos corporativos (chileno pero profesional). Escribe un email en frío MUY corto para prospectar al siguiente CEO: Nombre: ' + $json.Nombre + ', Empresa: ' + $json.Empresa + ', Sector: ' + $json.Sector + '. Tienen una web vieja o fea. Quieres ofrecerles rediseñar su presencia e implementar un sistema para generar referidos B2B. Propón una llamada de 10 minutos. \n\nDevuélveme SOLO el texto del correo, sin explicaciones tuyas.' }}"
+            },
+            "id": "4",
+            "name": "Gemini (Redactar Correo)",
+            "type": "@n8n/n8n-nodes-langchain.chainLlm",
+            "typeVersion": 1,
+            "position": [
+                800,
+                280
+            ],
+            "credentials": {
+                "googleApi": {
+                    "id": "",
+                    "name": "Google API"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "operation": "update",
+                "documentId": {
+                    "__rl": true,
+                    "value": "",
+                    "mode": "id"
+                },
+                "sheetName": {
+                    "__rl": true,
+                    "value": "",
+                    "mode": "name"
+                },
+                "columns": {
+                    "mappingMode": "defineBelow",
+                    "value": {
+                        "Email_Draft": "={{ $json.text }}",
+                        "Status": "Pendiente Aprobacion"
+                    }
+                },
+                "options": {}
+            },
+            "id": "5",
+            "name": "Guardar Borrador",
+            "type": "n8n-nodes-base.googleSheets",
+            "typeVersion": 4,
+            "position": [
+                1000,
+                280
+            ],
+            "credentials": {
+                "googleSheetsOAuth2Api": {
+                    "id": "",
+                    "name": "Google Sheets account"
+                }
+            }
+        }
+    ],
+    "pinData": {},
+    "connections": {
+        "Cron (Cada Hora)": {
+            "main": [
+                [
+                    {
+                        "node": "Leer Leads Sin Borrador",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Leer Leads Sin Borrador": {
+            "main": [
+                [
+                    {
+                        "node": "Solo Filas Vacías",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Solo Filas Vacías": {
+            "main": [
+                [
+                    {
+                        "node": "Gemini (Redactar Correo)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Gemini (Redactar Correo)": {
+            "main": [
+                [
+                    {
+                        "node": "Guardar Borrador",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "active": false,
+    "settings": {
+        "executionOrder": "v1"
+    },
+    "versionId": "c4d3753a-c85d-4fcc-9a3d-429ddbbab08f",
+    "id": "gvl-ai-draft-generator"
+}
