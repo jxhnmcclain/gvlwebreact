@@ -1,0 +1,196 @@
+{
+    "name": "GVL: Cold Outreach - Generador de Emails con IA (Gemini)",
+    "nodes": [
+        {
+            "parameters": {
+                "rule": {
+                    "interval": [
+                        {
+                            "field": "hours",
+                            "hoursInterval": 12
+                        }
+                    ]
+                }
+            },
+            "id": "1",
+            "name": "Cron (Cada 12 hrs)",
+            "type": "n8n-nodes-base.scheduleTrigger",
+            "typeVersion": 1,
+            "position": [
+                200,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "read",
+                "documentId": {
+                    "__rl": true,
+                    "value": "",
+                    "mode": "id"
+                },
+                "sheetName": {
+                    "__rl": true,
+                    "value": "",
+                    "mode": "name"
+                },
+                "options": {
+                    "returnAll": true
+                }
+            },
+            "id": "2",
+            "name": "Leer Leads (Google Sheets)",
+            "type": "n8n-nodes-base.googleSheets",
+            "typeVersion": 4,
+            "position": [
+                400,
+                300
+            ],
+            "credentials": {
+                "googleSheetsOAuth2Api": {
+                    "id": "",
+                    "name": "Google Sheets account"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "conditions": {
+                    "boolean": [
+                        {
+                            "value1": "={{ $json.Emails_Generados }}",
+                            "value2": false
+                        }
+                    ]
+                }
+            },
+            "id": "3",
+            "name": "Filtrar NO Procesados",
+            "type": "n8n-nodes-base.if",
+            "typeVersion": 1,
+            "position": [
+                600,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "model": "gemini-1.5-pro",
+                "prompt": "=Instrucciones:\nEres John McClain, fundador de Growth Video Lab, experto en estrategias de crecimiento digital.\nDebes redactar 3 variantes de correo frío B2B dirigidas al dueño de esta empresa.\nNo suenes formal ni robótico. Escribe como si le enviaras un mensaje de voz a un amigo en Chile. Todo en minúsculas.\nEl objetivo es conseguir una respuesta, no vender en el primer correo.\n\nDatos de la Empresa:\n- Nombre: {{ $json.Company }}\n- Rubro: {{ $json.Niche }}\n- Rating en Google: {{ $json.Rating }}\n- Pain Point detectado: {{ $json.PainPoint }}\n\nPautas de Redacción:\nOferta A (Loom Audit): Hazle notar su pain point, y dile que le grabaste un video rápido analizando su caso.\nOferta B (Lead Magnet): Menciónale que hiciste un diagnóstico del mercado de su rubro y le quieres mandar el reporte de las falencias en presencia digital.\nOferta C (Curiosidad): Simplemente hazle una sola pregunta intrigante sobre cómo consiguen clientes hoy, basándote en que su rating es bueno pero su web es mala o no existe.\n\nFormato de respuesta (ESTRICTAMENTE JSON):\n{\n  \"subject_a\": \"...\",\n  \"email_a\": \"...\",\n  \"subject_b\": \"...\",\n  \"email_b\": \"...\",\n  \"subject_c\": \"...\",\n  \"email_c\": \"...\"\n}",
+                "options": {
+                    "temperature": 0.7,
+                    "responseFormat": "json"
+                }
+            },
+            "id": "4",
+            "name": "Generar Emails (Gemini)",
+            "type": "n8n-nodes-base.googleGemini",
+            "typeVersion": 1,
+            "position": [
+                850,
+                200
+            ],
+            "credentials": {
+                "googleGeminiApi": {
+                    "id": "",
+                    "name": "Google Gemini API account"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "operation": "update",
+                "documentId": {
+                    "__rl": true,
+                    "value": "",
+                    "mode": "id"
+                },
+                "sheetName": {
+                    "__rl": true,
+                    "value": "",
+                    "mode": "name"
+                },
+                "columns": {
+                    "mappingMode": "defineBelow",
+                    "value": {
+                        "Email_A": "={{ $json.email_a }}",
+                        "Subject_A": "={{ $json.subject_a }}",
+                        "Email_B": "={{ $json.email_b }}",
+                        "Subject_B": "={{ $json.subject_b }}",
+                        "Email_C": "={{ $json.email_c }}",
+                        "Subject_C": "={{ $json.subject_c }}",
+                        "Emails_Generados": true
+                    }
+                },
+                "options": {}
+            },
+            "id": "5",
+            "name": "Actualizar Google Sheet",
+            "type": "n8n-nodes-base.googleSheets",
+            "typeVersion": 4,
+            "position": [
+                1100,
+                200
+            ],
+            "credentials": {
+                "googleSheetsOAuth2Api": {
+                    "id": "",
+                    "name": "Google Sheets account"
+                }
+            }
+        }
+    ],
+    "pinData": {},
+    "connections": {
+        "Cron (Cada 12 hrs)": {
+            "main": [
+                [
+                    {
+                        "node": "Leer Leads (Google Sheets)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Leer Leads (Google Sheets)": {
+            "main": [
+                [
+                    {
+                        "node": "Filtrar NO Procesados",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Filtrar NO Procesados": {
+            "main": [
+                [
+                    {
+                        "node": "Generar Emails (Gemini)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Generar Emails (Gemini)": {
+            "main": [
+                [
+                    {
+                        "node": "Actualizar Google Sheet",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "active": false,
+    "settings": {
+        "executionOrder": "v1"
+    },
+    "versionId": "f78ce6a3-247a-4b9b-8bc1-1a2f9b87c122",
+    "id": "gvl-cold-outreach-ai"
+}

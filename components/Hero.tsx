@@ -47,12 +47,12 @@ const Hero = () => {
 
           {/* Main Headline */}
           <motion.h1 variants={itemVariants} className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tighter mb-8 text-black">
-            Mi lab de <span className="text-gvl-orange">Contenido</span> y <span className="text-gvl-blue">Marketing</span>
+            Agencia de Webs y Generación de <span className="text-gvl-orange">Leads B2B</span> en <span className="text-gvl-blue">Santiago</span>
           </motion.h1>
 
           <motion.p variants={itemVariants} className="text-lg md:text-xl font-medium text-gray-600 mb-10 max-w-md leading-relaxed flex items-start gap-4">
             <ArrowRight className="shrink-0 mt-1" />
-            Ayudo a empresas a potenciar su negocio con estrategias creativas y efectivas, enfocadas en tus resultados.
+            Ayudo a empresas de servicios a conseguir más contratos con una web profesional y un sistema de prospección automatizado.
           </motion.p>
 
           <motion.div variants={itemVariants}>
@@ -69,41 +69,23 @@ const Hero = () => {
         {/* RIGHT COLUMN: Bento Grid */}
         <div className="col-span-1 md:col-span-12 lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[minmax(240px,auto)]">
 
-          {/* Card 1: Redes Sociales (Text + Icon style) */}
+          {/* Card 1: Agency Services Tags */}
           <motion.div
             variants={itemVariants}
-            onClick={() => window.open('https://www.linkedin.com/in/john-mcclain-1a5546187/', '_blank')}
-            className="group relative rounded-3xl overflow-hidden cursor-pointer aspect-[4/3] md:aspect-auto"
+            className="group relative rounded-3xl overflow-hidden cursor-default aspect-[4/3] md:aspect-auto bg-zinc-900 p-8 flex flex-col justify-between"
           >
-            {/* Background Image */}
-            <img
-              src="pfp.jpg"
-              alt="John Mcclain"
-              className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:blur-sm"
-            />
-
-            {/* Subtle Gradient Overlay - Bottom Left centric */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/20 to-transparent z-10"></div>
-
-            {/* Darker Overlay on Hover */}
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 z-10"></div>
-
-            {/* Content - Absolute Bottom Left */}
-            <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 text-left pointer-events-none">
-              <h3 className="font-black text-white text-3xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                Quién soy
+            <div>
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gvl-yellow/60 mb-4 block">Lo que hacemos</span>
+              <h3 className="text-2xl font-black text-white leading-tight mb-6">
+                Todo lo que necesitas <span className="text-gvl-yellow">para cerrar más contratos.</span>
               </h3>
-
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                <p className="text-xs md:text-sm text-gray-200 leading-relaxed font-medium mt-1 max-w-[85%]">
-                  Soy John Mcclain, marketer, productor audiovisual y creativo. Tengo más de 7 años de experiencia en el marketing y más de 15 en el internet.
-                </p>
-              </div>
             </div>
-
-            {/* Icon */}
-            <div className="absolute top-6 right-6 bg-white/20 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-md z-20">
-              <ArrowUpRight size={20} />
+            <div className="flex flex-wrap gap-2">
+              {["Webs B2B", "Email Outreach", "Automatización n8n", "SEO Local", "Branding", "Lead Generation"].map(tag => (
+                <span key={tag} className="px-3 py-1 border border-white/20 text-white/80 text-xs font-bold rounded-full bg-white/5 hover:border-gvl-yellow/40 hover:text-gvl-yellow transition-colors">
+                  {tag}
+                </span>
+              ))}
             </div>
           </motion.div>
 

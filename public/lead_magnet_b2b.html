@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Sistema de Generación de Leads B2B · GrowthVideoLab</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --black: #080808;
+            --white: #FAFAF8;
+            --lime: #C8F55A;
+            --lime-dim: #8fad3a;
+            --gray: #555;
+            --gray-light: #999;
+            --gray-muted: #111;
+            --gray-card: #131313;
+            --border: rgba(255, 255, 255, 0.07)
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: "DM Sans", sans-serif;
+            font-weight: 300;
+            overflow-x: hidden
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 48px;
+            background: rgba(8, 8, 8, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border)
+        }
+
+        .nav-logo {
+            font-family: "DM Mono", monospace;
+            font-size: 11px;
+            letter-spacing: .15em;
+            color: var(--lime);
+            text-transform: uppercase
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none
+        }
+
+        .nav-links a {
+            font-size: 11px;
+            letter-spacing: .08em;
+            color: var(--gray-light);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color .2s
+        }
+
+        .nav-links a:hover {
+            color: var(--white)
+        }
+
+        /* Typography and utilities */
+        p {
+            font-size: 15px;
+            color: var(--gray-light);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        strong {
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        a {
+            color: var(--lime);
+            text-decoration: none;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 24px;
+            color: var(--gray-light);
+            line-height: 1.8;
+        }
+
+        li {
+            padding-left: 8px;
+            margin-bottom: 12px;
+        }
+
+        li::marker {
+            color: var(--lime);
+            font-size: 12px;
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .hero-left {
+            padding: 140px 48px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2
+        }
+
+        .hero-tag {
+            font-family: "DM Mono", monospace;
+            font-size: 10px;
+            letter-spacing: .2em;
+            color: var(--lime);
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: fadeUp .6s ease both
+        }
+
+        .hero-tag::before {
+            content: "";
+            display: block;
+            width: 28px;
+            height: 1px;
+            background: var(--lime)
+        }
+
+        .hero-headline {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(42px, 5vw, 68px);
+            font-weight: 900;
+            line-height: 1.0;
+            letter-spacing: -.02em;
+            margin-bottom: 28px;
+            animation: fadeUp .6s ease .1s both
+        }
+
+        .hero-headline em {
+            font-style: italic;
+            color: var(--lime)
+        }
+
+        .hero-sub {
+            font-size: 16px;
+            color: var(--gray-light);
+            line-height: 1.8;
+            max-width: 440px;
+            margin-bottom: 48px;
+            animation: fadeUp .6s ease .2s both
+        }
+
+        .hero-question {
+            background: var(--gray-muted);
+            border-left: 3px solid var(--lime);
+            padding: 22px 26px;
+            font-family: "Playfair Display", serif;
+            font-style: italic;
+            font-size: 17px;
+            color: var(--white);
+            line-height: 1.5;
+            max-width: 460px;
+            animation: fadeUp .6s ease .3s both
+        }
+
+        .hero-right {
+            background: var(--gray-muted);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 140px 56px 80px 48px;
+            border-left: 1px solid var(--border);
+            position: relative
+        }
+
+        .hero-right::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--lime)
+        }
+
+        .stat-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 36px
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding-bottom: 36px;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0
+        }
+
+        .stat-number {
+            font-family: "Playfair Display", serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--lime);
+            line-height: 1
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--gray-light);
+            letter-spacing: .03em
+        }
+
+        .stat-context {
+            font-size: 11px;
+            color: var(--gray);
+            font-family: "DM Mono", monospace
+        }
+
+        .full-bg-section {
+            padding: 100px 0
+        }
+
+        .inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 48px
+        }
+
+        section {
+            padding: 100px 48px;
+            max-width: 1100px;
+            margin: 0 auto;
+            border-bottom: 1px solid var(--border)
+        }
+
+        section:last-of-type {
+            border-bottom: none
+        }
+
+        .section-tag {
+            font-family: "DM Mono", monospace;
+            font-size: 10px;
+            letter-spacing: .2em;
+            color: var(--lime);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .section-tag::before {
+            content: "";
+            display: block;
+            width: 22px;
+            height: 1px;
+            background: var(--lime)
+        }
+
+        .section-title {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px
+        }
+
+        .section-sub {
+            font-size: 17px;
+            color: var(--gray-light);
+            line-height: 1.8;
+            max-width: 800px;
+            margin-bottom: 56px
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin-bottom: 2px
+        }
+
+        .diag-card {
+            background: var(--gray-card);
+            padding: 36px 28px;
+            position: relative;
+            overflow: hidden;
+            transition: background .3s
+        }
+
+        .diag-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--border);
+            transition: background .3s
+        }
+
+        .diag-card:hover::before {
+            background: var(--lime)
+        }
+
+        .diag-card:hover {
+            background: #161616
+        }
+
+        .diag-num {
+            font-family: "Playfair Display", serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--lime);
+            margin-bottom: 8px;
+            line-height: 1
+        }
+
+        .diag-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 10px;
+            letter-spacing: .02em
+        }
+
+        .diag-desc {
+            font-size: 13px;
+            color: var(--gray-light);
+            line-height: 1.7
+        }
+
+        .insight-box {
+            background: var(--lime);
+            padding: 44px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            margin-top: 2px
+        }
+
+        .insight-text {
+            font-family: "Playfair Display", serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--black);
+            line-height: 1.4;
+            max-width: 640px
+        }
+
+        .insight-sub {
+            font-size: 13px;
+            color: #3a4a10;
+            flex-shrink: 0;
+            font-family: "DM Mono", monospace;
+            letter-spacing: .04em;
+            line-height: 1.8
+        }
+
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 56px
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            padding: 50px 0;
+            border-bottom: 1px solid var(--border);
+            transition: all .3s
+        }
+
+        .step:first-child {
+            border-top: 1px solid var(--border)
+        }
+
+        .step:hover .step-num {
+            color: var(--lime)
+        }
+
+        .step-num {
+            font-family: "DM Mono", monospace;
+            font-size: 14px;
+            color: var(--gray);
+            padding-top: 4px;
+            transition: color .3s;
+            font-weight: 500;
+        }
+
+        .step-title {
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            color: var(--white);
+        }
+
+        .step-desc {
+            font-size: 15px;
+            color: var(--gray-light);
+            line-height: 1.85;
+            max-width: 700px
+        }
+
+        .step-content {
+            margin-top: 24px;
+        }
+
+        .step-tag {
+            display: inline-block;
+            margin-top: 14px;
+            font-family: "DM Mono", monospace;
+            font-size: 10px;
+            letter-spacing: .15em;
+            color: var(--lime-dim);
+            text-transform: uppercase;
+            border: 1px solid var(--lime-dim);
+            padding: 4px 10px
+        }
+
+        .content-types {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            margin-top: 32px
+        }
+
+        .content-type {
+            background: var(--gray-card);
+            padding: 36px 32px
+        }
+
+        .ct-icon {
+            font-family: "DM Mono", monospace;
+            font-size: 24px;
+            color: var(--lime);
+            margin-bottom: 16px
+        }
+
+        .ct-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--white)
+        }
+
+        .ct-desc {
+            font-size: 14px;
+            color: var(--gray-light);
+            line-height: 1.7
+        }
+
+        .ct-hook {
+            margin-top: 16px;
+            font-family: "Playfair Display", serif;
+            font-style: italic;
+            font-size: 14px;
+            color: var(--lime-dim);
+            border-left: 2px solid var(--lime-dim);
+            padding-left: 14px;
+            line-height: 1.5
+        }
+
+        .garantia {
+            background: #0a0a0a;
+            border: 1px solid var(--lime);
+            padding: 44px 50px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 36px;
+            align-items: center;
+            margin-bottom: 2px
+        }
+
+        .garantia-icon {
+            font-family: "DM Mono", monospace;
+            font-size: 12px;
+            letter-spacing: .15em;
+            color: var(--lime);
+            text-transform: uppercase;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg)
+        }
+
+        .garantia-text {
+            font-size: 16px;
+            color: var(--gray-light);
+            line-height: 1.85
+        }
+
+        .garantia-text strong {
+            color: var(--white)
+        }
+
+        .cta-section {
+            background: var(--white);
+            padding: 140px 48px;
+            text-align: center;
+            color: var(--black)
+        }
+
+        .cta-tag {
+            font-family: "DM Mono", monospace;
+            font-size: 10px;
+            letter-spacing: .2em;
+            color: var(--gray);
+            text-transform: uppercase;
+            margin-bottom: 20px
+        }
+
+        .cta-title {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(42px, 5vw, 68px);
+            font-weight: 900;
+            color: var(--black);
+            line-height: 1.1;
+            margin-bottom: 24px
+        }
+
+        .cta-title em {
+            font-style: italic;
+            color: var(--lime-dim)
+        }
+
+        .cta-sub {
+            font-size: 18px;
+            color: var(--gray);
+            line-height: 1.8;
+            max-width: 560px;
+            margin: 0 auto 44px
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--black);
+            color: var(--white);
+            font-family: "DM Mono", monospace;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            padding: 20px 40px;
+            text-decoration: none;
+            border: 1px solid var(--black);
+            transition: all .3s;
+            font-weight: 500;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--black);
+        }
+
+        footer {
+            background: var(--black);
+            border-top: 1px solid var(--border);
+            padding: 44px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .footer-logo {
+            font-family: "DM Mono", monospace;
+            font-size: 12px;
+            letter-spacing: .15em;
+            color: var(--lime);
+            text-transform: uppercase
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: var(--gray);
+            font-family: "DM Mono", monospace
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .stat-item:nth-child(1) {
+            animation: fadeUp .6s ease .2s both
+        }
+
+        .stat-item:nth-child(2) {
+            animation: fadeUp .6s ease .35s both
+        }
+
+        .stat-item:nth-child(3) {
+            animation: fadeUp .6s ease .5s both
+        }
+
+        @media print {
+            nav {
+                display: none
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            body {
+                background: #080808 !important;
+            }
+
+            .full-bg-section {
+                background: #111 !important;
+            }
+
+            .insight-box {
+                background: #C8F55A !important;
+            }
+
+            .cta-section {
+                background: #FAFAF8 !important;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            p,
+            div {
+                page-break-inside: avoid;
+            }
+
+            section {
+                padding: 40px 0;
+                border: none;
+                page-break-after: always;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-bottom: 40px;
+                page-break-after: always;
+            }
+        }
+
+        /* Rich content styling inside steps */
+        .prose h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 22px;
+            color: var(--white);
+            margin: 32px 0 16px;
+            font-weight: 700;
+        }
+
+        .prose h4 {
+            font-family: "DM Sans", sans-serif;
+            font-size: 16px;
+            color: var(--lime);
+            margin: 24px 0 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-family: "DM Mono", monospace;
+            letter-spacing: 0.05em;
+        }
+
+        .quote-block {
+            border-left: 2px solid var(--lime);
+            padding-left: 24px;
+            margin: 32px 0;
+            font-family: "Playfair Display", serif;
+            font-style: italic;
+            font-size: 19px;
+            color: var(--white);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-logo">GrowthVideoLab</div>
+        <ul class="nav-links">
+            <li><a href="#introduccion">1. El Problema</a></li>
+            <li><a href="#oferta">2. La Oferta</a></li>
+            <li><a href="#trafico">3. Tráfico B2B</a></li>
+            <li><a href="#ventas">4. Conversión</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-left">
+            <div class="hero-tag">El playbook oficial para B2B en Chile</div>
+            <h1 class="hero-headline">El Sistema de<br>Generación de<br><em>Leads B2B</em></h1>
+            <p class="hero-sub">Cómo las empresas de servicios en Chile están dejando de depender del "boca a boca"
+                construyendo un motor de adquisición predecible, escalable y rentable.</p>
+            <blockquote class="hero-question">"Si no puedes predecir cuántas reuniones tendrás la próxima semana, no
+                tienes un negocio; tienes un autoempleo glorificado."</blockquote>
+        </div>
+        <div class="hero-right">
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <div class="stat-number">90%</div>
+                    <div class="stat-label">Dependencia del boca a boca</div>
+                    <div class="stat-context">La cruda realidad de las pymes B2B en Chile</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">30 Días</div>
+                    <div class="stat-label">Tiempo promedio de implementación</div>
+                    <div class="stat-context">Para desplegar un sistema de prospección sólido</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2-5x</div>
+                    <div class="stat-label">Crecimiento en el Pipeline de Ventas</div>
+                    <div class="stat-context">Resultado promedio tras sistematizar la adquisición</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="full-bg-section" id="introduccion" style="background:var(--gray-muted)">
+        <div class="inner">
+            <div class="section-tag">01 · Fundamentos</div>
+            <h2 class="section-title">El fin de la era de "los referidos"</h2>
+            <p class="section-sub">Durante la última década, muchas empresas de servicios (agencias, consultoras,
+                software, mantenimiento industrial) crecieron orgánicamente gracias a un excelente servicio al cliente y
+                las recomendaciones. Pero el mercado cambió.</p>
+
+            <div class="cards-grid">
+                <div class="diag-card">
+                    <div class="diag-num">1.</div>
+                    <div class="diag-title">Incertidumbre cruda</div>
+                    <div class="diag-desc">No saber de dónde vendrá el próximo gran cliente genera estrés y frena la
+                        inversión en crecimiento y nuevas contrataciones.</div>
+                </div>
+                <div class="diag-card">
+                    <div class="diag-num">2.</div>
+                    <div class="diag-title">Crecimiento estancado</div>
+                    <div class="diag-desc">Tus referidos provienen de tu red actual. Es un círculo cerrado que,
+                        naturalmente, se satura con el tiempo si no hay sangre nueva.</div>
+                </div>
+                <div class="diag-card">
+                    <div class="diag-num">3.</div>
+                    <div class="diag-title">Competencia agresiva</div>
+                    <div class="diag-desc">Mientras tú esperas que suene el teléfono, empresas más modernas están
+                        implementando "Outbound" y ganando mercado.</div>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <div class="insight-text">Depender 100% de los referidos es como subirse a un auto sin volante. Puedes
+                    avanzar, pero no controlas ni la velocidad ni la dirección.</div>
+                <div class="insight-sub">Dato clave · El mercado B2B en Chile<br>hoy valora la eficiencia sobre la
+                    tradición</div>
+            </div>
+        </div>
+    </div>
+
+    <section id="metodologia">
+        <div class="section-tag">02 · Metodología</div>
+        <h2 class="section-title">Anatomía de un Sistema de Adquisición</h2>
+        <p class="section-sub">Esto no se trata de "subir posts bonitos a Instagram". Hablamos de de un motor de
+            ingeniería que convierte a un desconocido frío en una reunión calificada en tu calendario.</p>
+
+        <div class="steps-list">
+            <div class="step" id="oferta">
+                <div class="step-num">01</div>
+                <div class="step-content">
+                    <h3 class="step-title">La Oferta Irresistible (El Pilar)</h3>
+                    <p class="step-desc">El error más común es vender "servicios" en lugar de "soluciones empaquetadas".
+                        Si vendes desarrollo web, diseño, consultoría legal o ingeniería, compites por precio.</p>
+                    <div class="prose">
+                        <p>Para construir un motor B2B, necesitas salir de la venta por tiempo o commodities y centrarte
+                            en el <strong>ROI (Retorno de Inversión)</strong> o la transformación profunda que provees a
+                            tu cliente.</p>
+
+                        <h4>Componentes de una Oferta B2B que convierte:</h4>
+                        <ul>
+                            <li><strong>Nicho Específico:</strong> En vez de "Asesoría Contable", es "Ingeniería
+                                Tributaria para Constructoras".</li>
+                            <li><strong>Mecanismo Único:</strong> Un nombre para tu método. (Ej. "El Sistema
+                                Lead-Magnet"). Da tangibilidad a algo invisible.</li>
+                            <li><strong>Garantía Reversible de Riesgo:</strong> Si el cliente asume todo el riesgo,
+                                dudará. Minimiza su miedo garantizando resultados o procesos.</li>
+                        </ul>
+
+                        <div class="quote-block">
+                            "Tu marketing solo será tan bueno como el atractivo intrínseco de lo que estás vendiendo.
+                            Arregla tu oferta antes de gastar un peso en anuncios o emails."
+                        </div>
+                    </div>
+                    <div class="step-tag">Fundación del Negocio</div>
+                </div>
+            </div>
+
+            <div class="step" id="trafico">
+                <div class="step-num">02</div>
+                <div class="step-content">
+                    <h3 class="step-title">El Motor de Tráfico (Outbound e Inbound)</h3>
+                    <p class="step-desc">Con una oferta validada, el siguiente paso es ponerla frente al mayor número de
+                        tomadores de decisión calificados (Dueños, CEOs, Gerentes) posible, de la forma más eficiente.
+                    </p>
+                    <div class="prose">
+                        <p>En el panorama B2B de Chile, existen dos caminos principales paralelos que deben ejecutarse a
+                            la perfección:</p>
+
+                        <h4>1. Outbound Moderno (Cold Email & LinkedIn)</h4>
+                        <p>Olvídate del spam molesto. Consiste en compilar bases de leads altamente segmentadas y
+                            contactarlos usando flujos automatizados con personalización masiva a través de IA. El
+                            objetivo no es vender, el objetivo es conseguir mostrar tu propuesta de valor.</p>
+
+                        <h4>2. Inbound Búsqueda Intencional (SEO y Google Ads)</h4>
+                        <p>Los gerentes en Chile que buscan activamente un proveedor van a Google. Si no apareces con
+                            una Landing Page específica para el servicio (y no un simple 'Home'), estás dejando dinero
+                            sobre la mesa.</p>
+
+                        <div class="content-types">
+                            <div class="content-type">
+                                <div class="ct-icon">A</div>
+                                <div class="ct-title">Outbound (Proactivo)</div>
+                                <div class="ct-desc">Predictibilidad absoluta. Sabes que si contactas a 100 empresas,
+                                    agendarás X reuniones. Ideal para control total del target.</div>
+                                <div class="ct-hook">Métrica: Tasa de apertura > 60%, Tasa de respuesta > 5%</div>
+                            </div>
+                            <div class="content-type">
+                                <div class="ct-icon">B</div>
+                                <div class="ct-title">Inbound SEO (Reactivo)</div>
+                                <div class="ct-desc">El usuario tiene una urgencia (intención de compra alta). Tarda más
+                                    en posicionar, pero el costo por lead (CPL) a largo plazo roza el cero.</div>
+                                <div class="ct-hook">Métrica: Tráfico cualificado mensual, Conversión de tráfico a lead
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-tag">Captación de Demanda</div>
+                </div>
+            </div>
+
+            <div class="step" id="ventas">
+                <div class="step-num">03</div>
+                <div class="step-content">
+                    <h3 class="step-title">Nutrición, CRM y Conversión</h3>
+                    <p class="step-desc">Generar leads es inútil si no los cierras. El 80% de las ventas B2B requieren 5
+                        o más "touchpoints" o contactos después de la reunión inicial. Aquí es donde fallan el 90% de
+                        las pymes chilenas.</p>
+                    <div class="prose">
+                        <p>La tecnología es tu mejor aliado. Un vendedor humano no tiene la capacidad matemática de
+                            hacer seguimiento perfecto a 50 leads simultáneos durante meses sin olvidar a nadie.</p>
+
+                        <h4>Infraestructura necesaria:</h4>
+                        <ul>
+                            <li><strong>CRM (Ej. Hubspot, Pipedrive):</strong> La fuente de la verdad para tu equipo de
+                                ventas. Centraliza las etapas (Enviado a contacto, Agendado, Propuesta, Negociación,
+                                Cierre).</li>
+                            <li><strong>Follow-up Automatizado:</strong> Correos o mensajes que se envían aportando
+                                valor (Casos de estudio, whitepapers) a quienes no compraron de inmediato.</li>
+                            <li><strong>Proceso de Ventas Documentado:</strong> Un libreto paso a paso de lo que ocurre
+                                en la videollamada de descubrimiento, eliminando la improvisación del vendedor.</li>
+                        </ul>
+
+                        <div class="garantia">
+                            <div class="garantia-icon">SISTEMA</div>
+                            <div class="garantia-text">Un buen sistema CRM con automatizaciones no sólo ahorra hhoras a
+                                la semana, sino que previene que <strong>literalmente millones de pesos</strong> se
+                                escapen entre las grietas de posibles clientes olvidados.</div>
+                        </div>
+                    </div>
+                    <div class="step-tag">Cierre y Retención</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="full-bg-section" id="conclusiones" style="background:#0a0a0a;">
+        <div class="inner">
+            <div class="section-tag">03 · Implementación</div>
+            <h2 class="section-title">El camino a la ejecución</h2>
+            <p class="section-sub">Leer este documento tomó unos minutos. Implementarlo de forma profesional toma
+                semanas, y afinarlo para obtener KPIs positivos toma meses de iteración rigurosa.</p>
+
+            <div class="cards-grid">
+                <div class="diag-card">
+                    <div class="diag-num">DIY</div>
+                    <div class="diag-title">La opción Lenta (Tú mismo)</div>
+                    <div class="diag-desc">Compras cursos, configuras servidores de email, rompes el spam rate de tu
+                        dominio, configuras n8n o Zapier, contratas un diseñador. Gastas meses de tu tiempo (que debería
+                        estar enfocado en tus clientes actuales).</div>
+                </div>
+                <div class="diag-card">
+                    <div class="diag-num">SYS</div>
+                    <div class="diag-title">El Sistema Centralizado</div>
+                    <div class="diag-desc">Contratar Agencias tradicionales de marketing (que publican posts de "Feliz
+                        día del trabajador") y te frustras porque no traen LEADS reales, sólo likes.</div>
+                </div>
+                <div class="diag-card" style="background:var(--lime); color:var(--black);">
+                    <div class="diag-num" style="color:var(--black);">GVL</div>
+                    <div class="diag-title" style="color:var(--black);">El Partner de Growth B2B</div>
+                    <div class="diag-desc" style="color:#111; font-weight:500;">Nosotros nos encargamos del embudo
+                        end-to-end. Landing pages ultraconversivas, estrategia SEO técnica, integraciones CRM y
+                        automatizaciones, operando como tu brazo de adquisición remoto.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <div class="cta-tag">El Siguiente Paso</div>
+        <h2 class="cta-title">¿Listo para sistematizar<br>tus <em>ventas B2B?</em></h2>
+        <p class="cta-sub">Dejar de depender del "boca a boca" no es un lujo, es una exigencia de supervivencia
+            corporativa. Si diriges una empresa B2B y tienes un LTV superior a $1.000 USD, necesitamos hablar.</p>
+
+        <a href="/hablemos" class="cta-button">Hablemos sobre tu Sistema B2B</a>
+    </div>
+
+    <footer>
+        <div class="footer-logo">GrowthVideoLab</div>
+        <div class="footer-text">© 2026. B2B Growth Partners.</div>
+    </footer>
+
+    <script>
+        // Simple intersection observer for fading animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.diag-card, .step').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>

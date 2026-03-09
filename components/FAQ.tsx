@@ -9,24 +9,28 @@ type FAQItem = {
 
 const FAQData: FAQItem[] = [
     {
-        question: "¿Cómo es el proceso de pago?",
-        answer: "Trabajamos con un esquema de 50% de anticipo para reservar tu lugar en nuestra agenda y comenzar el proyecto, y el 50% restante contra entrega final y satisfacción."
+        question: "¿Cuánto cuesta una web B2B?",
+        answer: "Depende de lo que necesitas, pero una landing page de presentación parte desde $390.000 CLP. Un sitio corporativo completo va desde $800.000. Si necesitas integrar automatizaciones o sistemas de outreach, lo cotizamos aparte. Sin letra chica."
     },
     {
-        question: "¿Cuánto tiempo toma desarrollar una web?",
-        answer: "Dependiendo de la complejidad, una Landing Page toma de 1 a 2 semanas, mientras que un sitio corporativo completo puede tomar de 4 a 6 semanas. Siempre definimos un cronograma claro al inicio."
+        question: "¿Cuánto tiempo toma el proyecto?",
+        answer: "Una landing page toma entre 5 y 7 días hábiles desde que apruebas el brief. Un sitio corporativo completo, entre 2 y 3 semanas. Definimos fechas concretas al inicio — no te quedo 'casi listo' para siempre."
     },
     {
-        question: "¿Incluyen el dominio y hosting?",
-        answer: "Te asesoramos para contratar el mejor proveedor a tu nombre (para que tú seas el 100% dueño de tus activos), y nosotros nos encargamos de toda la configuración técnica."
+        question: "¿Qué pasa si necesito cambios después de entregado?",
+        answer: "Los primeros 30 días incluyen ajustes menores sin costo. Después, trabajamos con un plan de mantención mensual o por hora, según lo que te acomode. Tú decides."
     },
     {
-        question: "¿Entregan archivos de video editables?",
-        answer: "Entregamos los archivos finales renderizados en máxima calidad. Los archivos de proyecto (editables) tienen un costo adicional si los requieres para archivo."
+        question: "¿El dominio y hosting quedan a mi nombre?",
+        answer: "Sí, siempre. Te ayudamos a contratarlos a tu nombre desde el inicio. Cuando terminemos, tú tienes el acceso total — no dependes de nosotros para nada."
     },
     {
-        question: "¿Hacen facturas?",
-        answer: "Sí, somos una agencia establecida en Chile. Todos nuestros servicios incluyen factura o boleta de honorarios según corresponda."
+        question: "¿Hacen factura?",
+        answer: "Sí. Emitimos boleta de honorarios o factura electrónica según corresponda. Todo formal."
+    },
+    {
+        question: "¿En qué se diferencia GVL de contratar un freelancer suelto?",
+        answer: "Que yo entrego sistemas, no solo archivos. Un freelancer te entrega la web. Yo te entrego la web + configuración de Google Search Console + meta tags + formulario conectado a tu correo + manual de uso básico. Y si necesitas más, ya sé cómo funciona todo tu stack."
     }
 ];
 

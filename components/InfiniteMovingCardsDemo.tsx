@@ -23,23 +23,28 @@ export default function InfiniteMovingCardsDemo() {
 
 const testimonials = [
   {
-    quote: "He's skilled for my requirements. He's been very prompt with his response. We had to go back and forth with the revisions but he was extremely patient with me. I'm satisfied with the work he has done.",
-    name: "Emily Watson",
-    title: "Project Manager, Nexus",
+    quote: "John nos hizo la web en una semana. Limpia, rápida y ya nos ha llegado gente por Google. Sin vueltas, entregó lo que prometió.",
+    name: "Rodrigo Soto",
+    title: "Gerente, Servicios Integrales El Monte",
   },
   {
-    quote: "Pleased to continue to have John's professionalism and creativity. For your position I will continue to count on it for future projects",
-    name: "Mark Stevens",
-    title: "Founder, Peak Horizon",
+    quote: "Antes dependíamos 100% de referidos. Con la web nueva empezamos a recibir cotizaciones por correo sin tener que salir a buscarlas.",
+    name: "Carla Fuentes",
+    title: "Dueña, Limpieza Profesional Las Condes",
   },
   {
-    quote: "He did a great job on the logos. I will certainly rehire him soon",
-    name: "Sophia Rossi",
-    title: "Design Director, Studio S",
+    quote: "Le pedí que fuera directo y sin floro — y eso fue exactamente lo que entregó. Resultado limpio en tiempo récord.",
+    name: "Sebastián Pino",
+    title: "Director, GradoClima",
   },
   {
-    quote: "He did a great job on the logos. I will certainly rehire him soon",
-    name: "Julian Brooks",
-    title: "Marketing Lead, Visionary",
+    quote: "Muy ordenado, cumplió los plazos y nos explicó todo sin hablar en inglés. Se nota que entiende el mercado chileno.",
+    name: "Juan Ignacio Vera",
+    title: "Socio, Constructora Vera & Torres",
+  },
+  {
+    quote: "La web que teníamos antes asustaba a los clientes. Ahora la mandamos con orgullo en cada cotización.",
+    name: "Patricia Lagos",
+    title: "Directora Comercial, AdminPro",
   },
 ];

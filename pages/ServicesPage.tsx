@@ -156,8 +156,8 @@ const ServicesPage = () => {
     // Set SEO meta tags
     React.useEffect(() => {
         setMetaTags({
-            title: 'Servicios de Marketing Digital y Producción | Growth Video Lab',
-            description: 'Agencia creativa en Santiago de Chile. Ofrecemos producción audiovisual, branding, diseño web y gestión de redes sociales para impulsar tu marca.',
+            title: 'Servicios de Marketing B2B y Webs para Empresas | Growth Video Lab',
+            description: 'Webs profesionales y sistemas de prospección para empresas B2B en Santiago. Ayudamos a empresas de servicios a conseguir más contratos con presencia digital.',
             canonical: `${SITE_URL}/servicios`,
             ogType: 'website',
             ogUrl: `${SITE_URL}/servicios`,
@@ -176,12 +176,12 @@ const ServicesPage = () => {
                     <div className="lg:w-1/2 flex flex-col justify-center">
                         <div className="form-anim mb-8 md:mb-12">
                             <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-black uppercase tracking-tighter mb-6 leading-[0.9]">
-                                Hagamos <motion.span className="text-gvl-orange">
-                                    <TextSplit>algo lindo</TextSplit>
-                                </motion.span> juntos
+                                Servicios para <motion.span className="text-gvl-orange">
+                                    <TextSplit>empresas</TextSplit>
+                                </motion.span> en Santiago
                             </h1>
                             <p className="text-xl text-gray-600 max-w-lg leading-relaxed">
-                                Tienes una visión. Nosotros tenemos las herramientas, la creatividad y la estrategia para hacerla realidad. Elige cómo podemos ayudarte:
+                                Webs profesionales, sistemas de prospección B2B y presencia digital para empresas de servicios que quieren conseguir más contratos.
                             </p>
                         </div>
 
@@ -306,12 +306,12 @@ const ServicesPage = () => {
                 <div className="max-w-6xl mx-auto py-16 border-t border-black/10">
                     <div className="grid md:grid-cols-2 gap-12">
                         <div>
-                            <h3 className="text-2xl font-bold uppercase mb-4">Agencia Creativa en Santiago de Chile</h3>
+                            <h3 className="text-2xl font-bold uppercase mb-4">Agencia de Marketing B2B en Santiago de Chile</h3>
                             <p className="text-gray-600 mb-6 leading-relaxed">
-                                Growth Video Lab se especializa en crear estrategias digitales que combinan <strong>diseño de alto impacto</strong>, <strong>desarrollo web optimizado</strong> y <strong>producción audiovisual de calidad cine</strong>. Entendemos que en 2026, la atención es la moneda más valiosa, y ayudamos a marcas valientes a capturarla.
+                                Growth Video Lab ayuda a empresas de servicios B2B en Santiago a conseguir más contratos con <strong>webs profesionales</strong>, <strong>presencia digital real</strong> y <strong>sistemas automatizados de prospección</strong>. Entendemos el mercado local: tus clientes te googlearán antes de firmarte, y lo que vean tiene que generar confianza.
                             </p>
                             <p className="text-gray-600 leading-relaxed">
-                                Desde startups que buscan su primer MVP en la web hasta empresas consolidadas que necesitan refrescar su imagen corporativa, nuestro equipo multidisciplinario ofrece soluciones a medida que priorizan el ROI y la experiencia de usuario.
+                                Desde empresas de aseo, climatización, control de plagas hasta constructoras y corredoras — si tienes clientes reales pero presencia digital débil, aquí es donde empezamos.
                             </p>
                         </div>
                         <div>

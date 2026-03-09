@@ -1,0 +1,88 @@
+{
+    "name": "GVL: Web Lead a Twenty CRM",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "nuevo-lead-web",
+                "responseMode": "onReceived",
+                "options": {}
+            },
+            "id": "1",
+            "name": "Recibir Lead de la Web",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                250,
+                300
+            ],
+            "webhookId": "nuevo-lead-web"
+        },
+        {
+            "parameters": {
+                "resource": "person",
+                "operation": "create",
+                "email": "={{ $json.body.email }}",
+                "firstName": "={{ $json.body.name.split(' ')[0] }}",
+                "lastName": "={{ $json.body.name.split(' ').slice(1).join(' ') || '' }}",
+                "companyName": "={{ $json.body.company || 'Sin Empresa' }}"
+            },
+            "id": "2",
+            "name": "Crear Contacto en Twenty",
+            "type": "n8n-nodes-twenty-dynamic.twenty",
+            "typeVersion": 1,
+            "position": [
+                450,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "resource": "opportunity",
+                "operation": "create",
+                "name": "=Lead Magnet - {{ $json.body.company || $json.body.name }}",
+                "stage": "Lead Magnet",
+                "personId": "={{ $json.data.id }}"
+            },
+            "id": "3",
+            "name": "Crear Oportunidad (Lead Magnet)",
+            "type": "n8n-nodes-twenty-dynamic.twenty",
+            "typeVersion": 1,
+            "position": [
+                650,
+                300
+            ]
+        }
+    ],
+    "pinData": {},
+    "connections": {
+        "Recibir Lead de la Web": {
+            "main": [
+                [
+                    {
+                        "node": "Crear Contacto en Twenty",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Crear Contacto en Twenty": {
+            "main": [
+                [
+                    {
+                        "node": "Crear Oportunidad (Lead Magnet)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "active": false,
+    "settings": {
+        "executionOrder": "v1"
+    },
+    "versionId": "e143b4f9-2b6b-4f7f-85d1-9f936a7bcf12",
+    "id": "gvl-web-to-twenty"
+}

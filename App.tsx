@@ -63,7 +63,7 @@ const Home = () => {
       <InfiniteMovingCardsDemo />
       <HomeFaq />
       <CtaBanner />
-      {/* <LeadMagnet /> */}
+      <LeadMagnet />
     </>
   );
 };

@@ -12,7 +12,7 @@ const LeadMagnet = () => {
   const [formState, setFormState] = useState({
     name: '',
     email: '',
-    instagram: ''
+    company: ''
   });
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -66,15 +66,15 @@ const LeadMagnet = () => {
           {!isSubmitted ? (
             <>
               <div className="inline-block px-4 py-1 border border-black rounded-full text-sm font-bold mb-6 bg-gvl-yellow transform -rotate-2">
-                RECURSO GRATIS
+                PDF GRATIS
               </div>
 
               <h2 className="text-3xl md:text-5xl font-black mb-6 leading-tight tracking-tight text-black">
-                5 Prompts de Gemini para Fotos Lifestyle
+                ¿Cuántos contratos estás perdiendo por tu presencia digital?
               </h2>
 
               <p className="text-gray-700 text-lg mb-8 font-medium">
-                Genera fotos de IA que no se vean fake. Prompts testeados para contenido lifestyle real que sí sirve.
+                Las 5 razones por las que empresas B2B en Santiago pierden contratos antes de la primera llamada — y cómo evitarlo.
               </p>
 
               <form onSubmit={handleFormSubmit} className="space-y-4">
@@ -92,14 +92,14 @@ const LeadMagnet = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="instagram" className="block text-xs font-bold uppercase mb-1 ml-1 text-gray-500">Instagram <span className="lowercase font-normal italic">(opcional)</span></label>
+                    <label htmlFor="company" className="block text-xs font-bold uppercase mb-1 ml-1 text-gray-500">Empresa</label>
                     <input
-                      id="instagram"
+                      id="company"
                       type="text"
-                      placeholder="@tuusuario"
+                      placeholder="Nombre de tu empresa"
                       className="w-full bg-white border border-black/10 rounded-xl p-3 outline-none focus:border-black transition-all font-medium"
-                      value={formState.instagram}
-                      onChange={e => setFormState({ ...formState, instagram: e.target.value })}
+                      value={formState.company}
+                      onChange={e => setFormState({ ...formState, company: e.target.value })}
                     />
                   </div>
                 </div>
@@ -125,7 +125,7 @@ const LeadMagnet = () => {
                   disabled={!turnstileToken}
                   className="w-full bg-black text-white px-8 py-4 rounded-xl font-bold hover:bg-gvl-blue transition-all flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                 >
-                  Descargar gratis
+                  Quiero el PDF gratis
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </form>
@@ -135,9 +135,9 @@ const LeadMagnet = () => {
               <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Check size={40} strokeWidth={3} />
               </div>
-              <h3 className="text-3xl font-black mb-4">¡Listo!</h3>
+              <h3 className="text-3xl font-black mb-4">¡Viene en camino!</h3>
               <p className="text-gray-700 text-xl font-medium">
-                Revisa tu correo. Los prompts deberían llegar en cualquier momento.
+                Revisa tu correo en unos minutos. Si no llega, chequea el spam.
               </p>
             </div>
           )}

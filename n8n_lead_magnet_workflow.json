@@ -1,0 +1,93 @@
+{
+    "name": "GVL: Lead Magnet Email Delivery",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "ebooks-download",
+                "responseMode": "lastNode",
+                "options": {}
+            },
+            "id": "1",
+            "name": "Recibir Webhook del Formulario",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                250,
+                300
+            ],
+            "webhookId": "ebooks-download"
+        },
+        {
+            "parameters": {
+                "sendTo": "={{ $json.body.email }}",
+                "subject": "Tu guía estratégica: El Sistema de Generación de Leads B2B en Chile",
+                "message": "<!DOCTYPE html><html lang=\"es\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Lead Magnet Growth Video Lab</title><style>body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#111;background-color:#f9f9f9;margin:0;padding:20px 0}.container{max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.05);border:1px solid #eaeaea}.header{background-color:#111;padding:40px 30px;text-align:center}.header h1{color:#fff;margin:0;font-size:24px;font-weight:800;letter-spacing:-0.5px}.accent{color:#FF5A1F}.content{padding:40px 30px}.greeting{font-size:18px;font-weight:600;margin-top:0}.p-text{font-size:16px;color:#444;margin-bottom:20px}.btn-container{text-align:center;margin:35px 0}.btn{background-color:#ccfc32;color:#111;text-decoration:none;padding:16px 32px;border-radius:8px;font-weight:700;font-size:16px;display:inline-block}.footer{background-color:#f5f5f5;padding:30px;text-align:center;font-size:14px;color:#666;border-top:1px solid #eaeaea}</style></head><body><div class=\"container\"><div class=\"header\"><h1>Growth<span class=\"accent\">Video</span>Lab</h1></div><div class=\"content\"><p class=\"greeting\">Hola {{ $json.body.name }},</p><p class=\"p-text\">Aquí tienes el acceso directo al <strong>Sistema de Generación de Leads B2B</strong> que solicitaste.</p><p class=\"p-text\">En este documento descubrirás exactamente cómo estructuramos los embudos, las landing pages y los sistemas de prospección automatizada para empresas de servicios en Santiago.</p><div class=\"btn-container\"><a href=\"https://growthvideolab.com/lead_magnet_b2b.html\" class=\"btn\">Abrir el Documento (HTML/PDF)</a></div><p class=\"p-text\"><strong>¿Qué sigue?</strong><br>Tómate unos minutos para leerlo. Si después de verlo te das cuenta de que tu empresa necesita implementar un sistema así para escalar la adquisición de clientes, hablemos.</p><p class=\"p-text\">Puedes responder directamente a este correo o agendar una llamada en nuestra web.</p><p class=\"p-text\" style=\"margin-bottom: 0;\">Un saludo,<br><strong>El equipo de Growth Video Lab</strong></p></div><div class=\"footer\"><p style=\"margin-top: 0;\">¿Tienes dudas? Responde a este email.</p><p style=\"margin-bottom: 0;\"><a href=\"https://growthvideolab.com\" style=\"color:#111;font-weight:600;text-decoration:none\">growthvideolab.com</a> | Santiago, Chile</p></div></div></body></html>",
+                "options": {
+                    "appendAttribution": false
+                }
+            },
+            "id": "2",
+            "name": "Enviar Email con PDF (Gmail)",
+            "type": "n8n-nodes-base.gmail",
+            "typeVersion": 2,
+            "position": [
+                450,
+                300
+            ],
+            "credentials": {
+                "gmailOAuth2": {
+                    "id": "",
+                    "name": "Gmail account"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "options": {}
+            },
+            "id": "3",
+            "name": "Respuesta Exitosa al Frontend",
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1,
+            "position": [
+                650,
+                300
+            ]
+        }
+    ],
+    "pinData": {},
+    "connections": {
+        "Recibir Webhook del Formulario": {
+            "main": [
+                [
+                    {
+                        "node": "Enviar Email con PDF (Gmail)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Enviar Email con PDF (Gmail)": {
+            "main": [
+                [
+                    {
+                        "node": "Respuesta Exitosa al Frontend",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "active": false,
+    "settings": {
+        "executionOrder": "v1"
+    },
+    "versionId": "c00171ff-c47f-41da-a690-bdf16a54cdba",
+    "id": "gvl-lead-magnet-1",
+    "meta": {
+        "templateCredsSetupCompleted": true
+    }
+}
