@@ -716,6 +716,233 @@
             color: var(--white);
             line-height: 1.6;
         }
+
+        /* Mid-page CTA bands */
+        .mid-cta {
+            background: linear-gradient(135deg, #111 0%, #1a1a2a 100%);
+            border: 1px solid rgba(200, 245, 90, 0.15);
+            border-radius: 12px;
+            padding: 44px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 32px;
+            margin: 56px 0;
+        }
+
+        .mid-cta-text {
+            font-family: "Playfair Display", serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.4;
+            max-width: 580px;
+        }
+
+        .mid-cta-sub {
+            font-size: 13px;
+            color: var(--gray-light);
+            margin-top: 8px;
+            font-family: "DM Sans", sans-serif;
+            font-weight: 300;
+        }
+
+        .mid-cta-button {
+            display: inline-block;
+            background: var(--lime);
+            color: var(--black);
+            font-family: "DM Mono", monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            padding: 16px 32px;
+            text-decoration: none;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all .3s;
+            border: 2px solid var(--lime);
+        }
+
+        .mid-cta-button:hover {
+            background: transparent;
+            color: var(--lime);
+        }
+
+        /* Source citation styling */
+        .source-link {
+            font-size: 11px;
+            color: var(--gray);
+            font-family: "DM Mono", monospace;
+            text-decoration: none;
+            border-bottom: 1px dotted var(--gray);
+            transition: color .2s;
+        }
+
+        .source-link:hover {
+            color: var(--lime);
+            border-color: var(--lime);
+        }
+
+        /* Stat inline badges */
+        .stat-inline {
+            display: inline-block;
+            background: rgba(200, 245, 90, 0.1);
+            border: 1px solid rgba(200, 245, 90, 0.2);
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-family: "DM Mono", monospace;
+            font-size: 13px;
+            color: var(--lime);
+            font-weight: 500;
+        }
+
+        /* Funnel visualization */
+        .funnel {
+            margin: 32px 0;
+        }
+
+        .funnel-step {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .funnel-num {
+            font-family: "DM Mono", monospace;
+            font-size: 28px;
+            font-weight: 500;
+            color: var(--lime);
+            min-width: 80px;
+            text-align: right;
+        }
+
+        .funnel-arrow {
+            color: var(--gray);
+            font-size: 18px;
+        }
+
+        .funnel-label {
+            font-size: 14px;
+            color: var(--gray-light);
+        }
+
+        /* Popup overlay */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-overlay.active {
+            display: flex;
+        }
+
+        .popup {
+            background: #111;
+            border: 1px solid rgba(200, 245, 90, 0.3);
+            border-radius: 16px;
+            padding: 56px 48px;
+            max-width: 520px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            animation: fadeUp 0.4s ease;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color .2s;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        .popup-close:hover {
+            color: var(--white);
+        }
+
+        .popup-emoji {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .popup-title {
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .popup-desc {
+            font-size: 15px;
+            color: var(--gray-light);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .popup-button {
+            display: inline-block;
+            background: var(--lime);
+            color: var(--black);
+            font-family: "DM Mono", monospace;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            padding: 18px 36px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all .3s;
+            border: 2px solid var(--lime);
+        }
+
+        .popup-button:hover {
+            background: transparent;
+            color: var(--lime);
+        }
+
+        .popup-dismiss {
+            display: block;
+            margin-top: 16px;
+            font-size: 12px;
+            color: var(--gray);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        .popup-dismiss:hover {
+            color: var(--gray-light);
+        }
+
+        @media (max-width: 768px) {
+            .mid-cta {
+                flex-direction: column;
+                text-align: center;
+                padding: 32px 24px;
+            }
+
+            .popup {
+                padding: 40px 24px;
+            }
+        }
     </style>
 </head>
 
@@ -743,19 +970,23 @@
         <div class="hero-right">
             <div class="stat-grid">
                 <div class="stat-item">
-                    <div class="stat-number">90%</div>
-                    <div class="stat-label">Dependencia del boca a boca</div>
-                    <div class="stat-context">La cruda realidad de las pymes B2B en Chile</div>
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">De empresas B2B usan cold email para captar clientes</div>
+                    <div class="stat-context"><a href="https://dux-soup.com/blog/b2b-lead-generation-statistics"
+                            target="_blank" class="source-link">Fuente: Dux-Soup, 2025</a></div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">30 Días</div>
-                    <div class="stat-label">Tiempo promedio de implementación</div>
-                    <div class="stat-context">Para desplegar un sistema de prospección sólido</div>
+                    <div class="stat-number">2.74×</div>
+                    <div class="stat-label">LinkedIn convierte más que Facebook y Twitter para B2B</div>
+                    <div class="stat-context"><a href="https://business.linkedin.com/marketing-solutions"
+                            target="_blank" class="source-link">Fuente: LinkedIn Business, 2025</a></div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">2-5x</div>
-                    <div class="stat-label">Crecimiento en el Pipeline de Ventas</div>
-                    <div class="stat-context">Resultado promedio tras sistematizar la adquisición</div>
+                    <div class="stat-number">80%</div>
+                    <div class="stat-label">De las ventas B2B requieren 5+ touchpoints</div>
+                    <div class="stat-context"><a
+                            href="https://www.reachmarketing.com/blog/b2b-lead-generation-statistics" target="_blank"
+                            class="source-link">Fuente: Reach Marketing, 2025</a></div>
                 </div>
             </div>
         </div>
@@ -767,26 +998,67 @@
             <h2 class="section-title">El fin de la era de "los referidos"</h2>
             <p class="section-sub">Durante la última década, muchas empresas de servicios (agencias, consultoras,
                 software, mantenimiento industrial) crecieron orgánicamente gracias a un excelente servicio al cliente y
-                las recomendaciones. Pero el mercado cambió.</p>
+                las recomendaciones. Pero el mercado cambió — y lo hizo rápido.</p>
+
+            <div class="prose" style="margin-bottom:48px;">
+                <p>Piensa en tu empresa hace 5 años. Probablemente tenías 3-4 clientes fijos que te recomendaban a sus
+                    colegas. El teléfono sonaba solo, las cotizaciones llegaban por WhatsApp, y el crecimiento era
+                    "natural".</p>
+                <p>El problema es que ese modelo tiene un <strong>techo matemático</strong>. Si tu red actual tiene 200
+                    contactos y cada uno te refiere 1 vez al año (siendo generoso), tu pipeline tiene un límite fijo de
+                    ~200 oportunidades. Y cada año que pasa, esa red se satura más.</p>
+                <p>Según <a href="https://blog.hubspot.com/sales/referral-selling" target="_blank"
+                        class="source-link">HubSpot</a>, el <span class="stat-inline">84%</span> de los compradores B2B
+                    inician su proceso con un referido, pero solo el <span class="stat-inline">29%</span> de los
+                    clientes satisfechos realmente dan referidos activamente. Es decir: tus mejores clientes
+                    probablemente no te están recomendando tanto como crees.</p>
+            </div>
 
             <div class="cards-grid">
                 <div class="diag-card">
                     <div class="diag-num">1.</div>
                     <div class="diag-title">Incertidumbre cruda</div>
                     <div class="diag-desc">No saber de dónde vendrá el próximo gran cliente genera estrés y frena la
-                        inversión en crecimiento y nuevas contrataciones.</div>
+                        inversión en crecimiento. ¿Contratas un técnico más? ¿Inviertes en equipos? No puedes si no
+                        sabes cuánto facturas el próximo trimestre.</div>
                 </div>
                 <div class="diag-card">
                     <div class="diag-num">2.</div>
                     <div class="diag-title">Crecimiento estancado</div>
-                    <div class="diag-desc">Tus referidos provienen de tu red actual. Es un círculo cerrado que,
-                        naturalmente, se satura con el tiempo si no hay sangre nueva.</div>
+                    <div class="diag-desc">Tus referidos provienen de tu red actual — un círculo cerrado que se satura
+                        naturalmente. El gerente que te recomendó 3 veces ya no tiene a quién más enviarte.</div>
                 </div>
                 <div class="diag-card">
                     <div class="diag-num">3.</div>
                     <div class="diag-title">Competencia agresiva</div>
-                    <div class="diag-desc">Mientras tú esperas que suene el teléfono, empresas más modernas están
-                        implementando "Outbound" y ganando mercado.</div>
+                    <div class="diag-desc">Mientras esperas que suene el teléfono, empresas más modernas están
+                        contactando directamente a tus prospectos ideales con emails personalizados y campañas de
+                        LinkedIn.</div>
+                </div>
+            </div>
+
+            <div class="cards-grid" style="margin-top:2px;">
+                <div class="diag-card">
+                    <div class="diag-num">4.</div>
+                    <div class="diag-title">Invisibilidad digital</div>
+                    <div class="diag-desc">El <span class="stat-inline">73%</span> de los compradores B2B investigan en
+                        Google antes de contactar un proveedor (<a href="https://www.hubspot.com/state-of-marketing"
+                            target="_blank" class="source-link">HubSpot</a>). Si no apareces con una web profesional, tu
+                        competencia se lleva esa llamada — incluso si tu servicio es mejor.</div>
+                </div>
+                <div class="diag-card">
+                    <div class="diag-num">5.</div>
+                    <div class="diag-title">Negociación desde la debilidad</div>
+                    <div class="diag-desc">Cuando tu único canal es el referido, el cliente sabe que eres "la opción del
+                        amigo" y negocia desde arriba. Cuando tú lo contactaste proactivamente con una propuesta de
+                        valor clara, la dinámica de poder cambia.</div>
+                </div>
+                <div class="diag-card">
+                    <div class="diag-num">6.</div>
+                    <div class="diag-title">Ciclos de hambruna</div>
+                    <div class="diag-desc">El patrón clásico: 3 meses con trabajo, 2 meses vacíos. Luego sales
+                        desesperado a buscar clientes y aceptas proyectos con márgenes bajos. Un sistema elimina estos
+                        ciclos para siempre.</div>
                 </div>
             </div>
 
@@ -795,6 +1067,16 @@
                     avanzar, pero no controlas ni la velocidad ni la dirección.</div>
                 <div class="insight-sub">Dato clave · El mercado B2B en Chile<br>hoy valora la eficiencia sobre la
                     tradición</div>
+            </div>
+
+            <!-- CTA #1 -->
+            <div class="mid-cta">
+                <div>
+                    <div class="mid-cta-text">¿Te suena familiar?</div>
+                    <div class="mid-cta-sub">En 15 minutos te muestro exactamente qué están haciendo empresas como la
+                        tuya para dejar de depender de los referidos.</div>
+                </div>
+                <a href="/contacto" class="mid-cta-button">Agenda un diagnóstico gratis →</a>
             </div>
         </div>
     </div>
@@ -820,16 +1102,49 @@
                         <h4>Componentes de una Oferta B2B que convierte:</h4>
                         <ul>
                             <li><strong>Nicho Específico:</strong> En vez de "Asesoría Contable", es "Ingeniería
-                                Tributaria para Constructoras".</li>
+                                Tributaria para Constructoras". En vez de "Hacemos webs", es "Webs de captación de
+                                contratos para empresas de servicios en Chile". El nicho te saca de la guerra de
+                                precios.</li>
                             <li><strong>Mecanismo Único:</strong> Un nombre para tu método. (Ej. "El Sistema
-                                Lead-Magnet"). Da tangibilidad a algo invisible.</li>
+                                Lead-Magnet", "El Método de las 3 Capas"). Da tangibilidad a algo invisible. Según <a
+                                    href="https://www.lemlist.com/blog/b2b-sales-strategy" target="_blank"
+                                    class="source-link">Lemlist</a>, los vendedores B2B que nombran su proceso tienen
+                                <span class="stat-inline">2.5x</span> más tasa de cierre.</li>
                             <li><strong>Garantía Reversible de Riesgo:</strong> Si el cliente asume todo el riesgo,
-                                dudará. Minimiza su miedo garantizando resultados o procesos.</li>
+                                dudará. Minimiza su miedo: "Si no tienes tu web lista en 7 días, te devolvemos el 100%".
+                                La garantía convierte a los indecisos.</li>
+                            <li><strong>Resultado Cuantificado:</strong> No vendas "diseño web". Vende "una web que
+                                genera 15 cotizaciones mensuales". El cliente no compra el proceso, compra el resultado
+                                medible.</li>
                         </ul>
+
+                        <h4>Ejemplo real — Antes vs Después:</h4>
+                        <div class="content-types">
+                            <div class="content-type">
+                                <div class="ct-icon">✗</div>
+                                <div class="ct-title" style="color:#ff6b6b;">Antes: Genérico</div>
+                                <div class="ct-desc">"Somos una empresa de mantención industrial con 15 años de
+                                    experiencia. Ofrecemos servicios integrales de mantención, reparación y limpieza
+                                    para empresas."</div>
+                                <div class="ct-hook" style="border-color:#ff6b6b; color:#ff6b6b;">Resultado: compites
+                                    contra todas las empresas de mantención de Chile por precio</div>
+                            </div>
+                            <div class="content-type">
+                                <div class="ct-icon">✓</div>
+                                <div class="ct-title">Después: Posicionado</div>
+                                <div class="ct-desc">"Eliminamos paros no programados en plantas industriales del sector
+                                    minero. Nuestro Sistema de Mantención Predictiva reduce los tiempos muertos en un
+                                    40% en los primeros 90 días, o no cobro."</div>
+                                <div class="ct-hook">Resultado: eres el único en tu categoría, el precio deja de ser la
+                                    variable decisiva</div>
+                            </div>
+                        </div>
 
                         <div class="quote-block">
                             "Tu marketing solo será tan bueno como el atractivo intrínseco de lo que estás vendiendo.
-                            Arregla tu oferta antes de gastar un peso en anuncios o emails."
+                            Arregla tu oferta antes de gastar un peso en anuncios o emails." — <a
+                                href="https://www.acquisition.com/" target="_blank" class="source-link">Alex Hormozi,
+                                $100M Offers</a>
                         </div>
                     </div>
                     <div class="step-tag">Fundación del Negocio</div>
@@ -850,12 +1165,55 @@
                         <h4>1. Outbound Moderno (Cold Email & LinkedIn)</h4>
                         <p>Olvídate del spam molesto. Consiste en compilar bases de leads altamente segmentadas y
                             contactarlos usando flujos automatizados con personalización masiva a través de IA. El
-                            objetivo no es vender, el objetivo es conseguir mostrar tu propuesta de valor.</p>
+                            objetivo no es vender — es conseguir mostrar tu propuesta de valor.</p>
 
-                        <h4>2. Inbound Búsqueda Intencional (SEO y Google Ads)</h4>
+                        <p>Los números hablan por sí solos. Un sistema de outbound <a
+                                href="https://martal.ca/cold-email-statistics" target="_blank" class="source-link">con
+                                buena personalización</a> funciona así:</p>
+
+                        <div class="funnel">
+                            <div class="funnel-step">
+                                <div class="funnel-num">100</div>
+                                <div class="funnel-arrow">→</div>
+                                <div class="funnel-label">Empresas contactadas por semana (cold email personalizado)
+                                </div>
+                            </div>
+                            <div class="funnel-step">
+                                <div class="funnel-num">60+</div>
+                                <div class="funnel-arrow">→</div>
+                                <div class="funnel-label">Abren tu email <span class="stat-inline">>60% open rate</span>
+                                </div>
+                            </div>
+                            <div class="funnel-step">
+                                <div class="funnel-num">5-10</div>
+                                <div class="funnel-arrow">→</div>
+                                <div class="funnel-label">Responden con interés <span class="stat-inline">5-10% reply
+                                        rate</span></div>
+                            </div>
+                            <div class="funnel-step">
+                                <div class="funnel-num">2-4</div>
+                                <div class="funnel-arrow">→</div>
+                                <div class="funnel-label">Reuniones calificadas agendadas por semana</div>
+                            </div>
+                        </div>
+
+                        <p>En LinkedIn, la tasa de aceptación de conexión con nota personalizada es de <span
+                                class="stat-inline">40-50%</span>, y los DMs directos tienen un reply rate promedio de
+                            <span class="stat-inline">10.3%</span> — el doble que un cold email. <a
+                                href="https://www.belkins.io/blog/linkedin-statistics" target="_blank"
+                                class="source-link">Fuente: Belkins, 2025</a>
+                        </p>
+
+                        <h4>2. Inbound — Búsqueda Intencional (SEO y Google Ads)</h4>
                         <p>Los gerentes en Chile que buscan activamente un proveedor van a Google. Si no apareces con
-                            una Landing Page específica para el servicio (y no un simple 'Home'), estás dejando dinero
-                            sobre la mesa.</p>
+                            una Landing Page específica para el servicio (y no un simple 'Home'), estás <a
+                                href="https://blog.hubspot.com/marketing/b2b-lead-generation" target="_blank"
+                                class="source-link">dejando dinero sobre la mesa</a>.</p>
+                        <p>Un reporte de <a href="https://www.hubspot.com/state-of-marketing" target="_blank"
+                                class="source-link">HubSpot</a> muestra que el <span class="stat-inline">76%</span> de
+                            los marketers B2B priorizan el contenido como estrategia principal. Y un <span
+                                class="stat-inline">73%</span> de los compradores B2B revisan tu web antes de tomar una
+                            decisión de compra.</p>
 
                         <div class="content-types">
                             <div class="content-type">
@@ -879,33 +1237,100 @@
                 </div>
             </div>
 
+            <!-- CTA #2 -->
+            <div class="mid-cta">
+                <div>
+                    <div class="mid-cta-text">¿Quieres saber qué canal funciona mejor para tu rubro?</div>
+                    <div class="mid-cta-sub">Analizamos tu mercado y te decimos exactamente por dónde empezar, sin
+                        compromiso.</div>
+                </div>
+                <a href="/contacto" class="mid-cta-button">Diagnóstico gratis →</a>
+            </div>
+
             <div class="step" id="ventas">
                 <div class="step-num">03</div>
                 <div class="step-content">
                     <h3 class="step-title">Nutrición, CRM y Conversión</h3>
-                    <p class="step-desc">Generar leads es inútil si no los cierras. El 80% de las ventas B2B requieren 5
-                        o más "touchpoints" o contactos después de la reunión inicial. Aquí es donde fallan el 90% de
+                    <p class="step-desc">Generar leads es inútil si no los cierras. El <span
+                            class="stat-inline">80%</span> de las ventas B2B requieren 5
+                        o más "touchpoints" después de la reunión inicial (<a
+                            href="https://www.reachmarketing.com/blog/b2b-lead-generation-statistics" target="_blank"
+                            class="source-link">Reach Marketing, 2025</a>). Aquí es donde fallan el 90% de
                         las pymes chilenas.</p>
                     <div class="prose">
-                        <p>La tecnología es tu mejor aliado. Un vendedor humano no tiene la capacidad matemática de
-                            hacer seguimiento perfecto a 50 leads simultáneos durante meses sin olvidar a nadie.</p>
+                        <p>La tecnología es tu mejor aliado. Un vendedor humano no tiene la capacidad de
+                            hacer seguimiento perfecto a 50 leads simultáneos durante meses sin olvidar a nadie. Según
+                            <a href="https://www.reachmarketing.com/blog/b2b-lead-generation-statistics" target="_blank"
+                                class="source-link">datos de la industria</a>, empresas con estrategias sólidas de
+                            nurturing generan un <span class="stat-inline">50% más leads</span> a un <span
+                                class="stat-inline">33% menos costo</span>.
+                        </p>
 
                         <h4>Infraestructura necesaria:</h4>
                         <ul>
-                            <li><strong>CRM (Ej. Hubspot, Pipedrive):</strong> La fuente de la verdad para tu equipo de
+                            <li><strong>CRM (Ej. HubSpot, Pipedrive, Twenty):</strong> La fuente de la verdad para tu
+                                equipo de
                                 ventas. Centraliza las etapas (Enviado a contacto, Agendado, Propuesta, Negociación,
-                                Cierre).</li>
+                                Cierre). Un CRM gratuito como <a href="https://www.hubspot.com/products/crm"
+                                    target="_blank" class="source-link">HubSpot CRM</a> ya es más que suficiente para
+                                empezar.</li>
                             <li><strong>Follow-up Automatizado:</strong> Correos o mensajes que se envían aportando
-                                valor (Casos de estudio, whitepapers) a quienes no compraron de inmediato.</li>
+                                valor (casos de estudio, resultados, invitaciones) a quienes no compraron de inmediato.
+                                Herramientas como <a href="https://n8n.io" target="_blank" class="source-link">n8n</a> o
+                                Zapier automatizan esto por ti.</li>
                             <li><strong>Proceso de Ventas Documentado:</strong> Un libreto paso a paso de lo que ocurre
-                                en la videollamada de descubrimiento, eliminando la improvisación del vendedor.</li>
+                                en la videollamada de descubrimiento: preguntas de diagnóstico, presentación del caso,
+                                manejo de objeciones, cierre. Sin improvisación.</li>
                         </ul>
+
+                        <h4>Los 5 Touchpoints que cierran el negocio:</h4>
+                        <p>Un prospecto que dice "déjame pensarlo" no está diciendo que no. Está diciendo "convénceme
+                            más". Acá el flujo que funciona:</p>
+                        <div class="funnel">
+                            <div class="funnel-step">
+                                <div class="funnel-num">Día 0</div>
+                                <div class="funnel-arrow">→</div>
+                                <div class="funnel-label"><strong>Reunión de descubrimiento</strong> — Diagnóstico,
+                                    presentas tu propuesta de valor. No vendes, escuchas.</div>
+                            </div>
+                            <div class="funnel-step">
+                                <div class="funnel-num">Día 2</div>
+                                <div class="funnel-arrow">→</div>
+                                <div class="funnel-label"><strong>Email de resumen</strong> — Recapitulas los puntos
+                                    clave y envías la propuesta formal con precio y timeline.</div>
+                            </div>
+                            <div class="funnel-step">
+                                <div class="funnel-num">Día 5</div>
+                                <div class="funnel-arrow">→</div>
+                                <div class="funnel-label"><strong>Caso de estudio</strong> — Envías un caso real similar
+                                    al suyo. "Mira lo que logramos con [empresa parecida]."</div>
+                            </div>
+                            <div class="funnel-step">
+                                <div class="funnel-num">Día 10</div>
+                                <div class="funnel-arrow">→</div>
+                                <div class="funnel-label"><strong>Valor agregado</strong> — Un artículo, dato o recurso
+                                    relevante para SU negocio. No tu producto, su problema.</div>
+                            </div>
+                            <div class="funnel-step">
+                                <div class="funnel-num">Día 14</div>
+                                <div class="funnel-arrow">→</div>
+                                <div class="funnel-label"><strong>Cierre suave</strong> — "¿Tuviste tiempo de revisar la
+                                    propuesta? Si tienes dudas, agendemos 10 minutos."</div>
+                            </div>
+                        </div>
+                        <p>Todo esto se automatiza. El CRM te avisa a quién contactar, el sistema de emails envía los
+                            mensajes en los días correctos, y tú solo intervenes cuando el prospecto responde.
+                            <strong>Cero leads olvidados.</strong></p>
 
                         <div class="garantia">
                             <div class="garantia-icon">SISTEMA</div>
-                            <div class="garantia-text">Un buen sistema CRM con automatizaciones no sólo ahorra hhoras a
+                            <div class="garantia-text">Un buen sistema CRM con automatizaciones no sólo ahorra horas a
                                 la semana, sino que previene que <strong>literalmente millones de pesos</strong> se
-                                escapen entre las grietas de posibles clientes olvidados.</div>
+                                escapen entre las grietas de posibles clientes olvidados. Empresas con estrategias
+                                sólidas de nurturing generan un <span class="stat-inline">50% más leads</span> a un
+                                <span class="stat-inline">33% menos costo</span> (<a
+                                    href="https://www.reachmarketing.com/blog/b2b-lead-generation-statistics"
+                                    target="_blank" class="source-link">Reach Marketing</a>).</div>
                         </div>
                     </div>
                     <div class="step-tag">Cierre y Retención</div>
@@ -952,13 +1377,26 @@
         <p class="cta-sub">Dejar de depender del "boca a boca" no es un lujo, es una exigencia de supervivencia
             corporativa. Si diriges una empresa B2B y tienes un LTV superior a $1.000 USD, necesitamos hablar.</p>
 
-        <a href="/hablemos" class="cta-button">Hablemos sobre tu Sistema B2B</a>
+        <a href="/contacto" class="cta-button">Agenda tu diagnóstico gratuito →</a>
     </div>
 
     <footer>
         <div class="footer-logo">GrowthVideoLab</div>
         <div class="footer-text">© 2026. B2B Growth Partners.</div>
     </footer>
+
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <button class="popup-close" id="popupClose">✕</button>
+            <div class="popup-emoji">📊</div>
+            <div class="popup-title">¿Tu empresa depende<br>100% de referidos?</div>
+            <p class="popup-desc">En 15 minutos te muestro exactamente qué canales funcionan para tu rubro y cómo
+                sistematizar tu generación de leads. Sin compromiso.</p>
+            <a href="/contacto" class="popup-button">Agendar diagnóstico gratis →</a>
+            <button class="popup-dismiss" id="popupDismiss">No gracias, sigo leyendo</button>
+        </div>
+    </div>
 
     <script>
         // Simple intersection observer for fading animations
@@ -971,12 +1409,39 @@
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.diag-card, .step').forEach(el => {
+        document.querySelectorAll('.diag-card, .step, .mid-cta, .funnel-step').forEach(el => {
             el.style.opacity = 0;
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'all 0.6s ease';
             observer.observe(el);
         });
+
+        // Popup logic — shows after 10 seconds, only once per session
+        (function () {
+            const overlay = document.getElementById('popupOverlay');
+            const closeBtn = document.getElementById('popupClose');
+            const dismissBtn = document.getElementById('popupDismiss');
+            const POPUP_KEY = 'gvl_popup_shown';
+
+            function showPopup() {
+                if (sessionStorage.getItem(POPUP_KEY)) return;
+                overlay.classList.add('active');
+                sessionStorage.setItem(POPUP_KEY, '1');
+            }
+
+            function hidePopup() {
+                overlay.classList.remove('active');
+            }
+
+            // Show after 10 seconds
+            setTimeout(showPopup, 10000);
+
+            closeBtn.addEventListener('click', hidePopup);
+            dismissBtn.addEventListener('click', hidePopup);
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) hidePopup();
+            });
+        })();
     </script>
 </body>
 

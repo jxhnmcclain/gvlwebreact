@@ -30,6 +30,7 @@ import WebPortfolioLanding from './pages/WebPortfolioLanding';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import MarketingAdvisory from './pages/MarketingAdvisory';
+import LeadMagnetB2BPage from './pages/LeadMagnetB2BPage';
 
 // Private Pages
 import PrivateIndex from './pages/priv/PrivateIndex';
@@ -111,6 +112,7 @@ const AppContent = () => {
             <Route path="/servicios" element={<ServicesPage />} />
             <Route path="/cotizacion-web" element={<LeadFormPage />} />
             <Route path="/web-portfolio" element={<WebPortfolioLanding />} />
+            <Route path="/b2b-ebook-generacion-sistema" element={<LeadMagnetB2BPage />} />
             {/* <Route path="/ebooks-creadores" element={<EbooksLanding />} /> */}
 
             {/* Blog Routes */}
