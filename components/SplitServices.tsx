@@ -12,23 +12,23 @@ type ValuePropData = {
 const valuePropItems: ValuePropData[] = [
   {
     icon: <Zap size={32} className="text-gvl-orange" />,
-    title: "Entrega en 7 días",
-    description: "Sin reuniones de 2 horas ni propuestas de 40 páginas. Paquetes claros, timeline definido desde el día uno. Tu web lista antes de que tengas tiempo de arrepentirte.",
+    title: "Calidad de Producción",
+    description: "No hacemos videos del montón. Producimos piezas audiovisuales con dirección de arte, corrección de color y un storytelling que eleva el valor percibido de tu marca desde el primer segundo.",
   },
   {
     icon: <MapPin size={32} className="text-blue-500" />,
-    title: "Hecho para Chile",
-    description: "Entendemos cómo funciona el B2B local: cotizaciones por WhatsApp, clientes que te googlearán antes de llamarte, decisiones que se toman por confianza — no por diseños bonitos.",
+    title: "Impacto Local y Global",
+    description: "Operamos desde Santiago para el mundo. Entendemos el pulso cultural de tu audiencia y adaptamos cada pieza visual para que no solo se vea increíble, sino que conecte genuinamente.",
   },
   {
     icon: <Lock size={32} className="text-gvl-yellow" />,
-    title: "Tus activos, a tu nombre",
-    description: "El dominio, el hosting, los archivos: todo queda en tus manos. Nunca dependerás de nosotros para acceder a lo que es tuyo.",
+    title: "Identidades Sólidas",
+    description: "El branding no es solo un logo. Construimos universos visuales y sistemas de diseño escalables que protegen la coherencia de tu marca en cada punto de contacto.",
   },
   {
     icon: <Repeat size={32} className="text-emerald-400" />,
-    title: "Más que una web",
-    description: "Si quieres ir más lejos, armamos el sistema completo: web + automatización de outreach + seguimiento para que los leads no queden en el aire.",
+    title: "Ecosistema Digital 360",
+    description: "Unimos el video, la identidad visual y el desarrollo web bajo un mismo techo. El resultado es una experiencia digital fluida, donde cada activo trabaja en sinergia para retener y convertir.",
   },
 ];
 
@@ -59,10 +59,10 @@ const SplitServices = () => {
 
         {/* Header */}
         <div className="section-heading mb-16">
-          <span className="text-xs font-black uppercase tracking-[0.3em] text-gvl-yellow/70 block mb-4">Por qué elegirnos</span>
+          <span className="text-xs font-black uppercase tracking-[0.3em] text-gvl-yellow/70 block mb-4">El Estándar GVL</span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tighter max-w-2xl">
-            Por qué nuestros clientes{" "}
-            <span className="text-gvl-yellow">nos eligen como partners</span>
+            Lo que nos hace{" "}
+            <span className="text-gvl-yellow">diferentes al resto</span>
           </h2>
         </div>
 

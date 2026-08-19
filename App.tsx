@@ -48,8 +48,8 @@ gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
   useEffect(() => {
     setMetaTags({
-      title: 'Growth Video Lab | Producción de Video, Branding y Contenido Digital en Chile',
-      description: 'Agencia creativa especializada en producción de video, branding, diseño de marca y estrategia de contenido digital. Transformamos tu marca con contenido que conecta y convierte. Santiago, Chile.',
+      title: 'Growth Video Lab | Agencia Creativa de Contenido y Video Digital',
+      description: 'Agencia creativa en Santiago especializada en producción audiovisual, branding y diseño web de alto nivel. Contamos historias reales que posicionan tu marca y escalan ventas.',
       canonical: SITE_URL,
       ogType: 'website',
       ogUrl: SITE_URL,

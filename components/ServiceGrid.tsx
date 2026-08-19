@@ -64,36 +64,36 @@ const ServiceGrid = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <ServiceCard 
-            title="Contenido para Redes Sociales"
+            title="Producción de Video y Comerciales"
             description={
               <>
-                <p>Las redes sociales son mucho más que plataformas para compartir contenido: son el puente directo entre tu marca y tu público.</p>
-                <p>En GVL entendemos que cada red tiene su propia forma de trabajo, lenguaje y audiencia. Por eso, diseñamos estrategias personalizadas.</p>
+                <p>El video es el rey del contenido digital. Es la forma más rápida y emocional de contar quién eres y por qué haces lo que haces.</p>
+                <p>En GVL, no solo grabamos: conceptualizamos, dirigimos y producimos comerciales, corporativos y documentales de marca con calidad cinematográfica.</p>
               </>
             }
-            buttonText="Necesito gestión de redes"
+            buttonText="Ver Producciones"
           />
           
           <ServiceCard 
-            title="Sitios Web: El portal para tu marca"
+            title="Desarrollo Web & UI/UX"
             description={
               <>
-                <p>Un sitio web bonito no sirve de nada si nadie lo encuentra.</p>
-                <p>En GVL, fusionamos diseño que impacta con un SEO que funciona. Creamos tu centro de operaciones digital, un portal donde la personalidad de tu marca se encuentra con una experiencia de usuario (UX) intuitiva.</p>
+                <p>Un sitio web no debe ser un folleto digital aburrido, debe ser una experiencia interactiva que atrape a tus usuarios.</p>
+                <p>Fusionamos diseño premium, dirección de arte y tecnología moderna para crear portales rápidos, hermosos y, sobre todo, altamente convertidores.</p>
               </>
             }
-            buttonText="Necesito mi sitio web"
+            buttonText="Ver Sitios Web"
           />
 
           <ServiceCard 
-            title="Creación de Marca"
+            title="Estrategia y Branding"
             description={
               <>
-                <p>¿Qué te hace diferente? El branding es la respuesta. Es el ADN de tu negocio, tu voz y la primera impresión que dejas.</p>
-                <p>En GVL, vamos más allá del logo. Creamos estrategias de marca e identidades visuales que cuentan tu historia.</p>
+                <p>¿Qué te hace diferente? El branding es el ADN de tu negocio, tu voz y la primera impresión que dejas en un mar de ruido visual.</p>
+                <p>Diseñamos identidades de marca completas, manuales de estilo y direcciones creativas que cuentan tu historia antes de decir una palabra.</p>
               </>
             }
-            buttonText="Necesito crear mi marca"
+            buttonText="Ver Casos de Branding"
           />
         </div>
       </div>
