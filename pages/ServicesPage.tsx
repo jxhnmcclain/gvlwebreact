@@ -55,6 +55,12 @@ const ServicesPage = () => {
     const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
     useLayoutEffect(() => {
+        setMetaTags({
+            title: 'Servicios | Growth Video Lab | Agencia de Contenido Digital',
+            description: 'Producción de video comercial, dirección de arte, desarrollo web y branding. Ecosistemas digitales completos para marcas premium.',
+            canonical: `${SITE_URL}/servicios`,
+        });
+
         const ctx = gsap.context(() => {
             gsap.from(".form-anim", {
                 y: 50,
@@ -136,10 +142,6 @@ const ServicesPage = () => {
 
     const services = [
         {
-            title: "Redes Sociales & Community",
-            path: "/reels"
-        },
-        {
             title: "Producción Audiovisual",
             path: "/contenido"
         },
@@ -150,14 +152,18 @@ const ServicesPage = () => {
         {
             title: "Branding & Identidad",
             path: "/branding"
+        },
+        {
+            title: "Edición de Reels & TikToks",
+            path: "/reels"
         }
     ];
 
     // Set SEO meta tags
     React.useEffect(() => {
         setMetaTags({
-            title: 'Servicios de Marketing B2B y Webs para Empresas | Growth Video Lab',
-            description: 'Webs profesionales y sistemas de prospección para empresas B2B en Santiago. Ayudamos a empresas de servicios a conseguir más contratos con presencia digital.',
+            title: 'Servicios de Producción, Branding y Desarrollo Web | Growth Video Lab',
+            description: 'Diseñamos sistemas completos que combinan video de alta gama, dirección de arte, y desarrollo web premium. Creamos el motor de contenido de tu marca.',
             canonical: `${SITE_URL}/servicios`,
             ogType: 'website',
             ogUrl: `${SITE_URL}/servicios`,
@@ -176,12 +182,12 @@ const ServicesPage = () => {
                     <div className="lg:w-1/2 flex flex-col justify-center">
                         <div className="form-anim mb-8 md:mb-12">
                             <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-black uppercase tracking-tighter mb-6 leading-[0.9]">
-                                Servicios para <motion.span className="text-gvl-orange">
-                                    <TextSplit>empresas</TextSplit>
-                                </motion.span> en Santiago
+                                Ecosistema <motion.span className="text-gvl-orange">
+                                    <TextSplit>Digital 360</TextSplit>
+                                </motion.span>
                             </h1>
-                            <p className="text-xl text-gray-600 max-w-lg leading-relaxed">
-                                Webs profesionales, sistemas de prospección B2B y presencia digital para empresas de servicios que quieren conseguir más contratos.
+                            <p className="text-lg md:text-xl text-gray-700 font-medium max-w-lg leading-relaxed">
+                                No hacemos piezas aisladas ni videos vacíos. Diseñamos universos visuales y sistemas completos que combinan dirección de arte, video de alta gama y desarrollo web premium.
                             </p>
                         </div>
 
