@@ -71,11 +71,11 @@ const LeadMagnet = () => {
               </div>
 
               <h2 className="text-3xl md:text-5xl font-black mb-6 leading-tight tracking-tight text-black">
-                ¿Cuántos contratos estás perdiendo por tu presencia digital?
+                ¿Cuánto valor pierde tu marca por contenido promedio?
               </h2>
 
               <p className="text-gray-700 text-lg mb-8 font-medium">
-                Las 5 razones por las que empresas B2B en Santiago pierden contratos antes de la primera llamada — y cómo evitarlo.
+                Descubre los 5 errores visuales y de branding que hacen que las empresas premium pierdan autoridad — y cómo elevar tu marca hoy.
               </p>
 
               <form onSubmit={handleFormSubmit} className="space-y-4">

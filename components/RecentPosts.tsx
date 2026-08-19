@@ -16,10 +16,10 @@ const RecentPosts: React.FC = () => {
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                     <div>
                         <span className="text-gvl-orange font-bold tracking-wider uppercase mb-2 block">
-                            Nuetro Blog
+                            Nuestro Blog
                         </span>
                         <h2 className="text-4xl md:text-5xl font-black tracking-tight text-gvl-charcoal">
-                            Últimas Novedades
+                            Insights & Estrategia
                         </h2>
                     </div>
 
