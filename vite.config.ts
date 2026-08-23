@@ -1,8 +1,15 @@
 import path from 'path';
+import fs from 'fs';
+import os from 'os';
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import prerender from '@prerenderer/rollup-plugin';
 import puppeteerRenderer from '@prerenderer/renderer-puppeteer';
+
+const blogRoutes = fs
+  .readdirSync(path.resolve(__dirname, 'content/blog'))
+  .filter((file) => file.endsWith('.md'))
+  .map((file) => `/blog/${file.replace(/\.md$/, '')}`);
 
 // Routes to pre-render for SEO
 const routes = [
@@ -16,13 +23,10 @@ const routes = [
   '/branding',
   '/cotizacion-web',
   '/web-portfolio',
+  '/b2b-ebook-generacion-sistema',
   // '/ebooks-creadores',
   '/blog',
-  '/blog/2026-01-30-content-creation-tips',
-  '/blog/2026-01-28-website-conversion',
-  '/blog/2026-01-25-social-media-strategy',
-  '/blog/2026-01-20-branding-mistakes',
-  '/blog/2026-01-15-video-marketing-trends',
+  ...blogRoutes,
 ];
 
 export default defineConfig(({ mode }) => {
@@ -47,6 +51,9 @@ export default defineConfig(({ mode }) => {
           renderAfterTime: 2000, // Wait for animations
           maxConcurrentRoutes: 1,
           headless: true,
+          launchOptions: {
+            userDataDir: path.join(os.tmpdir(), `gvl-prerender-${process.pid}`),
+          },
           args: ['--no-sandbox', '--disable-setuid-sandbox'],
         }),
         postProcess(renderedRoute) {
@@ -58,6 +65,18 @@ export default defineConfig(({ mode }) => {
         },
       }),
     ],
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            react: ['react', 'react-dom', 'react-router-dom'],
+            motion: ['framer-motion', 'gsap'],
+            markdown: ['react-markdown', 'remark-gfm', 'rehype-slug'],
+            pdf: ['@react-pdf/renderer'],
+          },
+        },
+      },
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

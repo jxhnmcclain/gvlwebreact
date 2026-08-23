@@ -8,6 +8,7 @@ export interface SEOMetadata {
     title: string;
     description: string;
     canonical?: string;
+    robots?: string;
     ogType?: 'website' | 'article';
     ogImage?: string;
     ogUrl?: string;
@@ -117,6 +118,9 @@ export function setMetaTags(metadata: SEOMetadata) {
     // Description
     setMetaTag('description', metadata.description);
 
+    // Robots
+    setMetaTag('robots', metadata.robots || 'index, follow');
+
     // Canonical
     if (metadata.canonical) {
         setLinkTag('canonical', metadata.canonical);
@@ -124,7 +128,7 @@ export function setMetaTags(metadata: SEOMetadata) {
 
     // Open Graph
     setMetaTag('og:title', metadata.title, 'property');
-    setMetaTag('name', metadata.title);
+    setMetaTag('title', metadata.title);
     setMetaTag('og:description', metadata.description, 'property');
     setMetaTag('og:type', metadata.ogType || 'website', 'property');
 

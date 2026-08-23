@@ -54,15 +54,19 @@ const SplitServices = () => {
   }, []);
 
   return (
-    <section ref={container} className="bg-zinc-950 py-24 px-4 md:px-12 border-t border-white/5">
+    <section ref={container} className="bg-zinc-950 py-24 px-4 md:px-12 border-t border-white/10 relative overflow-hidden">
+      <div className="ascii-field text-white/60" aria-hidden="true">{`000 / quiet proof
+111 / market signal
+010 / systems
+101 / selective growth`}</div>
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
         <div className="section-heading mb-16">
-          <span className="text-xs font-black uppercase tracking-[0.3em] text-gvl-yellow/70 block mb-4">Por qué elegirnos</span>
+          <span className="text-xs font-black uppercase tracking-[0.3em] text-gvl-yellow/70 block mb-4">Modo de trabajo</span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tighter max-w-2xl">
-            Por qué nuestros clientes{" "}
-            <span className="text-gvl-yellow">nos eligen como partners</span>
+            Menos ruido. Mas estructura.
+            <span className="text-gvl-yellow"> Una agencia pequena por diseno.</span>
           </h2>
         </div>
 
@@ -71,7 +75,7 @@ const SplitServices = () => {
           {valuePropItems.map((item, idx) => (
             <div
               key={idx}
-              className="value-card group bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-8 md:p-10 hover:bg-white/[0.08] hover:border-gvl-yellow/30 transition-all duration-300 cursor-default"
+              className="value-card group bg-white/5 border border-white/10 rounded-none p-8 md:p-10 hover:bg-white/[0.08] hover:border-gvl-yellow/30 transition-all duration-300 cursor-default"
             >
               <div className="text-4xl mb-5">{item.icon}</div>
               <h3 className="text-xl md:text-2xl font-black text-white mb-3 group-hover:text-gvl-yellow transition-colors">

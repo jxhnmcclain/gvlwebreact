@@ -29,7 +29,7 @@ export interface BlogMetadata {
 }
 
 // Blog post imports - we'll import all markdown files statically
-const blogPosts = import.meta.glob('/content/blog/*.md', { as: 'raw', eager: true });
+const blogPosts = import.meta.glob('/content/blog/*.md', { query: '?raw', import: 'default', eager: true });
 
 /**
  * Parse frontmatter and content from markdown string
