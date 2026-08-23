@@ -39,7 +39,7 @@ const Blog: React.FC = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gvl-cream">
+        <div className="min-h-screen bg-[#050505] text-white">
             {/* Hero Section with Featured Post */}
             {/* Header Section */}
             <BlogHero />
@@ -67,10 +67,10 @@ const Blog: React.FC = () => {
                     </div>
                 ) : (
                     /* No Results */
-                    <div className="text-center py-20">
-                        <div className="inline-flex items-center justify-center w-20 h-20 bg-gray-100 rounded-full mb-6">
+                    <div className="text-center py-20 border border-white/10 bg-zinc-950">
+                        <div className="inline-flex items-center justify-center w-20 h-20 border border-white/10 mb-6">
                             <svg
-                                className="w-10 h-10 text-gray-400"
+                                className="w-10 h-10 text-white/30"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -83,10 +83,10 @@ const Blog: React.FC = () => {
                                 />
                             </svg>
                         </div>
-                        <h3 className="text-2xl font-bold text-gvl-charcoal mb-3">
+                        <h3 className="text-2xl font-bold text-white mb-3">
                             No encontramos resultados
                         </h3>
-                        <p className="text-gray-600 mb-6">
+                        <p className="text-white/45 mb-6">
                             Intenta con otros términos de búsqueda o categorías
                         </p>
                         <button
@@ -94,7 +94,7 @@ const Blog: React.FC = () => {
                                 setSearchQuery('');
                                 setSelectedCategory('all');
                             }}
-                            className="px-6 py-3 bg-gvl-orange text-white font-semibold rounded-lg hover:bg-gvl-orange/90 transition-colors duration-200"
+                            className="px-6 py-3 border border-white/20 text-white/70 font-mono text-xs uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-colors duration-200"
                         >
                             Limpiar Filtros
                         </button>
@@ -103,20 +103,19 @@ const Blog: React.FC = () => {
             </div>
 
             {/* CTA Section */}
-            <section className="bg-gradient-to-r from-gvl-orange to-gvl-pink py-16 px-6">
+            <section className="bg-black py-16 px-6 border-t border-white/10">
                 <div className="max-w-4xl mx-auto text-center text-white">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                        ¿Listo para Hacer Crecer Tu Negocio?
+                    <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight">
+                        Si una nota abre una puerta.
                     </h2>
-                    <p className="text-xl mb-8 opacity-90">
-                        Aplicamos estas estrategias para nuestros clientes todos los días. Hablemos de cómo
-                        podemos ayudarte.
+                    <p className="text-lg mb-8 text-white/45">
+                        escribenos.
                     </p>
                     <a
                         href="/contacto"
-                        className="inline-block px-8 py-4 bg-white text-gvl-orange font-bold rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                        className="inline-block px-8 py-4 border border-white/20 text-white/70 font-mono text-xs uppercase tracking-[0.22em] hover:bg-white hover:text-black transition-colors"
                     >
-                        Agenda una Consultoría Gratuita
+                        abrir conversacion
                     </a>
                 </div>
             </section>

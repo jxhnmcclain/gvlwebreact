@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { Zap, MapPin, Lock, Repeat } from 'lucide-react';
+import { Lock, Repeat, ScanLine, Waypoints } from 'lucide-react';
 
 type ValuePropData = {
   icon: React.ReactNode;
@@ -11,24 +11,24 @@ type ValuePropData = {
 
 const valuePropItems: ValuePropData[] = [
   {
-    icon: <Zap size={32} className="text-gvl-orange" />,
-    title: "Entrega en 7 días",
-    description: "Sin reuniones de 2 horas ni propuestas de 40 páginas. Paquetes claros, timeline definido desde el día uno. Tu web lista antes de que tengas tiempo de arrepentirte.",
+    icon: <ScanLine size={28} className="text-white/50" />,
+    title: "Diagnóstico sin show",
+    description: "Primero miramos dónde se rompe la confianza: oferta, web, seguimiento o presencia.",
   },
   {
-    icon: <MapPin size={32} className="text-blue-500" />,
-    title: "Hecho para Chile",
-    description: "Entendemos cómo funciona el B2B local: cotizaciones por WhatsApp, clientes que te googlearán antes de llamarte, decisiones que se toman por confianza — no por diseños bonitos.",
+    icon: <Waypoints size={28} className="text-white/50" />,
+    title: "Una ruta, no un paquete",
+    description: "Web, marca, contenido o sistema. Se arma lo que falta, no lo que queda bonito en una lista.",
   },
   {
-    icon: <Lock size={32} className="text-gvl-yellow" />,
-    title: "Tus activos, a tu nombre",
-    description: "El dominio, el hosting, los archivos: todo queda en tus manos. Nunca dependerás de nosotros para acceder a lo que es tuyo.",
+    icon: <Lock size={28} className="text-white/50" />,
+    title: "Activos bajo control",
+    description: "Dominio, hosting, accesos y archivos quedan ordenados. Sin cajas negras innecesarias.",
   },
   {
-    icon: <Repeat size={32} className="text-emerald-400" />,
-    title: "Más que una web",
-    description: "Si quieres ir más lejos, armamos el sistema completo: web + automatización de outreach + seguimiento para que los leads no queden en el aire.",
+    icon: <Repeat size={28} className="text-white/50" />,
+    title: "Seguimiento después del clic",
+    description: "La página no termina en contacto. Puede seguir con CRM, email, UTM y automatización.",
   },
 ];
 
@@ -63,10 +63,10 @@ const SplitServices = () => {
 
         {/* Header */}
         <div className="section-heading mb-16">
-          <span className="text-xs font-black uppercase tracking-[0.3em] text-gvl-yellow/70 block mb-4">Modo de trabajo</span>
+          <span className="text-xs font-black uppercase tracking-[0.3em] text-white/35 block mb-4">Modo de trabajo</span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tighter max-w-2xl">
             Menos ruido. Mas estructura.
-            <span className="text-gvl-yellow"> Una agencia pequena por diseno.</span>
+            <span className="text-white/35"> Una agencia pequena por diseno.</span>
           </h2>
         </div>
 
@@ -75,10 +75,10 @@ const SplitServices = () => {
           {valuePropItems.map((item, idx) => (
             <div
               key={idx}
-              className="value-card group bg-white/5 border border-white/10 rounded-none p-8 md:p-10 hover:bg-white/[0.08] hover:border-gvl-yellow/30 transition-all duration-300 cursor-default"
+              className="value-card group bg-white/[0.025] border border-white/10 rounded-none p-8 md:p-10 hover:bg-white/[0.06] hover:border-white/25 transition-all duration-300 cursor-default"
             >
               <div className="text-4xl mb-5">{item.icon}</div>
-              <h3 className="text-xl md:text-2xl font-black text-white mb-3 group-hover:text-gvl-yellow transition-colors">
+              <h3 className="text-xl md:text-2xl font-black text-white mb-3 transition-colors">
                 {item.title}
               </h3>
               <p className="text-gray-400 leading-relaxed text-base md:text-lg">

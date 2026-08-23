@@ -1,32 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BlogPost, formatDate } from '../lib/blogUtils';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
 
 const BlogHero = () => {
     return (
-        <section className="bg-white pt-32 pb-12 px-6 md:px-12">
-            <div className="max-w-7xl mx-auto">
-                {/* Breadcrumbs */}
-                <div className="flex items-center gap-2 text-sm mb-8 font-medium">
-                    <Link to="/" className="text-gvl-orange hover:text-black transition-colors">Home</Link>
-                    <span className="text-gray-300">{' > '}</span>
-                    <span className="text-gvl-orange">Blog de Growth Video Lab</span>
+        <section className="relative bg-[#050505] text-white pt-32 pb-16 px-6 md:px-12 overflow-hidden border-b border-white/10">
+            <div className="ascii-field text-white/50" aria-hidden="true">{`BLOG://FIELD
+notes / systems / quiet findings
+001101 010010 000111
+do not publish noise`}</div>
+            <div className="max-w-7xl mx-auto relative z-10">
+                <div className="flex items-center gap-2 text-xs mb-10 font-mono uppercase tracking-[0.24em]">
+                    <Link to="/" className="text-white/45 hover:text-gvl-yellow transition-colors">Home</Link>
+                    <span className="text-white/20">/</span>
+                    <span className="text-gvl-yellow/70">Archivo</span>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    {/* Title */}
                     <div>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-black">
-                            Blog de Marketing: <br />
-                            <span className="text-black">Estrategia, Video & IA</span>
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9]">
+                            Notas desde el cuarto negro.
                         </h1>
                     </div>
 
-                    {/* Description */}
                     <div>
-                        <p className="text-lg text-gray-600 leading-relaxed font-medium max-w-xl ml-auto">
-                            Exploramos, analizamos y compartimos las últimas tendencias y novedades del marketing digital y la producción de video. Donde la creatividad se encuentra con la estrategia de datos.
+                        <p className="text-lg md:text-xl text-white/55 leading-relaxed font-medium max-w-xl ml-auto">
+                            Web, prospeccion, SEO, contenido. Pocas certezas. Buenas pistas.
                         </p>
                     </div>
                 </div>

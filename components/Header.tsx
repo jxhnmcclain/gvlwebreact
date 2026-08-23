@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUpRight, Menu, X, ChevronDown } from 'lucide-react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Logo from './Logo';
@@ -8,11 +8,26 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
+  const [isHeroVisible, setIsHeroVisible] = useState(location.pathname === '/');
 
   // Close menu when route changes
   useEffect(() => {
     setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setIsHeroVisible(false);
+      return;
+    }
+
+    const onScroll = () => {
+      setIsHeroVisible(window.scrollY < window.innerHeight * 0.72);
+    };
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, [location.pathname]);
 
   // Lock scroll when menu is open
@@ -35,16 +50,11 @@ const Header = () => {
     { name: 'Blog', path: '/blog' },
   ];
 
-  const resourceLinks = [
-    { name: 'Webs UGC', path: '/web-portfolio' },
-    // { name: 'Ebooks para creadores', path: '/ebooks-creadores' },
-  ];
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-[50]">
+    <header className={`fixed top-0 left-0 right-0 z-[50] transition-all duration-500 ${isHeroVisible && !isMenuOpen ? '-translate-y-full opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}>
       <div className="w-full bg-black/88 text-white backdrop-blur-sm border-b border-white/10 py-3 px-6 md:px-12 flex justify-between items-center relative z-[110]">
         <Link to="/" className="hover:opacity-90 transition-opacity">
-          <Logo />
+          <Logo textColor="text-white" />
         </Link>
 
         {/* Desktop Navigation */}
@@ -63,29 +73,6 @@ const Header = () => {
               {link.name}
             </Link>
           ))}
-
-          <div className="relative group">
-            <button className="flex items-center gap-1 text-sm font-bold tracking-tight hover:text-gvl-yellow transition-colors focus:outline-none">
-              Recursos
-              <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-200" />
-            </button>
-
-            {/* Dropdown Menu */}
-            <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-56 hidden group-hover:block">
-              <div className="bg-black border border-white/30 rounded-none shadow-[4px_4px_0px_0px_rgba(255,255,255,0.16)] overflow-hidden flex flex-col">
-                {resourceLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className="px-5 py-3 text-sm font-bold hover:bg-white hover:text-black transition-colors border-b border-white/10 last:border-0 flex items-center justify-between group/item"
-                  >
-                    {link.name}
-                    <ArrowUpRight size={14} className="opacity-0 group-hover/item:opacity-100 transition-opacity" />
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
 
           <button
             onClick={goToContact}
@@ -127,36 +114,6 @@ const Header = () => {
                 </Link>
               ))}
 
-              <div className="flex flex-col gap-4">
-                <button
-                  onClick={() => setIsResourcesOpen(!isResourcesOpen)}
-                  className="text-4xl font-black tracking-tighter flex items-center justify-between w-full"
-                >
-                  Recursos
-                  <ChevronDown className={`transition-transform duration-300 ${isResourcesOpen ? 'rotate-180' : ''}`} size={32} />
-                </button>
-
-                <AnimatePresence>
-                  {isResourcesOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden flex flex-col gap-3 pl-4"
-                    >
-                      {resourceLinks.map((link) => (
-                        <Link
-                          key={link.path}
-                          to={link.path}
-                          className="text-2xl font-bold tracking-tight hover:opacity-70"
-                        >
-                          {link.name}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
             </div>
 
             <div className="mt-auto flex flex-col gap-4">
