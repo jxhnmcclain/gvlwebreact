@@ -6,7 +6,7 @@ description: "El 'boca a boca' es excelente, pero no es predecible. Descubre có
 excerpt: "Depender 100% de las recomendaciones para vender servicios B2B asfixia el crecimiento de tu empresa."
 category: "Estrategia Digital"
 tags: ["b2b", "prospeccion", "n8n", "automatizacion", "ventas"]
-image: "/blog/og-blog.jpg"
+image: "/og-blog.jpg"
 readTime: 7
 ---
 

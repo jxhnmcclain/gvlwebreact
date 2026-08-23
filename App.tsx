@@ -14,7 +14,8 @@ import Footer from './components/Footer';
 import Preloader from './components/Preloader';
 import InfiniteMovingCardsDemo from './components/InfiniteMovingCardsDemo';
 import HomeFaq from './components/HomeFaq';
-import { setMetaTags, SITE_URL } from './lib/seo';
+import { setMetaTags } from './lib/seo';
+import { getRouteSeo } from './lib/routeSeo';
 
 // Import New Pages
 import ContentPage from './pages/ContentPage';
@@ -46,17 +47,6 @@ import Presentation from './pages/Presentation';
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
-  useEffect(() => {
-    setMetaTags({
-      title: 'Growth Video Lab | Producción de Video, Branding y Contenido Digital en Chile',
-      description: 'Agencia creativa especializada en producción de video, branding, diseño de marca y estrategia de contenido digital. Transformamos tu marca con contenido que conecta y convierte. Santiago, Chile.',
-      canonical: SITE_URL,
-      ogType: 'website',
-      ogUrl: SITE_URL,
-      ogImage: '/og-image.jpg',
-    });
-  }, []);
-
   return (
     <>
       <Hero />
@@ -94,6 +84,24 @@ const AppContent = () => {
   // Check if we are on the standalone lead form page or 404 page
   // We want to hide header/footer on these specific pages
   const isLeadPage = location.pathname === '/cotizacion-web';
+
+  useEffect(() => {
+    const routeSeo = getRouteSeo(location.pathname);
+    if (routeSeo) {
+      setMetaTags(routeSeo);
+      return;
+    }
+
+    if (!location.pathname.startsWith('/blog/')) {
+      setMetaTags({
+        title: 'Pagina no encontrada | Growth Video Lab',
+        description: 'La pagina que buscas no existe o fue movida.',
+        canonical: `${window.location.origin}${location.pathname}`,
+        robots: 'noindex, follow',
+        ogType: 'website',
+      });
+    }
+  }, [location.pathname]);
 
   return (
     <>

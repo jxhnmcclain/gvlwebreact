@@ -6,7 +6,7 @@ description: "Descubre los errores críticos que cometen las empresas de servici
 excerpt: "Tu web no debería ser tu 'tarjeta de visita'. Debería ser tu mejor vendedor."
 category: "Estrategia Digital"
 tags: ["b2b", "ventas", "web", "chile", "prospeccion"]
-image: "/blog/og-blog.jpg"
+image: "/og-blog.jpg"
 readTime: 6
 ---
 

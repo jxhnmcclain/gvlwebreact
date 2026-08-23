@@ -6,7 +6,7 @@ description: "Paso a paso para que las empresas de servicios B2B en Santiago dom
 excerpt: "Por qué tu empresa de servicios necesita estar en el mapa (literalmente) y cómo lograrlo en menos de 48 horas."
 category: "Estrategia Digital"
 tags: ["seo", "b2b", "santiago", "google maps", "servicios"]
-image: "/blog/og-blog.jpg"
+image: "/og-blog.jpg"
 readTime: 5
 ---
 
