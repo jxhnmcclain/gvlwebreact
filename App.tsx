@@ -12,7 +12,6 @@ import LeadMagnet from './components/LeadMagnet';
 import RecentPosts from './components/RecentPosts';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
-import InfiniteMovingCardsDemo from './components/InfiniteMovingCardsDemo';
 import HomeFaq from './components/HomeFaq';
 import { setMetaTags } from './lib/seo';
 import { getRouteSeo } from './lib/routeSeo';
@@ -51,7 +50,6 @@ const Home = () => {
     <>
       <Hero />
       <SplitServices />
-      <InfiniteMovingCardsDemo />
       <HomeFaq />
       <CtaBanner />
       <LeadMagnet />

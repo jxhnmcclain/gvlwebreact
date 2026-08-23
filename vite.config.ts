@@ -31,6 +31,8 @@ const routes = [
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
+  const shouldPrerender = mode !== 'vercel';
+
   return {
     server: {
       port: 1234,
@@ -45,7 +47,7 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       react(),
-      prerender({
+      ...(shouldPrerender ? [prerender({
         routes,
         renderer: new puppeteerRenderer({
           renderAfterTime: 2000, // Wait for animations
@@ -63,7 +65,7 @@ export default defineConfig(({ mode }) => {
             'id="root" data-prerendered="true"'
           );
         },
-      }),
+      })] : []),
     ],
     build: {
       rollupOptions: {
