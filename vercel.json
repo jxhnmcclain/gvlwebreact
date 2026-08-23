@@ -1,0 +1,15 @@
+{
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/api/n8n/:path*",
+      "destination": "https://n8n.jxhnmcclain.com/webhook/:path*"
+    },
+    {
+      "source": "/((?!assets/|favicon/|blog/.*\\.(?:jpg|jpeg|png|gif|webp|svg)$|.*\\.(?:js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|otf|webp|webm)$).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
