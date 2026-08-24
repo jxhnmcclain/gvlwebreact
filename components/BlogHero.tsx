@@ -18,13 +18,13 @@ do not publish noise`}</div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9]">
-                            Notas desde el cuarto negro.
+                            Notas de growth.
                         </h1>
                     </div>
 
                     <div>
                         <p className="text-lg md:text-xl text-white/55 leading-relaxed font-medium max-w-xl ml-auto">
-                            Web, prospeccion, SEO, contenido. Pocas certezas. Buenas pistas.
+                            Ideas, pruebas y aprendizajes sobre marketing, sin relleno.
                         </p>
                     </div>
                 </div>

@@ -26,10 +26,10 @@ const ServicesPage = () => {
   return (
     <>
       <AgencyLabPage
-        eyebrow="services / private index"
-        title="No vendemos ruido. Instalamos senal."
-        subtitle="Cuatro habitaciones. Una misma sombra."
-        ctaLabel="abrir conversacion"
+        eyebrow="growth marketing / santiago, chile"
+        title="Cuatro disciplinas. Un mismo objetivo: crecer."
+        subtitle="Trabajamos como equipo extendido, integrado a tu operación."
+        ctaLabel="hablemos"
         onCta={goToContact}
         ascii={`SERVICES://INDEX
 web      █████░░
@@ -38,38 +38,38 @@ brand    ██████░
 systems  ██░░░░░
 select / build / connect`}
         proof={[
-          { label: 'web', value: 'landing rooms' },
-          { label: 'marca', value: 'signos secos' },
-          { label: 'contenido', value: 'prueba visual' },
-          { label: 'sistema', value: 'follow-up oculto' },
+          { label: '01 / paid', value: 'Meta y Google' },
+          { label: '02 / contenido', value: 'producción constante' },
+          { label: '03 / CRO', value: 'conversión medida' },
+          { label: '04 / marca', value: 'sistema de identidad' },
         ]}
         offerings={[
           {
-            eyebrow: '01 / websites',
-            title: 'Puertas negras para ofertas claras.',
-            body: 'Sitios, landings, formularios, SEO base.',
+            eyebrow: '01 / paid',
+            title: 'Adquisición de clientes en Meta y Google.',
+            body: 'Optimización semana a semana, basada en datos reales.',
           },
           {
-            eyebrow: '02 / branding',
-            title: 'Identidad con menos sonrisa.',
-            body: 'Nombre, marca, tono, piezas.',
+            eyebrow: '02 / contenido',
+            title: 'Piezas para redes y campañas.',
+            body: 'Producción constante para probar, medir y ajustar.',
           },
           {
-            eyebrow: '03 / content',
-            title: 'Imagenes como evidencia.',
-            body: 'Video, stills, VSL, ads.',
+            eyebrow: '03 / CRO',
+            title: 'Cada paso entre el clic y la conversión.',
+            body: 'Auditoría y optimización del embudo completo.',
           },
           {
-            eyebrow: '04 / systems',
-            title: 'La senal no se pierde.',
-            body: 'UTM, n8n, CRM, email.',
+            eyebrow: '04 / marca',
+            title: 'Identidad lista para cualquier canal.',
+            body: 'Sistema visual y verbal para que la marca opere con consistencia.',
           },
         ]}
         process={[
-          'Elegir la habitacion.',
-          'Reducir el mensaje.',
-          'Construir el artefacto.',
-          'Conectar la salida.',
+          'Definir el objetivo de crecimiento.',
+          'Elegir las disciplinas necesarias.',
+          'Probar, medir e iterar.',
+          'Escalar lo que funciona.',
         ]}
       />
       <CtaBanner />
