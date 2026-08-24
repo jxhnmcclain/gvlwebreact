@@ -106,10 +106,10 @@ const WebPortfolioLanding = () => {
                 {/* Left Content */}
                 <div className="hero-content-left flex-1 text-center md:text-left z-10">
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-6">
-                        Tu marca merece más que un link en bio
+                        Un link en bio no alcanza para mostrar tu trabajo
                     </h1>
                     <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-xl font-medium">
-                        Web portafolio + branding + automatización. Todo para que tu audiencia te encuentre donde realmente importa.
+                        Una web portafolio, una identidad clara y respuestas automáticas para que potenciales clientes puedan encontrarte y contactarte.
                     </p>
                     <button
                         onClick={scrollToPackages}

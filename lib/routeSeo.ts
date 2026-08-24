@@ -96,6 +96,15 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
     ogImage: '/og-blog.jpg',
   },
   {
+    path: '/portafolio',
+    title: 'Portafolio | Growth Video Lab',
+    description: 'Casos seleccionados de web, marca, contenido y sistemas construidos por Growth Video Lab.',
+    canonical: `${SITE_URL}/portafolio`,
+    ogType: 'website',
+    ogUrl: `${SITE_URL}/portafolio`,
+    ogImage: '/og-image.jpg',
+  },
+  {
     path: '/asesoria',
     title: 'Asesoria de marketing y sistemas B2B | Growth Video Lab',
     description: 'Asesoria directa para ordenar tu presencia digital, detectar bloqueos comerciales y construir un sistema de crecimiento mas claro.',

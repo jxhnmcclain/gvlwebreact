@@ -10,11 +10,11 @@ type FAQItem = {
 const FAQData: FAQItem[] = [
     {
         question: "¿Cuánto cuesta una web B2B?",
-        answer: "Depende de lo que necesitas, pero una landing page de presentación parte desde $390.000 CLP. Un sitio corporativo completo va desde $800.000. Si necesitas integrar automatizaciones o sistemas de outreach, lo cotizamos aparte. Sin letra chica."
+            answer: "Una landing page de presentación parte desde $390.000 CLP. Un sitio corporativo completo va desde $800.000. Si necesitas automatizaciones o un sistema de outreach, lo cotizamos aparte."
     },
     {
         question: "¿Cuánto tiempo toma el proyecto?",
-        answer: "Una landing page toma entre 5 y 7 días hábiles desde que apruebas el brief. Un sitio corporativo completo, entre 2 y 3 semanas. Definimos fechas concretas al inicio — no te quedo 'casi listo' para siempre."
+            answer: "Una landing page toma entre 5 y 7 días hábiles desde que apruebas el brief. Un sitio corporativo completo, entre 2 y 3 semanas. Definimos las fechas al inicio y las revisamos durante el proyecto."
     },
     {
         question: "¿Qué pasa si necesito cambios después de entregado?",
@@ -30,7 +30,7 @@ const FAQData: FAQItem[] = [
     },
     {
         question: "¿En qué se diferencia GVL de contratar un freelancer suelto?",
-        answer: "Que yo entrego sistemas, no solo archivos. Un freelancer te entrega la web. Yo te entrego la web + configuración de Google Search Console + meta tags + formulario conectado a tu correo + manual de uso básico. Y si necesitas más, ya sé cómo funciona todo tu stack."
+            answer: "Entrego la web con lo necesario para usarla: configuración de Google Search Console, meta tags, formulario conectado a tu correo y un manual básico. Si después necesitas más, ya conocemos tu stack."
     }
 ];
 

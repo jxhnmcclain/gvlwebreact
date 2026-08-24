@@ -4,9 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "content:sync": "node scripts/sync-content.mjs",
+    "supabase:production-bootstrap": "node scripts/build-production-bootstrap.mjs",
+    "predev": "npm run content:sync",
     "dev": "vite",
+    "prebuild": "npm run content:sync",
     "build": "vite build",
+    "prebuild:vercel": "npm run content:sync",
     "build:vercel": "vite build --mode vercel",
+    "prebuild:prerender": "npm run content:sync",
     "build:prerender": "vite build",
     "preview": "vite preview"
   },

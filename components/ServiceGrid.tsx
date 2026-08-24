@@ -59,41 +59,41 @@ const ServiceGrid = () => {
     <section ref={container} className="bg-gvl-cream py-16 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <h2 className="service-heading text-3xl md:text-5xl font-black text-center mb-12 tracking-tight">
-          Todo lo que necesitas crear para tu marca
+          Lo que tu marca necesita para vender
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <ServiceCard 
-            title="Contenido para Redes Sociales"
+            title="Contenido que tiene un trabajo"
             description={
               <>
-                <p>Las redes sociales son mucho más que plataformas para compartir contenido: son el puente directo entre tu marca y tu público.</p>
-                <p>En GVL entendemos que cada red tiene su propia forma de trabajo, lenguaje y audiencia. Por eso, diseñamos estrategias personalizadas.</p>
+                <p>No publicamos por cumplir el calendario. Definimos qué necesita decir la marca y lo convertimos en piezas que se pueden probar.</p>
+                <p>Cada canal tiene su propio lenguaje. Adaptamos el formato, el ritmo y el mensaje según la audiencia y el objetivo.</p>
               </>
             }
-            buttonText="Necesito gestión de redes"
+            buttonText="Quiero ordenar mi contenido"
           />
           
           <ServiceCard 
-            title="Sitios Web: El portal para tu marca"
+            title="Una web que haga su parte"
             description={
               <>
-                <p>Un sitio web bonito no sirve de nada si nadie lo encuentra.</p>
-                <p>En GVL, fusionamos diseño que impacta con un SEO que funciona. Creamos tu centro de operaciones digital, un portal donde la personalidad de tu marca se encuentra con una experiencia de usuario (UX) intuitiva.</p>
+                <p>Una web bonita que nadie encuentra o entiende no ayuda a vender.</p>
+                <p>Diseñamos el sitio, trabajamos el SEO básico y dejamos conectados los puntos que importan: mensaje, navegación, formulario y medición.</p>
               </>
             }
-            buttonText="Necesito mi sitio web"
+            buttonText="Quiero mejorar mi web"
           />
 
           <ServiceCard 
-            title="Creación de Marca"
+            title="Una marca que se reconoce"
             description={
               <>
-                <p>¿Qué te hace diferente? El branding es la respuesta. Es el ADN de tu negocio, tu voz y la primera impresión que dejas.</p>
-                <p>En GVL, vamos más allá del logo. Creamos estrategias de marca e identidades visuales que cuentan tu historia.</p>
+                <p>Si tu marca se parece a todas, el precio termina siendo la conversación.</p>
+                <p>Definimos una posición clara y la traducimos en una identidad que puedas usar en tu web, tus propuestas y tus campañas.</p>
               </>
             }
-            buttonText="Necesito crear mi marca"
+            buttonText="Quiero ordenar mi marca"
           />
         </div>
       </div>

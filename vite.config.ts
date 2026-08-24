@@ -6,10 +6,11 @@ import react from '@vitejs/plugin-react';
 import prerender from '@prerenderer/rollup-plugin';
 import puppeteerRenderer from '@prerenderer/renderer-puppeteer';
 
-const blogRoutes = fs
-  .readdirSync(path.resolve(__dirname, 'content/blog'))
-  .filter((file) => file.endsWith('.md'))
-  .map((file) => `/blog/${file.replace(/\.md$/, '')}`);
+const contentSnapshot = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, 'content/generated-content.json'), 'utf8'),
+);
+const blogRoutes = contentSnapshot.posts.map((post: { slug: string }) => `/blog/${post.slug}`);
+const portfolioRoutes = contentSnapshot.portfolio.map((project: { slug: string }) => `/portafolio/${project.slug}`);
 
 // Routes to pre-render for SEO
 const routes = [
@@ -27,11 +28,13 @@ const routes = [
   // '/ebooks-creadores',
   '/blog',
   ...blogRoutes,
+  ...(contentSnapshot.portfolio.length >= 3 ? ['/portafolio'] : []),
+  ...portfolioRoutes,
 ];
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
-  const shouldPrerender = mode !== 'vercel';
+  const shouldPrerender = mode !== 'development';
 
   return {
     server: {
@@ -50,7 +53,12 @@ export default defineConfig(({ mode }) => {
       ...(shouldPrerender ? [prerender({
         routes,
         renderer: new puppeteerRenderer({
-          renderAfterTime: 2000, // Wait for animations
+          renderAfterDocumentEvent: 'gvl-content-ready',
+          timeout: 60000,
+          navigationOptions: {
+            timeout: 60000,
+          },
+          skipThirdPartyRequests: true,
           maxConcurrentRoutes: 1,
           headless: true,
           launchOptions: {

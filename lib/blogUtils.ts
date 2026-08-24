@@ -1,4 +1,6 @@
-// Blog post metadata and content types
+import contentSnapshot from '../content/generated-content.json';
+
+// Build-time content types. The browser never talks directly to Supabase.
 export interface BlogPost {
     slug: string;
     title: string;
@@ -28,90 +30,13 @@ export interface BlogMetadata {
     featured?: boolean;
 }
 
-// Blog post imports - we'll import all markdown files statically
-const blogPosts = import.meta.glob('/content/blog/*.md', { query: '?raw', import: 'default', eager: true });
-
-/**
- * Parse frontmatter and content from markdown string
- */
-function parseFrontmatter(markdown: string): { metadata: any; content: string } {
-    const frontmatterRegex = /^---\s*[\r\n]+([\s\S]*?)[\r\n]+---\s*[\r\n]+([\s\S]*)$/;
-    const match = markdown.match(frontmatterRegex);
-
-    if (!match) {
-        return { metadata: {}, content: markdown };
-    }
-
-    const frontmatterText = match[1];
-    const content = match[2];
-
-    // Parse YAML-like frontmatter
-    const metadata: any = {};
-    frontmatterText.split(/[\r\n]+/).forEach((line) => {
-        const colonIndex = line.indexOf(':');
-        if (colonIndex === -1) return;
-
-        const key = line.substring(0, colonIndex).trim();
-        let value: any = line.substring(colonIndex + 1).trim();
-
-        // Remove quotes
-        if ((value.startsWith('"') && value.endsWith('"')) ||
-            (value.startsWith("'") && value.endsWith("'"))) {
-            value = value.slice(1, -1);
-        }
-
-        // Parse arrays
-        if (value.startsWith('[') && value.endsWith(']')) {
-            value = value
-                .slice(1, -1)
-                .split(',')
-                .map((item) => item.trim().replace(/^["']|["']$/g, ''));
-        }
-
-        // Parse booleans
-        if (value === 'true') value = true;
-        if (value === 'false') value = false;
-
-        // Parse numbers
-        if (!isNaN(Number(value)) && value !== '') {
-            value = Number(value);
-        }
-
-        metadata[key] = value;
-    });
-
-    return { metadata, content };
-}
-
-/**
- * Get slug from file path
- */
-function getSlugFromPath(path: string): string {
-    const fileName = path.split('/').pop() || '';
-    return fileName.replace('.md', '');
-}
-
 /**
  * Get all blog posts with metadata and content
  */
 export function getAllPosts(): BlogPost[] {
-    const posts: BlogPost[] = [];
-
-    Object.entries(blogPosts).forEach(([path, markdown]) => {
-        const slug = getSlugFromPath(path);
-        const { metadata, content } = parseFrontmatter(markdown as string);
-
-        posts.push({
-            slug,
-            content,
-            ...metadata,
-            tags: Array.isArray(metadata.tags) ? metadata.tags : [],
-            readTime: metadata.readTime || calculateReadTime(content),
-        } as BlogPost);
-    });
-
-    // Sort by date (newest first)
-    return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    return (contentSnapshot.posts as BlogPost[])
+        .slice()
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 /**
