@@ -1,55 +1,54 @@
-import React, { useRef, useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import Logo from './Logo';
 
 const Footer = () => {
-  const container = useRef(null);
+  const container = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".footer-anim", {
-        y: 100,
+      gsap.from('.footer-bubble', {
+        y: 28,
         opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 85%",
-        }
+        duration: 0.7,
+        stagger: 0.12,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: container.current, start: 'top 88%' },
       });
     }, container);
     return () => ctx.revert();
   }, []);
 
   return (
-    <footer ref={container} className="bg-black text-white py-20 px-4 md:px-8 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-24 relative z-10">
-
-        {/* Right / Top Bubble */}
-        <div className="md:col-start-2 flex justify-end footer-anim">
-          <div className="bg-gvl-blue text-white p-10 md:p-12 rounded-[3rem] rounded-br-none max-w-md w-full relative">
-            <h3 className="text-2xl md:text-3xl font-medium mb-2">Growth Video Lab</h3>
-            <h3 className="text-2xl md:text-3xl font-medium mb-6">2025</h3>
-
-            <div className="space-y-1 text-lg md:text-xl font-light">
-              <p>Santiago de Chile</p>
-              <p>Agencia de Marketing</p>
-              <a href="mailto:hola@growthvideolab.com" className="hover:underline">hola@growthvideolab.com</a>
-            </div>
-          </div>
+    <footer ref={container} className="relative overflow-hidden border-t border-white/10 bg-black px-5 py-10 text-white md:px-10 md:py-12">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.035] [background-image:linear-gradient(rgba(255,255,255,.7)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.7)_1px,transparent_1px)] [background-size:28px_28px]" />
+      <div className="relative mx-auto max-w-6xl">
+        <div className="mb-7 flex items-center justify-between border-b border-white/10 pb-5">
+          <div className="origin-left scale-[0.62] md:scale-75"><Logo textColor="text-white" /></div>
+          <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-white/35">Santiago · Chile</p>
         </div>
 
-        {/* Left / Bottom Bubble */}
-        <div className="md:col-start-1 flex justify-start -mt-8 md:mt-12 footer-anim">
-          <div className="bg-gvl-green text-white p-10 md:p-12 rounded-[3rem] rounded-bl-none max-w-md w-full">
-            <p className="text-2xl md:text-3xl font-light leading-snug">
-              Escríbenos al <br />
-              <a href="https://wa.me/56973832208" className="font-medium hover:underline">WhatsApp: +56 9 7383 2208</a>
-            </p>
+        <div className="flex flex-col gap-3 md:items-end">
+          <div style={{ backgroundColor: '#197EE8' }} className="footer-bubble relative max-w-[370px] rounded-[1.55rem] rounded-br-sm border border-[#61a7ef]/35 px-6 py-5 shadow-[0_16px_40px_rgba(0,80,180,.16)] md:px-7">
+            <span style={{ backgroundColor: '#197EE8' }} className="absolute -bottom-1 right-0 h-4 w-4 [clip-path:polygon(0_0,100%_0,100%_100%)]" />
+            <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-white/60">Growth Video Lab</p>
+            <p className="mt-2 text-lg font-medium leading-tight md:text-xl">Estrategia, contenido y sistemas para crecer con claridad.</p>
+            <a href="mailto:hola@growthvideolab.com" className="mt-4 inline-block border-b border-white/50 pb-0.5 font-mono text-[10px] text-white transition-colors hover:border-white hover:text-white">hola@growthvideolab.com ↗</a>
           </div>
+
+          <a href="https://wa.me/56973832208" className="footer-bubble group relative mr-auto max-w-[340px] rounded-[1.55rem] rounded-bl-sm border border-[#C8F55A]/60 bg-[#C8F55A] px-6 py-5 text-black transition-transform duration-300 hover:-translate-y-1 md:mr-[17%] md:px-7">
+            <span className="absolute -bottom-1 left-0 h-4 w-4 bg-[#C8F55A] [clip-path:polygon(0_0,100%_0,0_100%)]" />
+            <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-black/55">Respuesta directa</p>
+            <p className="mt-2 text-lg font-medium leading-tight md:text-xl">¿Hablamos de tu proyecto?</p>
+            <span className="mt-4 inline-flex items-center gap-2 border-b border-black/40 pb-0.5 font-mono text-[10px] transition-colors group-hover:border-black">WhatsApp +56 9 7383 2208 <span aria-hidden="true">↗</span></span>
+          </a>
         </div>
 
+        <div className="mt-8 flex flex-col gap-2 border-t border-white/10 pt-4 font-mono text-[8px] uppercase tracking-[0.16em] text-white/30 md:flex-row md:items-center md:justify-between">
+          <p>Growth Video Lab · {new Date().getFullYear()}</p>
+          <p>Presencia reservada para empresas que hacen el trabajo.</p>
+        </div>
       </div>
     </footer>
   );
