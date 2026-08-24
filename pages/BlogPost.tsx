@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
@@ -18,6 +18,7 @@ import {
 } from '../lib/seo';
 import { Calendar, Clock, ArrowLeft, Share2, Tag } from 'lucide-react';
 import BlogCard from '../components/BlogCard';
+import NotFoundPage from './NotFoundPage';
 
 const BlogPost: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
@@ -88,9 +89,9 @@ const BlogPost: React.FC = () => {
         }
     };
 
-    // If post not found, redirect to blog index
+    // Unknown slugs render the site's 404 experience instead of masking the error.
     if (!post) {
-        return <Navigate to="/blog" replace />;
+        return <NotFoundPage />;
     }
 
     return (

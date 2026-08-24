@@ -26,3 +26,5 @@ dist-ssr
 BRAND_GUIDELINES.md
 .vercel
 .env*
+!.env.example
+.generated/

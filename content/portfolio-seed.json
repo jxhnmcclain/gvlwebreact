@@ -1,0 +1,49 @@
+[
+  {
+    "slug": "bourghdorf",
+    "title": "Bourghdorf",
+    "client": "Bourghdorf",
+    "services": ["Branding", "Identidad visual"],
+    "cover": "/marca-diseno/bourghdorf.jpg"
+  },
+  {
+    "slug": "hydraville",
+    "title": "Hydraville",
+    "client": "Hydraville",
+    "services": ["Branding", "Sistema visual"],
+    "cover": "/marca-diseno/hydraville.jpg"
+  },
+  {
+    "slug": "papaland",
+    "title": "Papaland",
+    "client": "Papaland",
+    "services": ["Branding", "Contenido"],
+    "cover": "/marca-diseno/papaland.jpg"
+  },
+  {
+    "slug": "shelle-burnett",
+    "title": "Shelle Burnett",
+    "client": "Shelle Burnett",
+    "services": ["Branding", "Dirección visual"],
+    "cover": "/marca-diseno/shelle burnett.jpg"
+  },
+  {
+    "slug": "growth-video-lab-web",
+    "title": "Growth Video Lab — Web",
+    "client": "Growth Video Lab",
+    "services": ["Web", "CRO"],
+    "cover": "/portfolio-webs-pdf/gvl.jpg"
+  },
+  {
+    "slug": "pizzeria-web",
+    "title": "Pizzería — Web",
+    "services": ["Web", "Dirección visual"],
+    "cover": "/portfolio-webs-pdf/pizzeria.jpg"
+  },
+  {
+    "slug": "vsl-webs",
+    "title": "VSL Webs",
+    "services": ["Landing page", "Video sales letter"],
+    "cover": "/portfolio-webs-pdf/vsl-webs.png"
+  }
+]

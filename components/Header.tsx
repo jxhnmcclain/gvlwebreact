@@ -4,6 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Logo from './Logo';
 import Dither from './Dither.jsx';
+import { getAllPortfolioProjects } from '../lib/portfolioUtils';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ const Header = () => {
   const navLinks = [
     { name: 'Inicio', path: '/' },
     { name: 'Servicios', path: '/servicios' },
+    ...(getAllPortfolioProjects().length >= 3 ? [{ name: 'Portafolio', path: '/portafolio' }] : []),
     { name: 'Blog', path: '/blog' },
   ];
 

@@ -66,7 +66,7 @@ const SplitServices = () => {
           <span className="text-xs font-black uppercase tracking-[0.3em] text-white/35 block mb-4">Qué hacemos</span>
           <h2 className="text-4xl md:text-5xl font-black text-white leading-tight tracking-tighter max-w-3xl">
             Paid, contenido, CRO y marca.
-            <span className="text-white/35"> Conectados para crecer.</span>
+            <span className="text-white/35"> Lo que haga falta para vender mejor.</span>
           </h2>
         </div>
 

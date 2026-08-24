@@ -10,6 +10,7 @@ import CtaBanner from './components/CtaBanner';
 import ServiceGrid from './components/ServiceGrid';
 import LeadMagnet from './components/LeadMagnet';
 import RecentPosts from './components/RecentPosts';
+import FeaturedWork from './components/FeaturedWork';
 import Footer from './components/Footer';
 import { setMetaTags } from './lib/seo';
 import { getRouteSeo } from './lib/routeSeo';
@@ -29,6 +30,8 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import MarketingAdvisory from './pages/MarketingAdvisory';
 import LeadMagnetB2BPage from './pages/LeadMagnetB2BPage';
+import Portfolio from './pages/Portfolio';
+import PortfolioProjectPage from './pages/PortfolioProject';
 
 // Private Pages
 import PrivateIndex from './pages/priv/PrivateIndex';
@@ -48,6 +51,7 @@ const Home = () => {
     <>
       <Hero />
       <SplitServices />
+      <FeaturedWork />
       <CtaBanner />
       <LeadMagnet />
     </>
@@ -87,7 +91,7 @@ const AppContent = () => {
       return;
     }
 
-    if (!location.pathname.startsWith('/blog/')) {
+    if (!location.pathname.startsWith('/blog/') && !location.pathname.startsWith('/portafolio/')) {
       setMetaTags({
         title: 'Pagina no encontrada | Growth Video Lab',
         description: 'La pagina que buscas no existe o fue movida.',
@@ -97,6 +101,11 @@ const AppContent = () => {
       });
     }
   }, [location.pathname]);
+
+  useEffect(() => {
+    document.documentElement.dataset.contentReady = 'true';
+    document.dispatchEvent(new Event('gvl-content-ready'));
+  }, []);
 
   return (
     <>
@@ -121,6 +130,8 @@ const AppContent = () => {
             {/* Blog Routes */}
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/portafolio" element={<Portfolio />} />
+            <Route path="/portafolio/:slug" element={<PortfolioProjectPage />} />
             <Route path="/asesoria" element={<MarketingAdvisory />} />
 
             {/* Private Routes */}

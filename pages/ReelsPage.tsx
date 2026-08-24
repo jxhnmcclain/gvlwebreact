@@ -49,7 +49,7 @@ const ReelsPage = () => {
                 Redes <br/> Sociales
             </h1>
             <p className="anim-title text-xl md:text-2xl font-light max-w-xl leading-relaxed text-white mb-4">
-                No se trata solo de publicar, se trata de construir una comunidad. Estrategia, creatividad y análisis para que tu marca no solo sea vista, sino recordada.
+                Publicar más no arregla una estrategia floja. Creamos piezas, medimos qué funciona y ajustamos el siguiente lote.
             </p>
         </div>
       </section>
@@ -76,14 +76,14 @@ const ReelsPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
             <div className="text-content">
                 <h2 className="text-3xl md:text-5xl font-black uppercase text-gvl-yellow mb-6">
-                    Más allá del "Postear por Postear"
+                    Dejar de publicar por publicar
                 </h2>
                 <div className="w-20 h-2 bg-white mb-8"></div>
                 <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
-                    En el saturado mundo digital de hoy, el alcance orgánico es un tesoro y la atención es la moneda de cambio. Nuestra metodología en Growth Video Lab se basa en un entendimiento profundo de los algoritmos actuales (Instagram, TikTok, LinkedIn) y, más importante aún, de la psicología del consumidor.
+                    La atención es limitada y cada canal tiene sus propias reglas. Trabajamos con Instagram, TikTok y LinkedIn entendiendo qué formato necesita cada uno y qué quieres conseguir.
                 </p>
                 <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                    No somos una agencia que simplemente rellena un calendario. Somos estrategas de crecimiento. Analizamos tus métricas, identificamos qué resuena con tu audiencia y pivotamos rápidamente para capitalizar tendencias sin perder la esencia de tu marca.
+                    Revisamos tus métricas, detectamos qué temas despiertan interés y producimos nuevas variantes. Las tendencias sirven cuando ayudan al mensaje, no cuando lo reemplazan.
                 </p>
             </div>
 
