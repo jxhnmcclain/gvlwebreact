@@ -12,6 +12,8 @@ export type AgencyLabOffering = {
   body: string;
 };
 
+export type AgencyLabFaq = { question: string; answer: string };
+
 type AgencyLabPageProps = {
   eyebrow: string;
   title: string;
@@ -20,6 +22,7 @@ type AgencyLabPageProps = {
   proof: AgencyLabProof[];
   offerings: AgencyLabOffering[];
   process: string[];
+  faq?: AgencyLabFaq[];
   ctaLabel: string;
   onCta: () => void;
 };
@@ -32,6 +35,7 @@ const AgencyLabPage = ({
   proof,
   offerings,
   process,
+  faq = [],
   ctaLabel,
   onCta,
 }: AgencyLabPageProps) => {
@@ -129,6 +133,23 @@ const AgencyLabPage = ({
           ))}
         </div>
       </section>
+
+      {faq.length > 0 && (
+        <section className="px-4 md:px-12 pb-24 md:pb-32">
+          <div className="max-w-7xl mx-auto border-t border-white/15 pt-8 md:pt-12">
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-gvl-yellow/70 mb-4">preguntas frecuentes</p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-10">Lo que suele definirse antes de empezar.</h2>
+            <div className="grid md:grid-cols-2 gap-x-10">
+              {faq.map((item) => (
+                <article key={item.question} className="border-t border-white/15 py-6">
+                  <h3 className="text-lg md:text-xl font-black mb-3">{item.question}</h3>
+                  <p className="text-white/60 leading-relaxed">{item.answer}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 };

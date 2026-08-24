@@ -27,7 +27,7 @@ const ServicesPage = () => {
     <>
       <AgencyLabPage
         eyebrow="growth marketing / santiago, chile"
-        title="Cuatro disciplinas. Un mismo objetivo: crecer."
+        title="Agencia de growth marketing en Santiago."
         subtitle="Trabajamos como equipo extendido, integrado a tu operación."
         ctaLabel="hablemos"
         onCta={goToContact}
@@ -70,6 +70,10 @@ select / build / connect`}
           'Elegir las disciplinas necesarias.',
           'Probar, medir e iterar.',
           'Escalar lo que funciona.',
+        ]}
+        faq={[
+          { question: '¿Qué disciplinas necesitan para empezar?', answer: 'Partimos del objetivo y definimos si hace falta Paid, contenido, CRO, marca o una combinación.' },
+          { question: '¿Trabajan como proveedor o equipo extendido?', answer: 'Las dos. Podemos resolver un proyecto puntual o integrarnos a la operación para iterar con continuidad.' },
         ]}
       />
       <CtaBanner />

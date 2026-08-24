@@ -15,7 +15,7 @@ const BrandingPage = () => {
     <>
       <AgencyLabPage
         eyebrow="diseño de marca / santiago, chile"
-        title="Identidad visual y verbal lista para cualquier canal."
+        title="Diseño de marca e identidad visual en Santiago, Chile."
         subtitle="Un sistema completo que tu equipo puede aplicar sin depender de un diseñador para cada pieza nueva."
         ctaLabel="hablemos"
         onCta={goToContact}
@@ -57,6 +57,12 @@ name / mark / rule / ritual`}
           'Exploración de territorios visuales.',
           'Diseño y refinamiento con el equipo.',
           'Manual final y entrega de archivos.',
+        ]}
+        faq={[
+          { question: '¿Hacen solo logo o el proyecto completo?', answer: 'Trabajamos el sistema completo. Un logo aislado rara vez resuelve el problema real.' },
+          { question: '¿Cuánto se demora un proyecto de branding?', answer: 'Entre 3 y 6 semanas, según el alcance y los ciclos de revisión.' },
+          { question: '¿Incluye el diseño del sitio web?', answer: 'El sitio se cotiza aparte, pero se construye sobre el sistema de marca ya definido.' },
+          { question: '¿Trabajan con empresas fuera de Santiago?', answer: 'Sí. Coordinamos el proceso de forma remota con clientes en distintas regiones de Chile.' },
         ]}
       />
       <CtaBanner />

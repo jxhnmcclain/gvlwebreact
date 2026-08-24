@@ -15,7 +15,7 @@ const ContentPage = () => {
     <>
       <AgencyLabPage
         eyebrow="producción de contenido / santiago, chile"
-        title="Contenido que se prueba, se mide y se ajusta."
+        title="Producción de contenido para redes sociales en Santiago, Chile."
         subtitle="Un flujo constante de variantes para redes y campañas, no una pieza perfecta cada mes."
         ctaLabel="hablemos"
         onCta={goToContact}
@@ -57,6 +57,12 @@ signal captured at low light`}
           'Producción en lotes para mantener velocidad.',
           'Testing de variantes por canal.',
           'Iteración basada en performance real.',
+        ]}
+        faq={[
+          { question: '¿Cuánto contenido producen al mes?', answer: 'Depende del plan; los proyectos activos suelen partir en 8–12 piezas mensuales.' },
+          { question: '¿Incluye pauta o solo producción?', answer: 'La producción y la pauta se pueden contratar juntas o por separado.' },
+          { question: '¿Graban en oficinas o en estudio?', answer: 'Ambas opciones son posibles, según el tipo de pieza y la historia que haya que contar.' },
+          { question: '¿Producen contenido fuera de Santiago?', answer: 'Sí. Coordinamos producción remota o en terreno según la ubicación del cliente.' },
         ]}
       />
       <CtaBanner />
