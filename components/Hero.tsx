@@ -33,7 +33,7 @@ do not decorate
             <Logo textColor="text-white" />
           </div>
 
-          <p className="font-mono text-xs md:text-sm uppercase tracking-[0.34em] text-white/45 max-w-xl">
+          <p className="font-mono text-xs md:text-sm uppercase tracking-[0.34em] text-white max-w-xl">
             growth marketing que se mueve tan rápido como tu producto
           </p>
 

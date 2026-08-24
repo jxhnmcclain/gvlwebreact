@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
@@ -11,7 +11,6 @@ import ServiceGrid from './components/ServiceGrid';
 import LeadMagnet from './components/LeadMagnet';
 import RecentPosts from './components/RecentPosts';
 import Footer from './components/Footer';
-import Preloader from './components/Preloader';
 import { setMetaTags } from './lib/seo';
 import { getRouteSeo } from './lib/routeSeo';
 
@@ -165,16 +164,8 @@ const AppContent = () => {
 };
 
 export default function App() {
-  // Skip preloader during pre-rendering (Puppeteer/HeadlessChrome)
-  const isPrerendering = typeof navigator !== 'undefined' &&
-    navigator.userAgent.includes('HeadlessChrome');
-  const [isLoading, setIsLoading] = useState(!isPrerendering);
-
   return (
     <BrowserRouter>
-      {isLoading && (
-        <Preloader onComplete={() => setIsLoading(false)} />
-      )}
       <AppContent />
     </BrowserRouter>
   );

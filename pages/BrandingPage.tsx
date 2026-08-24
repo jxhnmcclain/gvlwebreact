@@ -21,9 +21,7 @@ const BrandingPage = () => {
         onCta={goToContact}
         ascii={`BRAND://ROOM_03
 symbol lost / symbol found
-██  ██  ██
-░░▒▒▓▓████▓▓▒▒░░
-name / mark / rule / ritual`}
+name / mark / system`}
         proof={[
           { label: 'estrategia', value: 'posición y propuesta de valor' },
           { label: 'identidad', value: 'logo, paleta y tipografía' },
