@@ -34,11 +34,14 @@ const Header = () => {
 
   // Lock scroll when menu is open
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
     }
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
   }, [isMenuOpen]);
 
   const goToContact = () => {
@@ -88,9 +91,11 @@ const Header = () => {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden p-2 hover:bg-black/5 rounded-full transition-colors relative z-[110]"
+          className={`relative z-[110] rounded-full p-2 transition-colors hover:bg-white/10 md:hidden ${isMenuOpen ? 'invisible pointer-events-none' : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle Menu"
+          aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
         >
           {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -100,66 +105,96 @@ const Header = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
+            id="mobile-navigation"
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[105] md:hidden flex flex-col overflow-hidden bg-black h-[100dvh] w-full"
+            transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[120] flex h-[100dvh] w-full flex-col overflow-hidden bg-black text-white md:hidden"
           >
             <div className="absolute inset-0" aria-hidden="true">
               <Dither
-                waveColor={[0.7, 0.7, 0.72]}
+                waveColor={[0.42, 0.42, 0.45]}
                 disableAnimation={false}
                 enableMouseInteraction={false}
                 mouseRadius={0.45}
-                colorNum={2}
-                pixelSize={6}
-                waveAmplitude={0.08}
-                waveFrequency={1.55}
-                waveSpeed={0.018}
+                colorNum={3}
+                pixelSize={3}
+                waveAmplitude={0.04}
+                waveFrequency={1.2}
+                waveSpeed={0.014}
               />
             </div>
-            <div className="absolute inset-0 bg-black/72" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_35%),radial-gradient(circle_at_20%_80%,rgba(255,255,255,0.05),transparent_22%)]" />
+            <div className="absolute inset-0 bg-black/75" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_32%),radial-gradient(circle_at_20%_80%,rgba(255,255,255,0.04),transparent_22%)]" />
 
-            <div className="relative z-10 flex h-full flex-col px-6 pt-8 pb-8">
-              <div className="flex items-center justify-between">
-                <Link to="/" className="hover:opacity-90 transition-opacity">
+            <div className="relative z-10 flex h-full min-h-0 flex-col px-5 pb-5 pt-3 sm:px-6">
+              <div className="relative mx-auto flex w-full max-w-lg shrink-0 items-center justify-center">
+                <Link to="/" className="h-[58px] origin-center scale-[0.62] transition-opacity hover:opacity-90">
                   <Logo textColor="text-white" />
                 </Link>
                 <button
                   onClick={() => setIsMenuOpen(false)}
-                  className="flex items-center gap-2 text-white/80 font-bold uppercase text-xs tracking-[0.18em] hover:text-white transition-colors"
-                  aria-label="Close menu"
+                  className="group absolute right-0 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/8 text-white/80 transition-colors hover:text-white"
+                  aria-label="Cerrar menú"
                 >
-                  <span>Cerrar</span>
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/8">
-                    <X size={18} />
-                  </div>
+                  <X size={16} className="transition-transform duration-300 group-hover:rotate-90" />
                 </button>
               </div>
 
-              <div className="mt-20 flex flex-col gap-7">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className="text-4xl md:text-5xl font-black tracking-tighter text-white hover:text-gvl-yellow transition-colors"
+              <div className="flex min-h-0 flex-1 items-center justify-center py-4">
+                <div className="w-full max-w-lg rounded-[1.25rem] border border-white/10 bg-black/45 p-4 shadow-[0_30px_120px_rgba(0,0,0,0.55)] backdrop-blur-xl sm:p-5">
+                  <motion.p
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.12, duration: 0.45 }}
+                    className="mb-5 text-center font-sans text-[10px] uppercase tracking-[0.28em] text-white/55"
                   >
-                    {link.name}
-                  </Link>
-                ))}
+                    Growth Video Lab / Navegación
+                  </motion.p>
+
+                  <nav className="border-t border-white/10" aria-label="Navegación principal">
+                    {navLinks.map((link, index) => {
+                      const isActive = location.pathname === link.path;
+                      return (
+                        <motion.div
+                          key={link.path}
+                          initial={{ opacity: 0, y: 16 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.16 + index * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                        >
+                          <Link
+                            to={link.path}
+                            aria-current={isActive ? 'page' : undefined}
+                            className="group flex min-h-16 items-center justify-between border-b border-white/10 px-1 font-sans text-white transition-colors hover:text-gvl-yellow"
+                          >
+                            <span className="flex items-center gap-4">
+                              <span className="font-mono text-[10px] tracking-[0.2em] text-white/35">0{index + 1}</span>
+                              <span className="text-[1.75rem] font-black leading-none tracking-[-0.045em] sm:text-3xl">{link.name}</span>
+                            </span>
+                            <ArrowUpRight size={18} className={`transition-all group-hover:rotate-45 ${isActive ? 'text-gvl-yellow' : 'text-white/35'}`} />
+                          </Link>
+                        </motion.div>
+                      );
+                    })}
+                  </nav>
+
+                  <motion.button
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.44, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    onClick={goToContact}
+                    className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-white px-8 py-3.5 font-sans text-sm font-black uppercase tracking-[-0.01em] text-black transition-all hover:scale-[1.01] hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.14)] active:scale-[0.99]"
+                  >
+                    Hablemos
+                    <ArrowUpRight size={19} />
+                  </motion.button>
+                </div>
               </div>
 
-              <div className="mt-auto pt-10">
-                <button
-                  onClick={goToContact}
-                  className="w-full py-4 rounded-[1.25rem] border border-white/20 bg-white text-black text-lg font-black flex items-center justify-center gap-2 shadow-[4px_4px_0px_0px_rgba(255,255,255,0.14)] active:translate-y-1 active:shadow-none transition-all"
-                >
-                  HABLEMOS
-                  <ArrowUpRight size={22} />
-                </button>
-              </div>
+              <p className="shrink-0 text-center font-sans text-[9px] uppercase tracking-[0.26em] text-white/35">
+                Santiago / Chile
+              </p>
             </div>
           </motion.div>
         )}
