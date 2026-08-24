@@ -50,6 +50,33 @@ name / mark / system`}
             body: 'Redes sociales, presentaciones, plantillas de pauta y empaque cuando aplica.',
           },
         ]}
+        showcase={[
+          {
+            eyebrow: 'burgnhdorf',
+            title: 'Una identidad diseñada como sistema.',
+            body: 'Marca, color y reglas de aplicación pensadas para mantener consistencia cuando el proyecto crece.',
+            aspectRatio: 'video',
+            images: [
+              '/assets/images/Marca y Diseño/Burgnhdorf/Mesa de trabajo 1 copia 2.png',
+              '/assets/images/Marca y Diseño/Burgnhdorf/Logos Usage.png',
+              '/assets/images/Marca y Diseño/Burgnhdorf/colors copia 3.png',
+              '/assets/images/Marca y Diseño/Burgnhdorf/colors copia 4.png',
+              '/assets/images/Marca y Diseño/Burgnhdorf/colors.png',
+            ],
+          },
+          {
+            eyebrow: 'papaland',
+            title: 'Una marca lista para moverse.',
+            body: 'Un lenguaje visual reconocible llevado a perfiles, contenido y aplicaciones cotidianas sin depender de una sola pieza hero.',
+            aspectRatio: 'square',
+            images: [
+              '/assets/images/Marca y Diseño/Papaland/post 1.png',
+              '/assets/images/Marca y Diseño/Papaland/post 2.png',
+              '/assets/images/Marca y Diseño/Papaland/FotoPerfil copia.png',
+              '/assets/images/Marca y Diseño/Papaland/FotoPerfil.png',
+            ],
+          },
+        ]}
         process={[
           'Discovery del negocio, categoría y competencia.',
           'Exploración de territorios visuales.',

@@ -52,6 +52,34 @@ signal captured at low light`}
             body: 'Mismo mensaje, distintos formatos, con decisiones basadas en performance real.',
           },
         ]}
+        showcase={[
+          {
+            eyebrow: 'feed systems',
+            title: 'Identidad que sobrevive al calendario.',
+            body: 'Carruseles, campañas y piezas editoriales construidas para sentirse nativas del canal sin perder la marca.',
+            aspectRatio: 'square',
+            images: [
+              '/assets/images/Social Media/carrusel/CARRUSEL_FINAL_1.png',
+              '/assets/images/Social Media/carrusel/CARRUSEL_FINAL_N_2.png',
+              '/assets/images/Social Media/carrusel/CarlosMoraga_Carrusel1.png',
+              '/assets/images/Social Media/carrusel/GloriaConcha_Carrusel1.png',
+              '/assets/images/Social Media/carrusel/XimenaC_Carrusel1.png',
+            ],
+          },
+          {
+            eyebrow: 'campaign cuts',
+            title: 'Variantes para aprender más rápido.',
+            body: 'Stories, campañas estacionales y piezas de respuesta directa: una misma dirección con suficientes formatos para probar.',
+            aspectRatio: 'portrait',
+            images: [
+              '/assets/images/Social Media/carrusel 2/Post - Weedmaps.png',
+              '/assets/images/Social Media/carrusel 2/sept-26.png',
+              '/assets/images/Social Media/carrusel 2/oct-9.png',
+              '/assets/images/Social Media/Halloween 1.png',
+              '/assets/images/Social Media/carrusel/XimenaC_Story1.png',
+            ],
+          },
+        ]}
         process={[
           'Calendario editorial mensual.',
           'Producción en lotes para mantener velocidad.',
