@@ -33,7 +33,7 @@ const Footer = () => {
           <div style={{ backgroundColor: '#197EE8' }} className="footer-bubble relative max-w-[370px] rounded-[1.55rem] rounded-br-sm border border-[#61a7ef]/35 px-6 py-5 shadow-[0_16px_40px_rgba(0,80,180,.16)] md:px-7">
             <span style={{ backgroundColor: '#197EE8' }} className="absolute -bottom-1 right-0 h-4 w-4 [clip-path:polygon(0_0,100%_0,100%_100%)]" />
             <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-white/60">Growth Video Lab</p>
-            <p className="mt-2 text-lg font-medium leading-tight md:text-xl">Estrategia, contenido y sistemas para crecer con claridad.</p>
+            <p className="mt-2 text-lg font-medium leading-tight md:text-xl">Estrategia, contenido y sistemas para empresas.</p>
             <a href="mailto:hola@growthvideolab.com" className="mt-4 inline-block border-b border-white/50 pb-0.5 font-mono text-[10px] text-white transition-colors hover:border-white hover:text-white">hola@growthvideolab.com ↗</a>
           </div>
 
@@ -47,7 +47,7 @@ const Footer = () => {
 
         <div className="mt-8 flex flex-col gap-2 border-t border-white/10 pt-4 font-mono text-[8px] uppercase tracking-[0.16em] text-white/30 md:flex-row md:items-center md:justify-between">
           <p>Growth Video Lab · {new Date().getFullYear()}</p>
-          <p>Presencia reservada para empresas que hacen el trabajo.</p>
+          <p>Web, marca, contenido y prospección.</p>
         </div>
       </div>
     </footer>

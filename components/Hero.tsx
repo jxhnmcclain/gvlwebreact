@@ -34,7 +34,7 @@ do not decorate
           </div>
 
           <p className="font-mono text-xs md:text-sm uppercase tracking-[0.34em] text-white max-w-xl">
-            marketing para conseguir clientes, no para llenar reportes
+            marketing para conseguir clientes
           </p>
 
           <button

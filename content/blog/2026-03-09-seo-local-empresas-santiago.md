@@ -2,8 +2,8 @@
 title: "SEO Local para empresas de servicios en Santiago: Guía B2B"
 date: "2026-03-09"
 author: "Growth Video Lab"
-description: "Paso a paso para que las empresas de servicios B2B en Santiago dominen el SEO Local y aparezcan cuando sus clientes las buscan en Google Maps."
-excerpt: "Por qué tu empresa de servicios necesita estar en el mapa (literalmente) y cómo lograrlo en menos de 48 horas."
+description: "Guía práctica de SEO local para empresas de servicios B2B en Santiago."
+excerpt: "Cómo ordenar tu presencia local para que Google y tus potenciales clientes entiendan dónde y cómo trabajas."
 category: "Estrategia Digital"
 tags: ["seo", "b2b", "santiago", "google maps", "servicios"]
 image: "/og-blog.jpg"
@@ -14,11 +14,9 @@ readTime: 5
 
 Cuando pensamos en "SEO Local" casi siempre imaginamos cafeterías, dentistas o restaurantes. Pero, ¿tiene sentido para una empresa B2B de servicios corporativos, software, construcción o maquinaria pesada?
 
-La respuesta es **absolutamente sí.**
+Sí, puede tener sentido. Cuando un gerente busca “arriendo grúas horquilla en Quilicura” o “empresas de limpieza industrial Santiago Centro”, la ubicación forma parte de lo que necesita resolver.
 
-Cuando un gerente de logística busca en Google "arriendo grúas horquilla en Quilicura" o "empresas de limpieza industrial Santiago Centro", está buscando una solución local rápida. Si no apareces en el **Local Pack** (esos 3 primeros resultados del mapa), estás perdiendo al prospecto con mayor intención de compra posible.
-
-En Growth Video Lab hemos ayudado a empresas B2B a duplicar sus cotizaciones mensuales simplemente arreglando su SEO Local. Aquí te explico cómo hacerlo.
+El Perfil de Empresa de Google y las páginas de servicio ayudan a explicar dónde opera la empresa y qué ofrece.
 
 ## 1. El poder del Perfil de Empresa de Google (Google Business Profile)
 
@@ -31,11 +29,9 @@ Un GBP optimizado debe incluir:
 
 ## 2. Reseñas reales de clientes B2B
 
-Las reseñas en B2B valen oro. 
+Las reseñas ayudan a dar contexto a quienes están comparando proveedores. No todos los clientes B2B querrán publicar una, pero vale la pena pedirla cuando el proyecto termina bien.
 
-La excusa típica es: *"Es que mis clientes son empresas, no les gusta dejar reseñas públicas"*. Falso. A un gerente que le resolviste un problema urgente le encantará escribir dos líneas recomendándote si se lo pides amablemente.
-
-**Estrategia rápida:** Diseña un correo automático que se envíe 30 días después de cerrar un proyecto exitoso, agradeciendo la confianza e incluyendo directamente el enlace para calificar tu perfil de Google. Si usas herramientas como n8n, [como enseñamos en nuestro playbook](/lead_magnet_b2b.html), esto se hace 100% automático.
+Puedes enviar un correo después de cerrar un proyecto, agradecer la confianza e incluir el enlace directo para calificar el perfil. Herramientas como n8n permiten automatizar ese recordatorio.
 
 ## 3. Páginas de Servicios Geolocalizadas en tu Web
 
@@ -58,8 +54,6 @@ Si en tu web dice "Av. Apoquindo 4501", pero en tu Facebook dice "Apoquindo Cuat
 
 ## Empieza a dominar tu zona industrial
 
-El SEO Local B2B es la forma más barata de saltarse la competencia nacional o internacional.
+Las búsquedas con ciudad, comuna o tipo de servicio suelen ser más específicas que una búsqueda amplia. Revisa tu Perfil de Empresa de Google, pide reseñas cuando corresponda y mantén consistente la información de contacto.
 
-Es más fácil posicionar "software de rrhh santiago chile" que simplemente "software de rrhh". 
-
-¿Qué sigue? Revisa tu Perfil de Empresa de Google, empieza a pedir reseñas y asegura tu presencia digital. Y si necesitas ayuda para diseñar una web B2B que convierta ese tráfico local en reuniones, [hablemos de cómo lo hacemos en Growth Video Lab](/contacto).
+Si necesitas una web que explique el servicio y capte consultas locales, [conversemos](/contacto).

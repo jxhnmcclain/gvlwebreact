@@ -49,7 +49,7 @@ const ReelsPage = () => {
                 Redes <br/> Sociales
             </h1>
             <p className="anim-title text-xl md:text-2xl font-light max-w-xl leading-relaxed text-white mb-4">
-                Publicar más no arregla una estrategia floja. Creamos piezas, medimos qué funciona y ajustamos el siguiente lote.
+                Planificamos, producimos y ajustamos contenido para que las redes acompañen los objetivos de la marca.
             </p>
         </div>
       </section>
@@ -59,12 +59,12 @@ const ReelsPage = () => {
         <div className="flex gap-6 md:gap-12 min-w-max pb-12">
             {[1,2,3,4,5].map((i) => (
                 <div key={i} className="reel-card relative w-[300px] h-[550px] md:w-[400px] md:h-[700px] bg-gray-800 rounded-[3rem] overflow-hidden border-2 border-gvl-yellow shadow-[0_0_30px_rgba(223,255,0,0.2)]">
-                    <img src={`https://picsum.photos/400/800?random=${200+i}`} className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500" alt="Reel cover" />
+                        <img src={`https://picsum.photos/400/800?random=${200+i}`} className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500" alt="Referencia visual de formato para redes sociales" />
                     <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black to-transparent">
                         <div className="bg-gvl-yellow text-black text-xs font-bold px-3 py-1 rounded-full inline-block mb-2">
-                            +150K Views
+                            Formato de contenido
                         </div>
-                        <h3 className="text-2xl font-bold leading-tight">Case Study #{i}</h3>
+                        <h3 className="text-2xl font-bold leading-tight">Video corto para redes</h3>
                     </div>
                 </div>
             ))}
@@ -76,34 +76,34 @@ const ReelsPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
             <div className="text-content">
                 <h2 className="text-3xl md:text-5xl font-black uppercase text-gvl-yellow mb-6">
-                    Dejar de publicar por publicar
+                    Contenido con una función clara
                 </h2>
                 <div className="w-20 h-2 bg-white mb-8"></div>
                 <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
-                    La atención es limitada y cada canal tiene sus propias reglas. Trabajamos con Instagram, TikTok y LinkedIn entendiendo qué formato necesita cada uno y qué quieres conseguir.
+                    Cada canal tiene formatos y ritmos distintos. Trabajamos con Instagram, TikTok y LinkedIn según el objetivo de la marca y el contenido disponible.
                 </p>
                 <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                    Revisamos tus métricas, detectamos qué temas despiertan interés y producimos nuevas variantes. Las tendencias sirven cuando ayudan al mensaje, no cuando lo reemplazan.
+                    Revisamos qué temas y formatos generan interés. Con eso planificamos el siguiente ciclo de producción.
                 </p>
             </div>
 
             <div className="space-y-12">
                 <div className="text-content">
-                    <h3 className="text-2xl font-bold text-white mb-4 uppercase tracking-wide">01. Estrategia de Contenidos</h3>
+                    <h3 className="text-2xl font-bold text-white mb-4 uppercase tracking-wide">01. Plan de contenido</h3>
                     <p className="text-gray-400">
-                        Desarrollamos pilares de contenido sólidos que educan, entretienen e inspiran. Definimos el tono de voz, los formatos ganadores (Reels, Carruseles, Stories) y la frecuencia ideal para mantener a tu audiencia enganchada.
+                        Definimos temas, tono, formatos y frecuencia. El calendario deja claro qué se publicará y para qué sirve cada pieza.
                     </p>
                 </div>
                 <div className="text-content">
-                    <h3 className="text-2xl font-bold text-white mb-4 uppercase tracking-wide">02. Community Management</h3>
+                    <h3 className="text-2xl font-bold text-white mb-4 uppercase tracking-wide">02. Publicación y comunidad</h3>
                     <p className="text-gray-400">
-                        Una marca que no responde es una marca muerta. Gestionamos tu comunidad de forma activa, fomentando la conversación, respondiendo dudas y convirtiendo seguidores en embajadores de marca leales.
+                        Programamos contenido y definimos cómo responder preguntas y comentarios según el protocolo de la marca.
                     </p>
                 </div>
                 <div className="text-content">
-                    <h3 className="text-2xl font-bold text-white mb-4 uppercase tracking-wide">03. Growth Hacking & Viralidad</h3>
+                    <h3 className="text-2xl font-bold text-white mb-4 uppercase tracking-wide">03. Pruebas y ajustes</h3>
                     <p className="text-gray-400">
-                        Utilizamos técnicas de edición dinámica, hooks visuales potentes y audios en tendencia para maximizar las probabilidades de viralidad, atrayendo tráfico masivo al tope de tu embudo de ventas.
+                        Probamos ganchos, ediciones y formatos cuando ayudan a explicar mejor el mensaje. Revisamos los resultados antes de repetir una idea.
                     </p>
                 </div>
             </div>

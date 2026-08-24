@@ -11,7 +11,7 @@ const MarketingAdvisory = () => {
                 <title>Asesoría de Marketing y Negocio | Growth Video Lab</title>
                 <meta
                     name="description"
-                    content="Haz que el marketing vuelva a impulsar tu negocio. Asesoría estratégica para salir del caos y enfocar tus esfuerzos en ventas reales."
+                    content="Asesoría para revisar tu marketing, ordenar prioridades y definir qué acciones conviene ejecutar primero."
                 />
                 <link rel="canonical" href="https://growthvideolab.com/asesoria" />
             </Helmet>
@@ -29,13 +29,12 @@ const MarketingAdvisory = () => {
                             Asesoría de Marketing
                         </p>
                         <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-8 leading-[0.9]">
-                            Haz que el marketing <br />
-                            <span className="text-gvl-orange">vuelva a impulsar</span> <br />
-                            tu negocio.
+                            Ordena tu <br />
+                            <span className="text-gvl-orange">marketing y ventas</span> <br />
+                            antes de invertir más.
                         </h1>
                         <p className="text-xl md:text-3xl font-light mb-12 max-w-3xl mx-auto leading-relaxed">
-                            Sin ruido. <br />
-                            Sin pruebas a ciegas.
+                            Revisamos el proceso actual, definimos prioridades y dejamos un plan de trabajo.
                         </p>
                         <div className="flex flex-col items-center gap-4">
                             <a
@@ -64,23 +63,23 @@ const MarketingAdvisory = () => {
                 <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
                     <div>
                         <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 text-gvl-yellow">
-                            Del caos <br /> a la claridad.
+                            Cuando el equipo no sabe <br /> qué hacer primero.
                         </h2>
                         <div className="space-y-6 text-lg md:text-xl font-light text-gray-300">
-                            <p>Las campañas lanzadas...</p>
-                            <p>Las métricas bonitas...</p>
-                            <p className="text-white font-bold">...pero las ventas estáticas.</p>
+                            <p>Hay campañas activas.</p>
+                            <p>Hay datos en distintas herramientas.</p>
+                            <p className="text-white font-bold">Pero no hay una prioridad compartida.</p>
                         </div>
                     </div>
                     <div className="relative border-l-2 border-gvl-dark-gray pl-8 py-4">
                         <p className="text-2xl font-medium mb-6">
-                            "¿Dónde está el problema?"
+                            "¿Qué tenemos que corregir primero?"
                         </p>
                         <p className="text-gray-400 leading-relaxed mb-6">
-                            Y ahí estabas tú: mirando la pantalla, preguntándote por qué, a pesar de la inversión, el retorno no llega como debería.
+                            Revisamos cómo entra un lead, qué pasa en el CRM, qué campañas están activas y dónde se detiene el proceso.
                         </p>
                         <p className="text-gvl-orange font-bold uppercase tracking-widest text-sm">
-                            Sí, nosotros estuvimos allí.
+                            Empezamos por el proceso real.
                         </p>
                     </div>
                 </div>
@@ -91,10 +90,10 @@ const MarketingAdvisory = () => {
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-24">
                         <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-6">
-                            Lo simplificamos <span className="text-gvl-blue">juntos</span>.
+                            Un plan de trabajo <span className="text-gvl-blue">claro</span>.
                         </h2>
                         <p className="text-xl md:text-2xl font-light max-w-2xl mx-auto">
-                            Te explico cómo. Lo verás en tres fases claras.
+                            La asesoría se organiza en tres etapas.
                         </p>
                     </div>
 
@@ -104,35 +103,35 @@ const MarketingAdvisory = () => {
                             <div className="text-6xl font-black text-gvl-dark-gray opacity-20 mb-4">01</div>
                             <h3 className="text-2xl font-black uppercase mb-4">Diagnóstico</h3>
                             <p className="text-gray-600 leading-relaxed">
-                                Analizamos la situación real. Sin filtros. Entendemos dónde están las fugas de dinero y de atención.
+                                Revisamos campañas, datos, responsables y herramientas para entender cómo opera hoy el equipo.
                             </p>
                         </div>
                         {/* Phase 2 */}
                         <div className="bg-gvl-black text-white p-8 rounded-3xl border-2 border-gvl-black shadow-[8px_8px_0px_0px_#9CA3AF] relative transform md:-translate-y-8">
                             <div className="absolute -top-4 right-8 bg-gvl-orange text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
-                                Crucial
+                                Prioridad
                             </div>
                             <div className="text-6xl font-black text-gvl-dark-gray opacity-40 mb-4">02</div>
                             <h3 className="text-2xl font-black uppercase mb-4 text-gvl-yellow">Foco</h3>
                             <p className="text-gray-300 leading-relaxed">
-                                Eliminamos el ruido. Decidimos qué NO hacer. Nos centramos en las palancas que realmente mueven la aguja.
+                                Ordenamos los problemas por impacto, esfuerzo y urgencia. Definimos qué conviene hacer primero.
                             </p>
                         </div>
                         {/* Phase 3 */}
                         <div className="bg-white p-8 rounded-3xl border-2 border-gvl-black shadow-[8px_8px_0px_0px_black] hover:translate-y-[-5px] transition-transform duration-300">
                             <div className="text-6xl font-black text-gvl-dark-gray opacity-20 mb-4">03</div>
-                            <h3 className="text-2xl font-black uppercase mb-4">Tracción</h3>
+                            <h3 className="text-2xl font-black uppercase mb-4">Plan de ejecución</h3>
                             <p className="text-gray-600 leading-relaxed">
-                                Ejecutamos con precisión. Medimos lo que importa. Escalamos lo que funciona.
+                                Recibes acciones, responsables y métricas para que el equipo pueda ejecutar y revisar avances.
                             </p>
                         </div>
                     </div>
 
                     <div className="mt-24 text-center">
                         <p className="text-2xl md:text-4xl font-black uppercase leading-tight mb-8">
-                            Ahora ya medimos lo que importa. <br />
-                            <span className="text-gvl-blue">Ya invertimos donde duele.</span> <br />
-                            Ya no improvisamos.
+                            Al terminar, sabes qué está pasando, <br />
+                            <span className="text-gvl-blue">qué hacer primero</span> <br />
+                            y qué información falta.
                         </p>
                     </div>
                 </div>
@@ -142,29 +141,29 @@ const MarketingAdvisory = () => {
             <section className="py-24 px-4 md:px-12 bg-white border-t-2 border-gvl-black">
                 <div className="max-w-4xl mx-auto">
                     <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-16 text-center">
-                        Si todavía tienes <span className="text-gvl-orange">dudas</span>...
+                        Preguntas <span className="text-gvl-orange">frecuentes</span>
                     </h2>
 
                     <div className="space-y-4">
                         <FaqItem
-                            question="¿Cuánto durará el proceso para ti?"
-                            answer="Depende de la complejidad de tu negocio, pero nuestros sprints de consultoría suelen durar entre 4 y 12 semanas para ver cambios estructurales significativos."
+                            question="¿Cuánto dura la asesoría?"
+                            answer="Depende del alcance. Definimos duración, participantes y entregables antes de empezar."
                         />
                         <FaqItem
                             question="¿Necesitaré contratar más personas?"
-                            answer="No necesariamente. A menudo, el problema es de procesos y foco, no de manos. Primero optimizamos lo que tienes."
+                            answer="No necesariamente. Primero revisamos los procesos y herramientas que ya tiene el equipo."
                         />
                         <FaqItem
-                            question="¿ROI real o solo éxitos iniciales?"
-                            answer="Buscamos sostenibilidad. No nos interesan los 'hacks' que funcionan una semana. Construimos sistemas que perduran."
+                            question="¿Qué recibo al terminar?"
+                            answer="Un diagnóstico del proceso actual, prioridades acordadas y un plan de ejecución por etapas."
                         />
                         <FaqItem
-                            question="¿Mi sector es rarísimo, funcionará?"
-                            answer="Hemos acompañado a empresas en múltiples sectores. La metodología de Growth Video Lab se basa en principios fundamentales de negocio y psicología del consumidor, que son universales."
+                            question="¿Sirve si mi empresa trabaja en un sector específico?"
+                            answer="La primera reunión sirve para entender el negocio, confirmar el alcance y definir si la asesoría es adecuada."
                         />
                         <FaqItem
-                            question="¿Subvención disponible?"
-                            answer="Consúltanos directamente en la llamada para ver si aplicas a algún programa de ayudas digitales vigente."
+                            question="¿Cómo empezamos?"
+                            answer="Agenda una reunión. Revisamos el contexto y proponemos los siguientes pasos."
                         />
                     </div>
                 </div>
@@ -174,10 +173,10 @@ const MarketingAdvisory = () => {
             <section className="bg-gvl-blue text-white py-32 px-4 md:px-12 text-center relative overflow-hidden">
                 <div className="relative z-10 max-w-4xl mx-auto">
                     <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-8">
-                        Tu empresa ya es <span className="text-gvl-yellow">buena</span>.
+                        Revisa tu proceso <span className="text-gvl-yellow">antes de escalarlo</span>.
                     </h2>
                     <p className="text-xl md:text-2xl font-light mb-12 opacity-90">
-                        Solo necesita que el mundo lo vea con la misma claridad que tú.
+                        Una conversación inicial permite definir si el problema necesita asesoría, ejecución o ambas cosas.
                     </p>
                     <a
                         href="https://calendly.com/growthvideolab/30min"
@@ -185,13 +184,13 @@ const MarketingAdvisory = () => {
                         rel="noreferrer"
                         className="inline-flex items-center gap-3 px-10 py-5 bg-white text-gvl-black rounded-full text-xl font-bold uppercase tracking-widest hover:bg-gvl-yellow transition-all duration-300 transform hover:scale-105 shadow-xl"
                     >
-                        Reserva una sesión gratuita
+                        Agenda una reunión
                         <ArrowRight size={24} />
                     </a>
                     <div className="mt-12 flex flex-col md:flex-row justify-center items-center gap-8 opacity-70">
-                        <span className="flex items-center gap-2"><CheckCircle2 size={18} /> Sin compromiso</span>
-                        <span className="flex items-center gap-2"><CheckCircle2 size={18} /> Diagnóstico inicial</span>
-                        <span className="flex items-center gap-2"><CheckCircle2 size={18} /> Claridad directa</span>
+                        <span className="flex items-center gap-2"><CheckCircle2 size={18} /> Revisión inicial</span>
+                        <span className="flex items-center gap-2"><CheckCircle2 size={18} /> Alcance definido</span>
+                        <span className="flex items-center gap-2"><CheckCircle2 size={18} /> Próximos pasos</span>
                     </div>
                 </div>
             </section>

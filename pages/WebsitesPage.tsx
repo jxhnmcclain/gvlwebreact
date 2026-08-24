@@ -36,30 +36,30 @@ lead path / locked room / signal
         offerings={[
           {
             eyebrow: 'landing rooms',
-            title: 'La plataforma sigue al objetivo.',
-            body: 'Elegimos el stack que sirve al negocio, no al que nos resulta más cómodo.',
+            title: 'Elegimos la tecnología según el sitio que necesitas.',
+            body: 'Definimos WordPress, Shopify, Webflow o React según el objetivo y las integraciones del proyecto.',
           },
           {
             eyebrow: 'agency home',
-            title: 'Integraciones que completan la ruta.',
+            title: 'Conectamos el sitio con tus herramientas.',
             body: 'HubSpot, Twenty CRM, GA4, Meta Pixel, Webpay, Mercado Pago, Stripe, n8n o Zapier.',
           },
           {
             eyebrow: 'signal layer',
-            title: 'SEO técnico y performance.',
-            body: 'Core Web Vitals, carga optimizada, datos estructurados y diseño mobile-first.',
+            title: 'Base técnica para buscar, cargar y convertir.',
+            body: 'Velocidad, estructura SEO, datos estructurados y diseño pensado para móvil.',
           },
           {
             eyebrow: 'operations',
-            title: 'Iteración post-lanzamiento.',
-            body: 'Medimos el uso real y ajustamos desde los datos.',
+            title: 'Mejoras después de publicar.',
+            body: 'Revisamos cómo usan el sitio y ajustamos las páginas que lo necesitan.',
           },
         ]}
         process={[
           'Diagnóstico y arquitectura de la información.',
           'Diseño UI/UX.',
           'Desarrollo, QA y performance.',
-          'Lanzamiento, analítica e iteración.',
+          'Lanzamiento, analítica y mejoras posteriores.',
         ]}
         faq={[
           { question: '¿Cuánto se demora un sitio web?', answer: 'Depende del alcance: una landing puede estar en 2–3 semanas; un sitio con integraciones suele tomar entre 4 y 8.' },
