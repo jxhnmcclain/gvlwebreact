@@ -149,7 +149,7 @@ const content = remote ? await productionContent() : { posts: localPosts(), port
 content.posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const snapshot = {
-  generatedAt: new Date().toISOString(),
+  generatedAt: remote ? new Date().toISOString() : null,
   source: remote ? 'supabase-production' : 'local-fallback',
   posts: content.posts,
   portfolio: content.portfolio,

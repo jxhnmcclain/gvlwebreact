@@ -10,7 +10,7 @@
     "dev": "vite",
     "prebuild": "npm run content:sync",
     "build": "vite build",
-    "prebuild:vercel": "npm run content:sync",
+    "prebuild:vercel": "npm run content:sync && npx puppeteer browsers install chrome",
     "build:vercel": "vite build --mode vercel",
     "prebuild:prerender": "npm run content:sync",
     "build:prerender": "vite build",
