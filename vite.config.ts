@@ -5,6 +5,7 @@ import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import prerender from '@prerenderer/rollup-plugin';
 import puppeteerRenderer from '@prerenderer/renderer-puppeteer';
+import chromium from '@sparticuz/chromium';
 
 const contentSnapshot = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, 'content/generated-content.json'), 'utf8'),
@@ -32,9 +33,17 @@ const routes = [
   ...portfolioRoutes,
 ];
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(async ({ mode }) => {
   const env = loadEnv(mode, '.', '');
   const shouldPrerender = mode !== 'development';
+  const isVercel = process.env.VERCEL === '1';
+  const browserLaunchOptions = isVercel
+    ? {
+        executablePath: await chromium.executablePath(),
+      }
+    : {
+        userDataDir: path.join(os.tmpdir(), `gvl-prerender-${process.pid}`),
+      };
 
   return {
     server: {
@@ -61,10 +70,10 @@ export default defineConfig(({ mode }) => {
           skipThirdPartyRequests: true,
           maxConcurrentRoutes: 1,
           headless: true,
-          launchOptions: {
-            userDataDir: path.join(os.tmpdir(), `gvl-prerender-${process.pid}`),
-          },
-          args: ['--no-sandbox', '--disable-setuid-sandbox'],
+          launchOptions: browserLaunchOptions,
+          args: isVercel
+            ? chromium.args
+            : ['--no-sandbox', '--disable-setuid-sandbox'],
         }),
         postProcess(renderedRoute) {
           // Optional: You can minify or modify HTML here

@@ -10,7 +10,7 @@
     "dev": "vite",
     "prebuild": "npm run content:sync",
     "build": "vite build",
-    "prebuild:vercel": "npm run content:sync && npx puppeteer browsers install chrome",
+    "prebuild:vercel": "npm run content:sync",
     "build:vercel": "vite build --mode vercel",
     "prebuild:prerender": "npm run content:sync",
     "build:prerender": "vite build",
@@ -44,6 +44,7 @@
   "devDependencies": {
     "@prerenderer/renderer-puppeteer": "^1.2.4",
     "@prerenderer/rollup-plugin": "^0.3.12",
+    "@sparticuz/chromium": "^149.0.0",
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
     "autoprefixer": "^10.5.4",
