@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import Dither from './Dither.jsx';
+import Carousel from './Carousel';
 
 export type AgencyLabProof = {
   label: string;
@@ -15,6 +16,14 @@ export type AgencyLabOffering = {
 
 export type AgencyLabFaq = { question: string; answer: string };
 
+export type AgencyLabShowcase = {
+  eyebrow: string;
+  title: string;
+  body: string;
+  images: string[];
+  aspectRatio?: 'video' | 'square' | 'portrait' | 'auto';
+};
+
 type AgencyLabPageProps = {
   eyebrow: string;
   title: string;
@@ -22,6 +31,7 @@ type AgencyLabPageProps = {
   ascii: string;
   proof: AgencyLabProof[];
   offerings: AgencyLabOffering[];
+  showcase?: AgencyLabShowcase[];
   process: string[];
   faq?: AgencyLabFaq[];
   ctaLabel: string;
@@ -35,6 +45,7 @@ const AgencyLabPage = ({
   ascii,
   proof,
   offerings,
+  showcase = [],
   process,
   faq = [],
   ctaLabel,
@@ -125,6 +136,45 @@ const AgencyLabPage = ({
           </div>
         </div>
       </section>
+
+      {showcase.length > 0 && (
+        <section className="px-4 md:px-12 pb-24 md:pb-32">
+          <div className="mx-auto max-w-7xl border-t border-white/15 pt-10 md:pt-14">
+            <div className="mb-10 grid gap-5 md:grid-cols-12 md:items-end">
+              <div className="md:col-span-8">
+                <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.28em] text-gvl-yellow/70">trabajo en contexto</p>
+                <h2 className="max-w-4xl text-4xl font-black leading-none tracking-tighter md:text-6xl">
+                  Sistemas que existen fuera del mockup.
+                </h2>
+              </div>
+              <p className="max-w-sm text-sm leading-relaxed text-white/55 md:col-span-4 md:justify-self-end">
+                Selección de piezas reales. La forma cambia; el criterio se mantiene.
+              </p>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-2">
+              {showcase.map((item, index) => (
+                <article key={item.title} className="overflow-hidden border border-white/15 bg-black/60">
+                  <Carousel
+                    images={item.images}
+                    aspectRatio={item.aspectRatio ?? 'square'}
+                    className="rounded-none border-b border-white/15 bg-zinc-950"
+                  />
+                  <div className="grid gap-5 p-6 md:grid-cols-[auto_1fr] md:p-8">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-gvl-yellow/65">
+                      0{index + 1} / {item.eyebrow}
+                    </p>
+                    <div>
+                      <h3 className="mb-3 text-2xl font-black leading-none tracking-tight md:text-3xl">{item.title}</h3>
+                      <p className="max-w-xl text-sm leading-relaxed text-white/55 md:text-base">{item.body}</p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="px-4 md:px-12 pb-24 md:pb-32">
         <div className="max-w-7xl mx-auto border-t border-white/15">

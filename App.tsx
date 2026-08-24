@@ -32,13 +32,7 @@ import MarketingAdvisory from './pages/MarketingAdvisory';
 import LeadMagnetB2BPage from './pages/LeadMagnetB2BPage';
 import Portfolio from './pages/Portfolio';
 import PortfolioProjectPage from './pages/PortfolioProject';
-
-// Private Pages
-import PrivateIndex from './pages/priv/PrivateIndex';
-import SocialMediaPrivate from './pages/priv/SocialMediaPrivate';
-import MarcaDisenoPrivate from './pages/priv/MarcaDisenoPrivate';
-import BrandingPrivate from './pages/priv/BrandingPrivate';
-import GradoClimaProposal from './pages/priv/GradoClimaProposal';
+import ProposalPage from './pages/ProposalPage';
 
 // Presentation
 import Presentation from './pages/Presentation';
@@ -83,6 +77,7 @@ const AppContent = () => {
   // Check if we are on the standalone lead form page or 404 page
   // We want to hide header/footer on these specific pages
   const isLeadPage = location.pathname === '/cotizacion-web';
+  const isStandalonePage = isLeadPage || location.pathname === '/presentacion' || location.pathname.startsWith('/propuestas/');
 
   useEffect(() => {
     const routeSeo = getRouteSeo(location.pathname);
@@ -112,7 +107,7 @@ const AppContent = () => {
       <ScrollToTop />
       <div className="min-h-screen flex flex-col w-full overflow-x-hidden font-sans bg-gvl-cream">
         {/* Header is hidden on LeadFormPage and Presentation as they have specific headers */}
-        {(!isLeadPage && location.pathname !== '/presentacion' && location.pathname !== '/priv/propuesta-gradoclima') && <Header />}
+        {!isStandalonePage && <Header />}
 
         <main className="flex-grow">
           <Routes location={locationToRender}>
@@ -134,12 +129,8 @@ const AppContent = () => {
             <Route path="/portafolio/:slug" element={<PortfolioProjectPage />} />
             <Route path="/asesoria" element={<MarketingAdvisory />} />
 
-            {/* Private Routes */}
-            <Route path="/priv" element={<PrivateIndex />} />
-            <Route path="/priv/social-media" element={<SocialMediaPrivate />} />
-            <Route path="/priv/marca-diseno" element={<MarcaDisenoPrivate />} />
-            <Route path="/priv/branding" element={<BrandingPrivate />} />
-            <Route path="/priv/propuesta-gradoclima" element={<GradoClimaProposal />} />
+            {/* Direct proposal routes: deliberately absent from navigation, sitemap and prerender. */}
+            <Route path="/propuestas/:proposalId" element={<ProposalPage />} />
 
             {/* Presentation Route */}
             <Route path="/presentacion" element={<Presentation />} />
@@ -161,7 +152,7 @@ const AppContent = () => {
                     So Footer is always visible. ContactPage is fixed z-60 covering it.
                     ALSO hide on LeadFormPage
                 */}
-        {(!isLeadPage && location.pathname !== '/presentacion' && location.pathname !== '/priv/propuesta-gradoclima') && <Footer />}
+        {!isStandalonePage && <Footer />}
       </div>
 
       {/* Render ContactPage as an overlay if we have a background location and we are at /contacto */}
