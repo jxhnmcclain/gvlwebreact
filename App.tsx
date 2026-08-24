@@ -12,7 +12,6 @@ import LeadMagnet from './components/LeadMagnet';
 import RecentPosts from './components/RecentPosts';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
-import HomeFaq from './components/HomeFaq';
 import { setMetaTags } from './lib/seo';
 import { getRouteSeo } from './lib/routeSeo';
 
@@ -50,7 +49,6 @@ const Home = () => {
     <>
       <Hero />
       <SplitServices />
-      <HomeFaq />
       <CtaBanner />
       <LeadMagnet />
     </>

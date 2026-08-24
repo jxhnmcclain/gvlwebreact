@@ -15,7 +15,7 @@ const WebsitesPage = () => {
     <>
       <AgencyLabPage
         eyebrow="diseño y desarrollo web / santiago, chile"
-        title="Sitios rápidos, claros y fáciles de medir."
+        title="Diseño y desarrollo web en Santiago, Chile."
         subtitle="Cada proyecto parte de un objetivo de negocio concreto: captar leads, vender online o dar soporte a una campaña."
         ctaLabel="hablemos"
         onCta={goToContact}
@@ -60,6 +60,12 @@ lead path / locked room / signal
           'Diseño UI/UX.',
           'Desarrollo, QA y performance.',
           'Lanzamiento, analítica e iteración.',
+        ]}
+        faq={[
+          { question: '¿Cuánto se demora un sitio web?', answer: 'Depende del alcance: una landing puede estar en 2–3 semanas; un sitio con integraciones suele tomar entre 4 y 8.' },
+          { question: '¿Trabajan solo con WordPress?', answer: 'No. Elegimos WordPress, Shopify, Webflow o desarrollo a medida según el objetivo del sitio.' },
+          { question: '¿El sitio incluye SEO?', answer: 'Incluye la base técnica: velocidad, estructura, datos estructurados y diseño mobile-first. El contenido SEO se trabaja aparte.' },
+          { question: '¿Hacen mantención después del lanzamiento?', answer: 'Sí. Puede ser un servicio aparte o parte de un plan de iteración.' },
         ]}
       />
       <CtaBanner />

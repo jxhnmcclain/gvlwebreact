@@ -16,8 +16,8 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
   },
   {
     path: '/contenido',
-    title: 'Produccion audiovisual para empresas B2B | Growth Video Lab',
-    description: 'Video, fotografia y piezas de contenido para empresas que necesitan explicar valor, mostrar criterio y vender con mas claridad.',
+    title: 'Producción de contenido en Santiago | Growth Video Lab',
+    description: 'Producción de contenido para redes y campañas en Santiago: video, pauta y piezas que se prueban, miden y ajustan.',
     canonical: `${SITE_URL}/contenido`,
     ogType: 'website',
     ogUrl: `${SITE_URL}/contenido`,
@@ -34,8 +34,8 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
   },
   {
     path: '/websites',
-    title: 'Diseno web para empresas en Santiago | Growth Video Lab',
-    description: 'Sitios web y landing pages para empresas de servicios que necesitan confianza, velocidad y una ruta clara hacia la conversion.',
+    title: 'Diseño y desarrollo web en Santiago | Growth Video Lab',
+    description: 'Sitios web, landings e integraciones para empresas en Santiago: rápidos, claros y diseñados para captar leads o vender.',
     canonical: `${SITE_URL}/websites`,
     ogType: 'website',
     ogUrl: `${SITE_URL}/websites`,
@@ -43,8 +43,8 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
   },
   {
     path: '/branding',
-    title: 'Branding e identidad para empresas | Growth Video Lab',
-    description: 'Sistemas de marca sobrios, memorables y utiles para empresas que quieren dejar de parecer intercambiables.',
+    title: 'Branding e identidad visual en Santiago | Growth Video Lab',
+    description: 'Diseño de marca e identidad visual para empresas en Santiago: estrategia, mensajes y sistemas listos para cualquier canal.',
     canonical: `${SITE_URL}/branding`,
     ogType: 'website',
     ogUrl: `${SITE_URL}/branding`,
@@ -52,8 +52,8 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
   },
   {
     path: '/servicios',
-    title: 'Servicios de marketing B2B y webs para empresas | Growth Video Lab',
-    description: 'Webs profesionales y sistemas de prospeccion para empresas B2B en Santiago. Presencia digital pensada para conseguir mas contratos.',
+    title: 'Agencia de growth marketing en Santiago | Growth Video Lab',
+    description: 'Paid, contenido, CRO y marca para empresas en Santiago que necesitan crecer con datos, no con suposiciones.',
     canonical: `${SITE_URL}/servicios`,
     ogType: 'website',
     ogUrl: `${SITE_URL}/servicios`,
