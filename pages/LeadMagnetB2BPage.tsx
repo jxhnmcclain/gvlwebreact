@@ -689,7 +689,7 @@ const LeadMagnetB2BPage = () => {
                             <div className="step-content">
                                 <h3 className="step-title animate-on-scroll">CRM y Seguimiento Automatizado</h3>
                                 <div className="prose animate-on-scroll">
-                                    <p>El <span className="stat-inline">80%</span> de las ventas B2B requieren 5 o más touchpoints. <strong>La mayoría de los negocios se pierden en el follow-up. Nosotros lo automatizamos.</strong></p>
+                                    <p>Muchas ventas B2B requieren varios contactos. <strong>Un seguimiento ordenado evita que una conversación se pierda entre tareas manuales.</strong></p>
 
                                     <div className="funnel">
                                         <div className="funnel-step">

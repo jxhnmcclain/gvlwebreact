@@ -16,7 +16,7 @@ const BrandingPage = () => {
       <AgencyLabPage
         eyebrow="diseño de marca / santiago, chile"
         title="Diseño de marca e identidad visual en Santiago, Chile."
-        subtitle="Un sistema completo que tu equipo puede aplicar sin depender de un diseñador para cada pieza nueva."
+        subtitle="Definimos la marca y dejamos reglas claras para que tu equipo pueda aplicarla."
         ctaLabel="hablemos"
         onCta={goToContact}
         ascii={`BRAND://ROOM_03
@@ -32,12 +32,12 @@ name / mark / system`}
           {
             eyebrow: 'mark',
             title: 'Estrategia de marca.',
-            body: 'Posicionamiento, propuesta de valor, arquetipo y territorio de marca.',
+            body: 'Posicionamiento, propuesta de valor y una dirección clara para la marca.',
           },
           {
             eyebrow: 'voice',
             title: 'Tono y mensaje.',
-            body: 'Voz de marca, taglines y mensajes clave por audiencia.',
+            body: 'Tono de voz y mensajes para explicar la marca a cada audiencia.',
           },
           {
             eyebrow: 'world',
@@ -53,8 +53,8 @@ name / mark / system`}
         showcase={[
           {
             eyebrow: 'burgnhdorf',
-            title: 'Una identidad diseñada como sistema.',
-            body: 'Marca, color y reglas de aplicación pensadas para mantener consistencia cuando el proyecto crece.',
+            title: 'Una identidad con reglas de uso.',
+            body: 'Marca, color y criterios de aplicación para mantener consistencia a medida que el proyecto crece.',
             aspectRatio: 'video',
             images: [
               '/assets/images/Marca y Diseño/Burgnhdorf/Mesa de trabajo 1 copia 2.png',
@@ -66,8 +66,8 @@ name / mark / system`}
           },
           {
             eyebrow: 'papaland',
-            title: 'Una marca lista para moverse.',
-            body: 'Un lenguaje visual reconocible llevado a perfiles, contenido y aplicaciones cotidianas sin depender de una sola pieza hero.',
+            title: 'Una marca para usar todos los días.',
+            body: 'Un lenguaje visual que funciona en perfiles, contenido y aplicaciones cotidianas.',
             aspectRatio: 'square',
             images: [
               '/assets/images/Marca y Diseño/Papaland/post 1.png',
@@ -78,8 +78,8 @@ name / mark / system`}
           },
         ]}
         process={[
-          'Discovery del negocio, categoría y competencia.',
-          'Exploración de territorios visuales.',
+          'Revisión del negocio, la categoría y la competencia.',
+          'Exploración de direcciones visuales.',
           'Diseño y refinamiento con el equipo.',
           'Manual final y entrega de archivos.',
         ]}

@@ -16,7 +16,7 @@ const ContentPage = () => {
       <AgencyLabPage
         eyebrow="producción de contenido / santiago, chile"
         title="Producción de contenido para redes sociales en Santiago, Chile."
-        subtitle="Un flujo constante de variantes para redes y campañas, no una pieza perfecta cada mes."
+        subtitle="Planificamos y producimos contenido mensual para redes y campañas."
         ctaLabel="hablemos"
         onCta={goToContact}
         ascii={`CONTENT://ROOM_02
@@ -34,29 +34,29 @@ signal captured at low light`}
           {
             eyebrow: 'video',
             title: 'Video para redes y campañas.',
-            body: 'Reels, shorts, UGC y anuncios en video para múltiples variantes.',
+            body: 'Reels, shorts, UGC y anuncios en video para redes y campañas.',
           },
           {
             eyebrow: 'still',
             title: 'Fotografía y piezas de pauta.',
-            body: 'Producto, carruseles y estáticos construidos para cada canal.',
+            body: 'Fotos de producto, carruseles y piezas estáticas para cada canal.',
           },
           {
             eyebrow: 'ad rooms',
             title: 'Contenido educativo y de autoridad.',
-            body: 'Para posicionar la marca o a sus fundadores.',
+            body: 'Piezas que explican lo que hace la marca y cómo trabaja.',
           },
           {
             eyebrow: 'system',
             title: 'Testing e iteración.',
-            body: 'Mismo mensaje, distintos formatos, con decisiones basadas en performance real.',
+            body: 'Probamos formatos y mensajes para decidir qué conviene repetir.',
           },
         ]}
         showcase={[
           {
             eyebrow: 'feed systems',
-            title: 'Identidad que sobrevive al calendario.',
-            body: 'Carruseles, campañas y piezas editoriales construidas para sentirse nativas del canal sin perder la marca.',
+            title: 'Contenido consistente durante el mes.',
+            body: 'Carruseles, campañas y piezas editoriales que mantienen la marca reconocible en cada canal.',
             aspectRatio: 'square',
             images: [
               '/assets/images/Social Media/carrusel/CARRUSEL_FINAL_1.png',
@@ -68,8 +68,8 @@ signal captured at low light`}
           },
           {
             eyebrow: 'campaign cuts',
-            title: 'Variantes para aprender más rápido.',
-            body: 'Stories, campañas estacionales y piezas de respuesta directa: una misma dirección con suficientes formatos para probar.',
+            title: 'Formatos para campañas y redes.',
+            body: 'Stories, campañas estacionales y piezas de respuesta directa para probar mensajes en distintos formatos.',
             aspectRatio: 'portrait',
             images: [
               '/assets/images/Social Media/carrusel 2/Post - Weedmaps.png',
@@ -82,9 +82,9 @@ signal captured at low light`}
         ]}
         process={[
           'Calendario editorial mensual.',
-          'Producción en lotes para mantener velocidad.',
-          'Testing de variantes por canal.',
-          'Iteración basada en performance real.',
+          'Producción en bloques para tener material del mes.',
+          'Pruebas de formato y mensaje por canal.',
+          'Revisión de resultados y ajustes para el próximo ciclo.',
         ]}
         faq={[
           { question: '¿Cuánto contenido producen al mes?', answer: 'Depende del plan; los proyectos activos suelen partir en 8–12 piezas mensuales.' },

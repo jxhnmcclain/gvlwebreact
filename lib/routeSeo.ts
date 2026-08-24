@@ -8,7 +8,7 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
   {
     path: '/',
     title: 'Growth Video Lab | Agencia B2B reservada en Santiago',
-    description: 'Webs, marca, contenido y sistemas de prospeccion para empresas B2B que necesitan verse mas serias antes de pedir otra reunion.',
+    description: 'Webs, marca, contenido y sistemas de prospección para empresas B2B que quieren generar más oportunidades comerciales.',
     canonical: SITE_URL,
     ogType: 'website',
     ogUrl: SITE_URL,
@@ -26,7 +26,7 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
   {
     path: '/reels',
     title: 'Contenido para redes sociales B2B | Growth Video Lab',
-    description: 'Reels, carruseles y sistemas de contenido para marcas que quieren presencia constante sin parecer una fabrica de posts vacios.',
+    description: 'Reels, carruseles y contenido mensual para marcas que necesitan presencia constante en sus redes sociales.',
     canonical: `${SITE_URL}/reels`,
     ogType: 'website',
     ogUrl: `${SITE_URL}/reels`,
@@ -53,7 +53,7 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
   {
     path: '/servicios',
     title: 'Agencia de growth marketing en Santiago | Growth Video Lab',
-    description: 'Paid, contenido, CRO y marca para empresas en Santiago que necesitan crecer con datos, no con suposiciones.',
+    description: 'Paid, contenido, CRO y marca para empresas en Santiago que quieren ordenar su marketing y generar oportunidades comerciales.',
     canonical: `${SITE_URL}/servicios`,
     ogType: 'website',
     ogUrl: `${SITE_URL}/servicios`,
@@ -107,7 +107,7 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
   {
     path: '/asesoria',
     title: 'Asesoria de marketing y sistemas B2B | Growth Video Lab',
-    description: 'Asesoria directa para ordenar tu presencia digital, detectar bloqueos comerciales y construir un sistema de crecimiento mas claro.',
+    description: 'Asesoría para revisar tu marketing, ordenar prioridades y definir qué acciones conviene ejecutar primero.',
     canonical: `${SITE_URL}/asesoria`,
     ogType: 'website',
     ogUrl: `${SITE_URL}/asesoria`,

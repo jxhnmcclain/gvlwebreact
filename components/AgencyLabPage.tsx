@@ -104,11 +104,11 @@ const AgencyLabPage = ({
             <div className="relative z-10">
               <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-gvl-yellow/70 mb-5">metodo</p>
               <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-none">
-                Estrategia, ejecución y aprendizaje.
+                Así trabajamos.
               </h2>
             </div>
             <p className="relative z-10 text-white leading-relaxed max-w-sm">
-              Cada disciplina se conecta al objetivo de crecimiento y se ajusta con datos reales.
+              Definimos qué hacer, lo ejecutamos y revisamos los resultados para ajustar el siguiente paso.
             </p>
           </div>
 
@@ -144,11 +144,11 @@ const AgencyLabPage = ({
               <div className="md:col-span-8">
                 <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.28em] text-gvl-yellow/70">trabajo en contexto</p>
                 <h2 className="max-w-4xl text-4xl font-black leading-none tracking-tighter md:text-6xl">
-                  Sistemas que existen fuera del mockup.
+                  Trabajo aplicado.
                 </h2>
               </div>
               <p className="max-w-sm text-sm leading-relaxed text-white/55 md:col-span-4 md:justify-self-end">
-                Selección de piezas reales. La forma cambia; el criterio se mantiene.
+                Piezas reales pensadas para usarse en los canales donde trabaja cada marca.
               </p>
             </div>
 
@@ -193,7 +193,7 @@ const AgencyLabPage = ({
         <section className="px-4 md:px-12 pb-24 md:pb-32">
           <div className="max-w-7xl mx-auto border-t border-white/15 pt-8 md:pt-12">
             <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-gvl-yellow/70 mb-4">preguntas frecuentes</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-10">Lo que suele definirse antes de empezar.</h2>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-10">Preguntas antes de empezar.</h2>
             <div className="grid md:grid-cols-2 gap-x-10">
               {faq.map((item) => (
                 <article key={item.question} className="border-t border-white/15 py-6">

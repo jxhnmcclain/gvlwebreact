@@ -11,7 +11,7 @@ const ServicesPage = () => {
   React.useEffect(() => {
     setMetaTags({
       title: 'Servicios reservados para empresas B2B | Growth Video Lab',
-      description: 'Web, marca, contenido y sistemas de prospeccion para empresas que quieren una presencia mas seria y menos ruidosa.',
+      description: 'Web, marca, contenido y sistemas de prospección para empresas que quieren conseguir más oportunidades comerciales.',
       canonical: `${SITE_URL}/servicios`,
       ogType: 'website',
       ogUrl: `${SITE_URL}/servicios`,
@@ -27,8 +27,8 @@ const ServicesPage = () => {
     <>
       <AgencyLabPage
         eyebrow="growth marketing / santiago, chile"
-        title="Agencia de growth marketing en Santiago."
-        subtitle="Trabajamos como equipo extendido, integrado a tu operación."
+        title="Marketing para conseguir más oportunidades comerciales."
+        subtitle="Trabajamos con tu equipo en web, contenido, campañas y procesos comerciales."
         ctaLabel="hablemos"
         onCta={goToContact}
         ascii={`SERVICES://INDEX
@@ -47,29 +47,29 @@ select / build / connect`}
           {
             eyebrow: '01 / paid',
             title: 'Adquisición de clientes en Meta y Google.',
-            body: 'Optimización semana a semana, basada en datos reales.',
+            body: 'Campañas en Meta y Google revisadas y ajustadas cada semana.',
           },
           {
             eyebrow: '02 / contenido',
             title: 'Piezas para redes y campañas.',
-            body: 'Producción constante para probar, medir y ajustar.',
+            body: 'Contenido para redes y campañas con un calendario de producción claro.',
           },
           {
             eyebrow: '03 / CRO',
-            title: 'Cada paso entre el clic y la conversión.',
-            body: 'Auditoría y optimización del embudo completo.',
+            title: 'Mejoras entre el clic y el contacto.',
+            body: 'Revisamos las páginas, formularios y pasos que afectan la conversión.',
           },
           {
             eyebrow: '04 / marca',
-            title: 'Identidad lista para cualquier canal.',
-            body: 'Sistema visual y verbal para que la marca opere con consistencia.',
+            title: 'Una marca que el equipo puede usar.',
+            body: 'Identidad visual y mensajes para aplicar en cada canal.',
           },
         ]}
         process={[
-          'Definir el objetivo de crecimiento.',
-          'Elegir las disciplinas necesarias.',
-          'Probar, medir e iterar.',
-          'Escalar lo que funciona.',
+          'Definir el objetivo comercial.',
+          'Elegir las acciones y canales necesarios.',
+          'Ejecutar y revisar resultados.',
+          'Ajustar el siguiente ciclo de trabajo.',
         ]}
         faq={[
           { question: '¿Qué disciplinas necesitan para empezar?', answer: 'Partimos del objetivo y definimos si hace falta Paid, contenido, CRO, marca o una combinación.' },

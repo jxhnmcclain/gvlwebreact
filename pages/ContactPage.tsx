@@ -229,7 +229,7 @@ const ContactPage = () => {
                   transition={{ duration: 0.45, delay: 0.16 }}
                   className="mx-auto mt-2 max-w-2xl font-sans text-xs leading-relaxed text-white/60 md:text-sm"
                 >
-                  Cuéntanos qué necesitas y te respondemos con una propuesta clara, corta y accionable.
+                  Cuéntanos qué necesitas y te respondemos con los próximos pasos.
                 </motion.p>
               </div>
 
