@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
 import { N8N_WEBHOOKS } from '../lib/config';
 import TurnstileWidget from '../components/TurnstileWidget';
+import Dither from '../components/Dither.jsx';
+import Logo from '../components/Logo';
 
 import { getUTMParams } from '../lib/utm';
 
@@ -29,6 +31,21 @@ const ContactPage = () => {
   const [errors, setErrors] = useState<Errors>({});
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const isPrerendering =
+    typeof navigator !== 'undefined' && navigator.userAgent.includes('HeadlessChrome');
+
+  useEffect(() => {
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousRootOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousRootOverflow;
+    };
+  }, []);
 
 
 
@@ -111,24 +128,49 @@ const ContactPage = () => {
       animate={{ x: 0 }}
       exit={{ x: "100%" }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-0 z-[60] bg-gvl-yellow w-full h-full overflow-y-auto flex flex-col"
+      className="fixed inset-0 z-[60] flex h-[100dvh] w-full flex-col overflow-hidden bg-black text-white"
     >
+      {isPrerendering ? (
+        <div
+          className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_32%),radial-gradient(circle_at_20%_80%,rgba(255,255,255,0.04),transparent_22%)]"
+          aria-hidden="true"
+        />
+      ) : (
+        <div className="absolute inset-0" aria-hidden="true">
+          <Dither
+            waveColor={[0.42, 0.42, 0.45]}
+            disableAnimation={false}
+            enableMouseInteraction={false}
+            mouseRadius={0.45}
+            colorNum={3}
+            pixelSize={3}
+            waveAmplitude={0.04}
+            waveFrequency={1.2}
+            waveSpeed={0.014}
+          />
+        </div>
+      )}
+      <div className="absolute inset-0 bg-black/75" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_32%),radial-gradient(circle_at_20%_80%,rgba(255,255,255,0.04),transparent_22%)]" />
+
       {/* Header with Close Button */}
-      <div className="flex justify-between items-center p-6 md:p-12 relative z-10">
-        <h2 className="text-lg md:text-xl font-bold tracking-widest uppercase">Growth Video Lab</h2>
-        <button
-          onClick={() => navigate(-1)}
-          className="group flex items-center gap-2 font-bold uppercase text-xs hover:opacity-60 transition-opacity"
-        >
-          <span>Cerrar</span>
-          <div className="bg-black text-gvl-yellow p-1.5 rounded-full group-hover:rotate-90 transition-transform duration-300">
-            <X size={16} />
+      <div className="relative z-10 shrink-0 px-6 pt-3 md:px-10 md:pt-3 lg:px-12">
+        <div className="relative mx-auto flex w-full max-w-7xl items-center justify-center">
+          <div className="h-[58px] origin-center scale-[0.62] md:h-[66px] md:scale-[0.72]">
+            <Logo textColor="text-white" />
           </div>
-        </button>
+          <button
+            onClick={() => navigate(-1)}
+            aria-label="Cerrar formulario"
+            className="group absolute right-0 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/8 text-white/80 transition-colors hover:text-white"
+          >
+            <X size={16} className="transition-transform duration-300 group-hover:rotate-90" />
+          </button>
+        </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-grow flex items-center justify-center px-6 md:px-0 py-8 relative">
+      <div className="relative z-10 flex min-h-0 flex-1 items-center justify-center px-4 py-4 sm:px-6 md:px-8 md:py-2">
         <AnimatePresence mode='wait'>
           {status === 'success' ? (
             <motion.div
@@ -158,129 +200,169 @@ const ContactPage = () => {
           ) : (
             <motion.div
               key="form"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className="max-w-3xl w-full"
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="w-full max-w-5xl"
             >
-              <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-10 text-center leading-[0.9]">
-                Hablemos de <br /> tu proyecto
-              </h1>
+              <div className="mx-auto mb-5 max-w-3xl text-center md:mb-4">
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: 0.05 }}
+                  className="mb-2 font-sans text-[10px] uppercase tracking-[0.28em] text-white/55"
+                >
+                  Growth Video Lab
+                </motion.p>
+                <motion.h1
+                  initial={{ opacity: 0, y: 22, filter: 'blur(10px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ duration: 0.75, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+                  className="text-3xl font-black uppercase leading-[0.92] tracking-tighter sm:text-4xl md:text-[2.7rem] lg:text-5xl"
+                >
+                  Hablemos de <br /> tu proyecto
+                </motion.h1>
+                <motion.p
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: 0.16 }}
+                  className="mx-auto mt-2 max-w-2xl font-sans text-xs leading-relaxed text-white/60 md:text-sm"
+                >
+                  Cuéntanos qué necesitas y te respondemos con una propuesta clara, corta y accionable.
+                </motion.p>
+              </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
-                {/* Name Field */}
-                <div className="group relative">
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="TU NOMBRE"
-                    className={`w-full bg-transparent border-b-2 text-xl md:text-3xl font-bold placeholder-black/30 focus:outline-none py-3 uppercase tracking-tight transition-colors
-                            ${errors.name ? 'border-red-600 text-red-600 focus:border-red-600' : 'border-black focus:border-white'}`}
-                  />
-                  {errors.name && (
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 text-red-600 flex items-center gap-1 font-bold text-xs md:text-sm pointer-events-none">
-                      <AlertCircle size={16} /> {errors.name}
+              <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
+                <div className="rounded-[1.25rem] border border-white/10 bg-black/40 p-4 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-5 md:p-5 lg:p-6">
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-3 md:gap-x-6 md:gap-y-4">
+                    <div className="group relative">
+                      <label htmlFor="name" className="mb-1 hidden text-[10px] font-sans uppercase tracking-[0.2em] text-white/45 sm:block">
+                        Tu nombre
+                      </label>
+                      <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="Escribe tu nombre"
+                        className={`w-full bg-transparent border-b border-white/15 text-sm sm:text-base font-sans placeholder:text-white/28 focus:outline-none py-2 transition-colors
+                                ${errors.name ? 'border-red-500 text-red-300 focus:border-red-500' : 'text-white focus:border-white'}`}
+                      />
+                      {errors.name && (
+                        <div className="mt-1.5 flex items-center gap-1 text-red-400 font-sans text-[11px] md:text-sm">
+                          <AlertCircle size={16} /> {errors.name}
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
 
-                {/* Email Field */}
-                <div className="group relative">
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="TU CORREO ELECTRÓNICO"
-                    className={`w-full bg-transparent border-b-2 text-xl md:text-3xl font-bold placeholder-black/30 focus:outline-none py-3 uppercase tracking-tight transition-colors
-                            ${errors.email ? 'border-red-600 text-red-600 focus:border-red-600' : 'border-black focus:border-white'}`}
-                  />
-                  {errors.email && (
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 text-red-600 flex items-center gap-1 font-bold text-xs md:text-sm pointer-events-none">
-                      <AlertCircle size={16} /> {errors.email}
+                    <div className="group relative">
+                      <label htmlFor="email" className="mb-1 hidden text-[10px] font-sans uppercase tracking-[0.2em] text-white/45 sm:block">
+                        Tu correo electrónico
+                      </label>
+                      <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="nombre@empresa.com"
+                        className={`w-full bg-transparent border-b border-white/15 text-sm sm:text-base font-sans placeholder:text-white/28 focus:outline-none py-2 transition-colors
+                                ${errors.email ? 'border-red-500 text-red-300 focus:border-red-500' : 'text-white focus:border-white'}`}
+                      />
+                      {errors.email && (
+                        <div className="mt-1.5 flex items-center gap-1 text-red-400 font-sans text-[11px] md:text-sm">
+                          <AlertCircle size={16} /> {errors.email}
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
 
-                {/* Phone Field */}
-                <div className="group relative">
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="TU TELÉFONO / WHATSAPP"
-                    className={`w-full bg-transparent border-b-2 text-xl md:text-3xl font-bold placeholder-black/30 focus:outline-none py-3 uppercase tracking-tight transition-colors
-                            ${errors.phone ? 'border-red-600 text-red-600 focus:border-red-600' : 'border-black focus:border-white'}`}
-                  />
-                  {errors.phone && (
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 text-red-600 flex items-center gap-1 font-bold text-xs md:text-sm pointer-events-none">
-                      <AlertCircle size={16} /> {errors.phone}
+                    <div className="group relative">
+                      <label htmlFor="phone" className="mb-1 hidden text-[10px] font-sans uppercase tracking-[0.2em] text-white/45 sm:block">
+                        Tu teléfono / whatsapp
+                      </label>
+                      <input
+                        id="phone"
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+56 9 1234 5678"
+                        className={`w-full bg-transparent border-b border-white/15 text-sm sm:text-base font-sans placeholder:text-white/28 focus:outline-none py-2 transition-colors
+                                ${errors.phone ? 'border-red-500 text-red-300 focus:border-red-500' : 'text-white focus:border-white'}`}
+                      />
+                      {errors.phone && (
+                        <div className="mt-1.5 flex items-center gap-1 text-red-400 font-sans text-[11px] md:text-sm">
+                          <AlertCircle size={16} /> {errors.phone}
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
 
-                {/* Company Field */}
-                <div className="group relative">
-                  <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    placeholder="NOMBRE DE TU EMPRESA"
-                    className={`w-full bg-transparent border-b-2 text-xl md:text-3xl font-bold placeholder-black/30 focus:outline-none py-3 uppercase tracking-tight transition-colors border-black focus:border-white`}
-                  />
-                </div>
-
-                {/* Message Field */}
-                <div className="group relative">
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    rows={1}
-                    placeholder="CUÉNTANOS TU IDEA..."
-                    className={`w-full bg-transparent border-b-2 text-xl md:text-3xl font-bold placeholder-black/30 focus:outline-none py-3 uppercase tracking-tight resize-none transition-colors
-                             ${errors.message ? 'border-red-600 text-red-600 focus:border-red-600' : 'border-black focus:border-white'}`}
-                    onChange={(e) => {
-                      handleChange(e);
-                      // Auto-grow
-                      e.target.style.height = "auto";
-                      e.target.style.height = `${e.target.scrollHeight}px`;
-                    }}
-                  ></textarea>
-                  {errors.message && (
-                    <div className="absolute right-0 bottom-full mb-1 text-red-600 flex items-center gap-1 font-bold text-xs md:text-sm pointer-events-none">
-                      <AlertCircle size={16} /> {errors.message}
+                    <div className="group relative">
+                      <label htmlFor="company" className="mb-1 hidden text-[10px] font-sans uppercase tracking-[0.2em] text-white/45 sm:block">
+                        Empresa
+                      </label>
+                      <input
+                        id="company"
+                        type="text"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                        placeholder="Nombre de tu empresa"
+                        className="w-full border-b border-white/15 bg-transparent py-2 font-sans text-sm text-white transition-colors placeholder:text-white/28 focus:border-white focus:outline-none sm:text-base"
+                      />
                     </div>
-                  )}
-                </div>
+                  </div>
+
+                  <div className="mt-3 md:mt-4">
+                    <div className="group relative">
+                      <label htmlFor="message" className="mb-1 hidden text-[10px] font-sans uppercase tracking-[0.2em] text-white/45 sm:block">
+                        Cuéntanos tu idea
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        rows={2}
+                        placeholder="Qué estás buscando, qué necesitas resolver o qué te gustaría construir"
+                        className={`w-full bg-transparent border-b border-white/15 text-sm sm:text-base font-sans placeholder:text-white/28 focus:outline-none py-2 resize-none leading-relaxed transition-colors
+                                 ${errors.message ? 'border-red-500 text-red-300 focus:border-red-500' : 'text-white focus:border-white'}`}
+                        onChange={handleChange}
+                      ></textarea>
+                      {errors.message && (
+                        <div className="mt-1.5 flex items-center gap-1 text-red-400 font-sans text-[11px] md:text-sm">
+                          <AlertCircle size={16} /> {errors.message}
+                        </div>
+                      )}
+                    </div>
+                  </div>
 
                 {/* Cloudflare Turnstile */}
-                <div className="flex flex-col items-center justify-center pt-4 gap-2">
-                  <div className={`${errors.turnstile ? 'p-1 border-2 border-red-600 rounded-md' : ''}`}>
-                    <TurnstileWidget
-                      onVerify={(token) => {
-                        setTurnstileToken(token);
-                        setErrors(prev => ({ ...prev, turnstile: undefined }));
-                      }}
-                    />
+                  <div className="flex flex-col items-center justify-center gap-2 pt-3 md:pt-4">
+                    <div className={`${errors.turnstile ? 'p-1 border-2 border-red-500 rounded-md' : ''}`}>
+                      <TurnstileWidget
+                        onVerify={(token) => {
+                          setTurnstileToken(token);
+                          setErrors(prev => ({ ...prev, turnstile: undefined }));
+                        }}
+                      />
+                    </div>
+                    {errors.turnstile && (
+                      <span className="text-red-400 font-sans text-[11px] md:text-sm">{errors.turnstile}</span>
+                    )}
                   </div>
-                  {errors.turnstile && (
-                    <span className="text-red-600 font-bold text-sm">{errors.turnstile}</span>
-                  )}
-                </div>
 
-                <div className="flex justify-center pt-2">
-                  <button
-                    type="submit"
-                    disabled={status === 'submitting'}
-                    className="bg-black text-gvl-yellow px-8 py-4 rounded-full text-lg font-black uppercase flex items-center gap-2 hover:scale-105 hover:shadow-[6px_6px_0px_0px_white] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {status === 'submitting' ? 'Enviando...' : 'Enviar Mensaje'}
-                    {status !== 'submitting' && <ArrowRight size={20} />}
-                  </button>
+                  <div className="flex justify-center pt-3 md:pt-4">
+                    <button
+                      type="submit"
+                      disabled={status === 'submitting'}
+                      className="flex items-center gap-2 rounded-full bg-white px-8 py-2.5 text-sm font-black uppercase text-black transition-all hover:scale-[1.02] hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.14)] disabled:cursor-not-allowed disabled:opacity-50 md:px-10 md:py-3"
+                    >
+                      {status === 'submitting' ? 'Enviando...' : 'Enviar Mensaje'}
+                      {status !== 'submitting' && <ArrowRight size={20} />}
+                    </button>
+                  </div>
                 </div>
               </form>
             </motion.div>
@@ -289,8 +371,8 @@ const ContactPage = () => {
       </div>
 
       {/* Footer Info */}
-      <div className="p-6 md:p-8 text-center relative z-10">
-        <p className="font-bold text-sm md:text-base">HOLA@GROWTHVIDEOLAB.COM • SANTIAGO, CHILE</p>
+      <div className="relative z-10 hidden shrink-0 p-3 text-center lg:block">
+        <p className="font-sans font-medium text-[10px] md:text-xs tracking-[0.28em] text-white/45 uppercase">HOLA@GROWTHVIDEOLAB.COM • SANTIAGO, CHILE</p>
       </div>
 
     </motion.div>

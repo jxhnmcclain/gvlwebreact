@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import Dither from './Dither.jsx';
 
 export type AgencyLabProof = {
   label: string;
@@ -84,14 +85,18 @@ const AgencyLabPage = ({
 
       <section className="px-4 md:px-12 pb-20 md:pb-28">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-6">
-          <div className="lg:col-span-4 p-8 md:p-10 border border-white/15 dither-bg min-h-[420px] flex flex-col justify-between">
-            <div>
+          <div className="lg:col-span-4 relative overflow-hidden border border-white/15 min-h-[420px] p-8 md:p-10 flex flex-col justify-between">
+            <div className="absolute inset-0" aria-hidden="true">
+              <Dither waveColor={[0.62, 0.62, 0.62]} disableAnimation={false} enableMouseInteraction mouseRadius={0.7} colorNum={2} pixelSize={4} waveAmplitude={0.18} waveFrequency={2.1} waveSpeed={0.025} />
+            </div>
+            <div className="pointer-events-none absolute inset-0 bg-black/70" />
+            <div className="relative z-10">
               <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-gvl-yellow/70 mb-5">metodo</p>
               <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-none">
                 Estrategia, ejecución y aprendizaje.
               </h2>
             </div>
-            <p className="text-white/55 leading-relaxed max-w-sm">
+            <p className="relative z-10 text-white leading-relaxed max-w-sm">
               Cada disciplina se conecta al objetivo de crecimiento y se ajusta con datos reales.
             </p>
           </div>
