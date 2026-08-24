@@ -51,7 +51,7 @@ const AgencyLabPage = ({
 
           <div className="lg:col-span-4 brutalist-panel bg-white text-black p-6 md:p-8">
             <p className="font-mono text-xs uppercase tracking-[0.24em] text-black/50 mb-6">
-              archivo / reservado
+              growth video lab
             </p>
             <p className="text-xl md:text-2xl font-semibold leading-snug">
               {subtitle}
@@ -84,11 +84,11 @@ const AgencyLabPage = ({
             <div>
               <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-gvl-yellow/70 mb-5">metodo</p>
               <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-none">
-                Bajo pulso. Alta senal.
+                Estrategia, ejecución y aprendizaje.
               </h2>
             </div>
             <p className="text-white/55 leading-relaxed max-w-sm">
-              Sin decoracion. Sin espuma. Solo una presencia que aguanta silencio.
+              Cada disciplina se conecta al objetivo de crecimiento y se ajusta con datos reales.
             </p>
           </div>
 

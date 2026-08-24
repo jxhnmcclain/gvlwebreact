@@ -14,10 +14,10 @@ const ContentPage = () => {
   return (
     <>
       <AgencyLabPage
-        eyebrow="content / film / useful evidence"
-        title="Imagenes que parecen encontradas. No fabricadas."
-        subtitle="Video y piezas visuales para que una empresa deje rastro."
-        ctaLabel="abrir brief"
+        eyebrow="producción de contenido / santiago, chile"
+        title="Contenido que se prueba, se mide y se ajusta."
+        subtitle="Un flujo constante de variantes para redes y campañas, no una pieza perfecta cada mes."
+        ctaLabel="hablemos"
         onCta={goToContact}
         ascii={`CONTENT://ROOM_02
 grain  grain  grain
@@ -25,38 +25,38 @@ grain  grain  grain
 camera / edit / silence / proof
 signal captured at low light`}
         proof={[
-          { label: 'formatos', value: 'vsl / reels / ads' },
-          { label: 'ritmo', value: 'guion + rodaje + corte' },
-          { label: 'uso', value: 'web / pauta / ventas' },
-          { label: 'look', value: 'dither / sombra / criterio' },
+          { label: 'video', value: 'reels, shorts y UGC' },
+          { label: 'pauta', value: 'estáticos, carruseles y ads' },
+          { label: 'autoridad', value: 'contenido educativo' },
+          { label: 'canales', value: 'Instagram, TikTok, LinkedIn, YouTube' },
         ]}
         offerings={[
           {
             eyebrow: 'video',
-            title: 'Piezas que explican sin suplicar.',
-            body: 'Una idea. Un corte. Un motivo para creer.',
+            title: 'Video para redes y campañas.',
+            body: 'Reels, shorts, UGC y anuncios en video para múltiples variantes.',
           },
           {
             eyebrow: 'still',
-            title: 'Fotografia como evidencia.',
-            body: 'Producto, equipo, proceso. Lo real bien encuadrado.',
+            title: 'Fotografía y piezas de pauta.',
+            body: 'Producto, carruseles y estáticos construidos para cada canal.',
           },
           {
             eyebrow: 'ad rooms',
-            title: 'Creativos para entrar frio.',
-            body: 'Anuncios que no parecen plantillas de anuncios.',
+            title: 'Contenido educativo y de autoridad.',
+            body: 'Para posicionar la marca o a sus fundadores.',
           },
           {
             eyebrow: 'system',
-            title: 'Contenido conectado a venta.',
-            body: 'Cada pieza sabe a donde manda.',
+            title: 'Testing e iteración.',
+            body: 'Mismo mensaje, distintos formatos, con decisiones basadas en performance real.',
           },
         ]}
         process={[
-          'Encontrar la escena.',
-          'Quitar el exceso.',
-          'Dejar textura.',
-          'Publicar con ruta.',
+          'Calendario editorial mensual.',
+          'Producción en lotes para mantener velocidad.',
+          'Testing de variantes por canal.',
+          'Iteración basada en performance real.',
         ]}
       />
       <CtaBanner />

@@ -14,10 +14,10 @@ const WebsitesPage = () => {
   return (
     <>
       <AgencyLabPage
-        eyebrow="websites / landing pages / quiet conversion"
-        title="Una puerta negra. Una razon para entrar."
-        subtitle="Sitios pequenos para empresas que no necesitan gritar."
-        ctaLabel="cotizar web"
+        eyebrow="diseño y desarrollo web / santiago, chile"
+        title="Sitios rápidos, claros y fáciles de medir."
+        subtitle="Cada proyecto parte de un objetivo de negocio concreto: captar leads, vender online o dar soporte a una campaña."
+        ctaLabel="hablemos"
         onCta={goToContact}
         ascii={`WEB://ROOM_01
 ┌───────────────┐
@@ -28,38 +28,38 @@ const WebsitesPage = () => {
 lead path / locked room / signal
 00000000000000000000000000000000`}
         proof={[
-          { label: 'stack', value: 'Vercel / React' },
-          { label: 'ritmo', value: 'dias, no meses' },
-          { label: 'uso', value: 'pauta / outreach / cierre' },
-          { label: 'tono', value: 'negro, seco, propio' },
+          { label: 'plataformas', value: 'WordPress / Shopify / Webflow / React' },
+          { label: 'integraciones', value: 'CRM / email / analítica' },
+          { label: 'base', value: 'SEO técnico y performance' },
+          { label: 'proceso', value: 'diagnóstico a iteración' },
         ]}
         offerings={[
           {
             eyebrow: 'landing rooms',
-            title: 'Paginas para una sola decision.',
-            body: 'Oferta, objecion, contacto. Nada mas.',
+            title: 'La plataforma sigue al objetivo.',
+            body: 'Elegimos el stack que sirve al negocio, no al que nos resulta más cómodo.',
           },
           {
             eyebrow: 'agency home',
-            title: 'Home como firma privada.',
-            body: 'Poca voz. Mucha presencia.',
+            title: 'Integraciones que completan la ruta.',
+            body: 'HubSpot, Twenty CRM, GA4, Meta Pixel, Webpay, Mercado Pago, Stripe, n8n o Zapier.',
           },
           {
             eyebrow: 'signal layer',
-            title: 'Prueba sin teatro.',
-            body: 'Proceso, alcance, criterio.',
+            title: 'SEO técnico y performance.',
+            body: 'Core Web Vitals, carga optimizada, datos estructurados y diseño mobile-first.',
           },
           {
             eyebrow: 'operations',
-            title: 'El boton abre una secuencia.',
-            body: 'UTM. n8n. CRM. Email.',
+            title: 'Iteración post-lanzamiento.',
+            body: 'Medimos el uso real y ajustamos desde los datos.',
           },
         ]}
         process={[
-          'Encontrar la objecion.',
-          'Escribir lo minimo.',
-          'Disenar el artefacto.',
-          'Conectar la senal.',
+          'Diagnóstico y arquitectura de la información.',
+          'Diseño UI/UX.',
+          'Desarrollo, QA y performance.',
+          'Lanzamiento, analítica e iteración.',
         ]}
       />
       <CtaBanner />
