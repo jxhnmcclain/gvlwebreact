@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Logo from './Logo';
 import Dither from './Dither.jsx';
 
@@ -13,6 +13,11 @@ const rooms = [
 
 const Hero = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const goToContact = () => {
+    navigate('/contacto', { state: { background: location } });
+  };
 
   return (
     <section className="relative w-full bg-[#050505] text-white overflow-hidden min-h-screen">
@@ -33,12 +38,17 @@ do not decorate
             <Logo textColor="text-white" />
           </div>
 
-          <p className="font-mono text-xs md:text-sm uppercase tracking-[0.34em] text-white max-w-xl">
-            marketing para conseguir clientes
+          <h1 className="max-w-5xl text-5xl font-black uppercase leading-[0.9] tracking-[-0.05em] md:text-7xl lg:text-8xl">
+            Marketing B2B para empresas que necesitan conseguir más clientes.
+          </h1>
+
+          <p className="mt-7 max-w-2xl text-base leading-relaxed text-white/70 md:text-xl">
+            Growth Video Lab ayuda a empresas de servicios en Santiago a verse más serias,
+            explicar mejor lo que hacen y convertir su presencia digital en oportunidades comerciales.
           </p>
 
           <button
-            onClick={() => navigate('/contacto')}
+            onClick={goToContact}
             className="mt-10 mb-12 md:mb-16 inline-flex items-center gap-2 border border-white/20 bg-black/25 px-5 py-3 font-mono text-[11px] uppercase tracking-[0.24em] text-white/60 backdrop-blur-sm hover:text-black hover:bg-white transition-colors"
           >
             hablemos
