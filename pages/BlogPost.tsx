@@ -278,15 +278,17 @@ const BlogPost: React.FC = () => {
 
                 {/* CTA */}
                 <div className="mt-12 p-8 border border-white/15 bg-white/[0.03] text-white text-center">
-                    <h3 className="text-2xl font-bold mb-3">¿Te Gustó Este Artículo?</h3>
+                    <h3 className="text-2xl font-bold mb-3">{post.cta?.title ?? '¿Te Gustó Este Artículo?'}</h3>
                     <p className="text-lg mb-6 opacity-90">
-                        Aplicamos estas estrategias para nuestros clientes. Hablemos de cómo podemos ayudarte.
+                        {post.cta?.body ?? 'Aplicamos estas estrategias para nuestros clientes. Hablemos de cómo podemos ayudarte.'}
                     </p>
                     <a
-                        href="/contacto"
+                        href={post.cta?.url ?? '/contacto'}
                         className="inline-block px-8 py-4 bg-white text-black font-bold hover:bg-gvl-yellow transition-all duration-300"
+                        target={post.cta?.url?.startsWith('http') ? '_blank' : undefined}
+                        rel={post.cta?.url?.startsWith('http') ? 'noopener noreferrer' : undefined}
                     >
-                        Agenda una Consultoría Gratuita
+                        {post.cta?.label ?? 'Agenda una Consultoría Gratuita'}
                     </a>
                 </div>
             </article>
