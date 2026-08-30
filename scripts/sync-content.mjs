@@ -45,6 +45,26 @@ function localPosts() {
     });
 }
 
+// A reviewed, versioned launch snapshot. It is intentionally a temporary
+// release artifact: it lets the first article go live if the private CMS feed
+// is unavailable, while keeping the build deterministic and never reading
+// arbitrary drafts.
+function launchSnapshotContent() {
+  const snapshot = JSON.parse(fs.readFileSync(path.join(root, 'content', 'launch-snapshot.json'), 'utf8'));
+  return {
+    posts: snapshot.posts.map((post) => ({
+      slug: post.slug, title: post.title, date: post.published_at, updatedAt: post.published_at,
+      author: post.author, description: post.description, excerpt: post.excerpt,
+      category: post.category, tags: post.tags ?? [], image: '/og-blog.jpg', imageAlt: post.cover_alt ?? post.title,
+      readTime: Math.max(1, Math.ceil(post.content_markdown.trim().split(/\s+/).length / 200)), featured: false,
+      content: post.content_markdown,
+      cta: post.cta_title && post.cta_label && post.cta_url ? { type: post.cta_type ?? 'contact', title: post.cta_title, body: post.cta_body ?? '', label: post.cta_label, url: post.cta_url } : undefined,
+      internalLinks: post.internal_links ?? [], linkableAsset: post.linkable_asset ?? undefined,
+    })),
+    portfolio: [],
+  };
+}
+
 async function supabaseRows(table, select, order) {
   const url = new URL(`/rest/v1/${table}`, prodUrl);
   url.searchParams.set('select', select);
@@ -241,7 +261,10 @@ const source = useLocalDirectus
 const content = source === 'directus-local'
   ? await localDirectusContent()
   : source === 'directus-production'
-    ? await productionDirectusContent()
+    ? await productionDirectusContent().catch((error) => {
+      console.warn(`Directus feed unavailable; using reviewed launch snapshot. ${error.message}`);
+      return launchSnapshotContent();
+    })
   : source === 'supabase-production'
     ? await productionContent()
     : { posts: localPosts(), portfolio: [] };
