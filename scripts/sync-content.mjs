@@ -196,12 +196,7 @@ async function productionDirectusContent() {
     headers['CF-Access-Client-Id'] = process.env.DIRECTUS_ACCESS_CLIENT_ID;
     headers['CF-Access-Client-Secret'] = process.env.DIRECTUS_ACCESS_CLIENT_SECRET;
   }
-  const url = new URL('/items/posts', directusUrl);
-  url.searchParams.set('filter[status][_eq]', 'published');
-  url.searchParams.set('filter[published_at][_nnull]', 'true');
-  url.searchParams.set('sort', '-published_at');
-  url.searchParams.set('limit', '-1');
-  url.searchParams.set('fields', 'slug,title,seo_title,description,excerpt,content_markdown,category,tags,author,cover_image.id,cover_image.filename_disk,cover_alt,published_at,cta_type,cta_title,cta_body,cta_label,cta_url,internal_links,linkable_asset');
+  const url = new URL('/gvl-published-feed', directusUrl);
   const response = await fetch(url, { headers });
   if (!response.ok) {
     throw new Error(`Directus production sync failed: ${response.status}. ${await response.text()}`);
@@ -211,7 +206,7 @@ async function productionDirectusContent() {
   return { posts: data.map((post) => ({
     slug: post.slug, title: post.title, date: post.published_at, updatedAt: post.published_at, author: post.author,
     description: post.description, excerpt: post.excerpt, category: post.category, tags: post.tags ?? [],
-    image: post.cover_image?.filename_disk ? `${assetBase}/${post.cover_image.filename_disk}` : '/og-blog.jpg', imageAlt: post.cover_alt ?? post.title,
+    image: post.cover_image ? `${assetBase}/${post.cover_image}` : '/og-blog.jpg', imageAlt: post.cover_alt ?? post.title,
     readTime: Math.max(1, Math.ceil(post.content_markdown.trim().split(/\s+/).length / 200)), featured: false, content: post.content_markdown,
     cta: post.cta_title && post.cta_label && post.cta_url ? { type: post.cta_type ?? 'contact', title: post.cta_title, body: post.cta_body ?? '', label: post.cta_label, url: post.cta_url } : undefined,
     internalLinks: post.internal_links ?? [], linkableAsset: post.linkable_asset ?? undefined,
