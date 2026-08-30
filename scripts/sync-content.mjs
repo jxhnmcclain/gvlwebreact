@@ -201,7 +201,14 @@ async function productionDirectusContent() {
     headers['CF-Access-Client-Secret'] = process.env.DIRECTUS_ACCESS_CLIENT_SECRET;
   }
   const response = await fetch(url, { headers });
-  if (!response.ok) throw new Error(`Directus production sync failed: ${response.status} ${await response.text()}`);
+  if (!response.ok) {
+    const accessConfigured = Boolean(
+      process.env.DIRECTUS_ACCESS_CLIENT_ID && process.env.DIRECTUS_ACCESS_CLIENT_SECRET,
+    );
+    throw new Error(
+      `Directus production sync failed: ${response.status}; Cloudflare Access credentials configured=${accessConfigured}. ${await response.text()}`,
+    );
+  }
   const { data } = await response.json();
   const assetBase = (process.env.DIRECTUS_ASSET_BASE_URL || `${directusUrl.replace(/\/$/, '')}/assets`).replace(/\/$/, '');
   return { posts: data.map((post) => ({
