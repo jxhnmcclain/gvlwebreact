@@ -6,6 +6,22 @@ const root = process.cwd();
 const siteUrl = 'https://growthvideolab.com';
 const prodUrl = process.env.SUPABASE_PROD_URL;
 const serviceKey = process.env.SUPABASE_PROD_SERVICE_ROLE_KEY;
+const useLocalDirectus = process.argv.includes('--directus-local');
+const useProductionDirectus = process.argv.includes('--directus-prod');
+
+function readLocalDirectusEnv() {
+  const envPath = path.join(root, 'tools', 'directus-local', '.env');
+  if (!fs.existsSync(envPath)) throw new Error('Missing tools/directus-local/.env. Start and configure Directus first.');
+  return Object.fromEntries(
+    fs.readFileSync(envPath, 'utf8')
+      .split(/\r?\n/)
+      .filter((line) => line && !line.startsWith('#'))
+      .map((line) => {
+        const index = line.indexOf('=');
+        return [line.slice(0, index), line.slice(index + 1)];
+      }),
+  );
+}
 
 function localPosts() {
   return fs.readdirSync(path.join(root, 'content', 'blog'))
@@ -126,6 +142,78 @@ async function productionContent() {
   };
 }
 
+async function localDirectusContent() {
+  const env = readLocalDirectusEnv();
+  const url = new URL('/items/posts', 'http://localhost:8055');
+  url.searchParams.set('filter[status][_eq]', 'published');
+  url.searchParams.set('filter[published_at][_nnull]', 'true');
+  url.searchParams.set('sort', '-published_at');
+  url.searchParams.set('limit', '-1');
+  url.searchParams.set('fields', 'slug,title,seo_title,description,excerpt,content_markdown,category,tags,author,cover_image.id,cover_image.filename_disk,cover_alt,published_at,cta_type,cta_title,cta_body,cta_label,cta_url,internal_links,linkable_asset');
+
+  const response = await fetch(url, { headers: { Authorization: `Bearer ${env.DIRECTUS_BUILD_TOKEN}` } });
+  if (!response.ok) throw new Error(`Directus local content sync failed: ${response.status} ${await response.text()}`);
+
+  const { data } = await response.json();
+  return {
+    posts: data.map((post) => ({
+      slug: post.slug,
+      title: post.title,
+      date: post.published_at,
+      updatedAt: post.published_at,
+      author: post.author,
+      description: post.description,
+      excerpt: post.excerpt,
+      category: post.category,
+      tags: post.tags ?? [],
+      image: post.cover_image?.filename_disk ? `${process.env.DIRECTUS_ASSET_BASE_URL ?? 'http://localhost:8055/assets'}/${post.cover_image.filename_disk}` : '/og-blog.jpg',
+      imageAlt: post.cover_alt ?? post.title,
+      readTime: Math.max(1, Math.ceil(post.content_markdown.trim().split(/\s+/).length / 200)),
+      featured: false,
+      content: post.content_markdown,
+      cta: post.cta_title && post.cta_label && post.cta_url ? {
+        type: post.cta_type ?? 'contact',
+        title: post.cta_title,
+        body: post.cta_body ?? '',
+        label: post.cta_label,
+        url: post.cta_url,
+      } : undefined,
+      internalLinks: post.internal_links ?? [],
+      linkableAsset: post.linkable_asset ?? undefined,
+    })),
+    portfolio: [],
+  };
+}
+
+async function productionDirectusContent() {
+  const directusUrl = process.env.DIRECTUS_PROD_URL;
+  const token = process.env.DIRECTUS_BUILD_TOKEN;
+  if (!directusUrl || !token) throw new Error('Vercel build requires DIRECTUS_PROD_URL and DIRECTUS_BUILD_TOKEN.');
+  const url = new URL('/items/posts', directusUrl);
+  url.searchParams.set('filter[status][_eq]', 'published');
+  url.searchParams.set('filter[published_at][_nnull]', 'true');
+  url.searchParams.set('sort', '-published_at');
+  url.searchParams.set('limit', '-1');
+  url.searchParams.set('fields', 'slug,title,seo_title,description,excerpt,content_markdown,category,tags,author,cover_image.id,cover_image.filename_disk,cover_alt,published_at,cta_type,cta_title,cta_body,cta_label,cta_url,internal_links,linkable_asset');
+  const headers = { Authorization: `Bearer ${token}` };
+  if (process.env.DIRECTUS_ACCESS_CLIENT_ID && process.env.DIRECTUS_ACCESS_CLIENT_SECRET) {
+    headers['CF-Access-Client-Id'] = process.env.DIRECTUS_ACCESS_CLIENT_ID;
+    headers['CF-Access-Client-Secret'] = process.env.DIRECTUS_ACCESS_CLIENT_SECRET;
+  }
+  const response = await fetch(url, { headers });
+  if (!response.ok) throw new Error(`Directus production sync failed: ${response.status} ${await response.text()}`);
+  const { data } = await response.json();
+  const assetBase = (process.env.DIRECTUS_ASSET_BASE_URL || `${directusUrl.replace(/\/$/, '')}/assets`).replace(/\/$/, '');
+  return { posts: data.map((post) => ({
+    slug: post.slug, title: post.title, date: post.published_at, updatedAt: post.published_at, author: post.author,
+    description: post.description, excerpt: post.excerpt, category: post.category, tags: post.tags ?? [],
+    image: post.cover_image?.filename_disk ? `${assetBase}/${post.cover_image.filename_disk}` : '/og-blog.jpg', imageAlt: post.cover_alt ?? post.title,
+    readTime: Math.max(1, Math.ceil(post.content_markdown.trim().split(/\s+/).length / 200)), featured: false, content: post.content_markdown,
+    cta: post.cta_title && post.cta_label && post.cta_url ? { type: post.cta_type ?? 'contact', title: post.cta_title, body: post.cta_body ?? '', label: post.cta_label, url: post.cta_url } : undefined,
+    internalLinks: post.internal_links ?? [], linkableAsset: post.linkable_asset ?? undefined,
+  })), portfolio: [] };
+}
+
 function escapeXml(value = '') {
   return String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&apos;');
 }
@@ -144,13 +232,25 @@ function writeDiscoveryFiles(snapshot) {
   fs.writeFileSync(path.join(root, 'public', 'rss.xml'), rss);
 }
 
-const remote = Boolean(prodUrl && serviceKey);
-const content = remote ? await productionContent() : { posts: localPosts(), portfolio: [] };
+const source = useLocalDirectus
+  ? 'directus-local'
+  : useProductionDirectus
+    ? 'directus-production'
+  : prodUrl && serviceKey
+    ? 'supabase-production'
+    : 'local-fallback';
+const content = source === 'directus-local'
+  ? await localDirectusContent()
+  : source === 'directus-production'
+    ? await productionDirectusContent()
+  : source === 'supabase-production'
+    ? await productionContent()
+    : { posts: localPosts(), portfolio: [] };
 content.posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const snapshot = {
-  generatedAt: remote ? new Date().toISOString() : null,
-  source: remote ? 'supabase-production' : 'local-fallback',
+  generatedAt: source === 'local-fallback' ? null : new Date().toISOString(),
+  source,
   posts: content.posts,
   portfolio: content.portfolio,
 };

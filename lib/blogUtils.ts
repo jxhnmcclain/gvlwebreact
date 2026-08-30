@@ -14,6 +14,15 @@ export interface BlogPost {
     readTime: number;
     featured?: boolean;
     content: string;
+    cta?: {
+        type: 'ebook' | 'lead_magnet' | 'audit' | 'contact' | 'external';
+        title: string;
+        body: string;
+        label: string;
+        url: string;
+    };
+    internalLinks?: string[];
+    linkableAsset?: string;
 }
 
 export interface BlogMetadata {
