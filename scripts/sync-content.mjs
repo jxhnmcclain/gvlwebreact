@@ -187,15 +187,17 @@ async function localDirectusContent() {
 
 async function productionDirectusContent() {
   const directusUrl = process.env.DIRECTUS_PROD_URL;
-  const token = process.env.DIRECTUS_BUILD_TOKEN;
-  if (!directusUrl || !token) throw new Error('Vercel build requires DIRECTUS_PROD_URL and DIRECTUS_BUILD_TOKEN.');
+  if (!directusUrl) throw new Error('Vercel build requires DIRECTUS_PROD_URL.');
   const url = new URL('/items/posts', directusUrl);
   url.searchParams.set('filter[status][_eq]', 'published');
   url.searchParams.set('filter[published_at][_nnull]', 'true');
   url.searchParams.set('sort', '-published_at');
   url.searchParams.set('limit', '-1');
   url.searchParams.set('fields', 'slug,title,seo_title,description,excerpt,content_markdown,category,tags,author,cover_image.id,cover_image.filename_disk,cover_alt,published_at,cta_type,cta_title,cta_body,cta_label,cta_url,internal_links,linkable_asset');
-  const headers = { Authorization: `Bearer ${token}` };
+  // Cloudflare Access gates the CMS route. Directus additionally exposes only
+  // published, dated post fields to its Public role, so builds do not depend
+  // on a static bearer token that can drift between Dokploy and Vercel.
+  const headers = {};
   if (process.env.DIRECTUS_ACCESS_CLIENT_ID && process.env.DIRECTUS_ACCESS_CLIENT_SECRET) {
     headers['CF-Access-Client-Id'] = process.env.DIRECTUS_ACCESS_CLIENT_ID;
     headers['CF-Access-Client-Secret'] = process.env.DIRECTUS_ACCESS_CLIENT_SECRET;
