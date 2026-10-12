@@ -1,0 +1,137 @@
+import React, { useState } from 'react';
+import { ArrowDownToLine, ArrowRight, CheckCircle2, Workflow } from 'lucide-react';
+import { setMetaTags, SITE_URL } from '../lib/seo';
+import { N8N_WEBHOOKS } from '../lib/config';
+import { getUTMParams } from '../lib/utm';
+import TurnstileWidget from '../components/TurnstileWidget';
+import Dither from '../components/Dither.jsx';
+import Logo from '../components/Logo';
+
+const GUIDE_URL = '/guia-ia-marketing.html';
+
+const LeadMagnetB2BPage = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
+
+  React.useEffect(() => {
+    setMetaTags({
+      title: 'Gu√≠a pr√°ctica: IA en tus flujos de marketing | Growth Video Lab',
+      description: 'Aprende a conectar agentes como Codex y Claude Code con tus herramientas de marketing y a dise√±ar flujos √∫tiles para el trabajo diario y mensual.',
+      ogType: 'website',
+      canonical: `${SITE_URL}/guia-ia-marketing`,
+    });
+  }, []);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setError('');
+    setIsSubmitting(true);
+    try {
+      const response = await fetch(N8N_WEBHOOKS.EBOOKS, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          form_type: 'lead_magnet',
+          resource_slug: 'guia-ia-flujos-marketing',
+          resource_title: 'IA en tus flujos de marketing',
+          name,
+          email,
+          turnstileToken,
+          page_url: window.location.href,
+          ...getUTMParams(),
+        }),
+      });
+      if (!response.ok) throw new Error('No se pudo registrar la solicitud.');
+      setIsSubmitted(true);
+    } catch {
+      setError('No pudimos registrar tu solicitud. Intenta otra vez o descarga la gu√≠a directamente aqu√≠ abajo.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <main className="min-h-[80vh] bg-[#050505] text-white selection:bg-gvl-yellow selection:text-black">
+      <section className="relative isolate min-h-[78vh] overflow-hidden border-b border-white/15 bg-[#050505]">
+        <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+          <Dither waveColor={[1, 0.9607843137254902, 0]} disableAnimation={false} enableMouseInteraction mouseRadius={1} colorNum={3} pixelSize={3} waveAmplitude={0.3} waveFrequency={3} waveSpeed={0.05} />
+        </div>
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-black/50" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.12),transparent_52%)]" aria-hidden="true" />
+        <div className="ascii-field text-white/55" aria-hidden="true">{'GVL\n000000000000000000\nsignal only\ndo not decorate\n000000000000000000'}</div>
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-6 pb-20 pt-24 md:grid-cols-[1.1fr_.9fr] md:items-center md:px-10 md:pb-28 md:pt-32">
+          <div>
+            <div className="mb-9 max-w-[190px]"><Logo textColor="text-white" /></div>
+            <p className="mb-6 inline-flex items-center gap-2 border border-gvl-yellow/60 bg-black/40 px-3 py-2 font-mono text-[11px] uppercase tracking-[.18em] text-gvl-yellow">
+              <Workflow size={15} /> Gu√≠a pr√°ctica / IA y marketing
+            </p>
+            <h1 className="max-w-3xl font-sans text-5xl font-black uppercase leading-[.93] tracking-[-.055em] md:text-7xl">
+              Implementa IA en tus <span className="text-gvl-yellow">flujos de marketing.</span>
+            </h1>
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-white/75 md:text-xl">
+              Aprende a pasar de pedir textos a un chatbot a dise√±ar flujos donde agentes como Codex o Claude Code usan el contexto y las herramientas de tu equipo para avanzar tareas reales.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 font-mono text-xs uppercase tracking-wide text-white/70">
+              <span>01 ¬∑ Encuentra un flujo √∫til</span><span>02 ¬∑ Conecta tus sistemas</span><span>03 ¬∑ Mant√©n el control</span>
+            </div>
+            <a href="#solicitar" className="mt-10 inline-flex items-center gap-3 border border-gvl-yellow bg-gvl-yellow px-7 py-4 font-black uppercase tracking-wide text-black transition hover:-translate-y-0.5 hover:bg-white hover:border-white">
+              Recibir la gu√≠a <ArrowRight size={18} />
+            </a>
+          </div>
+
+          <div id="solicitar" className="relative mx-auto w-full max-w-md border border-white/30 bg-black/90 p-7 shadow-[8px_8px_0_#DFFF00] md:p-9">
+            {isSubmitted ? (
+              <div className="py-5">
+                <CheckCircle2 className="text-gvl-yellow" size={36} />
+                <h2 className="mt-5 font-sans text-2xl font-black uppercase">Ya puedes empezar.</h2>
+                <p className="mt-3 leading-7 text-white/65">Enviamos el enlace a tu correo. Tambi√©n puedes abrir la gu√≠a ahora.</p>
+                <a href={GUIDE_URL} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 border border-gvl-yellow bg-gvl-yellow px-5 py-3 font-black uppercase text-black"><ArrowDownToLine size={17} /> Abrir la gu√≠a</a>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="mb-6 flex items-center justify-between border-b border-white/20 pb-4 font-mono text-[10px] uppercase tracking-[.2em] text-white/60">
+                  <span>Gu√≠a gratuita</span><span>GVL / 01</span>
+                </div>
+                <h2 className="font-sans text-2xl font-black uppercase">Rec√≠bela en tu correo</h2>
+                <p className="text-sm leading-6 text-white/60">Solo necesitamos tu nombre y email para enviarte el acceso.</p>
+                <label className="block font-mono text-xs uppercase tracking-wider text-white/60" htmlFor="guide-name">Nombre</label>
+                <input id="guide-name" name="name" required value={name} onChange={(e) => setName(e.target.value)} placeholder="Tu nombre" autoComplete="name" className="w-full border border-white/20 bg-white/[.06] px-4 py-3 text-white outline-none transition focus:border-gvl-yellow" />
+                <label className="block font-mono text-xs uppercase tracking-wider text-white/60" htmlFor="guide-email">Email de trabajo</label>
+                <input id="guide-email" name="email" required type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="tu@empresa.com" autoComplete="email" className="w-full border border-white/20 bg-white/[.06] px-4 py-3 text-white outline-none transition focus:border-gvl-yellow" />
+                <TurnstileWidget onVerify={setTurnstileToken} />
+                {error && <p role="alert" className="text-sm leading-6 text-[#ffd0c8]">{error} <a href={GUIDE_URL} target="_blank" rel="noreferrer" className="underline">Descargar sin esperar</a></p>}
+                <button type="submit" disabled={!turnstileToken || isSubmitting} className="flex w-full items-center justify-center gap-2 border border-gvl-yellow bg-gvl-yellow px-5 py-4 font-black uppercase tracking-wide text-black transition hover:border-white hover:bg-white disabled:cursor-not-allowed disabled:opacity-50">
+                  {isSubmitting ? 'Enviando‚Ä¶' : 'Enviar la gu√≠a'} <ArrowRight size={18} />
+                </button>
+                <p className="text-xs leading-5 text-white/45">Te enviaremos el recurso solicitado. No necesitas agendar una reuni√≥n para descargarlo.</p>
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-28">
+        <div className="grid gap-12 md:grid-cols-[.8fr_1.2fr]">
+          <div>
+            <p className="font-o~zÚ⁄$z{-ÆÈ‹j◊ùëºÅ¡’ïëîÅçΩπÕ’±—Ö»Åô’ïπ—ïÃÅºÅ±±ÖµÖ»Å°ï……Öµ•ïπ—ÖÃ∞ÅÕïüÈ∏Å±ºÅ≈’îÅï∞Åï≈’•¡ºÅçΩπô•ù’…îÅ‰ÅÖ’—Ω…•çî∏Å1ÑÅçΩπï·ßÕ∏ÅπºÅΩç’……îÅÕΩ±ÑËÅÖ±ù’•ï∏ÅëïâîÅÕï±ïçç•ΩπÖ»Å±ÑÅ•π—ïù…ÖçßÕ∏∞Å±•µ•—Ö»Å¡ï…µ•ÕΩÃÅ‰Å…ïŸ•ÕÖ»Å≈◊§ÅÖçç•ΩπïÃÅ¡ï…µ•—î∏Ω¿¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâπΩ—îà¯ÒÕ—…Ωπú˘5@ΩÕ—…Ωπú¯Ä°5Ωëï∞ÅΩπ—ï·–ÅA…Ω—ΩçΩ∞§ÅïÃÅ’∏ÅïÕ”ÖπëÖ»ÅÖâ•ï…—ºÅ≈’îÅ¡ï…µ•—îÅçΩπïç—Ö»ÅÖ¡±•çÖç•ΩπïÃÅëîÅ%ÅçΩ∏Åô’ïπ—ïÃÅëîÅëÖ—ΩÃÅ‰Å°ï……Öµ•ïπ—ÖÃ∏ÅU∏ÅÕï…Ÿ•ëΩ»Å5@ÅΩô…ïçîÅ•πôΩ…µÖçßÕ∏ÅºÅÖçç•ΩπïÃÅïÕ¡ïèµô•çÖÃÏÅï∞ÅÖùïπ—îÅ¡’ïëîÅ’—•±•ÈÖ…±ÖÃÅÕïüÈ∏ÅÕ’ÃÅ¡ï…µ•ÕΩÃ∏ÅQÖµâß•∏Å¡’ïëïÃÅçΩπïç—Ö»ÅÕ•Õ—ïµÖÃÅ¡Ω»ÅA$∞Å¡Ω»Å∏·∏ΩiÖ¡•ï»Ω5Ö≠îÅºÅµïë•Öπ—îÅÖ…ç°•ŸΩÃÅï·¡Ω…—ÖëΩÃ∏Ωë•ÿ¯(ÄÄÄÄΩÕïç—•Ω∏¯((ÄÄÄÄÒÕïç—•Ω∏Åç±ÖÕÃÙâÕïç—•Ω∏à¯ÒÕ¡Ö∏Åç±ÖÕÃÙâπ’¥à¯¿ÃÄºÅ=9a%=9LΩÕ¡Ö∏¯Ò†»˘E◊§ÅÕ•Õ—ïµÖÃÅ¡ΩëÀµÖÃÅçΩπïç—Ö»Ω†»¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ—Öâ±îµ›…Ö¿à¯Ò—Öâ±î¯Ò—°ïÖê¯Ò—»¯Ò—†˘M•Õ—ïµÑΩ—†¯Ò—†˘UÕºÅ¡ΩÕ•â±îΩ—†¯Ò—†˘3µµ•—îÅ…ïçΩµïπëÖëºΩ—†¯Ω—»¯Ω—°ïÖê¯Ò—âΩë‰¯(ÄÄÄÄÄÄÄÄÒ—»¯Ò—ê˘…•ŸîÅ‰ÅëΩç’µïπ—ΩÃΩ—ê¯Ò—ê˘ΩπÕ’±—Ö»Åâ…•ïôÃ∞Åù◊µÖÃÅëîÅµÖ…çÑÅºÅçÖÕΩÃÅÖ¡…ΩâÖëΩÃ∏Ω—ê¯Ò—ê˘1•µ•—Ö»Åï∞ÅÖççïÕºÅÑÅ±ÖÃÅçÖ…¡ï—ÖÃÅëîÅ—…ÖâÖ©º∏Ω—ê¯Ω—»¯(ÄÄÄÄÄÄÄÄÒ—»¯Ò—ê˘I4Ω—ê¯Ò—ê˘IïÕ’µ•»Å¡•¡ï±•πî∞ÅÕó≈Ö±Ö»ÅçÖµ¡ΩÃÅôÖ±—Öπ—ïÃ∏Ω—ê¯Ò—ê˘ΩµïπÈÖ»Åï∏ÅµΩëºÅ±ïç—’…ÑÏÅ¡…Ω—ïùï»ÅëÖ—ΩÃÅ¡ï…ÕΩπÖ±ïÃ∏Ω—ê¯Ω—»¯(ÄÄÄÄÄÄÄÄÒ—»¯Ò—ê˘πÖ≥µ—•çÑÅ‰ÅëÃΩ—ê¯Ò—ê˘Ωµ¡Ö…Ö»Å∑•—…•çÖÃÅ‰Åëï—ïç—Ö»ÅŸÖ…•Öç•ΩπïÃ∏Ω—ê¯Ò—ê˘YÖ±•ëÖ»Å¡ïÀµΩëº∞ÅõÕ…µ’±ÑÅ‰Åô’ïπ—îÅÖπ—ïÃÅëîÅëïç•ë•»Å•πŸï…ÕßÕ∏∏Ω—ê¯Ω—»¯(ÄÄÄÄÄÄÄÄÒ—»¯Ò—ê˘µÖ•∞Å‰ÅçÖ±ïπëÖ…•ºΩ—ê¯Ò—ê˘A…ï¡Ö…Ö»ÅâΩ……ÖëΩ…ïÃ∞ÅÖùïπëÖÃÅ‰ÅÕïù’•µ•ïπ—ΩÃ∏Ω—ê¯Ò—ê˘¡…ΩâÖ»ÅÖπ—ïÃÅëîÅïπŸ•Ö»ÅºÅÖùïπëÖ»∏Ω—ê¯Ω—»¯(ÄÄÄÄÄÄÄÄÒ—»¯Ò—ê˘∏·∏ÄºÅiÖ¡•ï»ÄºÅ5Ö≠îΩ—ê¯Ò—ê˘Ωπïç—Ö»Åë•Õ¡Ö…ÖëΩ…ïÃ∞Å…ïù±ÖÃÅ‰Å…ïù•Õ—…ºÅëîÅïÕ—ÖëΩÃ∏Ω—ê¯Ò—ê˘…ïëïπç•Ö±ïÃÅÖçΩ—ÖëÖÃÅ‰ÅµÖπï©ºÅëîÅï……Ω…ïÃ∏Ω—ê¯Ω—»¯(ÄÄÄÄÄÄΩ—âΩë‰¯Ω—Öâ±î¯Ωë•ÿ¯(ÄÄÄÄÄÄÒ¿˘5@ÅπºÅÕ•πç…Ωπ•ÈÑÅÕ•Õ—ïµÖÃÅ∑Öù•çÖµïπ—îÅπ§ÅùÖ…Öπ—•ÈÑÅ≈’îÅ±ÑÅ•πôΩ…µÖçßÕ∏ÅÕïÑÅçΩ……ïç—Ñ∏Å1ÑÅ•π—ïù…ÖçßÕ∏Åëï—ï…µ•πÑÅ≈◊§ÅÕîÅ¡’ïëîÅçΩπÕ’±—Ö»ÅºÅï©ïç’—Ö»ÏÅ±ÖÃÅ…ïù±ÖÃÅ‰ÅŸÖ±•ëÖç•ΩπïÃÅÕ•ù’ï∏ÅÕ•ïπëºÅ…ïÕ¡ΩπÕÖâ•±•ëÖêÅëï∞Åï≈’•¡º∏Ω¿¯(ÄÄÄÄΩÕïç—•Ω∏¯((ÄÄÄÄÒÕïç—•Ω∏Åç±ÖÕÃÙâÕïç—•Ω∏àÅ•êÙâï±ïù•»à¯ÒÕ¡Ö∏Åç±ÖÕÃÙâπ’¥à¯¿–ÄºÅM1'M8ΩÕ¡Ö∏¯Ò†»˘πç’ïπ—…ÑÅ’∏Åô±’©ºÅ≈’îÅŸÖ±ùÑÅ±ÑÅ¡ïπÑΩ†»¯(ÄÄÄÄÄÄÒΩ∞Åç±ÖÕÃÙâÕ—ï¡Ãà¯Ò±§¯ÒÕ—…Ωπú˘=âÕï…ŸÑÅï∞Å—…ÖâÖ©ºÅ…ïÖ∞∏ΩÕ—…Ωπú¯ÅA•ëîÅÑÅ≈’•ï∏Å±ºÅ°ÖçîÅ≈’îÅ—îÅµ’ïÕ—…îÅçÖëÑÅ¡ÖÕº∞Å•πç±’•ëÖÃÅï·çï¡ç•ΩπïÃÅ‰ÅÖ¡…ΩâÖç•ΩπïÃ∏Ω±§¯Ò±§¯ÒÕ—…Ωπú˘5•ëîÅô…ïç’ïπç•ÑÅ‰ÅïÕô’ï…Èº∏ΩÕ—…Ωπú¯É
+˝◊Öπ—ÖÃÅŸïçïÃÅÖ∞ÅµïÃÅΩç’……î¸É
+˝◊Öπ—ºÅëïµΩ…Ñ¸É
+˝E◊§Åï……Ω…ïÃÅ¡…Ωë’çî¸Ω±§¯Ò±§¯ÒÕ—…Ωπú˘ïô•πîÅï∞Å…ïÕ’±—Öëº∏ΩÕ—…Ωπú¯ÅÕ¡ïç•ô•çÑÅ≈◊§ÅëïâîÅ≈’ïëÖ»Å±•Õ—ºÅ‰ÅèÕµºÅ…ïçΩπΩçï»Å≈’îÅïÕ”ÑÅçΩ……ïç—º∏Ω±§¯Ò±§¯ÒÕ—…Ωπú˘Mï¡Ö…ÑÅ…’—•πÑÅëîÅç…•—ï…•º∏ΩÕ—…Ωπú¯Å’—ΩµÖ—•ÈÑÅ±ÖÃÅ…ïù±ÖÃÅïÕ—Öâ±ïÃ∏ÅUÕÑÅ’∏ÅÖùïπ—îÅç’ÖπëºÅ•µ¡Ω…—ÑÅ•π—ï…¡…ï—Ö»ÅçΩπ—ï·—º∏Ω±§¯Ò±§¯ÒÕ—…Ωπú˘A…’ïâÑÅ¡ï≈’ó≈º∏ΩÕ—…Ωπú¯Åµ¡•ïÈÑÅçΩ∏Å’πÑÅçÖµ¡á≈Ñ∞Å’∏ÅÕïùµïπ—ºÅºÅ’∏Å…ï¡Ω…—î∞ÅπºÅçΩ∏Å—ΩëÑÅ±ÑÅΩ¡ï…ÖçßÕ∏∏Ω±§¯ΩΩ∞¯(ÄÄÄÄÄÄÒ¿˘A…•Ω…•ÈÑÅ—Ö…ïÖÃÅô…ïç’ïπ—ïÃ∞ÅëîÅ…ïÕ’±—ÖëºÅç±Ö…ºÅ‰Å…•ïÕùºÅâÖ©º∏Å≈ÖëîÅ’πÑÅÖ¡…ΩâÖçßÕ∏Åï·¡≥µç•—ÑÅÖπ—ïÃÅëîÅ¡’â±•çÖ»ÅçΩπ—ïπ•ëº∞ÅçÖµâ•Ö»Å¡…ïÕ’¡’ïÕ—ºÅºÅçΩπ—Öç—Ö»Åç±•ïπ—ïÃ∏Ω¿¯(ÄÄÄÄΩÕïç—•Ω∏¯((ÄÄÄÄÒÕïç—•Ω∏Åç±ÖÕÃÙâÕïç—•Ω∏àÅ•êÙâë•ÕïπÖ»à¯ÒÕ¡Ö∏Åç±ÖÕÃÙâπ’¥à¯¿‘ÄºÅ%ME<ΩÕ¡Ö∏¯Ò†»˘Mï•ÃÅ¡•ïÈÖÃÅ¡Ö…ÑÅëïÕç…•â•»Åï∞Å¡…ΩçïÕºΩ†»¯(ÄÄÄÄÄÄÒΩ∞¯Ò±§¯ÒÕ—…Ωπú˘•Õ¡Ö…ÖëΩ»ËΩÕ—…Ωπú¯Å≈◊§Å•π•ç•ÑÅï∞Å—…ÖâÖ©º∏Ω±§¯Ò±§¯ÒÕ—…Ωπú˘π—…ÖëÖÃËΩÕ—…Ωπú¯Å≈◊§ÅëΩç’µïπ—ΩÃÅºÅëÖ—ΩÃÅ…ïç•âîÅ‰ÅëîÅìÕπëîÅŸ•ïπï∏∏Ω±§¯Ò±§¯ÒÕ—…Ωπú˘Iïù±ÖÃËΩÕ—…Ωπú¯Åç…•—ï…•ΩÃ∞Å≥µµ•—ïÃÅëîÅµÖ…çÑÅ‰Åï·çï¡ç•ΩπïÃ∏Ω±§¯Ò±§¯ÒÕ—…Ωπú˘AÖÕΩÃËΩÕ—…Ωπú¯Å≈◊§ÅçΩπÕ’±—Ñ∞ÅçΩµ¡Ö…Ñ∞ÅçÖ±ç’±ÑÅºÅ…ïëÖç—Ñ∏Ω±§¯Ò±§¯ÒÕ—…Ωπú˘MÖ±•ëÑËΩÕ—…Ωπú¯ÅôΩ…µÖ—ºÅëîÅïπ—…ïùÑÅ‰Å±’ùÖ»ÅëΩπëîÅÕîÅù’Ö…ëÑ∏Ω±§¯Ò±§¯ÒÕ—…Ωπú˘Ωπ—…Ω∞ËΩÕ—…Ωπú¯Å≈’ß•∏Å…ïŸ•ÕÑ∞Å≈◊§Å…ï≈’•ï…îÅÖ¡…ΩâÖçßÕ∏Å‰ÅèÕµºÅÕîÅ…ïù•Õ—…ÑÅ’∏Åï……Ω»∏Ω±§¯ΩΩ∞¯(ÄÄÄÄÄÄÒ†Ã˘©ïµ¡±ºËÅ•πôΩ…µîÅÕïµÖπÖ∞ÅëîÅçÖµ¡á≈ÖÃΩ†Ã¯Ò¿˘UπÑÅÖ’—ΩµÖ—•ÈÖçßÕ∏Å…óÈπîÅ±ÖÃÅï·¡Ω…—Öç•ΩπïÃÅÖçΩ…ëÖëÖÃ∏Å∞ÅÖùïπ—îÅçΩµ¡Ö…ÑÅï∞Å…ïÕ’±—ÖëºÅçΩ∏Åï∞Å¡ïÀµΩëºÅ‰ÅΩâ©ï—•ŸºÅëïô•π•ëΩÃ∞Å…ïëÖç—ÑÅ’∏Å…ïÕ’µï∏ÅçΩ∏Åôïç°ÑÅ‰Åô’ïπ—î∞Å‰ÅµÖ…çÑÅ±ÑÅ•πôΩ…µÖçßÕ∏Å≈’îÅôÖ±—Ñ∏Å’Ö…ëÑÅï∞Å…ïÕ’±—ÖëºÅçΩµºÅâΩ……ÖëΩ»∏ÅUπÑÅ¡ï…ÕΩπÑÅ…ïŸ•ÕÑÅèÖ±ç’±ΩÃÅ‰ÅçΩπ—ï·—ºÅÖπ—ïÃÅëîÅçΩµ¡Ö…—•…±º∏Ω¿¯Ò¿˘∞ÅÖùïπ—îÅ¡’ïëîÅëïÕç…•â•»ÅçÖµâ•ΩÃÅΩâÕï…ŸÖëΩÃ∏Å9ºÅëïâîÅ•πŸïπ—Ö»ÅçÖ’ÕÖÃÅÑÅ¡Ö…—•»ÅëîÅ’πÑÅçΩ……ï±ÖçßÕ∏Åπ§Åëïç•ë•»Å¡Ω»Åœ¥Åµ•ÕµºÅï∞Å¡…ïÕ’¡’ïÕ—ºÅëï∞ÅÕ•ù’•ïπ—îÅ¡ïÀµΩëº∏Ω¿¯(ÄÄÄÄΩÕïç—•Ω∏¯((ÄÄÄÄÒÕïç—•Ω∏Åç±ÖÕÃÙâÕïç—•Ω∏àÅ•êÙâçΩπïç—Ö»à¯ÒÕ¡Ö∏Åç±ÖÕÃÙâπ’¥à¯¿ÿÄºÅ%5A159Q'M8ΩÕ¡Ö∏¯Ò†»˘Ωπïç—ÑÅ—’ÃÅÕ•Õ—ïµÖÃÅëîÅµïπΩÃÅÑÅ∑ÖÃΩ†»¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâù…•êà¯Òë•ÿÅç±ÖÕÃÙâçÖ…êà¯Ò†Ã¯¿ƒÉ
+‹Å…ç°•ŸΩÃÅ¡…ï¡Ö…ÖëΩÃΩ†Ã¯Ò¿˘·¡Ω…—ÑÅœÕ±ºÅ±ÑÅ•πôΩ…µÖçßÕ∏ÅπïçïÕÖ…•ÑÅÑÅ’πÑÅ°Ω©ÑÅºÅëΩç’µïπ—º∏ÅIïŸ•ÕÑÅçÖëÑÅ…ïÕ’±—Öëº∏Åœ¥ÅëïÕç’â…ïÃÅï……Ω…ïÃÅÖπ—ïÃÅëîÅëÖ»ÅÖççïÕºÅÑÅÕ•Õ—ïµÖÃ∏Ω¿¯Ωë•ÿ¯Òë•ÿÅç±ÖÕÃÙâçÖ…êà¯Ò†Ã¯¿»É
+‹Å’—ΩµÖ—•ÈÖçßÕ∏Ω†Ã¯Ò¿˘Ωπïç—ÑÅ’∏ÅïŸïπ—ºÅçΩ∏Å¡ÖÕΩÃÅëï—ï…µ•π•Õ—ÖÃËÅπ’ïŸºÅâ…•ïòÉäHÅŸÖ±•ëÖçßÕ∏ÉäHÅI4ÉäHÅâΩ……ÖëΩ»Å¡Ö…ÑÅï∞Åï≈’•¡º∏ÅIïÕï…ŸÑÅï∞ÅÖùïπ—îÅ¡Ö…ÑÅ•π—ï…¡…ï—Ö»ÅºÅ…ïÕ’µ•»∏Ω¿¯Ωë•ÿ¯Òë•ÿÅç±ÖÕÃÙâçÖ…êà¯Ò†Ã¯¿ÃÉ
+‹Å5@ÅºÅA$Ω†Ã¯Ò¿˘Aï…µ•—îÅÖ∞ÅÖùïπ—îÅçΩπÕ’±—Ö»Å’πÑÅ°ï……Öµ•ïπ—ÑÅïÕ¡ïèµô•çÑ∏Åµ¡•ïÈÑÅçΩ∏Å±ïç—’…ÑÅ‰Å’∏Åïπ—Ω…πºÅëîÅ¡…’ïâÑÏÅá≈ÖëîÅïÕç…•—’…ÑÅëïÕ¡◊•ÃÅëîÅ…ïŸ•ÕÖ»Å¡ï…µ•ÕΩÃÅ‰Å…ïÕ’±—ÖëΩÃ∏Ω¿¯Ωë•ÿ¯Òë•ÿÅç±ÖÕÃÙâçÖ…êà¯Ò†Ã¯¿–É
+‹Å¡…ΩâÖçßÕ∏Å°’µÖπÑΩ†Ã¯Ò¿˘ï©ÑÅçΩµºÅâΩ……ÖëΩ»Å—ΩëÑÅÖççßÕ∏Å≈’îÅÖôïç—îÅç±•ïπ—ïÃ∞Å¡…ïÕ’¡’ïÕ—ºÅºÅ¡’â±•çÖçßÕ∏∏Åïô•πîÅ≈’ß•∏ÅÖ¡…’ïâÑÅ‰ÅìÕπëîÅ≈’ïëÑÅï∞Å…ïù•Õ—…º∏Ω¿¯Ωë•ÿ¯Ωë•ÿ¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâπΩ—îà¯ÒÕ—…Ωπú˘’•ëÑÅ±ΩÃÅÖççïÕΩÃËΩÕ—…Ωπú¯ÅçÖëÑÅç…ïëïπç•Ö∞ÅëïâîÅëÖ»ÅœÕ±ºÅï∞Å¡ï…µ•ÕºÅ∑µπ•µºÅπïçïÕÖ…•º∏Å9ºÅ•πç±’ÂÖÃÅçΩπ—…ÖÕó≈ÖÃ∞Å—Ω≠ïπÃÅπ§Å•πôΩ…µÖçßÕ∏ÅÕïπÕ•â±îÅï∏Å•πÕ—…’çç•ΩπïÃÅçΩµ¡Ö…—•ëÖÃ∏ÅIïŸ•ÕÑÅ±ÖÃÅ¡Ω≥µ—•çÖÃÅëîÅ±ΩÃÅ¡…ΩŸïïëΩ…ïÃÅÖπ—ïÃÅëîÅçΩπïç—Ö»ÅëÖ—ΩÃÅëîÅç±•ïπ—ïÃ∏Ωë•ÿ¯(ÄÄÄÄΩÕïç—•Ω∏¯((ÄÄÄÄÒÕïç—•Ω∏Åç±ÖÕÃÙâÕïç—•Ω∏àÅ•êÙâ…•—’Ö±ïÃà¯ÒÕ¡Ö∏Åç±ÖÕÃÙâπ’¥à¯¿‹ÄºÅ=AI'M8ΩÕ¡Ö∏¯Ò†»˘©ïµ¡±ΩÃÅëîÅùïÕ—ßÕ∏Åë•Ö…•ÑÅ‰ÅµïπÕ’Ö∞Ω†»¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâù…•êà¯Òë•ÿÅç±ÖÕÃÙâçÖ…êà¯Ò†Ã˘I•—’Ö±ïÃÅë•Ö…•ΩÃΩ†Ã¯Ò’∞¯Ò±§˘IïŸ•ÕÖ»Åâ…•ïôÃÅ‰Å¡ïë•»Å±ΩÃÅëÖ—ΩÃÅ≈’îÅôÖ±—Ö∏∏Ω±§¯Ò±§˘ΩπŸï…—•»ÅπΩ—ÖÃÅÖ¡…ΩâÖëÖÃÅï∏Å—Ö…ïÖÃÅçΩ∏Å…ïÕ¡ΩπÕÖâ±îÅ‰Åôïç°Ñ∏Ω±§¯Ò±§˘A…ï¡Ö…Ö»ÅŸÖ…•Öç•ΩπïÃÅëîÅ’πÑÅ¡•ïÈÑÅÖ¡…ΩâÖëÑÅ¡Ö…ÑÅë•Õ—•π—ΩÃÅçÖπÖ±ïÃ∏Ω±§¯Ò±§˘IïÕ’µ•»ÅÖç—•Ÿ•ëÖêÅëï∞ÅI4Å‰ÅµÖ…çÖ»Å…ïù•Õ—…ΩÃÅ•πçΩµ¡±ï—ΩÃ∏Ω±§¯Ò±§˘±ï…—Ö»ÅÕΩâ…îÅ∑•—…•çÖÃÅô’ï…ÑÅëï∞Å…ÖπùºÅÖçΩ…ëÖëºÅ¡Ö…ÑÅ…ïŸ•ÕßÕ∏∏Ω±§¯Ω’∞¯Ωë•ÿ¯Òë•ÿÅç±ÖÕÃÙâçÖ…êà¯Ò†Ã˘I•—’Ö±ïÃÅµïπÕ’Ö±ïÃΩ†Ã¯Ò’∞¯Ò±§˘Ωµ¡Ö…Ö»Å…ïÕ’±—ÖëΩÃÅ’ÕÖπëºÅ¡ïÀµΩëΩÃÅï≈’•ŸÖ±ïπ—ïÃ∏Ω±§¯Ò±§˘A…Ω¡Ωπï»ÅçÖ±ïπëÖ…•ºÅïë•—Ω…•Ö∞ÅÕïüÈ∏Å¡…•Ω…•ëÖëïÃÅ‰ÅçÖ¡Öç•ëÖê∏Ω±§¯Ò±§˘ï—ïç—Ö»Åë’¡±•çÖëΩÃÅºÅçÖµ¡ΩÃÅŸÖèµΩÃÅ¡Ö…ÑÅ…ïŸ•ÕßÕ∏∏Ω±§¯Ò±§˘Mï¡Ö…Ö»Å°ïç°ΩÃÅΩâÕï…ŸÖëΩÃÅëîÅ°•√Õ—ïÕ•ÃÅëîÅ…ïπë•µ•ïπ—º∏Ω±§¯Ò±§˘ΩπŸï…—•»ÅÖ¡…ïπë•ÈÖ©ïÃÅÖ¡…ΩâÖëΩÃÅï∏Åï·¡ï…•µïπ—ΩÃÅ‰Å…ïÕ¡ΩπÕÖâ±ïÃ∏Ω±§¯Ω’∞¯Ωë•ÿ¯Ωë•ÿ¯(ÄÄÄÄΩÕïç—•Ω∏¯((ÄÄÄÄÒÕïç—•Ω∏Åç±ÖÕÃÙâÕïç—•Ω∏à¯ÒÕ¡Ö∏Åç±ÖÕÃÙâπ’¥à¯¿‡ÄºÅA19Q%11ΩÕ¡Ö∏¯Ò†»˘Õ¡ïç•ô•çÑÅ—‘Å¡…•µï»Åô±’©ºΩ†»¯(ÄÄÄÄÄÄÒ¡…îÅç±ÖÕÃÙâ¡…Ωµ¡–à˘9Ωµâ…îÅëï∞Åô±’©ºË)Aï…ÕΩπÑÅ…ïÕ¡ΩπÕÖâ±îË)E◊§Å±ºÅ•π•ç•ÑË)…ïç’ïπç•ÑÅµïπÕ’Ö∞Ë)A…Ωâ±ïµÑÅÖç—’Ö∞Å‰Å—•ïµ¡ºÅÖ¡…Ω·•µÖëºË)π—…ÖëÖÃÅÖ’—Ω…•ÈÖëÖÃÄ°ô’ïπ—îÅ‰ÅçÖµ¡ΩÃ§Ë)AÖÕΩÃÅ≈’îÅëïâï∏Åï©ïç’—Ö…ÕîË)Iïù±ÖÃÅëîÅµÖ…çÑÅºÅπïùΩç•ºË)IïÕ’±—ÖëºÅïÕ¡ï…ÖëºÅ‰ÅìÕπëîÅù’Ö…ëÖ…±ºË)E◊§ÅëïâîÅ≈’ïëÖ»ÅçΩµºÅâΩ……ÖëΩ»Ë)E◊§ÅÖçç•ΩπïÃÅ…ï≈’•ï…ï∏ÅÖ¡…ΩâÖçßÕ∏Å°’µÖπÑË)E◊§ÅπºÅ¡’ïëîÅ°Öçï»Åï∞ÅÖùïπ—îË)ÕµºÅµïë•»ÅçÖ±•ëÖê∞Å—•ïµ¡º∞Åï……Ω…ïÃÅ‰Å’ÕºË)A±Ö∏ÅëîÅ…ïŸï…ÕÑÅÕ§ÅÖ±ùºÅôÖ±±ÑËΩ¡…î¯(ÄÄÄÄÄÄÒ†Ã˘%πÕ—…’ççßÕ∏ÅëîÅï©ïµ¡±ºΩ†Ã¯Ò¿Åç±ÖÕÃÙâπΩ—îà˚äqIïŸ•ÕÑÅœÕ±ºÅ±ΩÃÅâ…•ïôÃÅëîÅïÕ—ÑÅçÖ…¡ï—ÑÅçΩ∏ÅïÕ—ÖëºÅÖ¡…ΩâÖëº∏ÅIïÕ’µîÅΩâ©ï—•Ÿº∞ÅÖ’ë•ïπç•Ñ∞Åôïç°ÑÅ‰Å¡•ïÈÖÃÅÕΩ±•ç•—ÖëÖÃ∏ÅMó≈Ö±ÑÅ±ΩÃÅçÖµ¡ΩÃÅôÖ±—Öπ—ïÃÏÅπºÅ±ΩÃÅçΩµ¡±ï—ïÃÅ¡Ω»Å•πôï…ïπç•Ñ∏ÅA…ï¡Ö…ÑÅ’πÑÅ—Öâ±ÑÅ‰Å¡…ïù’π—ÖÃÅ¡Ö…ÑÅï∞Åï≈’•¡º∏Å9ºÅçΩπ—Öç—ïÃÅç±•ïπ—ïÃ∞ÅπºÅ¡’â±•≈’ïÃÅçΩπ—ïπ•ëºÅπ§ÅçÖµâ•ïÃÅïÕ—ÖëΩÃ∏Å%πç±’ÂîÅï∞ÅπΩµâ…îÅëï∞ÅÖ…ç°•ŸºÅô’ïπ—îªätΩ¿¯(ÄÄÄÄΩÕïç—•Ω∏¯((ÄÄÄÄÒÕïç—•Ω∏Åç±ÖÕÃÙâÕïç—•Ω∏àÅ•êÙâ¡…’ïâÑà¯ÒÕ¡Ö∏Åç±ÖÕÃÙâπ’¥à¯¿‰ÄºÅAI%5HÅ5LΩÕ¡Ö∏¯Ò†»˘A…’ïâÑÅï∏Åç’Ö—…ºÅÕïµÖπÖÃΩ†»¯(ÄÄÄÄÄÄÒΩ∞Åç±ÖÕÃÙâÕ—ï¡Ãà¯Ò±§¯ÒÕ—…Ωπú˘MïµÖπÑÄƒÉäPÅΩâÕï…ŸÖ»ËΩÕ—…Ωπú¯ÅëΩç’µïπ—ÑÅ’πÑÅ—Ö…ïÑÅ…ï¡ï—•ëÑ∞ÅçΩ∏ÅÕ’ÃÅï·çï¡ç•ΩπïÃÅ‰Åç…•—ï…•ΩÃÅëîÅçÖ±•ëÖê∏Ω±§¯Ò±§¯ÒÕ—…Ωπú˘MïµÖπÑÄ»ÉäPÅ¡…ΩâÖ»ËΩÕ—…Ωπú¯Å—…ÖâÖ©ÑÅçΩ∏Å’πÑÅµ’ïÕ—…ÑÅ¡ï≈’ó≈ÑÅ‰Å…ïŸ•ÕÑÅçÖëÑÅ…ïÕ’±—Öëº∏Ω±§¯Ò±§¯ÒÕ—…Ωπú˘MïµÖπÑÄÃÉäPÅçΩπïç—Ö»ËΩÕ—…Ωπú¯Å’ÕÑÅ’πÑÅô’ïπ—îÅëîÅœÕ±ºÅ±ïç—’…ÑÅ‰Åëï©ÑÅÖçç•ΩπïÃÅï·—ï…πÖÃÅçΩµºÅâΩ……ÖëΩ…ïÃ∏Ω±§¯Ò±§¯ÒÕ—…Ωπú˘MïµÖπÑÄ–ÉäPÅëïç•ë•»ËΩÕ—…Ωπú¯ÅçΩµ¡Ö…ÑÅçÖ±•ëÖê∞Å—•ïµ¡ºÅπï—º∞Åï……Ω…ïÃÅ‰ÅÖëΩ¡çßÕ∏∏Å©’Õ—Ñ∞ÅçΩπÕï…ŸÑÅºÅëïÕçÖ…—Ñ∏Ω±§¯ΩΩ∞¯(ÄÄÄÄÄÄÒ¿˘9ºÅµ•ëÖÃÅœÕ±ºÅŸï±Ωç•ëÖê∏ÅU∏Åô±’©ºÉÈ—•∞Å…ïë’çîÅ—…ÖâÖ©ºÅ…ï¡ï—•—•ŸºÅÕ•∏ÅÖ’µïπ—Ö»Å…ï—…ÖâÖ©º∞Åï……Ω…ïÃÅºÅ…•ïÕùº∏Å∏Å±ÑÅ…ïŸ•ÕßÕ∏ÅµïπÕ’Ö∞Å¡…ïù’π—ÑËÉ
+˝≈◊§Å—Ö…ïÑÅ—ï…µ•ªÃ¸∞É
+˝ç◊Öπ—ºÅÕîÅÖ¡…ΩãÃÅÕ•∏ÅçÖµâ•ΩÃÅ•µ¡Ω…—Öπ—ïÃ¸∞É
+˝ç◊Öπ—ºÅ—•ïµ¡ºÅÕîÅÖ°Ω…ÀÃÅ—…ÖÃÅçΩ……ïù•»¸Å‰É
+˝≈◊§Å¡ï…µ•ÕºÅºÅ¡ÖÕºÅ°Ö‰Å≈’îÅçÖµâ•Ö»¸Ω¿¯(ÄÄÄÄΩÕïç—•Ω∏¯((ÄÄÄÄÒÕïç—•Ω∏Åç±ÖÕÃÙâÕïç—•Ω∏à¯ÒÕ¡Ö∏Åç±ÖÕÃÙâπ’¥à˘AIÅMU%HΩÕ¡Ö∏¯Ò†»˘Ωç’µïπ—ÖçßÕ∏ÅΩô•ç•Ö∞Ω†»¯(ÄÄÄÄÄÄÒ’∞Åç±ÖÕÃÙâÕΩ’…çîµ±•Õ–à¯Ò±§¯ÒÑÅ°…ïòÙâ°——¡ÃËºΩëïŸï±Ω¡ï…ÃπΩ¡ïπÖ§πçΩ¥ΩçΩëï‡ºà˘=¡ïπ$É
+‹ÅΩç’µïπ—ÖçßÕ∏ÅëîÅΩëï‡ΩÑ¯Ω±§¯Ò±§¯ÒÑÅ°…ïòÙâ°——¡ÃËºΩëïŸï±Ω¡ï…ÃπΩ¡ïπÖ§πçΩ¥ΩÖ¡§ΩëΩçÃΩµç¿à˘=¡ïπ$É
+‹ÅΩπÕ—…’•»ÅÕï…Ÿ•ëΩ…ïÃÅ5@ΩÑ¯Ω±§¯Ò±§¯ÒÑÅ°…ïòÙâ°——¡ÃËºΩëΩçÃπÖπ—°…Ω¡•åπçΩ¥Ωï∏ΩëΩçÃΩç±Ö’ëîµçΩëîΩΩŸï…Ÿ•ï‹à˘π—°…Ω¡•åÉ
+‹Å±Ö’ëîÅΩëîΩÑ¯Ω±§¯Ò±§¯ÒÑÅ°…ïòÙâ°——¡ÃËºΩëΩçÃπÖπ—°…Ω¡•åπçΩ¥Ωï∏ΩëΩçÃΩç±Ö’ëîµçΩëîΩµç¿à˘π—°…Ω¡•åÉ
+‹ÅΩπïç—Ö»Å°ï……Öµ•ïπ—ÖÃÅçΩ∏Å5@ΩÑ¯Ω±§¯Ò±§¯ÒÑÅ°…ïòÙâ°——¡ÃËºΩµΩëï±çΩπ—ï·—¡…Ω—ΩçΩ∞π•ºΩ•π—…Ωë’ç—•Ω∏à˘5@É
+‹Å%π—…Ωë’ççßÕ∏ÅÖ∞Å¡…Ω—ΩçΩ±ºΩÑ¯Ω±§¯Ω’∞¯(ÄÄÄÄÄÄÒ¿˘1ÖÃÅ•π—ï…ôÖçïÃ∞Å¡…ïç•ΩÃÅ‰ÅçÖ¡Öç•ëÖëïÃÅçÖµâ•Ö∏∏ÅΩπô•…µÑÅ±ÑÅëΩç’µïπ—ÖçßÕ∏ÅŸ•ùïπ—îÅëîÅçÖëÑÅ¡…ΩŸïïëΩ»ÅÖπ—ïÃÅëîÅçΩπô•ù’…Ö»Å’πÑÅçΩπï·ßÕ∏∏Ω¿¯(ÄÄÄÄΩÕïç—•Ω∏¯(ÄÄΩµÖ•∏¯(ÄÄÒôΩΩ—ï»¯ÒÕ—…Ωπú˘…Ω›—†ÅY•ëïºÅ1ÖàΩÕ—…Ωπú¯É
+‹Å•Õó≈ÖµΩÃÅÕ•Õ—ïµÖÃÅëîÅµÖ…≠ï—•πúÅ≈’îÅçΩπïç—Ö∏ÅïÕ—…Ö—ïù•Ñ∞ÅçΩπ—ïπ•ëºÅ‰Å°ï……Öµ•ïπ—ÖÃ∏ÄÒÑÅ°…ïòÙâ°——¡ÃËºΩù…Ω›—°Ÿ•ëïΩ±ÖàπçΩ¥ΩçΩπ—Öç—ºà˘ΩπŸï…ÕïµΩÃΩÑ¯∏ΩôΩΩ—ï»¯(ΩÖ…—•ç±î¯(Òâ’——Ω∏Åç±ÖÕÃÙâ¡…•π–àÅΩπç±•ç¨Ùâ›•πëΩ‹π¡…•π–†§à˘’Ö…ëÖ»ÅçΩµºÅAÄºÅ%µ¡…•µ•»Ωâ’——Ω∏¯(ΩâΩë‰¯(Ω°—µ∞¯

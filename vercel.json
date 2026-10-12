@@ -2,6 +2,13 @@
   "framework": "vite",
   "buildCommand": "npm run build:vercel",
   "outputDirectory": "dist",
+  "redirects": [
+    {
+      "source": "/lead_magnet_b2b.html",
+      "destination": "/guia-ia-marketing",
+      "permanent": true
+    }
+  ],
   "routes": [
     { "handle": "filesystem" },
     { "src": "/api/n8n/(.*)", "dest": "https://n8n.jxhnmcclain.com/webhook/$1" },

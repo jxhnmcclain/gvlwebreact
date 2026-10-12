@@ -25,7 +25,7 @@ const routes = [
   '/branding',
   '/cotizacion-web',
   '/web-portfolio',
-  '/b2b-ebook-generacion-sistema',
+  '/guia-ia-marketing',
   // '/ebooks-creadores',
   '/blog',
   ...blogRoutes,

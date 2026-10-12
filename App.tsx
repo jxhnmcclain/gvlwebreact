@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -134,7 +134,8 @@ const AppContent = () => {
             <Route path="/servicios" element={<ServicesPage />} />
             <Route path="/cotizacion-web" element={<LeadFormPage />} />
             <Route path="/web-portfolio" element={<WebPortfolioLanding />} />
-            <Route path="/b2b-ebook-generacion-sistema" element={<LeadMagnetB2BPage />} />
+            <Route path="/guia-ia-marketing" element={<LeadMagnetB2BPage />} />
+            <Route path="/b2b-ebook-generacion-sistema" element={<Navigate replace to="/guia-ia-marketing" />} />
             {/* <Route path="/ebooks-creadores" element={<EbooksLanding />} /> */}
 
             {/* Blog Routes */}

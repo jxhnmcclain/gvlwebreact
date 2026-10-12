@@ -238,7 +238,7 @@ function escapeXml(value = '') {
 }
 
 function writeDiscoveryFiles(snapshot) {
-  const staticPaths = ['/', '/servicios', '/contenido', '/reels', '/websites', '/branding', '/asesoria', '/contacto', '/blog'];
+  const staticPaths = ['/', '/servicios', '/contenido', '/reels', '/websites', '/branding', '/asesoria', '/contacto', '/blog', '/guia-ia-marketing'];
   if (snapshot.portfolio.length >= 3) staticPaths.push('/portafolio');
   const paths = [
     ...staticPaths,

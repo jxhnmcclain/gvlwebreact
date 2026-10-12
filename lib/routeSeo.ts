@@ -78,12 +78,12 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
     ogImage: '/og-image.jpg',
   },
   {
-    path: '/b2b-ebook-generacion-sistema',
-    title: 'Sistema de prospeccion B2B | Growth Video Lab',
-    description: 'Recurso gratuito para empresas B2B que quieren dejar de depender solo de referidos y construir un sistema de reuniones calificadas.',
-    canonical: `${SITE_URL}/b2b-ebook-generacion-sistema`,
+    path: '/guia-ia-marketing',
+    title: 'Guía para implementar IA en marketing | Growth Video Lab',
+    description: 'Aprende a implementar agentes de IA en tus flujos de marketing, conectarlos con tus herramientas y organizar la gestión diaria y mensual.',
+    canonical: `${SITE_URL}/guia-ia-marketing`,
     ogType: 'website',
-    ogUrl: `${SITE_URL}/b2b-ebook-generacion-sistema`,
+    ogUrl: `${SITE_URL}/guia-ia-marketing`,
     ogImage: '/og-image.jpg',
   },
   {
