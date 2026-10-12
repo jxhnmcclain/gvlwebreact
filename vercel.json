@@ -4,6 +4,11 @@
   "outputDirectory": "dist",
   "redirects": [
     {
+      "source": "/guia-ia-marketing.html",
+      "destination": "/guia-ia-marketing",
+      "permanent": true
+    },
+    {
       "source": "/lead_magnet_b2b.html",
       "destination": "/guia-ia-marketing",
       "permanent": true
@@ -15,3 +20,4 @@
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
+
