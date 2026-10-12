@@ -14,6 +14,7 @@ import FeaturedWork from './components/FeaturedWork';
 import Footer from './components/Footer';
 import { setMetaTags } from './lib/seo';
 import { getRouteSeo } from './lib/routeSeo';
+import { getProposalById } from './content/proposals';
 
 // Import New Pages
 import ContentPage from './pages/ContentPage';
@@ -83,6 +84,20 @@ const AppContent = () => {
     const routeSeo = getRouteSeo(location.pathname);
     if (routeSeo) {
       setMetaTags(routeSeo);
+      return;
+    }
+
+    const proposalMatch = location.pathname.match(/^\/propuestas\/([^/]+)\/?$/);
+    const proposal = proposalMatch ? getProposalById(proposalMatch[1]) : undefined;
+    if (proposal) {
+      const proposalTitle = `${proposal.titleLines.join(' ')} ${proposal.accentLine}`;
+      setMetaTags({
+        title: `${proposalTitle} | Growth Video Lab`,
+        description: proposal.introduction,
+        canonical: `${window.location.origin}${location.pathname}`,
+        robots: 'noindex, nofollow',
+        ogType: 'website',
+      });
       return;
     }
 
