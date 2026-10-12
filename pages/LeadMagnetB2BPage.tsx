@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { ArrowDownToLine, ArrowRight, CheckCircle2, Workflow } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Workflow } from 'lucide-react';
 import { setMetaTags, SITE_URL } from '../lib/seo';
 import { N8N_WEBHOOKS } from '../lib/config';
 import { getUTMParams } from '../lib/utm';
 import TurnstileWidget from '../components/TurnstileWidget';
 import Dither from '../components/Dither.jsx';
 import Logo from '../components/Logo';
+import MarketingGuideContent from '../components/MarketingGuideContent';
 
-const GUIDE_URL = '/guia-ia-marketing.html';
+const GUIDE_URL = '#guia';
 
 const LeadMagnetB2BPage = () => {
   const [name, setName] = useState('');
@@ -20,7 +21,7 @@ const LeadMagnetB2BPage = () => {
   React.useEffect(() => {
     setMetaTags({
       title: 'Guía práctica: IA en tus flujos de marketing | Growth Video Lab',
-      description: 'Aprende a conectar agentes como Codex y Claude Code con tus herramientas de marketing y a diseñar flujos útiles para el trabajo diario y mensual.',
+      description: 'Una guía práctica para elegir un flujo, conectar Codex o Claude Code con tus sistemas de marketing y organizar tareas diarias y mensuales con revisión humana.',
       ogType: 'website',
       canonical: `${SITE_URL}/guia-ia-marketing`,
     });
@@ -48,7 +49,7 @@ const LeadMagnetB2BPage = () => {
       if (!response.ok) throw new Error('No se pudo registrar la solicitud.');
       setIsSubmitted(true);
     } catch {
-      setError('No pudimos registrar tu solicitud. Intenta otra vez o descarga la guía directamente aquí abajo.');
+      setError('No pudimos registrar tu solicitud. Intenta otra vez; puedes leer la guía completa aquí abajo.');
     } finally {
       setIsSubmitting(false);
     }
@@ -88,8 +89,8 @@ const LeadMagnetB2BPage = () => {
               <div className="py-5">
                 <CheckCircle2 className="text-gvl-yellow" size={36} />
                 <h2 className="mt-5 font-sans text-2xl font-black uppercase">Ya puedes empezar.</h2>
-                <p className="mt-3 leading-7 text-white/65">Enviamos el enlace a tu correo. También puedes abrir la guía ahora.</p>
-                <a href={GUIDE_URL} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 border border-gvl-yellow bg-gvl-yellow px-5 py-3 font-black uppercase text-black"><ArrowDownToLine size={17} /> Abrir la guía</a>
+                <p className="mt-3 leading-7 text-white/65">Enviamos el enlace a tu correo. La guía completa también está disponible aquí abajo.</p>
+                <a href={GUIDE_URL} className="mt-6 inline-flex items-center gap-2 border border-gvl-yellow bg-gvl-yellow px-5 py-3 font-black uppercase text-black">Leer la guía <ArrowRight size={17} /></a>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -103,11 +104,11 @@ const LeadMagnetB2BPage = () => {
                 <label className="block font-mono text-xs uppercase tracking-wider text-white/60" htmlFor="guide-email">Email de trabajo</label>
                 <input id="guide-email" name="email" required type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="tu@empresa.com" autoComplete="email" className="w-full border border-white/20 bg-white/[.06] px-4 py-3 text-white outline-none transition focus:border-gvl-yellow" />
                 <TurnstileWidget onVerify={setTurnstileToken} />
-                {error && <p role="alert" className="text-sm leading-6 text-[#ffd0c8]">{error} <a href={GUIDE_URL} target="_blank" rel="noreferrer" className="underline">Descargar sin esperar</a></p>}
+                {error && <p role="alert" className="text-sm leading-6 text-[#ffd0c8]">{error} <a href={GUIDE_URL} className="underline">Leer la guía aquí</a></p>}
                 <button type="submit" disabled={!turnstileToken || isSubmitting} className="flex w-full items-center justify-center gap-2 border border-gvl-yellow bg-gvl-yellow px-5 py-4 font-black uppercase tracking-wide text-black transition hover:border-white hover:bg-white disabled:cursor-not-allowed disabled:opacity-50">
                   {isSubmitting ? 'Enviando…' : 'Enviar la guía'} <ArrowRight size={18} />
                 </button>
-                <p className="text-xs leading-5 text-white/45">Te enviaremos el recurso solicitado. No necesitas agendar una reunión para descargarlo.</p>
+                <p className="text-xs leading-5 text-white/45">Te enviaremos el acceso solicitado. No necesitas agendar una reunión para leer la guía.</p>
               </form>
             )}
           </div>
@@ -140,8 +141,10 @@ const LeadMagnetB2BPage = () => {
       <section className="mx-auto max-w-7xl px-6 py-12 text-sm leading-6 text-white/45 md:px-10">
         <p>El objetivo no es automatizar cada tarea. Es diseñar un flujo útil, entender qué puede consultar o ejecutar el agente y decidir dónde debe revisar una persona.</p>
       </section>
+      <MarketingGuideContent />
     </main>
   );
 };
 
 export default LeadMagnetB2BPage;
+
