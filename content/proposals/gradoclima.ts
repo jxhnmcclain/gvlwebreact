@@ -42,7 +42,7 @@ export const gradoClimaProposal: ProposalData = {
     title: 'Estrategia, contenido y mailing en un mismo calendario.',
     introduction: 'Partimos definiendo qué queremos comunicar. Después producimos y organizamos las publicaciones y campañas de correo para que el trabajo del mes esté aprobado antes de salir.',
     pillars: [
-      { title: 'Estrategia inicial', description: 'Definimos el enfoque de Sebastián y GradoClima, los temas principales y el plan de contenido para los primeros 90 días.', tag: 'Plan inicial · 90 días' },
+      { title: 'Estrategia inicial', description: 'Diseñamos la estrategia de contenido para los próximos 3 meses: perfiles de cliente, etapas del funnel, pilares y calendario editorial de redes y mailing.', tag: 'Plan inicial · 90 días' },
       { title: 'Grabación y producción', description: 'Dos jornadas mensuales en las oficinas de GradoClima para crear videos, carruseles y fotografías con Sebastián y su equipo.', tag: 'Producción · 2 jornadas al mes' },
       { title: 'Redes sociales', description: 'Programamos dos publicaciones por semana en LinkedIn e Instagram, adaptando a cada canal las piezas producidas ese mes.', tag: 'LinkedIn · Instagram' },
       { title: 'Mailing semanal', description: 'Redactamos y preparamos cuatro campañas al mes. Al inicio de cada mes se aprueba el calendario de correos junto con el contenido para redes.', tag: '4 campañas · 1 por semana' },
@@ -52,6 +52,7 @@ export const gradoClimaProposal: ProposalData = {
     title: 'Ejemplos de nuestro trabajo',
     introduction: 'Una selección de piezas audiovisuales de nuestro portafolio.',
     images: [
+      { src: '/portfolio/messaging-api.webp', label: 'Ejemplo de nuestro trabajo', caption: 'Pieza audiovisual para una marca de tecnología.' },
       { src: '/gc-vsl-1.png', label: 'Ejemplo de nuestro trabajo', caption: 'Contenido audiovisual' },
       { src: '/gc-vsl-2.png', label: 'Ejemplo de nuestro trabajo', caption: 'Contenido audiovisual' },
     ],
@@ -72,8 +73,12 @@ export const gradoClimaProposal: ProposalData = {
         cadence: 'CLP · más IVA',
         deliverables: [
           'Sesión de trabajo con Sebastián para conocer la empresa, sus objetivos y temas prioritarios.',
-          'Enfoque de comunicación para la marca personal de Sebastián y las redes de GradoClima.',
-          'Pilares de contenido y calendario inicial de 90 días para redes y mailing.',
+          'Estrategia de contenido para los próximos 3 meses, con objetivos y enfoque de comunicación para Sebastián y GradoClima.',
+          'Perfiles prioritarios de cliente (buyer personas): necesidades, preguntas, criterios de decisión y objeciones que debe responder el contenido.',
+          'Mapa del funnel —descubrimiento, evaluación y decisión— con el objetivo, tipo de contenido y llamado a la acción de cada etapa.',
+          'Pilares de contenido y temas concretos para desarrollar la voz de Sebastián y mostrar la experiencia del equipo.',
+          'Calendario editorial de 90 días para redes y mailing, organizado por semana, canal, tema, formato y etapa del funnel.',
+          'Enfoque y pauta temática para los mailings: cómo se conectan las cuatro campañas mensuales con los temas y objetivos del período.',
           'Pago en dos partes: $225.000 + IVA al comenzar y $225.000 + IVA al entregar la estrategia.',
         ],
       },

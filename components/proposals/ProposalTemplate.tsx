@@ -124,7 +124,7 @@ const ProposalTemplate = ({ proposal }: { proposal: ProposalData }) => {
         {proposal.content && (
           <section className="mx-auto max-w-6xl px-7 py-24 md:px-12 md:py-32">
             <SectionIntro index={contentIndex!} eyebrow={labels.content ?? 'dirección de contenido'} title={proposal.content.title} body={proposal.content.introduction} />
-            <div className="grid gap-1 md:grid-cols-2">
+            <div className="grid gap-1 md:grid-cols-2 lg:grid-cols-3">
               {proposal.content.images.map((image) => (
                 <figure key={image.src} className="group relative aspect-video overflow-hidden bg-[#111]">
                   <img src={image.src} alt={image.caption} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
