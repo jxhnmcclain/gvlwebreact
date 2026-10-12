@@ -74,6 +74,7 @@ export type ProposalData = {
   };
   sectionLabels?: ProposalSectionLabels;
   interestOptions?: string[];
+  includeInterestForm?: boolean;
   diagnosis: {
     title: string;
     introduction: string;

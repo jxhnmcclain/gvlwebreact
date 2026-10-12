@@ -27,6 +27,7 @@ export const gradoClimaProposal: ProposalData = {
     timeline: 'inicio y pagos',
     closing: 'siguiente paso',
   },
+  includeInterestForm: false,
   interestOptions: ['Quiero revisar la propuesta', 'Quiero conversar sobre el alcance'],
   diagnosis: {
     title: 'La experiencia de GradoClima, contada por quienes la conocen.',

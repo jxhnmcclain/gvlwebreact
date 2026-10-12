@@ -210,15 +210,24 @@ const ProposalTemplate = ({ proposal }: { proposal: ProposalData }) => {
           </div>
         </section>
 
-        <section className="bg-white px-7 py-24 text-black md:px-12 md:py-28">
+        <section className="bg-white px-7 py-24 text-black md:px-12 md:py-32">
           <div className="mx-auto max-w-6xl">
-            <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-black/40">{closingIndex} · {labels.closing ?? 'siguiente paso'}</p>
-            <h2 className="mt-5 max-w-4xl text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl">{proposal.closing.title}</h2>
-            <p className="mt-6 text-base text-black/55">{proposal.closing.body}</p>
-            <div className="mt-12 grid grid-cols-2 gap-5 border-t border-black/10 pt-8 md:grid-cols-5">
-              {proposal.closing.terms.map((term) => <div key={term.label}><p className="font-mono text-[8px] uppercase tracking-[0.16em] text-black/35">{term.label}</p><p className="mt-1 text-sm font-black uppercase">{term.value}</p></div>)}
+            <div className="grid gap-10 border-b border-black/10 pb-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20 lg:pb-16">
+              <div>
+                <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-black/40">{closingIndex} · {labels.closing ?? 'siguiente paso'}</p>
+                <h2 className="mt-5 max-w-3xl text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl">{proposal.closing.title}</h2>
+              </div>
+              <p className="max-w-2xl self-end border-l-2 border-[#C8F55A] pl-6 text-base leading-7 text-black/60 md:text-lg md:leading-8">{proposal.closing.body}</p>
             </div>
-            {isOffer && <ProposalInterestForm proposalId={proposal.id} proposalName={`${proposal.titleLines.join(' ')} ${proposal.accentLine}`} options={proposal.interestOptions} />}
+            <div className="mt-12 grid gap-px bg-black/10 sm:grid-cols-2 lg:grid-cols-3">
+              {proposal.closing.terms.map((term) => (
+                <div key={term.label} className="bg-white p-6 md:p-8">
+                  <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-black/40">{term.label}</p>
+                  <p className="mt-3 text-xl font-black uppercase leading-tight tracking-tight md:text-2xl">{term.value}</p>
+                </div>
+              ))}
+            </div>
+            {isOffer && proposal.includeInterestForm !== false && <ProposalInterestForm proposalId={proposal.id} proposalName={`${proposal.titleLines.join(' ')} ${proposal.accentLine}`} options={proposal.interestOptions} />}
           </div>
         </section>
       </main>
