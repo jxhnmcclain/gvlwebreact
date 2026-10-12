@@ -3,99 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Guía práctica para implementar IA en flujos de marketing y conectar agentes como Codex y Claude Code con tus sistemas.">
-  <title>IA en tus flujos de marketing — Growth Video Lab</title>
-  <style>
-    @font-face{font-family:'Neue Machina';src:url('./assets/fonts/NeueMachina-Regular.otf') format('opentype');font-weight:400}@font-face{font-family:'Neue Machina';src:url('./assets/fonts/NeueMachina-Ultrabold.otf') format('opentype');font-weight:800}
-    :root{--ink:#050505;--paper:#fdfbf7;--lime:#DFFF00;--muted:#62665b;--line:#d9dccf;--display:'Neue Machina','Space Grotesk',sans-serif;--sans:'Space Grotesk','Neue Machina',sans-serif;--mono:'Cascadia Code',Consolas,monospace}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#050505;color:var(--ink);font:16px/1.72 var(--sans)}a{color:#35490f;text-underline-offset:3px} .sheet{max-width:880px;margin:40px auto;background:var(--paper);box-shadow:0 24px 80px #0008}header{min-height:480px;padding:66px 9%;display:flex;flex-direction:column;justify-content:space-between;background-color:var(--ink);background-image:linear-gradient(135deg,#111 0%,#050505 66%);color:var(--paper);position:relative;overflow:hidden}header:after{content:'IA';position:absolute;right:4%;bottom:-.22em;font:800 18rem/1 var(--display);color:#ffffff08;pointer-events:none}.kicker,.eyebrow{font:11px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--lime)}.brand{display:flex;align-items:baseline;gap:10px;font:800 20px var(--display);letter-spacing:-.04em;text-transform:uppercase}.brand i{font:400 22px var(--mono);text-transform:none;color:var(--lime)}h1,h2,h3,p{margin-top:0}h1{max-width:720px;margin:70px 0 22px;font:800 clamp(48px,8vw,82px)/.9 var(--display);letter-spacing:-.06em;text-transform:uppercase}header p{max-width:600px;color:#d5d7ce;font-size:19px;line-height:1.6}.cover-meta{display:flex;justify-content:space-between;border-top:1px solid #ffffff45;padding-top:18px;font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#d0d0c7}main{padding:50px 9% 70px}.intro{font:400 21px/1.6 var(--sans);max-width:700px}.contents{margin:36px 0 60px;padding:24px 28px;border:1px solid var(--line);background:#fffdf7}.contents b{display:block;margin-bottom:10px;font:11px var(--mono);letter-spacing:.14em;text-transform:uppercase}.contents ol{margin:0;padding-left:20px;columns:2;column-gap:30px}.contents li{break-inside:avoid;padding:4px 0}.section{padding:42px 0 14px;border-top:1px solid var(--line);break-inside:avoid}.num{font:12px var(--mono);letter-spacing:.15em;color:#586d00}.section h2{margin:10px 0 20px;font:800 32px/1.05 var(--display);letter-spacing:-.035em;text-transform:uppercase}.section h3{margin:28px 0 8px;font:800 16px var(--display);text-transform:uppercase}.section p,.section li{color:#292b24}.section ul,.section ol{padding-left:22px}.section li{margin:6px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0}.card{padding:20px;border:1px solid var(--line);background:#fffdf7}.card strong{display:block;margin-bottom:7px}.pill{display:inline-block;background:var(--lime);padding:3px 8px;font:11px var(--mono);text-transform:uppercase}.steps{counter-reset:step;list-style:none;padding:0!important}.steps li{counter-increment:step;position:relative;padding:0 0 16px 44px}.steps li:before{content:'0' counter(step);position:absolute;left:0;top:0;color:#586d00;font:13px var(--mono)}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;margin:20px 0;font-size:14px}th,td{text-align:left;vertical-align:top;padding:12px 13px;border:1px solid var(--line)}th{background:var(--lime);font:800 11px var(--display);text-transform:uppercase}.note{padding:18px 22px;border-left:4px solid var(--ink);background:#eef1e4}.prompt{white-space:pre-wrap;background:#f1f0e6;border:1px solid var(--line);padding:18px;font:13px/1.65 var(--mono);overflow-wrap:anywhere}.source-list{font-size:14px}footer{padding:26px 9%;background:var(--ink);color:#c3c6bc;font-size:13px}footer strong{color:var(--lime)}.print{position:fixed;right:22px;bottom:22px;border:1px solid var(--ink);border-radius:0;background:var(--lime);color:var(--ink);padding:13px 20px;font:800 12px var(--display);text-transform:uppercase;box-shadow:6px 6px 0 #fff3;cursor:pointer}
-    @media(max-width:650px){body{background:var(--paper)}.sheet{margin:0;box-shadow:none}header{min-height:420px;padding:36px 7%}.cover-meta{gap:10px;font-size:9px}main{padding:36px 7% 54px}.contents ol{columns:1}.grid{grid-template-columns:1fr}.section h2{font-size:30px}.print{right:12px;bottom:12px}}
-    @media print{@page{size:A4;margin:16mm}body{background:white;font-size:10.5pt}.sheet{max-width:none;margin:0;box-shadow:none}header{min-height:250mm;padding:18mm 16mm;print-color-adjust:exact;-webkit-print-color-adjust:exact}header:after{font-size:150pt}h1{font-size:50pt;margin-top:60mm}main{padding:14mm 16mm}.section{break-before:page;border-top:0;padding-top:0}.section h2{font-size:25pt}.contents{break-after:page}.grid,.card,table,.note,.prompt{break-inside:avoid}.print{display:none}a{color:inherit;text-decoration:none}footer{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
-  </style>
+  <meta name="description" content="Guía práctica para conectar agentes de IA con los flujos y sistemas de marketing.">
+  <meta http-equiv="refresh" content="0;url=/guia-ia-marketing">
+  <link rel="canonical" href="https://growthvideolab.com/guia-ia-marketing">
+  <title>Guía para implementar IA en marketing | Growth Video Lab</title>
+  <script>window.location.replace('/guia-ia-marketing' + window.location.search + window.location.hash);</script>
 </head>
 <body>
-<article class="sheet">
-  <header>
-    <div><div class="brand"><span>Growth</span><i>Video</i><span>Lab</span></div><p class="kicker" style="margin-top:30px">Manual de trabajo · Marketing y sistemas</p></div>
-    <div><h1>IA en tus flujos de marketing</h1><p>De tareas aisladas a un sistema conectado, útil y revisable. Una guía para empezar con agentes como Codex o Claude Code.</p></div>
-    <div class="cover-meta"><span>Guía práctica</span><span>Octubre 2026</span><span>GVL / 01</span></div>
-  </header>
-  <main>
-    <p class="intro">La IA puede ayudarte a escribir una primera versión. También puede participar en un proceso más amplio: leer un brief, consultar información aprobada, preparar una campaña y dejar un borrador para revisión. La diferencia está en cómo diseñas el flujo y qué permisos le das.</p>
-    <nav class="contents"><b>En esta guía</b><ol><li><a href="#agentes">Chatbot, automatización y agente</a></li><li><a href="#herramientas">Codex, Claude Code y MCP</a></li><li><a href="#elegir">Cómo elegir un flujo</a></li><li><a href="#disenar">Diseñar el proceso</a></li><li><a href="#conectar">Conectar tus sistemas</a></li><li><a href="#rituales">Rutinas diarias y mensuales</a></li><li><a href="#prueba">Probar en cuatro semanas</a></li></ol></nav>
-
-    <section class="section" id="agentes"><span class="num">01 / CONCEPTOS</span><h2>Chatbot, automatización y agente: qué cambia</h2>
-      <div class="grid"><div class="card"><span class="pill">CHATBOT</span><p style="margin:12px 0 0">Responde una instrucción. “Propón cinco asuntos para este correo”.</p></div><div class="card"><span class="pill">AUTOMATIZACIÓN</span><p style="margin:12px 0 0">Ejecuta reglas conocidas entre sistemas. “Cuando llegue un formulario, registra el contacto y envía un email”.</p></div><div class="card"><span class="pill">AGENTE</span><p style="margin:12px 0 0">Recibe un objetivo, consulta contexto y elige entre herramientas permitidas para avanzar varios pasos.</p></div><div class="card"><span class="pill">PERSONA</span><p style="margin:12px 0 0">Define el objetivo, revisa el resultado y aprueba las decisiones con impacto.</p></div></div>
-      <p>Una automatización sirve cuando los pasos y reglas son estables. Un agente puede ser útil cuando la tarea requiere interpretar contexto o elegir entre opciones. No todo necesita IA: el flujo más simple que resuelve el problema suele ser el mejor punto de partida.</p>
-    </section>
-
-    <section class="section" id="herramientas"><span class="num">02 / HERRAMIENTAS</span><h2>Qué hacen Codex y Claude Code en un flujo de marketing</h2>
-      <p>Codex y Claude Code son agentes que trabajan con el contexto de un proyecto y pueden utilizar herramientas configuradas. Aunque nacieron alrededor del trabajo con código, se pueden aplicar a tareas de marketing: resumir documentos, preparar borradores, analizar datos, ordenar archivos o diseñar automatizaciones.</p>
-      <p>Una instrucción aislada suele terminar en una respuesta. Un agente conectado puede consultar fuentes o llamar herramientas, según lo que el equipo configure y autorice. La conexión no ocurre sola: alguien debe seleccionar la integración, limitar permisos y revisar qué acciones permite.</p>
-      <div class="note"><strong>MCP</strong> (Model Context Protocol) es un estándar abierto que permite conectar aplicaciones de IA con fuentes de datos y herramientas. Un servidor MCP ofrece información o acciones específicas; el agente puede utilizarlas según sus permisos. También puedes conectar sistemas por API, por n8n/Zapier/Make o mediante archivos exportados.</div>
-    </section>
-
-    <section class="section"><span class="num">03 / CONEXIONES</span><h2>Qué sistemas podrías conectar</h2>
-      <div class="table-wrap"><table><thead><tr><th>Sistema</th><th>Uso posible</th><th>Límite recomendado</th></tr></thead><tbody>
-        <tr><td>Drive y documentos</td><td>Consultar briefs, guías de marca o casos aprobados.</td><td>Limitar el acceso a las carpetas de trabajo.</td></tr>
-        <tr><td>CRM</td><td>Resumir pipeline, señalar campos faltantes.</td><td>Comenzar en modo lectura; proteger datos personales.</td></tr>
-        <tr><td>Analítica y Ads</td><td>Comparar métricas y detectar variaciones.</td><td>Validar período, fórmula y fuente antes de decidir inversión.</td></tr>
-        <tr><td>Email y calendario</td><td>Preparar borradores, agendas y seguimientos.</td><td>Aprobar antes de enviar o agendar.</td></tr>
-        <tr><td>n8n / Zapier / Make</td><td>Conectar disparadores, reglas y registro de estados.</td><td>Credenciales acotadas y manejo de errores.</td></tr>
-      </tbody></table></div>
-      <p>MCP no sincroniza sistemas mágicamente ni garantiza que la información sea correcta. La integración determina qué se puede consultar o ejecutar; las reglas y validaciones siguen siendo responsabilidad del equipo.</p>
-    </section>
-
-    <section class="section" id="elegir"><span class="num">04 / SELECCIÓN</span><h2>Encuentra un flujo que valga la pena</h2>
-      <ol class="steps"><li><strong>Observa el trabajo real.</strong> Pide a quien lo hace que te muestre cada paso, incluidas excepciones y aprobaciones.</li><li><strong>Mide frecuencia y esfuerzo.</strong> ¿Cuántas veces al mes ocurre? ¿Cuánto demora? ¿Qué errores produce?</li><li><strong>Define el resultado.</strong> Especifica qué debe quedar listo y cómo reconocer que está correcto.</li><li><strong>Separa rutina de criterio.</strong> Automatiza las reglas estables. Usa un agente cuando importa interpretar contexto.</li><li><strong>Prueba pequeño.</strong> Empieza con una campaña, un segmento o un reporte, no con toda la operación.</li></ol>
-      <p>Prioriza tareas frecuentes, de resultado claro y riesgo bajo. Añade una aprobación explícita antes de publicar contenido, cambiar presupuesto o contactar clientes.</p>
-    </section>
-
-    <section class="section" id="disenar"><span class="num">05 / DISEÑO</span><h2>Seis piezas para describir el proceso</h2>
-      <ol><li><strong>Disparador:</strong> qué inicia el trabajo.</li><li><strong>Entradas:</strong> qué documentos o datos recibe y de dónde vienen.</li><li><strong>Reglas:</strong> criterios, límites de marca y excepciones.</li><li><strong>Pasos:</strong> qué consulta, compara, calcula o redacta.</li><li><strong>Salida:</strong> formato de entrega y lugar donde se guarda.</li><li><strong>Control:</strong> quién revisa, qué requiere aprobación y cómo se registra un error.</li></ol>
-      <h3>Ejemplo: informe semanal de campañas</h3><p>Una automatización reúne las exportaciones acordadas. El agente compara el resultado con el período y objetivo definidos, redacta un resumen con fecha y fuente, y marca la información que falta. Guarda el resultado como borrador. Una persona revisa cálculos y contexto antes de compartirlo.</p><p>El agente puede describir cambios observados. No debe inventar causas a partir de una correlación ni decidir por sí mismo el presupuesto del siguiente período.</p>
-    </section>
-
-    <section class="section" id="conectar"><span class="num">06 / IMPLEMENTACIÓN</span><h2>Conecta tus sistemas de menos a más</h2>
-      <div class="grid"><div class="card"><h3>01 · Archivos preparados</h3><p>Exporta sólo la información necesaria a una hoja o documento. Revisa cada resultado. Así descubres errores antes de dar acceso a sistemas.</p></div><div class="card"><h3>02 · Automatización</h3><p>Conecta un evento con pasos deterministas: nuevo brief → validación → CRM → borrador para el equipo. Reserva el agente para interpretar o resumir.</p></div><div class="card"><h3>03 · MCP o API</h3><p>Permite al agente consultar una herramienta específica. Empieza con lectura y un entorno de prueba; añade escritura después de revisar permisos y resultados.</p></div><div class="card"><h3>04 · Aprobación humana</h3><p>Deja como borrador toda acción que afecte clientes, presupuesto o publicación. Define quién aprueba y dónde queda el registro.</p></div></div>
-      <div class="note"><strong>Cuida los accesos:</strong> cada credencial debe dar sólo el permiso mínimo necesario. No incluyas contraseñas, tokens ni información sensible en instrucciones compartidas. Revisa las políticas de los proveedores antes de conectar datos de clientes.</div>
-    </section>
-
-    <section class="section" id="rituales"><span class="num">07 / OPERACIÓN</span><h2>Ejemplos de gestión diaria y mensual</h2>
-      <div class="grid"><div class="card"><h3>Rituales diarios</h3><ul><li>Revisar briefs y pedir los datos que faltan.</li><li>Convertir notas aprobadas en tareas con responsable y fecha.</li><li>Preparar variaciones de una pieza aprobada para distintos canales.</li><li>Resumir actividad del CRM y marcar registros incompletos.</li><li>Alertar sobre métricas fuera del rango acordado para revisión.</li></ul></div><div class="card"><h3>Rituales mensuales</h3><ul><li>Comparar resultados usando períodos equivalentes.</li><li>Proponer calendario editorial según prioridades y capacidad.</li><li>Detectar duplicados o campos vacíos para revisión.</li><li>Separar hechos observados de hipótesis de rendimiento.</li><li>Convertir aprendizajes aprobados en experimentos y responsables.</li></ul></div></div>
-    </section>
-
-    <section class="section"><span class="num">08 / PLANTILLA</span><h2>Especifica tu primer flujo</h2>
-      <pre class="prompt">Nombre del flujo:
-Persona responsable:
-Qué lo inicia:
-Frecuencia mensual:
-Problema actual y tiempo aproximado:
-Entradas autorizadas (fuente y campos):
-Pasos que deben ejecutarse:
-Reglas de marca o negocio:
-Resultado esperado y dónde guardarlo:
-Qué debe quedar como borrador:
-Qué acciones requieren aprobación humana:
-Qué no puede hacer el agente:
-Cómo medir calidad, tiempo, errores y uso:
-Plan de reversa si algo falla:</pre>
-      <h3>Instrucción de ejemplo</h3><p class="note">“Revisa sólo los briefs de esta carpeta con estado aprobado. Resume objetivo, audiencia, fecha y piezas solicitadas. Señala los campos faltantes; no los completes por inferencia. Prepara una tabla y preguntas para el equipo. No contactes clientes, no publiques contenido ni cambies estados. Incluye el nombre del archivo fuente.”</p>
-    </section>
-
-    <section class="section" id="prueba"><span class="num">09 / PRIMER MES</span><h2>Prueba en cuatro semanas</h2>
-      <ol class="steps"><li><strong>Semana 1 — observar:</strong> documenta una tarea repetida, con sus excepciones y criterios de calidad.</li><li><strong>Semana 2 — probar:</strong> trabaja con una muestra pequeña y revisa cada resultado.</li><li><strong>Semana 3 — conectar:</strong> usa una fuente de sólo lectura y deja acciones externas como borradores.</li><li><strong>Semana 4 — decidir:</strong> compara calidad, tiempo neto, errores y adopción. Ajusta, conserva o descarta.</li></ol>
-      <p>No midas sólo velocidad. Un flujo útil reduce trabajo repetitivo sin aumentar retrabajo, errores o riesgo. En la revisión mensual pregunta: ¿qué tarea terminó?, ¿cuánto se aprobó sin cambios importantes?, ¿cuánto tiempo se ahorró tras corregir? y ¿qué permiso o paso hay que cambiar?</p>
-    </section>
-
-    <section class="section"><span class="num">PARA SEGUIR</span><h2>Documentación oficial</h2>
-      <ul class="source-list"><li><a href="https://developers.openai.com/codex/">OpenAI · Documentación de Codex</a></li><li><a href="https://developers.openai.com/api/docs/mcp">OpenAI · Construir servidores MCP</a></li><li><a href="https://docs.anthropic.com/en/docs/claude-code/overview">Anthropic · Claude Code</a></li><li><a href="https://docs.anthropic.com/en/docs/claude-code/mcp">Anthropic · Conectar herramientas con MCP</a></li><li><a href="https://modelcontextprotocol.io/introduction">MCP · Introducción al protocolo</a></li></ul>
-      <p>Las interfaces, precios y capacidades cambian. Confirma la documentación vigente de cada proveedor antes de configurar una conexión.</p>
-    </section>
-  </main>
-  <footer><strong>Growth Video Lab</strong> · Diseñamos sistemas de marketing que conectan estrategia, contenido y herramientas. <a href="https://growthvideolab.com/contacto">Conversemos</a>.</footer>
-</article>
-<button class="print" onclick="window.print()">Guardar como PDF / Imprimir</button>
+  <p>La guía ahora está en una página interactiva con el logotipo oficial. <a href="/guia-ia-marketing">Abrir la guía de IA en flujos de marketing</a>.</p>
 </body>
 </html>
 
