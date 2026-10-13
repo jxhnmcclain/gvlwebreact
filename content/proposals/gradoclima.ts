@@ -16,7 +16,7 @@ export const gradoClimaProposal: ProposalData = {
     items: [
       { title: 'Una voz principal', body: 'Sebastián representa a GradoClima y comparte su experiencia y mirada de la industria.' },
       { title: 'Un equipo detrás', body: 'El contenido también mostrará el conocimiento y el trabajo de las personas que forman parte de GradoClima.' },
-      { title: 'Un plan de tres meses', body: 'Definimos la estrategia inicial y sostenemos la publicación de contenido y mailing mes a mes.' },
+      { title: 'Una meta compartida', body: '45 nuevos convenios en 90 días, en camino a mantener 150 salas.' },
     ],
   },
   sectionLabels: {
@@ -35,7 +35,7 @@ export const gradoClimaProposal: ProposalData = {
     stats: [
       { value: 'Sebastián', label: 'Voz principal', context: 'El dueño de GradoClima comparte su experiencia y punto de vista.' },
       { value: 'El equipo', label: 'Experiencia compartida', context: 'Las personas de GradoClima también forman parte de las historias y temas.' },
-      { value: '90 días', label: 'Plan inicial', context: 'Un primer período para ordenar los temas, publicar con constancia y revisar qué interesa a la audiencia.' },
+      { value: '45 convenios', label: 'Meta inicial', context: '45 nuevas firmas en 90 días, rumbo a mantener 150 salas.' },
     ],
     conclusion: 'La meta es que la comunicación se sienta coherente: Sebastián al frente y GradoClima presente en cada tema, publicación y conversación.',
   },
@@ -43,10 +43,10 @@ export const gradoClimaProposal: ProposalData = {
     title: 'Estrategia, contenido y mailing en un mismo calendario.',
     introduction: 'Partimos definiendo qué queremos comunicar. Después producimos y organizamos las publicaciones y campañas de correo para que el trabajo del mes esté aprobado antes de salir.',
     pillars: [
-      { title: 'Estrategia inicial', description: 'Diseñamos la estrategia de contenido para los próximos 3 meses: perfiles de cliente, etapas del funnel, pilares y calendario editorial de redes y mailing.', tag: 'Plan inicial · 90 días' },
-      { title: 'Grabación y producción', description: 'Dos jornadas mensuales en las oficinas de GradoClima para crear videos, carruseles y fotografías con Sebastián y su equipo.', tag: 'Producción · 2 jornadas al mes' },
-      { title: 'Redes sociales', description: 'Programamos dos publicaciones por semana en LinkedIn e Instagram, adaptando a cada canal las piezas producidas ese mes.', tag: 'LinkedIn · Instagram' },
-      { title: 'Mailing semanal', description: 'Redactamos y preparamos cuatro campañas al mes. Al inicio de cada mes se aprueba el calendario de correos junto con el contenido para redes.', tag: '4 campañas · 1 por semana' },
+      { title: 'Estrategia inicial', description: 'Definimos la estrategia de contenido para 90 días: perfiles de cliente, funnel, pilares, calendario editorial y pauta de mailing. También ordenamos la información y el seguimiento que se configurará en Defontana.', tag: 'Plan inicial · 90 días' },
+      { title: 'Grabación y producción', description: 'Entre dos y tres jornadas al mes en oficinas o terreno, según la pauta. Hasta tres jornadas están incluidas; una adicional se cotiza aparte.', tag: 'Producción · hasta 3 jornadas al mes' },
+      { title: 'Contenido y redes sociales', description: 'Producimos 12 piezas al mes: ocho reels y/o videos horizontales y cuatro carruseles, más 12 fotografías. Publicamos tres veces por semana en LinkedIn e Instagram y dos veces al mes en YouTube.', tag: 'LinkedIn · Instagram · YouTube' },
+      { title: 'Mailing y CRM', description: 'Preparamos cuatro campañas de mailing al mes y las dejamos calendarizadas para aprobación. Revisamos las fuentes de datos y configuramos Defontana según el proceso comercial de GradoClima.', tag: 'Mailchimp · Defontana' },
     ],
   },
   content: {
@@ -65,7 +65,7 @@ export const gradoClimaProposal: ProposalData = {
   },
   investment: {
     title: 'Estrategia y trabajo mensual',
-    introduction: 'Los valores están expresados en pesos chilenos y son más IVA. La inversión por la estrategia y los primeros tres meses es de $2.700.000 + IVA. El CRM, la configuración técnica de mailing, las automatizaciones y las licencias de plataformas no están incluidos; si se requieren, revisaremos el alcance y los cotizaremos por separado.',
+    introduction: 'Valores en pesos chilenos, más IVA. La estrategia cuesta $450.000 + IVA y se paga en dos cuotas de $225.000. El servicio tiene un fijo de $600.000 + IVA al mes durante tres meses. Al cierre de los 90 días se paga una sola vez el variable correspondiente al tramo alcanzado. La meta es 45 nuevos convenios; el variable va desde $0 hasta $600.000 + IVA. Total fijo del período: $2.250.000 + IVA; al llegar a 45 convenios: $2.700.000 + IVA; con 60 o más: máximo $2.850.000 + IVA. Las suscripciones de plataformas las mantiene y paga GradoClima.',
     plans: [
       {
         eyebrow: 'Pago único',
@@ -86,20 +86,27 @@ export const gradoClimaProposal: ProposalData = {
       {
         eyebrow: 'Servicio mensual · período inicial de 3 meses',
         title: 'Contenido y marketing',
-        price: '$750.000',
-        cadence: 'CLP · por mes · más IVA',
+        price: '$600.000',
+        cadence: 'CLP · fijo mensual · más IVA',
         featured: true,
         deliverables: [
-          '2 jornadas de grabación al mes en las oficinas de GradoClima.',
-          '4 reels o videos horizontales al mes.',
-          '2 carruseles y 8 fotografías editadas al mes.',
-          'Dos publicaciones por semana en LinkedIn e Instagram, adaptando las piezas producidas a cada canal.',
-          '1 publicación mensual en YouTube, a partir de una pieza horizontal.',
-          '4 campañas de mailing al mes, una por semana, redactadas y preparadas para envío.',
-          'Calendario mensual de redes y mailing para revisión y aprobación al inicio de cada mes.',
-          'La mensualidad se paga al comienzo de cada mes de servicio.',
+          'Entre dos y tres jornadas mensuales de grabación; hasta tres están incluidas y se coordinan al inicio del mes.',
+          '12 piezas al mes: ocho reels y/o videos horizontales y cuatro carruseles.',
+          '12 fotografías editadas al mes.',
+          'Tres publicaciones semanales en LinkedIn e Instagram, adaptadas a cada canal.',
+          'Dos publicaciones mensuales en YouTube.',
+          'Cuatro campañas de mailing al mes; calendario y contenidos aprobados al inicio del mes.',
+          'Diagnóstico y configuración inicial de Defontana: fuentes de datos, etapas, campos, responsables y seguimiento; automatizaciones sencillas disponibles en el plan.',
+          'El componente fijo se paga al inicio de cada mes. El variable se liquida una sola vez al cierre de los 90 días según los convenios firmados: 0–22, $0; 23–29, $100.000; 30–34, $200.000; 35–39, $300.000; 40–44, $400.000; 45–49, $450.000; 50–54, $500.000; 55–59, $550.000; 60 o más, $600.000. Todos los montos del variable son más IVA.',
         ],
       },
+    ],
+    addons: [
+      { title: 'Ajustes web y fotografías', price: '$150.000', cadence: 'pago único · más IVA', description: 'Ajustes acotados a WordPress y 15 fotografías editadas.' },
+      { title: 'Módulo de cursos en WordPress', price: '$250.000', cadence: 'total · pago único · más IVA', description: 'Ajustes web, 15 fotografías y un módulo autoadministrable de cursos. No se suma al paquete de $150.000.' },
+      { title: 'Curso corto para conserjes', price: '$300.000', cadence: 'por curso · más IVA', description: 'Producción de un curso de 30 a 60 minutos. Posible tema: operación o manejo de sala de calderas; nombre y alcance por confirmar.' },
+      { title: 'Podcast o conversatorio', price: '$400.000', cadence: 'mensual · más IVA', description: 'Dos episodios grabados, editados y publicados.' },
+      { title: 'Automatización sencilla con ManyChat', price: '$0', cadence: 'sin fee de implementación', description: 'Configuración sencilla de Instagram dentro del plan. La suscripción queda a nombre y cargo de GradoClima.' },
     ],
   },
   timeline: {
@@ -107,17 +114,21 @@ export const gradoClimaProposal: ProposalData = {
     items: [
       { period: 'Semana del 19 de octubre', title: 'Primera conversación estratégica', description: 'Si acordamos avanzar después de la reunión del 13 de octubre, tendremos la primera conversación de trabajo la semana siguiente. Al comenzar se paga la primera cuota de estrategia: $225.000 + IVA.' },
       { period: 'Al entregar la estrategia', title: 'Cierre de la etapa inicial', description: 'Se paga la segunda cuota de $225.000 + IVA. La estrategia deja listo el calendario inicial para los primeros 90 días.' },
-      { period: 'Noviembre', title: 'Mes 1 de contenido y mailing', description: 'Comienza el primer ciclo mensual. Pago: $750.000 + IVA al inicio del mes.' },
-      { period: 'Diciembre', title: 'Mes 2', description: 'Pago mensual de $750.000 + IVA al inicio del mes.' },
-      { period: 'Enero', title: 'Mes 3', description: 'Pago mensual de $750.000 + IVA al inicio del mes. Al cierre revisamos el trabajo y acordamos cómo continuar.' },
+      { period: 'Noviembre', title: 'Mes 1 de contenido y mailing', description: 'Comienza el primer ciclo mensual. Pago fijo: $600.000 + IVA al inicio del mes.' },
+      { period: 'Diciembre', title: 'Mes 2', description: 'Pago fijo mensual de $600.000 + IVA al inicio del mes.' },
+      { period: 'Enero', title: 'Mes 3', description: 'Pago fijo mensual de $600.000 + IVA al inicio del mes. Al cierre de los 90 días calculamos el variable por convenios firmados y acordamos cómo continuar.' },
     ],
   },
   closing: {
     title: '¿Lo revisamos juntos?',
-    body: 'Nos reunimos el 13 de octubre para revisar la propuesta. Si avanzamos, la primera conversación de estrategia puede ser la semana del 19 de octubre. Octubre queda para definir el rumbo; el primer ciclo mensual de contenido comienza en noviembre.',
+    body: 'Si acordamos avanzar, la primera conversación de estrategia puede ser la semana del 19 de octubre. Octubre queda para definir el rumbo y el primer ciclo mensual de contenido comienza en noviembre.',
     terms: [
       { label: 'Estrategia inicial', value: '$450.000 + IVA' },
-      { label: 'Mensualidad', value: '$750.000 + IVA' },
+      { label: 'Mensualidad fija', value: '$600.000 + IVA' },
+      { label: 'Variable a 90 días', value: 'Hasta $600.000 + IVA' },
+      { label: 'Meta inicial', value: '45 nuevos convenios' },
+      { label: 'Total con meta de 45', value: '$2.700.000 + IVA' },
+      { label: 'Total máximo con 60+', value: '$2.850.000 + IVA' },
       { label: 'Período inicial', value: '3 meses' },
       { label: 'Estrategia', value: 'Octubre 2026' },
       { label: 'Primer mes de contenido', value: 'Noviembre 2026' },
