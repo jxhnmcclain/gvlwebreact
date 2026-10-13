@@ -76,6 +76,19 @@ export type ProposalData = {
   interestOptions?: string[];
   includeInterestForm?: boolean;
   diagnosis: {
+    goalGraph?: {
+      title: string;
+      introduction: string;
+      baselineValue: number;
+      baselineLabel: string;
+      baselineDetail: string;
+      targetValue: number;
+      targetLabel: string;
+      targetDetail: string;
+      growthLabel: string;
+      longTermValue: string;
+      longTermDetail: string;
+    };
     title: string;
     introduction: string;
     stats: ProposalStat[];
