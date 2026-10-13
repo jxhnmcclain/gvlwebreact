@@ -50,8 +50,6 @@ export const gradoClimaProposal: ProposalData = {
       longTermValue: '150 salas',
       longTermDetail: 'Objetivo de largo plazo: mantener salas de calderas y/o bombas.',
     },
-    ],
-    ],
     conclusion: 'La meta es que la comunicación se sienta coherente: Sebastián al frente y GradoClima presente en cada tema, publicación y conversación.',
   },
   solution: {
