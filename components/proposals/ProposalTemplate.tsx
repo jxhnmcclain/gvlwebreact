@@ -102,6 +102,59 @@ const ProposalTemplate = ({ proposal }: { proposal: ProposalData }) => {
               </article>
             ))}
           </div>
+          {proposal.diagnosis.goalGraph && (
+            <div className="mt-8 grid gap-px border border-white/10 bg-white/10 lg:grid-cols-[1.2fr_0.8fr]">
+              <div className="bg-[#101010] p-7 md:p-10">
+                <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#C8F55A]">Proyección de convenios nuevos · 90 días</p>
+                <h3 className="mt-4 text-2xl font-black leading-tight tracking-tight md:text-3xl">{proposal.diagnosis.goalGraph.title}</h3>
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-white/50">{proposal.diagnosis.goalGraph.introduction}</p>
+                <div
+                  className="mt-9 space-y-7"
+                  role="img"
+                  aria-label={`${proposal.diagnosis.goalGraph.baselineLabel}: ${proposal.diagnosis.goalGraph.baselineValue}; ${proposal.diagnosis.goalGraph.targetLabel}: ${proposal.diagnosis.goalGraph.targetValue}.`}
+                >
+                  {[{
+                    label: proposal.diagnosis.goalGraph.baselineLabel,
+                    detail: proposal.diagnosis.goalGraph.baselineDetail,
+                    value: proposal.diagnosis.goalGraph.baselineValue,
+                  }, {
+                    label: proposal.diagnosis.goalGraph.targetLabel,
+                    detail: proposal.diagnosis.goalGraph.targetDetail,
+                    value: proposal.diagnosis.goalGraph.targetValue,
+                  }].map((bar, index) => (
+                    <div key={bar.label}>
+                      <div className="mb-2 flex items-baseline justify-between gap-4">
+                        <div>
+                          <p className="text-sm font-bold">{bar.label}</p>
+                          <p className="mt-1 text-xs text-white/40">{bar.detail}</p>
+                        </div>
+                        <p className="shrink-0 text-2xl font-black text-[#C8F55A]">{bar.value}</p>
+                      </div>
+                      <div className="h-3 overflow-hidden bg-white/10">
+                        <div
+                          className={`h-full ${index === 1 ? 'bg-[#C8F55A]' : 'bg-white/40'}`}
+                          style={{ width: `${Math.min((bar.value / proposal.diagnosis.goalGraph.targetValue) * 100, 100)}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-5 font-mono text-[9px] uppercase tracking-[0.16em] text-white/30">Convenios nuevos firmados; incluye referidos</p>
+              </div>
+              <aside className="flex flex-col justify-between gap-10 bg-[#C8F55A] p-7 text-black md:p-10">
+                <div>
+                  <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-black/55">Crecimiento frente al ritmo actual</p>
+                  <p className="mt-5 text-6xl font-black leading-none tracking-tighter md:text-7xl">{proposal.diagnosis.goalGraph.growthLabel}</p>
+                  <p className="mt-4 max-w-md text-sm leading-6 text-black/70">La meta del primer trimestre es de 45 firmas nuevas en total. El aumento buscado es de 15 convenios sobre las 30 firmas estimadas al mantener el ritmo actual.</p>
+                </div>
+                <div className="border-t border-black/20 pt-6">
+                  <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-black/55">Objetivo de largo plazo</p>
+                  <p className="mt-3 text-4xl font-black tracking-tighter">{proposal.diagnosis.goalGraph.longTermValue}</p>
+                  <p className="mt-2 max-w-md text-sm leading-6 text-black/70">{proposal.diagnosis.goalGraph.longTermDetail}</p>
+                </div>
+              </aside>
+            </div>
+          )}
           <p className="mt-px border border-white/10 bg-white/[0.025] p-7 text-lg font-semibold leading-8 md:p-9 md:text-2xl">{proposal.diagnosis.conclusion}</p>
         </section>
 

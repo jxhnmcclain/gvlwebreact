@@ -16,7 +16,7 @@ export const gradoClimaProposal: ProposalData = {
     items: [
       { title: 'Una voz principal', body: 'Sebastián representa a GradoClima y comparte su experiencia y mirada de la industria.' },
       { title: 'Un equipo detrás', body: 'El contenido también mostrará el conocimiento y el trabajo de las personas que forman parte de GradoClima.' },
-      { title: 'Una meta compartida', body: '45 nuevos convenios en 90 días, en camino a mantener 150 salas.' },
+      { title: 'Una meta compartida', body: '45 nuevos convenios firmados en 90 días: 50% sobre el ritmo actual. La meta de largo plazo es mantener 150 salas.' },
     ],
   },
   sectionLabels: {
@@ -30,13 +30,26 @@ export const gradoClimaProposal: ProposalData = {
   includeInterestForm: false,
   interestOptions: ['Quiero revisar la propuesta', 'Quiero conversar sobre el alcance'],
   diagnosis: {
-    title: 'La experiencia de GradoClima, contada por quienes la conocen.',
-    introduction: 'La marca personal de Sebastián y la presencia de GradoClima se pueden trabajar juntas. Él será la voz principal; su equipo aportará el conocimiento y las experiencias que dan vida al contenido.',
+    title: 'Una meta de 90 días que parte del ritmo actual.',
+    introduction: 'GradoClima consigue cerca de 10 convenios nuevos al mes, principalmente por recomendación. La meta del primer período es elevar ese ritmo y cerrar 45 firmas nuevas en total durante 90 días.',
     stats: [
       { value: 'Sebastián', label: 'Voz principal', context: 'El dueño de GradoClima comparte su experiencia y punto de vista.' },
       { value: 'El equipo', label: 'Experiencia compartida', context: 'Las personas de GradoClima también forman parte de las historias y temas.' },
-      { value: '45 convenios', label: 'Meta inicial', context: '45 nuevas firmas en 90 días, rumbo a mantener 150 salas.' },
+      { value: '45 convenios', label: 'Meta a 90 días', context: 'Firmas nuevas durante el período; equivale a 15 al mes en promedio.' },
     ],
+    goalGraph: {
+      title: 'De 30 a 45 convenios nuevos en 90 días.',
+      introduction: 'A un ritmo aproximado de 10 convenios al mes, GradoClima firmaría 30 en tres meses. La propuesta busca llegar a 45 en total, contando los nuevos convenios que lleguen por cualquier canal.',
+      baselineValue: 30,
+      baselineLabel: 'Ritmo actual estimado',
+      baselineDetail: '10 convenios al mes × 3 meses',
+      targetValue: 45,
+      targetLabel: 'Meta del primer período',
+      targetDetail: '45 convenios nuevos en total',
+      growthLabel: '+50%',
+      longTermValue: '150 salas',
+      longTermDetail: 'Objetivo de largo plazo: mantener salas de calderas y/o bombas.',
+    },
     conclusion: 'La meta es que la comunicación se sienta coherente: Sebastián al frente y GradoClima presente en cada tema, publicación y conversación.',
   },
   solution: {
@@ -103,9 +116,10 @@ export const gradoClimaProposal: ProposalData = {
     ],
     addons: [
       { title: 'Ajustes web y fotografías', price: '$150.000', cadence: 'pago único · más IVA', description: 'Ajustes acotados a WordPress y 15 fotografías editadas.' },
-      { title: 'Módulo de cursos en WordPress', price: '$250.000', cadence: 'total · pago único · más IVA', description: 'Ajustes web, 15 fotografías y un módulo autoadministrable de cursos. No se suma al paquete de $150.000.' },
+      { title: 'Módulo de cursos autoadministrable en WordPress', price: '$100.000', cadence: 'solo módulo · pago único · más IVA', description: 'Incluye únicamente la implementación del módulo en la web actual; no incluye ajustes web ni fotografía.' },
+      { title: 'Implementación completa: web, fotos y cursos', price: '$250.000', cadence: 'total · pago único · más IVA', description: 'Incluye ajustes de WordPress, 15 fotografías editadas y el módulo autoadministrable de cursos.' }, 
       { title: 'Curso corto para conserjes', price: '$300.000', cadence: 'por curso · más IVA', description: 'Producción de un curso de 30 a 60 minutos. Posible tema: operación o manejo de sala de calderas; nombre y alcance por confirmar.' },
-      { title: 'Podcast o conversatorio', price: '$400.000', cadence: 'mensual · más IVA', description: 'Dos episodios grabados, editados y publicados.' },
+      { title: 'Podcast', price: '$400.000', cadence: 'mensual · más IVA', description: 'Dos episodios grabados, editados y publicados; incluye tres reels o clips por episodio (seis clips en total).' }, 
       { title: 'Automatización sencilla con ManyChat', price: '$0', cadence: 'sin fee de implementación', description: 'Configuración sencilla de Instagram dentro del plan. La suscripción queda a nombre y cargo de GradoClima.' },
     ],
   },
