@@ -78,7 +78,7 @@ export const gradoClimaProposal: ProposalData = {
   },
   investment: {
     title: 'Estrategia y trabajo mensual',
-    introduction: 'Valores en pesos chilenos, más IVA. La estrategia cuesta $450.000 + IVA y se paga en dos cuotas de $225.000. El servicio tiene un fijo de $600.000 + IVA al mes durante tres meses. Al cierre de los 90 días se paga una sola vez el variable correspondiente al tramo alcanzado. La meta es 45 nuevos convenios; el variable va desde $0 hasta $600.000 + IVA. Total fijo del período: $2.250.000 + IVA; al llegar a 45 convenios: $2.700.000 + IVA; con 60 o más: máximo $2.850.000 + IVA. Las suscripciones de plataformas las mantiene y paga GradoClima.',
+    introduction: 'Los valores son más IVA. El fijo de los primeros 90 días suma $2.250.000: $450.000 por la estrategia inicial y tres pagos mensuales de $600.000. Al cierre se suma una sola vez el variable del tramo alcanzado. Con 45 convenios, el variable es $450.000 y el total del período es $2.700.000 + IVA. Con 60 o más, el variable es $600.000 y el total del período es $2.850.000 + IVA ($2.250.000 fijos + $600.000 variable único). Las suscripciones de plataformas las mantiene y paga GradoClima.',
     plans: [
       {
         eyebrow: 'Pago único',
@@ -135,14 +135,14 @@ export const gradoClimaProposal: ProposalData = {
   },
   closing: {
     title: '¿Lo revisamos juntos?',
-    body: 'Si acordamos avanzar, la primera conversación de estrategia puede ser la semana del 19 de octubre. Octubre queda para definir el rumbo y el primer ciclo mensual de contenido comienza en noviembre.',
+    body: 'Si acordamos avanzar, la primera conversación de estrategia puede ser la semana del 19 de octubre. Octubre queda para definir el rumbo y el primer ciclo mensual de contenido comienza en noviembre. Si se firman 60 o más convenios en los 90 días, el total incluye $450.000 de estrategia, $1.800.000 de tres mensualidades fijas y un variable único de $600.000: $2.850.000 + IVA en total.',
     terms: [
       { label: 'Estrategia inicial', value: '$450.000 + IVA' },
       { label: 'Mensualidad fija', value: '$600.000 + IVA' },
       { label: 'Variable a 90 días', value: 'Hasta $600.000 + IVA' },
       { label: 'Meta inicial', value: '45 nuevos convenios' },
       { label: 'Total con meta de 45', value: '$2.700.000 + IVA' },
-      { label: 'Total máximo con 60+', value: '$2.850.000 + IVA' },
+      { label: 'Total del período inicial con 60 o más firmas', value: '$2.250.000 fijo + $600.000 variable único = $2.850.000 + IVA' },
       { label: 'Período inicial', value: '3 meses' },
       { label: 'Estrategia', value: 'Octubre 2026' },
       { label: 'Primer mes de contenido', value: 'Noviembre 2026' },
