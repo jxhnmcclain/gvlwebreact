@@ -41,7 +41,7 @@ const LeadFormPage = () => {
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
-    const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>> & { turnstile?: string }>({});
+    const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>> & { turnstile?: string; submit?: string }>({});
     const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
     const handleTextChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -92,23 +92,20 @@ const LeadFormPage = () => {
         const utmParams = getUTMParams();
 
         try {
-            await fetch(N8N_WEBHOOKS.LEAD_FORM, {
+            const response = await fetch(N8N_WEBHOOKS.LEAD_FORM, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...formData, turnstileToken, ...utmParams })
             });
-        } catch (error) {
-            console.error('Error sending form:', error);
-        }
-
-
-        // Simulate delay for UX
-        setTimeout(() => {
-            console.log("Lead Form POSTed to n8n:", formData);
-            setIsSubmitting(false);
+            if (!response.ok) throw new Error(`Lead form failed: ${response.status}`);
             setIsSuccess(true);
             window.scrollTo(0, 0);
-        }, 1500);
+        } catch (error) {
+            console.error('Error sending form:', error);
+            setErrors(prev => ({ ...prev, submit: 'No pudimos enviar tu solicitud. Escríbenos a hola@growthvideolab.com.' }));
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     if (isSuccess) {
@@ -423,6 +420,7 @@ const LeadFormPage = () => {
 
 
                     <div className="flex flex-col items-center justify-center pt-8 gap-4">
+                        {errors.submit && <p role="alert" className="text-sm font-bold text-red-700">{errors.submit}</p>}
                         <div className={`${errors.turnstile ? 'p-1 border-2 border-red-500 rounded-md' : ''}`}>
                             <TurnstileWidget
                                 onVerify={(token) => {

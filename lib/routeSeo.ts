@@ -60,6 +60,13 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
     ogImage: '/og-image.jpg',
   },
   {
+    path: '/marketing-para-marcas',
+    title: 'Marketing para tu marca | Growth Video Lab',
+    description: 'Estrategia, contenido, diseño, campañas y seguimiento para marcas que necesitan una comunicación con dirección y trabajo ejecutado.',
+    canonical: `${SITE_URL}/marketing-para-marcas`,
+    ogType: 'website',
+  },
+  {
     path: '/cotizacion-web',
     title: 'Cotiza tu sitio web B2B | Growth Video Lab',
     description: 'Cuestionario breve para cotizar una web profesional, landing page o sistema digital para tu empresa.',

@@ -104,22 +104,19 @@ const ContactPage = () => {
     const utmParams = getUTMParams();
 
     try {
-      await fetch(N8N_WEBHOOKS.CONTACT, {
+      const response = await fetch(N8N_WEBHOOKS.CONTACT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...formData, turnstileToken, ...utmParams })
       });
-    } catch (error) {
-      console.error('Error sending form:', error);
-    }
-
-
-    // Simulate delay for UX
-    setTimeout(() => {
-      console.log('Form POSTed to n8n', { ...formData, turnstileToken });
+      if (!response.ok) throw new Error(`Contact form failed: ${response.status}`);
       setStatus('success');
       setErrors({});
-    }, 1500);
+    } catch (error) {
+      console.error('Error sending form:', error);
+      setErrors(prev => ({ ...prev, submit: 'No pudimos enviar tu mensaje. Escríbenos a hola@growthvideolab.com.' }));
+      setStatus('idle');
+    }
   };
 
   return (
@@ -353,7 +350,8 @@ const ContactPage = () => {
                     )}
                   </div>
 
-                  <div className="flex justify-center pt-3 md:pt-4">
+                  <div className="flex flex-col items-center justify-center gap-3 pt-3 md:pt-4">
+                    {errors.submit && <p role="alert" className="text-sm text-red-300">{errors.submit}</p>}
                     <button
                       type="submit"
                       disabled={status === 'submitting'}

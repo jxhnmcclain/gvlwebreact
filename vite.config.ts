@@ -17,6 +17,7 @@ const portfolioRoutes = contentSnapshot.portfolio.map((project: { slug: string }
 const routes = [
   '/',
   '/servicios',
+  '/marketing-para-marcas',
   '/contacto',
   '/asesoria',
   '/asesoria-creativos',

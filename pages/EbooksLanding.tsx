@@ -20,6 +20,7 @@ const EbooksLanding = () => {
 
     const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [submitError, setSubmitError] = useState('');
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -41,22 +42,22 @@ const EbooksLanding = () => {
 
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setSubmitError('');
+        if (!turnstileToken) { setSubmitError('Completa la verificación de Cloudflare.'); return; }
         const utmParams = getUTMParams();
 
         try {
-            await fetch(N8N_WEBHOOKS.EBOOKS, {
+            const response = await fetch(N8N_WEBHOOKS.EBOOKS, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...formState, turnstileToken, ...utmParams })
             });
+            if (!response.ok) throw new Error(`Ebooks form failed: ${response.status}`);
+            setIsSubmitted(true);
         } catch (error) {
             console.error('Error sending form:', error);
+            setSubmitError('No pudimos registrar tu solicitud. Intenta más tarde.');
         }
-
-
-        // Show success state regardless of actual API result for now
-        setIsSubmitted(true);
-        console.log("Form POSTed to n8n:", formState);
     };
 
     return (
@@ -269,6 +270,7 @@ const EbooksLanding = () => {
                                     <div className="mb-4">
                                         <TurnstileWidget onVerify={setTurnstileToken} />
                                     </div>
+                                    {submitError && <p role="alert" className="mb-3 text-sm font-bold text-red-700">{submitError}</p>}
                                     <button
                                         type="submit"
                                         disabled={!turnstileToken}

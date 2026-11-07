@@ -31,6 +31,7 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import MarketingAdvisory from './pages/MarketingAdvisory';
 import WaitlistPage from './pages/WaitlistPage';
+import MarketingForBrandsPage from './pages/MarketingForBrandsPage';
 import LeadMagnetB2BPage from './pages/LeadMagnetB2BPage';
 import Portfolio from './pages/Portfolio';
 import PortfolioProjectPage from './pages/PortfolioProject';
@@ -133,6 +134,7 @@ const AppContent = () => {
             <Route path="/websites" element={<WebsitesPage />} />
             <Route path="/branding" element={<BrandingPage />} />
             <Route path="/servicios" element={<ServicesPage />} />
+            <Route path="/marketing-para-marcas" element={<MarketingForBrandsPage />} />
             <Route path="/cotizacion-web" element={<LeadFormPage />} />
             <Route path="/web-portfolio" element={<WebPortfolioLanding />} />
             <Route path="/guia-ia-marketing" element={<LeadMagnetB2BPage />} />

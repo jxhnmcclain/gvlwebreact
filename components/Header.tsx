@@ -58,7 +58,7 @@ const Header = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-[50] transition-all duration-500 ${isHeroVisible && !isMenuOpen ? '-translate-y-full opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}>
-      <div className="w-full bg-black/88 text-white backdrop-blur-sm border-b border-white/10 py-3 px-6 md:px-12 flex justify-between items-center relative z-[110]">
+      <div className="w-full bg-black/90 text-white backdrop-blur-sm border-b border-white/10 py-3 px-6 md:px-12 flex justify-between items-center relative z-[110]">
         <Link to="/" className="hover:opacity-90 transition-opacity">
           <Logo textColor="text-white" />
         </Link>

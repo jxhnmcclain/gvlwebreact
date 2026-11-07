@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import Dither from './Dither.jsx';
 
@@ -47,13 +48,10 @@ do not decorate
             Construimos herramientas con IA, organizamos procesos de marketing y también hacemos el trabajo: estrategia, diseño, contenido y campañas.
           </p>
 
-          <button
-            onClick={goToContact}
-            className="mb-5 mt-6 inline-flex items-center gap-2 border border-white/20 bg-black/25 px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.24em] text-white/60 backdrop-blur-sm transition-colors hover:bg-white hover:text-black md:mb-7 md:mt-7"
-          >
-            hablemos de tu proyecto
-            <ArrowUpRight size={14} />
-          </button>
+          <div className="mb-5 mt-6 flex flex-wrap justify-center gap-2 md:mb-7 md:mt-7">
+            <button onClick={goToContact} className="inline-flex items-center gap-2 border border-white/20 bg-black/25 px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.15em] text-white/75 backdrop-blur-sm transition-colors hover:bg-white hover:text-black">hablemos de tu proyecto <ArrowUpRight size={14} /></button>
+            <Link to="/marketing-para-marcas" className="inline-flex items-center gap-2 border border-white/20 bg-black/25 px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.15em] text-white/75 backdrop-blur-sm transition-colors hover:bg-white hover:text-black">marketing para tu marca <ArrowUpRight size={14} /></Link>
+          </div>
         </div>
 
         <div className="mx-0 grid grid-cols-2 gap-2 md:mx-4 md:grid-cols-4 md:gap-3">

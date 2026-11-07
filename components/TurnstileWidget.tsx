@@ -27,7 +27,8 @@ const TurnstileWidget: React.FC<TurnstileWidgetProps> = ({ onVerify, onError, th
         <Turnstile
             sitekey={SITE_KEY}
             onVerify={onVerify}
-            onError={onError}
+            onExpire={() => onVerify('')}
+            onError={(error) => { onVerify(''); onError?.(error); }}
             theme={theme as any}
         />
     );

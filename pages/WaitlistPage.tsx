@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { getUTMParams } from '../lib/utm';
+import CommercialHero from '../components/CommercialHero';
+import TurnstileWidget from '../components/TurnstileWidget';
 
 type Kind = 'creatives' | 'teams' | 'academy';
 
@@ -40,35 +42,39 @@ export default function WaitlistPage({ kind }: { kind: Kind }) {
   const [option, setOption] = useState(kind === 'creatives' ? 'single' : '');
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [status, setStatus] = useState<'idle' | 'sending' | 'success'>('idle');
   const [error, setError] = useState('');
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError('');
+    if (!turnstileToken) { setError('Completa la verificación de Cloudflare para entrar en la lista.'); return; }
     setStatus('sending');
     try {
       const response = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ kind, option, name: name.trim(), email: email.trim(), detail: detail.trim(), consent, website, page_url: window.location.href, ...getUTMParams() }),
+        body: JSON.stringify({ kind, option, name: name.trim(), email: email.trim(), detail: detail.trim(), consent, website, turnstileToken, page_url: window.location.href, ...getUTMParams() }),
       });
       if (!response.ok) throw new Error('No se pudo guardar');
       setStatus('success');
     } catch {
       setError('No pudimos guardar tus datos. Intenta nuevamente más tarde.');
+      setTurnstileToken(null);
       setStatus('idle');
     }
   }
 
   return (
     <div className="min-h-screen bg-gvl-cream text-gvl-black">
-      <section className="px-4 pb-16 pt-36 md:px-12 md:pb-24">
+      <CommercialHero eyebrow={content.eyebrow} title={content.title} description={content.intro}>
+        <a href="#lista-de-espera" className="inline-flex border border-white px-6 py-3 text-sm font-black uppercase text-white hover:bg-white hover:text-black">Entrar en la lista ↓</a>
+      </CommercialHero>
+      <section className="px-4 pb-16 pt-12 md:px-12 md:pb-24 md:pt-20">
         <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2 md:items-start">
           <div>
-            <p className="mb-5 text-xs font-black uppercase tracking-[0.25em] text-gvl-dark-gray">{content.eyebrow}</p>
-            <h1 className="max-w-xl text-5xl font-black uppercase leading-[0.95] tracking-tighter md:text-7xl">{content.title}</h1>
-            <p className="mt-8 max-w-xl text-lg leading-relaxed md:text-xl">{content.intro}</p>
+            <h2 className="max-w-xl text-3xl font-black uppercase tracking-tighter md:text-5xl">Lo que puedes esperar.</h2>
             {kind === 'creatives' && (
               <div className="mt-9 space-y-3 border-t-2 border-black pt-6">
                 {content.options.map((item) => (
@@ -93,9 +99,10 @@ export default function WaitlistPage({ kind }: { kind: Kind }) {
                 {kind === 'creatives' && <fieldset><legend className="mb-2 text-sm font-bold">Me interesa</legend>{content.options.map(item => <label key={item.value} className="mb-2 flex items-center gap-2 text-sm"><input type="radio" name="option" value={item.value} checked={option === item.value} onChange={e => setOption(e.target.value)} />{item.label} · {item.price}</label>)}</fieldset>}
                 {kind !== 'academy' && <label className="block text-sm font-bold">¿Qué te gustaría trabajar? <span className="font-normal">(opcional)</span><textarea maxLength={1000} value={detail} onChange={e => setDetail(e.target.value)} rows={4} className="mt-2 w-full border-2 border-black bg-gvl-cream p-3 font-normal" /></label>}
                 <div className="hidden" aria-hidden="true"><label>Sitio web<input tabIndex={-1} autoComplete="off" value={website} onChange={e => setWebsite(e.target.value)} /></label></div>
+                <TurnstileWidget onVerify={setTurnstileToken} onError={() => { setTurnstileToken(null); setError('No se pudo completar la verificación. Recarga la página e inténtalo de nuevo.'); }} />
                 <label className="flex items-start gap-3 text-sm"><input required type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)} className="mt-1" /><span>Acepto que Growth Video Lab guarde estos datos para contactarme sobre esta lista de espera.</span></label>
                 {error && <p role="alert" className="text-sm font-bold text-red-700">{error}</p>}
-                <button type="submit" disabled={status === 'sending'} className="flex w-full items-center justify-center gap-2 rounded-full bg-black px-6 py-4 font-black uppercase text-white transition-colors hover:bg-gvl-orange disabled:opacity-60">{status === 'sending' ? 'Guardando…' : 'Entrar en la lista'} <ArrowRight size={18} /></button>
+                <button type="submit" disabled={status === 'sending' || !turnstileToken} className="flex w-full items-center justify-center gap-2 rounded-full bg-black px-6 py-4 font-black uppercase text-white transition-colors hover:bg-gvl-orange disabled:opacity-60">{status === 'sending' ? 'Guardando…' : 'Entrar en la lista'} <ArrowRight size={18} /></button>
               </form>
             )}
           </div>

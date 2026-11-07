@@ -80,6 +80,7 @@ select / build / connect`}
       />
       <nav aria-label="Asesorías y academia" className="bg-zinc-950 px-4 pb-16 text-gvl-yellow md:px-12">
         <div className="mx-auto flex max-w-7xl flex-wrap gap-8 border-t border-white/20 pt-8 text-sm font-bold uppercase">
+          <Link to="/marketing-para-marcas" className="hover:underline">Marketing para tu marca ↗</Link>
           <Link to="/asesoria-creativos" className="hover:underline">Asesoría 1 a 1 para creativos ↗</Link>
           <Link to="/asesoria-equipos" className="hover:underline">Asesoría para equipos ↗</Link>
           <Link to="/academia" className="hover:underline">Academia en construcción ↗</Link>

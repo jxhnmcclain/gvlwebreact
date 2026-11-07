@@ -21,6 +21,7 @@ const WebPortfolioLanding = () => {
 
     });
     const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+    const [submitError, setSubmitError] = useState('');
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -80,22 +81,23 @@ const WebPortfolioLanding = () => {
 
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setSubmitError('');
+        if (!turnstileToken) { setSubmitError('Completa la verificación de Cloudflare.'); return; }
         const utmParams = getUTMParams();
 
         try {
-            await fetch(N8N_WEBHOOKS.WEB_PORTFOLIO, {
+            const response = await fetch(N8N_WEBHOOKS.WEB_PORTFOLIO, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
 
                 body: JSON.stringify({ ...formState, turnstileToken, ...utmParams })
             });
+            if (!response.ok) throw new Error(`Portfolio form failed: ${response.status}`);
+            alert('Recibimos tu solicitud. Te contactaremos pronto.');
         } catch (error) {
             console.error('Error sending form:', error);
+            setSubmitError('No pudimos enviar tu solicitud. Escríbenos a hola@growthvideolab.com.');
         }
-
-
-        console.log("Form POSTed to n8n:", formState);
-        alert("¡Gracias! Te contactaremos pronto.");
     };
 
     return (
@@ -189,6 +191,7 @@ const WebPortfolioLanding = () => {
                         <div className="mt-4">
                             <TurnstileWidget onVerify={setTurnstileToken} />
                         </div>
+                        {submitError && <p role="alert" className="mt-3 text-sm font-bold text-red-700">{submitError}</p>}
 
                         <button type="submit" disabled={!turnstileToken} className="w-full bg-black text-white font-bold py-4 rounded-xl mt-4 hover:bg-gvl-blue transition-colors flex justify-center items-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed">
                             Solicitar Asesoría
