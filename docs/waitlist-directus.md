@@ -2,11 +2,13 @@
 
 Estado: interfaz y endpoint implementados; falta comprobar una escritura real en Directus de producción.
 
-El widget de Turnstile está en la interfaz, pero la validación de sus tokens en servidor sigue pendiente. John pidió revisar solo la interfaz por ahora. El estado general del sitio está en [estado-sitio-2026-11-07.md](estado-sitio-2026-11-07.md).
+El widget de Turnstile está en la interfaz. `/api/waitlist` puede validar tokens con Siteverify cuando se configure `TURNSTILE_SECRET_KEY`; esa variable no estaba en Vercel Production el 2026-11-07, por lo que la validación real sigue pendiente. El estado general del sitio está en [estado-sitio-2026-11-07.md](estado-sitio-2026-11-07.md).
 
 ## Datos separados
 
 Una colección privada `gvl_waitlist_entries` guarda las tres listas mediante `kind`: `creatives`, `teams`, `academy`. La asesoría individual guarda además `option`: `single` ($65.000 CLP) o `four` ($200.000 CLP). No se cobran pagos ni se crean cuentas. Twenty no recibe datos todavía.
+
+El diagnóstico `/academia/diagnostico` usa `kind=academy` y guarda una representación compacta del nivel, ejercicio, respuestas y versión del permiso en el campo privado `detail` (máximo 1000 caracteres). La lista directa de `/academia` marca su origen como `academy_landing` en ese mismo campo. Esto evita una migración de CMS para el primer corte, pero requiere comprobar un ítem real antes de usar esos datos para segmentación.
 
 ## Configuración en Directus
 

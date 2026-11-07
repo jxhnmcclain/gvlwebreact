@@ -1,7 +1,7 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 
 type Request = IncomingMessage & { body?: unknown };
-type Entry = { kind: string; option: string; name: string; email: string; detail: string; consent: boolean; website: string; page_url: string; [key: string]: unknown };
+type Entry = { kind: string; option: string; name: string; email: string; detail: string; consent: boolean; website: string; page_url: string; turnstileToken: string; [key: string]: unknown };
 
 export default async function handler(req: Request, res: ServerResponse) {
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
@@ -18,8 +18,26 @@ export default async function handler(req: Request, res: ServerResponse) {
       (kind !== 'creatives' && option !== '') ||
       typeof name !== 'string' || !name.trim() || name.length > 120 ||
       typeof email !== 'string' || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
-      typeof detail !== 'string' || detail.length > 1000 || consent !== true) {
+      typeof detail !== 'string' || detail.length > 1000 || consent !== true ||
+      typeof data.turnstileToken !== 'string' || !data.turnstileToken || data.turnstileToken.length > 2048) {
     res.statusCode = 400; return res.end('{"error":"invalid_entry"}');
+  }
+  // Existing production forms keep their current behavior until the server
+  // secret is configured. Once present, every waitlist token is verified.
+  if (process.env.TURNSTILE_SECRET_KEY) {
+    try {
+      const verification = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ secret: process.env.TURNSTILE_SECRET_KEY, response: data.turnstileToken }),
+        signal: AbortSignal.timeout(5000),
+      });
+      if (!verification.ok || (await verification.json() as { success?: boolean }).success !== true) {
+        res.statusCode = 400; return res.end('{"error":"verification_failed"}');
+      }
+    } catch {
+      res.statusCode = 503; return res.end('{"error":"verification_unavailable"}');
+    }
   }
   const base = process.env.DIRECTUS_PROD_URL;
   const token = process.env.DIRECTUS_WAITLIST_TOKEN || process.env.DIRECTUS_BUILD_TOKEN;

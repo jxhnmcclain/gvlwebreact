@@ -38,3 +38,14 @@ body {
   border-radius: 0;
   box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.08);
 }
+
+@keyframes diagnostic-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.diagnostic-enter { animation: diagnostic-enter 220ms ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .diagnostic-enter { animation: none; }
+}

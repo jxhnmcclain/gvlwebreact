@@ -23,6 +23,7 @@ const routes = [
   '/asesoria-creativos',
   '/asesoria-equipos',
   '/academia',
+  '/academia/diagnostico',
   '/contenido',
   '/reels',
   '/websites',

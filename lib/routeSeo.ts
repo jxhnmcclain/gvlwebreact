@@ -142,6 +142,13 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
     ogType: 'website',
   },
   {
+    path: '/academia/diagnostico',
+    title: 'Tu punto de partida para crear con IA | Growth Video Lab',
+    description: 'Responde unas preguntas sobre lo que quieres construir y recibe un ejercicio concreto para empezar a crear herramientas con IA.',
+    canonical: `${SITE_URL}/academia/diagnostico`,
+    ogType: 'website',
+  },
+  {
     path: '/contacto',
     title: 'Contacto | Growth Video Lab',
     description: 'Conversemos sobre tu idea, una herramienta con IA o un proyecto de marketing, diseño y contenido.',

@@ -238,7 +238,7 @@ function escapeXml(value = '') {
 }
 
 function writeDiscoveryFiles(snapshot) {
-  const staticPaths = ['/', '/servicios', '/marketing-para-marcas', '/contenido', '/reels', '/websites', '/branding', '/asesoria', '/asesoria-creativos', '/asesoria-equipos', '/academia', '/contacto', '/blog', '/guia-ia-marketing'];
+  const staticPaths = ['/', '/servicios', '/marketing-para-marcas', '/contenido', '/reels', '/websites', '/branding', '/asesoria', '/asesoria-creativos', '/asesoria-equipos', '/academia', '/academia/diagnostico', '/contacto', '/blog', '/guia-ia-marketing'];
   if (snapshot.portfolio.length >= 3) staticPaths.push('/portafolio');
   const paths = [
     ...staticPaths,

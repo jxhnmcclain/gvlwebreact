@@ -31,6 +31,7 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import MarketingAdvisory from './pages/MarketingAdvisory';
 import WaitlistPage from './pages/WaitlistPage';
+import AcademyDiagnosticPage from './pages/AcademyDiagnosticPage';
 import MarketingForBrandsPage from './pages/MarketingForBrandsPage';
 import LeadMagnetB2BPage from './pages/LeadMagnetB2BPage';
 import Portfolio from './pages/Portfolio';
@@ -57,14 +58,18 @@ const Home = () => {
 
 // Scroll to top on route change wrapper
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
     // If we are going to contact page, DO NOT scroll to top
     // This allows the overlay to slide in over the current position
     if (pathname === '/contacto') return;
 
+    if (hash) {
+      const frame = requestAnimationFrame(() => document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView());
+      return () => cancelAnimationFrame(frame);
+    }
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 };
 
@@ -80,7 +85,7 @@ const AppContent = () => {
   // Check if we are on the standalone lead form page or 404 page
   // We want to hide header/footer on these specific pages
   const isLeadPage = location.pathname === '/cotizacion-web';
-  const isStandalonePage = isLeadPage || location.pathname === '/presentacion' || location.pathname.startsWith('/propuestas/');
+  const isStandalonePage = isLeadPage || location.pathname === '/presentacion' || location.pathname === '/academia/diagnostico' || location.pathname.startsWith('/propuestas/');
 
   useEffect(() => {
     const routeSeo = getRouteSeo(location.pathname);
@@ -150,6 +155,7 @@ const AppContent = () => {
             <Route path="/asesoria-creativos" element={<WaitlistPage kind="creatives" />} />
             <Route path="/asesoria-equipos" element={<WaitlistPage kind="teams" />} />
             <Route path="/academia" element={<WaitlistPage kind="academy" />} />
+            <Route path="/academia/diagnostico" element={<AcademyDiagnosticPage />} />
 
             {/* Direct proposal routes: deliberately absent from navigation, sitemap and prerender. */}
             <Route path="/propuestas/:proposalId" element={<ProposalPage />} />

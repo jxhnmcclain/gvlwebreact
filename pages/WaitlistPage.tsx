@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { getUTMParams } from '../lib/utm';
 import CommercialHero from '../components/CommercialHero';
 import TurnstileWidget from '../components/TurnstileWidget';
@@ -63,6 +63,7 @@ const academyFormat = [
 
 export default function WaitlistPage({ kind }: { kind: Kind }) {
   const content = copy[kind];
+  const location = useLocation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [detail, setDetail] = useState('');
@@ -82,7 +83,7 @@ export default function WaitlistPage({ kind }: { kind: Kind }) {
       const response = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ kind, option, name: name.trim(), email: email.trim(), detail: detail.trim(), consent, website, turnstileToken, page_url: window.location.href, ...getUTMParams() }),
+        body: JSON.stringify({ kind, option, name: name.trim(), email: email.trim(), detail: kind === 'academy' ? JSON.stringify({ source: 'academy_landing', version: 1, consent: 'academy_updates_educational_v1' }) : detail.trim(), consent, website, turnstileToken, page_url: window.location.href, ...getUTMParams() }),
       });
       if (!response.ok) throw new Error('No se pudo guardar');
       setStatus('success');
@@ -96,7 +97,12 @@ export default function WaitlistPage({ kind }: { kind: Kind }) {
   return (
     <div className="min-h-screen bg-gvl-cream text-gvl-black">
       <CommercialHero eyebrow={content.eyebrow} title={content.title} description={content.intro}>
-        <a href="#lista-de-espera" className="inline-flex border border-white px-6 py-3 text-sm font-black uppercase text-white hover:bg-white hover:text-black">Entrar en la lista ↓</a>
+        {kind === 'academy' ? (
+          <div className="flex flex-wrap gap-3">
+            <Link to={`/academia/diagnostico${location.search}`} className="inline-flex min-h-12 items-center bg-gvl-yellow px-6 py-3 text-sm font-black uppercase text-black hover:bg-white">Descubre por dónde empezar ↗</Link>
+            <a href="#lista-de-espera" className="inline-flex min-h-12 items-center border border-white px-6 py-3 text-sm font-black uppercase text-white hover:bg-white hover:text-black">Entrar en la lista ↓</a>
+          </div>
+        ) : <a href="#lista-de-espera" className="inline-flex border border-white px-6 py-3 text-sm font-black uppercase text-white hover:bg-white hover:text-black">Entrar en la lista ↓</a>}
       </CommercialHero>
       {kind === 'academy' && (
         <>
@@ -179,7 +185,7 @@ export default function WaitlistPage({ kind }: { kind: Kind }) {
                 {kind !== 'academy' && <label className="block text-sm font-bold">¿Qué te gustaría trabajar? <span className="font-normal">(opcional)</span><textarea maxLength={1000} value={detail} onChange={e => setDetail(e.target.value)} rows={4} className="mt-2 w-full border-2 border-black bg-gvl-cream p-3 font-normal" /></label>}
                 <div className="hidden" aria-hidden="true"><label>Sitio web<input tabIndex={-1} autoComplete="off" value={website} onChange={e => setWebsite(e.target.value)} /></label></div>
                 <TurnstileWidget onVerify={setTurnstileToken} onError={() => { setTurnstileToken(null); setError('No se pudo completar la verificación. Recarga la página e inténtalo de nuevo.'); }} />
-                <label className="flex items-start gap-3 text-sm"><input required type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)} className="mt-1" /><span>Acepto que Growth Video Lab guarde estos datos para contactarme sobre esta lista de espera.</span></label>
+                <label className="flex items-start gap-3 text-sm"><input required type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)} className="mt-1" /><span>{kind === 'academy' ? <>Quiero recibir por correo novedades de este curso en construcción y material educativo relacionado con crear herramientas con IA. Growth Video Lab guardará mi nombre y correo para enviarme estos mensajes. Puedo pedir la baja en <a href="mailto:hola@growthvideolab.com?subject=Baja%20academia" className="underline">hola@growthvideolab.com</a>.</> : 'Acepto que Growth Video Lab guarde estos datos para contactarme sobre esta lista de espera.'}</span></label>
                 {error && <p role="alert" className="text-sm font-bold text-red-700">{error}</p>}
                 <button type="submit" disabled={status === 'sending' || !turnstileToken} className="flex w-full items-center justify-center gap-2 rounded-full bg-black px-6 py-4 font-black uppercase text-white transition-colors hover:bg-gvl-orange disabled:opacity-60">{status === 'sending' ? 'Guardando…' : 'Entrar en la lista'} <ArrowRight size={18} /></button>
               </form>
