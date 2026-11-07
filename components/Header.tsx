@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { ArrowUpRight, X } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import Logo from './Logo';
 import Dither from './Dither.jsx';
 import { getAllPortfolioProjects } from '../lib/portfolioUtils';
@@ -11,6 +11,7 @@ const Header = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHeroVisible, setIsHeroVisible] = useState(location.pathname === '/');
+  const prefersReducedMotion = useReducedMotion();
 
   // Close menu when route changes
   useEffect(() => {
@@ -57,9 +58,9 @@ const Header = () => {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-[50] transition-all duration-500 ${isHeroVisible && !isMenuOpen ? '-translate-y-full opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}>
-      <div className="w-full bg-black/90 text-white backdrop-blur-sm border-b border-white/10 py-3 px-6 md:px-12 flex justify-between items-center relative z-[110]">
-        <Link to="/" className="hover:opacity-90 transition-opacity">
+    <header className={`fixed top-0 left-0 right-0 z-[50] transition-all duration-500 ${isHeroVisible && !isMenuOpen ? 'md:-translate-y-full md:opacity-0 md:pointer-events-none' : 'translate-y-0 opacity-100'}`}>
+      <div className={`relative z-[110] flex w-full items-center border-b px-6 py-3 text-white md:justify-between md:px-12 ${isHeroVisible && !isMenuOpen ? 'justify-end border-transparent bg-transparent md:border-white/10 md:bg-black/90 md:backdrop-blur-sm' : 'justify-between border-white/10 bg-black/90 backdrop-blur-sm'}`}>
+        <Link to="/" className={`hover:opacity-90 transition-opacity ${isHeroVisible && !isMenuOpen ? 'hidden md:block' : ''}`}>
           <Logo textColor="text-white" />
         </Link>
 
@@ -91,15 +92,23 @@ const Header = () => {
         </nav>
 
         {/* Mobile Menu Toggle */}
-        <button
-          className={`relative z-[110] rounded-full p-2 transition-colors hover:bg-white/10 md:hidden ${isMenuOpen ? 'invisible pointer-events-none' : ''}`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+        <motion.button
+          initial={prefersReducedMotion ? false : { opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.35 }}
+          whileTap={prefersReducedMotion ? undefined : { scale: 0.96 }}
+          className={`relative z-[110] flex min-h-11 items-center gap-3 border border-gvl-yellow bg-gvl-yellow px-3 text-black transition-colors hover:bg-white hover:border-white md:hidden ${isMenuOpen ? 'invisible pointer-events-none' : ''}`}
+          onClick={() => setIsMenuOpen(true)}
+          aria-label="Abrir menú"
           aria-expanded={isMenuOpen}
           aria-controls="mobile-navigation"
         >
-          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+          <span className="font-mono text-[11px] font-bold uppercase tracking-[0.16em]">Menú</span>
+          <span className="flex w-5 flex-col gap-1.5" aria-hidden="true">
+            <span className="h-0.5 w-full bg-current" />
+            <span className="h-0.5 w-3/4 self-end bg-current" />
+          </span>
+        </motion.button>
       </div>
 
       {/* Mobile Menu Overlay */}
@@ -107,10 +116,10 @@ const Header = () => {
         {isMenuOpen && (
           <motion.div
             id="mobile-navigation"
-            initial={{ opacity: 0, x: '100%' }}
+            initial={prefersReducedMotion ? false : { opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.55, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-[120] flex h-[100dvh] w-full flex-col overflow-hidden bg-black text-white md:hidden"
           >
             <div className="absolute inset-0" aria-hidden="true">
@@ -131,24 +140,29 @@ const Header = () => {
 
             <div className="relative z-10 flex h-full min-h-0 flex-col px-5 pb-5 pt-3 sm:px-6">
               <div className="relative mx-auto flex w-full max-w-lg shrink-0 items-center justify-center">
-                <Link to="/" className="h-[58px] origin-center scale-[0.62] transition-opacity hover:opacity-90">
+                <Link to="/" onClick={() => setIsMenuOpen(false)} className="h-[58px] origin-center scale-[0.62] transition-opacity hover:opacity-90">
                   <Logo textColor="text-white" />
                 </Link>
                 <button
                   onClick={() => setIsMenuOpen(false)}
-                  className="group absolute right-0 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/8 text-white/80 transition-colors hover:text-white"
+                  className="group absolute right-0 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-gvl-yellow bg-gvl-yellow text-black transition-colors hover:border-white hover:bg-white"
                   aria-label="Cerrar menú"
                 >
-                  <X size={16} className="transition-transform duration-300 group-hover:rotate-90" />
+                  <X size={22} className="transition-transform duration-300 group-hover:rotate-90" />
                 </button>
               </div>
 
               <div className="flex min-h-0 flex-1 items-center justify-center py-4">
-                <div className="w-full max-w-lg rounded-[1.25rem] border border-white/10 bg-black/45 p-4 shadow-[0_30px_120px_rgba(0,0,0,0.55)] backdrop-blur-xl sm:p-5">
+                <motion.div
+                  initial={prefersReducedMotion ? false : { opacity: 0, y: 24, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ delay: prefersReducedMotion ? 0 : 0.12, duration: prefersReducedMotion ? 0 : 0.48, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-full max-w-lg rounded-[1.25rem] border border-white/10 bg-black/45 p-4 shadow-[0_30px_120px_rgba(0,0,0,0.55)] backdrop-blur-xl sm:p-5"
+                >
                   <motion.p
-                    initial={{ opacity: 0, y: 8 }}
+                    initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.12, duration: 0.45 }}
+                    transition={{ delay: prefersReducedMotion ? 0 : 0.2, duration: prefersReducedMotion ? 0 : 0.35 }}
                     className="mb-5 text-center font-sans text-[10px] uppercase tracking-[0.28em] text-white/55"
                   >
                     Growth Video Lab / Navegación
@@ -160,12 +174,13 @@ const Header = () => {
                       return (
                         <motion.div
                           key={link.path}
-                          initial={{ opacity: 0, y: 16 }}
+                          initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
                           animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.16 + index * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                          transition={{ delay: prefersReducedMotion ? 0 : 0.22 + index * 0.06, duration: prefersReducedMotion ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
                         >
                           <Link
                             to={link.path}
+                            onClick={() => setIsMenuOpen(false)}
                             aria-current={isActive ? 'page' : undefined}
                             className="group flex min-h-16 items-center justify-between border-b border-white/10 px-1 font-sans text-white transition-colors hover:text-gvl-yellow"
                           >
@@ -181,17 +196,17 @@ const Header = () => {
                   </nav>
 
                   <motion.button
-                    initial={{ opacity: 0, y: 14 }}
+                    initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.44, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ delay: prefersReducedMotion ? 0 : 0.48, duration: prefersReducedMotion ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
                     onClick={goToContact}
                     className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-white px-8 py-3.5 font-sans text-sm font-black uppercase tracking-[-0.01em] text-black transition-all hover:scale-[1.01] hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.14)] active:scale-[0.99]"
                   >
                     Hablemos
                     <ArrowUpRight size={19} />
                   </motion.button>
-                  <Link to="/academia" className="mt-4 block text-center text-sm font-bold uppercase text-white hover:text-gvl-yellow">Login / academia</Link>
-                </div>
+                  <Link to="/academia" onClick={() => setIsMenuOpen(false)} className="mt-4 block text-center text-sm font-bold uppercase text-white hover:text-gvl-yellow">Login / academia</Link>
+                </motion.div>
               </div>
 
               <p className="shrink-0 text-center font-sans text-[9px] uppercase tracking-[0.26em] text-white/35">

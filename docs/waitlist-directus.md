@@ -2,6 +2,8 @@
 
 Estado: interfaz y endpoint implementados; falta comprobar una escritura real en Directus de producción.
 
+El widget de Turnstile está en la interfaz, pero la validación de sus tokens en servidor sigue pendiente. John pidió revisar solo la interfaz por ahora. El estado general del sitio está en [estado-sitio-2026-11-07.md](estado-sitio-2026-11-07.md).
+
 ## Datos separados
 
 Una colección privada `gvl_waitlist_entries` guarda las tres listas mediante `kind`: `creatives`, `teams`, `academy`. La asesoría individual guarda además `option`: `single` ($65.000 CLP) o `four` ($200.000 CLP). No se cobran pagos ni se crean cuentas. Twenty no recibe datos todavía.
