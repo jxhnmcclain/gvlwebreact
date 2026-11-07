@@ -19,3 +19,5 @@
 | Twenty | No hay sincronización de inscripciones implementada. | Después de confirmar el guardado en Directus, definir el mapeo y automatización por tipo de lista. |
 
 No se deben presentar las listas como funcionalmente verificadas hasta comprobar sus registros en Directus. No colocar claves en el repositorio ni en documentación.
+
+La propuesta de captación desde Instagram personal, LinkedIn y X está en [funnel-academia-organico.md](funnel-academia-organico.md). Es un piloto editorial; no se han publicado piezas ni activado correos a partir de ese plan.
