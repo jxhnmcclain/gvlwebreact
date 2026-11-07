@@ -270,9 +270,8 @@ const BlogPost: React.FC = () => {
                 <div className="mt-12 p-6 border border-white/15 bg-white/[0.03]">
                     <h3 className="text-lg font-bold text-white mb-2">Sobre el Autor</h3>
                     <p className="text-white/65 leading-relaxed">
-                        <strong>Growth Video Lab</strong> es una agencia especializada en producción de video,
-                        branding y estrategia de contenido digital. Ayudamos a empresas y creadores a crecer a
-                        través de contenido audiovisual que conecta y convierte.
+                        <strong>Growth Video Lab</strong> es un estudio creativo. Construimos herramientas con IA
+                        y trabajamos en estrategia, diseño, contenido y campañas.
                     </p>
                 </div>
 

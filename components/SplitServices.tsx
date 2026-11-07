@@ -12,23 +12,23 @@ type ValuePropData = {
 const valuePropItems: ValuePropData[] = [
   {
     icon: <BarChart3 size={28} className="text-white/50" />,
-    title: "Paid",
-    description: "Meta y Google. Optimización semanal.",
+    title: "Herramientas",
+    description: "Aplicaciones y prototipos con IA para ideas y tareas concretas.",
   },
   {
     icon: <Clapperboard size={28} className="text-white/50" />,
-    title: "Contenido",
-    description: "Piezas para redes y campañas.",
+    title: "Procesos",
+    description: "Conectamos herramientas y organizamos flujos de trabajo.",
   },
   {
     icon: <MousePointerClick size={28} className="text-white/50" />,
-    title: "CRO",
-    description: "Más conversiones en cada clic.",
+    title: "Marketing",
+    description: "Estrategia, diseño, contenido y campañas para personas y marcas.",
   },
   {
     icon: <Shapes size={28} className="text-white/50" />,
-    title: "Marca",
-    description: "Identidad lista para cualquier canal.",
+    title: "En construcción",
+    description: "Creamos un curso gamificado para que creativos aprendan a construir y publicar apps con IA. «De cero a deploy» es un nombre provisional.",
   },
 ];
 
@@ -65,8 +65,8 @@ const SplitServices = () => {
         <div className="section-heading mb-10">
           <span className="text-xs font-black uppercase tracking-[0.3em] text-white/35 block mb-4">Qué hacemos</span>
           <h2 className="text-4xl md:text-5xl font-black text-white leading-tight tracking-tighter max-w-3xl">
-            Paid, contenido, CRO y marca.
-            <span className="text-white/35"> Lo que haga falta para vender mejor.</span>
+            Construimos herramientas.
+            <span className="text-white/35"> También hacemos marketing.</span>
           </h2>
         </div>
 

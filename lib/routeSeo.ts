@@ -7,8 +7,8 @@ type RouteSEOMetadata = SEOMetadata & {
 export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
   {
     path: '/',
-    title: 'Growth Video Lab | Agencia B2B reservada en Santiago',
-    description: 'Webs, marca, contenido y sistemas de prospección para empresas B2B que quieren generar más oportunidades comerciales.',
+    title: 'Growth Video Lab | Estudio creativo, herramientas con IA y marketing',
+    description: 'Estudio creativo que construye herramientas con IA y trabaja en estrategia, diseño, contenido y campañas para personas y proyectos.',
     canonical: SITE_URL,
     ogType: 'website',
     ogUrl: SITE_URL,
@@ -25,7 +25,7 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
   },
   {
     path: '/reels',
-    title: 'Contenido para redes sociales B2B | Growth Video Lab',
+    title: 'Contenido para redes sociales | Growth Video Lab',
     description: 'Reels, carruseles y contenido mensual para marcas que necesitan presencia constante en sus redes sociales.',
     canonical: `${SITE_URL}/reels`,
     ogType: 'website',
@@ -52,8 +52,8 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
   },
   {
     path: '/servicios',
-    title: 'Agencia de growth marketing en Santiago | Growth Video Lab',
-    description: 'Paid, contenido, CRO y marca para empresas en Santiago que quieren ordenar su marketing y generar oportunidades comerciales.',
+    title: 'Herramientas con IA y marketing creativo | Growth Video Lab',
+    description: 'Desarrollamos aplicaciones y automatizaciones con IA. También trabajamos en estrategia, diseño, contenido y campañas.',
     canonical: `${SITE_URL}/servicios`,
     ogType: 'website',
     ogUrl: `${SITE_URL}/servicios`,
@@ -88,8 +88,8 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
   },
   {
     path: '/blog',
-    title: 'Blog de marketing B2B | Growth Video Lab',
-    description: 'Guias practicas sobre webs, SEO local, prospeccion B2B, contenido y sistemas para empresas de servicios en Chile.',
+    title: 'Notas del estudio | Growth Video Lab',
+    description: 'Ideas y aprendizajes sobre herramientas con IA, creatividad, contenido, diseño y marketing.',
     canonical: `${SITE_URL}/blog`,
     ogType: 'website',
     ogUrl: `${SITE_URL}/blog`,
@@ -116,7 +116,7 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
   {
     path: '/contacto',
     title: 'Contacto | Growth Video Lab',
-    description: 'Conversemos sobre tu web, marca, contenido o sistema de prospeccion B2B.',
+    description: 'Conversemos sobre tu idea, una herramienta con IA o un proyecto de marketing, diseño y contenido.',
     canonical: `${SITE_URL}/contacto`,
     ogType: 'website',
     ogUrl: `${SITE_URL}/contacto`,

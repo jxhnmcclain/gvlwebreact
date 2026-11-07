@@ -5,10 +5,10 @@ import Logo from './Logo';
 import Dither from './Dither.jsx';
 
 const rooms = [
-  { label: '01 / paid', title: 'adquisición de clientes', path: '/servicios' },
-  { label: '02 / contenido', title: 'piezas que se miden', path: '/contenido' },
-  { label: '03 / CRO', title: 'cada clic cuenta', path: '/websites' },
-  { label: '04 / marca', title: 'identidad lista para usar', path: '/branding' },
+  { label: '01 / estudio', title: 'herramientas y marketing', path: '/servicios' },
+  { label: '02 / contenido', title: 'ideas que se publican', path: '/contenido' },
+  { label: '03 / web', title: 'sitios e integraciones', path: '/websites' },
+  { label: '04 / marca', title: 'identidad para usar', path: '/branding' },
 ];
 
 const Hero = () => {
@@ -39,19 +39,19 @@ do not decorate
           </div>
 
           <h1 className="max-w-5xl text-3xl font-black uppercase leading-[0.92] tracking-[-0.05em] sm:text-4xl md:text-5xl lg:text-6xl">
-            Marketing B2B para empresas que necesitan conseguir más clientes.
+            Ideas que se convierten en herramientas.
           </h1>
 
           <p className="mt-4 max-w-2xl text-sm leading-snug text-white/70 sm:text-base md:mt-5 md:text-lg">
-            Growth Video Lab ayuda a empresas de servicios en Santiago a verse más serias,
-            explicar mejor lo que hacen y convertir su presencia digital en oportunidades comerciales.
+            Somos un estudio creativo para quienes crean y hacen crecer proyectos.
+            Construimos herramientas con IA, organizamos procesos de marketing y también hacemos el trabajo: estrategia, diseño, contenido y campañas.
           </p>
 
           <button
             onClick={goToContact}
             className="mb-5 mt-6 inline-flex items-center gap-2 border border-white/20 bg-black/25 px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.24em] text-white/60 backdrop-blur-sm transition-colors hover:bg-white hover:text-black md:mb-7 md:mt-7"
           >
-            hablemos
+            hablemos de tu proyecto
             <ArrowUpRight size={14} />
           </button>
         </div>
