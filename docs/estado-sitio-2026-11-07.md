@@ -3,6 +3,7 @@
 ## Interfaz
 
 - El reposicionamiento editorial, las páginas de asesorías y academia, y la landing de marketing para marcas están implementados.
+- `/academia` explica el recorrido previsto de tres niveles, la metodología con proyectos propios y el estado de desarrollo. Fuente editorial: [documento maestro del curso, v1.0, 2026-11-07](https://docs.google.com/document/d/1fTPHztZB3wYgEjrDgFYce9oXrTB0uqBGPTDYwMdef1E/edit). El nombre «De cero a deploy», el temario detallado y las herramientas siguen sujetos a revisión durante el desarrollo.
 - El menú móvil usa un control visible en la portada, un botón de cierre de tamaño táctil y una entrada animada. El acceso «Login / Academia» dentro del menú tiene botón destacado y aclara que conduce a una lista de espera. Las animaciones respetan la preferencia del sistema de reducir movimiento.
 - Las entradas anteriores de marketing, webs y contenido siguen disponibles.
 

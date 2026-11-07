@@ -136,8 +136,8 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
   },
   {
     path: '/academia',
-    title: 'Academia en construcción | Growth Video Lab',
-    description: 'Lista de espera del primer producto educativo de GVL para creativos que quieren construir y publicar herramientas con IA.',
+    title: 'Curso de IA para creativos en construcción | Growth Video Lab',
+    description: 'Conoce el curso en desarrollo para diseñadores y creativos: crea tu primera herramienta con IA, construye una app y aprende a publicarla. Lista de espera.',
     canonical: `${SITE_URL}/academia`,
     ogType: 'website',
   },
