@@ -205,7 +205,23 @@ const Header = () => {
                     Hablemos
                     <ArrowUpRight size={19} />
                   </motion.button>
-                  <Link to="/academia" onClick={() => setIsMenuOpen(false)} className="mt-4 block text-center text-sm font-bold uppercase text-white hover:text-gvl-yellow">Login / academia</Link>
+                  <motion.div
+                    initial={prefersReducedMotion ? false : { opacity: 0, x: 24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: prefersReducedMotion ? 0 : 0.56, duration: prefersReducedMotion ? 0 : 0.42, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <Link
+                      to="/academia"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="group mt-3 flex w-full items-center justify-between gap-3 border border-gvl-yellow bg-gvl-yellow px-5 py-3 text-black transition-all hover:border-white hover:bg-white active:scale-[0.99]"
+                    >
+                      <span className="text-left">
+                        <span className="block font-sans text-base font-black uppercase leading-none">Login / academia</span>
+                        <span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.16em]">Lista de espera · en construcción</span>
+                      </span>
+                      <ArrowUpRight size={20} className="shrink-0 transition-transform group-hover:rotate-45" />
+                    </Link>
+                  </motion.div>
                 </motion.div>
               </div>
 

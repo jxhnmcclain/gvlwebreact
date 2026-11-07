@@ -3,7 +3,7 @@
 ## Interfaz
 
 - El reposicionamiento editorial, las páginas de asesorías y academia, y la landing de marketing para marcas están implementados.
-- El menú móvil usa un control visible en la portada, un botón de cierre de tamaño táctil y una entrada animada. Respeta la preferencia del sistema de reducir movimiento.
+- El menú móvil usa un control visible en la portada, un botón de cierre de tamaño táctil y una entrada animada. El acceso «Login / Academia» dentro del menú tiene botón destacado y aclara que conduce a una lista de espera. Las animaciones respetan la preferencia del sistema de reducir movimiento.
 - Las entradas anteriores de marketing, webs y contenido siguen disponibles.
 
 ## Pendientes funcionales
