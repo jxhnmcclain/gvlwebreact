@@ -30,6 +30,7 @@ import WebPortfolioLanding from './pages/WebPortfolioLanding';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import MarketingAdvisory from './pages/MarketingAdvisory';
+import WaitlistPage from './pages/WaitlistPage';
 import LeadMagnetB2BPage from './pages/LeadMagnetB2BPage';
 import Portfolio from './pages/Portfolio';
 import PortfolioProjectPage from './pages/PortfolioProject';
@@ -144,6 +145,9 @@ const AppContent = () => {
             <Route path="/portafolio" element={<Portfolio />} />
             <Route path="/portafolio/:slug" element={<PortfolioProjectPage />} />
             <Route path="/asesoria" element={<MarketingAdvisory />} />
+            <Route path="/asesoria-creativos" element={<WaitlistPage kind="creatives" />} />
+            <Route path="/asesoria-equipos" element={<WaitlistPage kind="teams" />} />
+            <Route path="/academia" element={<WaitlistPage kind="academy" />} />
 
             {/* Direct proposal routes: deliberately absent from navigation, sitemap and prerender. */}
             <Route path="/propuestas/:proposalId" element={<ProposalPage />} />

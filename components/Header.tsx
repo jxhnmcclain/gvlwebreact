@@ -87,6 +87,7 @@ const Header = () => {
             Contacto
             <ArrowUpRight size={16} className="group-hover:rotate-45 transition-transform" />
           </button>
+          <Link to="/academia" className="text-sm font-bold tracking-tight hover:text-gvl-yellow transition-colors">Login</Link>
         </nav>
 
         {/* Mobile Menu Toggle */}
@@ -189,6 +190,7 @@ const Header = () => {
                     Hablemos
                     <ArrowUpRight size={19} />
                   </motion.button>
+                  <Link to="/academia" className="mt-4 block text-center text-sm font-bold uppercase text-white hover:text-gvl-yellow">Login / academia</Link>
                 </div>
               </div>
 

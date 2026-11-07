@@ -114,6 +114,27 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
     ogImage: '/og-image.jpg',
   },
   {
+    path: '/asesoria-creativos',
+    title: 'Asesoría 1 a 1 para creativos | Growth Video Lab',
+    description: 'Lista de espera para asesoría creativa individual: una sesión por $65.000 CLP o un set de cuatro por $200.000 CLP.',
+    canonical: `${SITE_URL}/asesoria-creativos`,
+    ogType: 'website',
+  },
+  {
+    path: '/asesoria-equipos',
+    title: 'Asesoría para equipos creativos | Growth Video Lab',
+    description: 'Lista de espera para trabajar ideas, procesos y herramientas con equipos creativos y de marketing. Precio según alcance.',
+    canonical: `${SITE_URL}/asesoria-equipos`,
+    ogType: 'website',
+  },
+  {
+    path: '/academia',
+    title: 'Academia en construcción | Growth Video Lab',
+    description: 'Lista de espera del primer producto educativo de GVL para creativos que quieren construir y publicar herramientas con IA.',
+    canonical: `${SITE_URL}/academia`,
+    ogType: 'website',
+  },
+  {
     path: '/contacto',
     title: 'Contacto | Growth Video Lab',
     description: 'Conversemos sobre tu idea, una herramienta con IA o un proyecto de marketing, diseño y contenido.',

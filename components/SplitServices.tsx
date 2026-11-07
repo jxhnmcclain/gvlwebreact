@@ -2,6 +2,7 @@ import React, { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { BarChart3, Clapperboard, MousePointerClick, Shapes } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 type ValuePropData = {
   icon: React.ReactNode;
@@ -68,6 +69,11 @@ const SplitServices = () => {
             Construimos herramientas.
             <span className="text-white/35"> También hacemos marketing.</span>
           </h2>
+          <div className="mt-6 flex flex-wrap gap-5 text-sm font-bold uppercase text-gvl-yellow">
+            <Link to="/asesoria-creativos" className="hover:underline">Asesoría para creativos ↗</Link>
+            <Link to="/asesoria-equipos" className="hover:underline">Asesoría para equipos ↗</Link>
+            <Link to="/academia" className="hover:underline">Academia en construcción ↗</Link>
+          </div>
         </div>
 
         {/* Value Props Grid */}

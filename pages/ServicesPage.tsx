@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import AgencyLabPage from '../components/AgencyLabPage';
 import CtaBanner from '../components/CtaBanner';
+import { Link } from 'react-router-dom';
 import { setMetaTags, SITE_URL } from '../lib/seo';
 
 const ServicesPage = () => {
@@ -77,6 +78,13 @@ select / build / connect`}
           { question: '¿Qué es «De cero a deploy»?', answer: 'Es el nombre provisional de nuestro primer producto educativo. Estamos creando un curso gamificado de tres niveles para que diseñadores y creativos aprendan a construir herramientas con IA y publicar una aplicación. Todavía está en desarrollo.' },
         ]}
       />
+      <nav aria-label="Asesorías y academia" className="bg-zinc-950 px-4 pb-16 text-gvl-yellow md:px-12">
+        <div className="mx-auto flex max-w-7xl flex-wrap gap-8 border-t border-white/20 pt-8 text-sm font-bold uppercase">
+          <Link to="/asesoria-creativos" className="hover:underline">Asesoría 1 a 1 para creativos ↗</Link>
+          <Link to="/asesoria-equipos" className="hover:underline">Asesoría para equipos ↗</Link>
+          <Link to="/academia" className="hover:underline">Academia en construcción ↗</Link>
+        </div>
+      </nav>
       <CtaBanner />
     </>
   );
