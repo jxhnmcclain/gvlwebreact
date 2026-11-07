@@ -22,7 +22,7 @@ export default async function handler(req: Request, res: ServerResponse) {
     res.statusCode = 400; return res.end('{"error":"invalid_entry"}');
   }
   const base = process.env.DIRECTUS_PROD_URL;
-  const token = process.env.DIRECTUS_WAITLIST_TOKEN;
+  const token = process.env.DIRECTUS_WAITLIST_TOKEN || process.env.DIRECTUS_BUILD_TOKEN;
   if (!base || !token) { res.statusCode = 503; return res.end('{"error":"waitlist_unavailable"}'); }
   const headers: Record<string, string> = { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` };
   if (process.env.DIRECTUS_ACCESS_CLIENT_ID && process.env.DIRECTUS_ACCESS_CLIENT_SECRET) {

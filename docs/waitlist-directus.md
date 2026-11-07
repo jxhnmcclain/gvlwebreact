@@ -1,6 +1,6 @@
 # Listas de espera de GVL
 
-Estado: interfaz y endpoint implementados; almacenamiento pendiente de configurar y probar en Directus de producción. No publicar estas páginas como listas operativas hasta completar esta conexión.
+Estado: interfaz y endpoint implementados; falta comprobar una escritura real en Directus de producción.
 
 ## Datos separados
 
@@ -8,9 +8,9 @@ Una colección privada `gvl_waitlist_entries` guarda las tres listas mediante `k
 
 ## Configuración en Directus
 
-El cambio de esquema ya está preparado en la rama `codex/gvl-waitlist-schema` del repositorio `jxhnmcclain/gvl-directus-cms`. Su bootstrap repetible crea `gvl_waitlist_entries`, los campos de inscripción y la política privada de solo creación. El usuario técnico se provisiona al configurar `DIRECTUS_WAITLIST_TOKEN` en Dokploy y desplegar ese repositorio. Los operadores autorizados conservan la lectura desde Directus; el token de la web no puede leer ni editar inscripciones.
+El cambio de esquema está en `main` del repositorio `jxhnmcclain/gvl-directus-cms`. Su bootstrap repetible crea `gvl_waitlist_entries` y los campos de inscripción. Para el lanzamiento inicial, la política del token de build existente permite crear inscripciones pero no leerlas ni editarlas. Si más adelante se configura `DIRECTUS_WAITLIST_TOKEN`, el bootstrap provisiona una cuenta separada con permiso de solo creación.
 
-En Vercel, configurar el mismo `DIRECTUS_WAITLIST_TOKEN` como secreto de entorno para Production. `DIRECTUS_PROD_URL`, `DIRECTUS_ACCESS_CLIENT_ID` y `DIRECTUS_ACCESS_CLIENT_SECRET` ya existen para la integración editorial; comprobar que también permiten llegar a `/items/gvl_waitlist_entries` desde la función. No usar `DIRECTUS_BUILD_TOKEN` para escrituras.
+Vercel ya tiene `DIRECTUS_PROD_URL`, `DIRECTUS_BUILD_TOKEN`, `DIRECTUS_ACCESS_CLIENT_ID` y `DIRECTUS_ACCESS_CLIENT_SECRET` en Production. El endpoint utiliza el token de build mientras no exista `DIRECTUS_WAITLIST_TOKEN`. El token solo vive en la función del servidor.
 
 ## Prueba antes de activar
 
