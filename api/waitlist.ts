@@ -51,9 +51,22 @@ export default async function handler(req: Request, res: ServerResponse) {
   try {
     const response = await fetch(new URL('/items/gvl_waitlist_entries', base), {
       method: 'POST', headers, body: JSON.stringify({ kind, option, name: name.trim(), email: email.trim().toLowerCase(), detail: detail.trim(), consent_at: new Date().toISOString(), page_url: typeof data.page_url === 'string' ? data.page_url.slice(0, 500) : '', ...utm }),
+      redirect: 'manual',
       signal: AbortSignal.timeout(8000),
     });
-    if (!response.ok) { console.error('Directus waitlist write failed:', response.status); res.statusCode = 502; return res.end('{"error":"storage_failed"}'); }
+    if (!response.ok) {
+      const contentType = response.headers.get('content-type')?.split(';')[0] ?? 'none';
+      let code = 'unknown';
+      if (contentType === 'application/json') {
+        try {
+          const body = await response.json() as { errors?: Array<{ extensions?: { code?: unknown } }> };
+          const candidate = body.errors?.[0]?.extensions?.code;
+          if (typeof candidate === 'string' && /^[A-Z_]{1,64}$/.test(candidate)) code = candidate;
+        } catch { /* Keep the status when the upstream body is malformed. */ }
+      }
+      console.error('Directus waitlist write failed:', response.status, code, contentType);
+      res.statusCode = 502; return res.end('{"error":"storage_failed"}');
+    }
     res.statusCode = 201; return res.end('{"ok":true}');
   } catch (error) {
     console.error('Waitlist storage unavailable:', error instanceof Error ? error.message : 'unknown');
