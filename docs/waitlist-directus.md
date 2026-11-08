@@ -1,8 +1,8 @@
 # Listas de espera de GVL
 
-Estado: interfaz y endpoint implementados; falta comprobar una escritura real en Directus de producción.
+Estado al 2026-11-08: una inscripción desde el navegador mostró confirmación y John verificó su fila en `gvl_waitlist_entries` de Directus de producción. Quedan por probar las demás variantes de formulario; no se ha comprobado la entrega a Twenty.
 
-El widget de Turnstile está en la interfaz. `/api/waitlist` puede validar tokens con Siteverify cuando se configure `TURNSTILE_SECRET_KEY`; esa variable no estaba en Vercel Production el 2026-11-07, por lo que la validación real sigue pendiente. El estado general del sitio está en [estado-sitio-2026-11-07.md](estado-sitio-2026-11-07.md).
+El widget de Turnstile está en la interfaz. `/api/waitlist` puede validar tokens con Siteverify cuando se configure `TURNSTILE_SECRET_KEY`; esa variable seguía ausente en Vercel Production el 2026-11-08, por lo que la validación real sigue pendiente. El estado general anterior del sitio está en [estado-sitio-2026-11-07.md](estado-sitio-2026-11-07.md).
 
 ## Datos separados
 
@@ -16,6 +16,8 @@ El cambio de esquema está en `main` del repositorio `jxhnmcclain/gvl-directus-c
 
 Vercel ya tiene `DIRECTUS_PROD_URL`, `DIRECTUS_BUILD_TOKEN`, `DIRECTUS_ACCESS_CLIENT_ID` y `DIRECTUS_ACCESS_CLIENT_SECRET` en Production. El endpoint utiliza el token de build mientras no exista `DIRECTUS_WAITLIST_TOKEN`. El token solo vive en la función del servidor.
 
+El 2026-11-08, Directus rechazó las inscripciones con `401 INVALID_CREDENTIALS`: el token recibido por Vercel no coincidía con el que `init` había configurado en Directus. Se alinearon las credenciales y una inscripción se guardó. En el editor de entorno de Dokploy, que escribe un archivo `.env` para Docker Compose, los valores con `$` deben ir entre comillas simples para conservarse literalmente. El token usado durante la reparación se compartió en la conversación; rotarlo en Dokploy y Vercel queda pendiente. No copiar su valor a la documentación.
+
 ## Prueba antes de activar
 
-Enviar una inscripción de prueba desde cada página, comprobar la respuesta HTTP 201 y verificar tres ítems distintos en Directus con `kind`, `option` y `consent_at` correctos. Probar también un fallo de almacenamiento: la interfaz debe mostrar error y no afirmar que la inscripción se guardó. Una vez validado, se puede conectar cada `kind` a un flujo distinto de Twenty por n8n, sin cambiar el formulario.
+Repetir la prueba desde cada variante aún no comprobada, verificar la respuesta HTTP 201 y revisar en Directus `kind`, `option` y `consent_at`. Probar también un fallo de almacenamiento: la interfaz debe mostrar error y no afirmar que la inscripción se guardó. Una vez validadas las variantes y Siteverify, se puede conectar cada `kind` a un flujo distinto de Twenty por n8n, sin cambiar el formulario.
