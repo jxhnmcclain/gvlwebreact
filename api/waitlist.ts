@@ -1,4 +1,5 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
+import { createHash } from 'node:crypto';
 
 type Request = IncomingMessage & { body?: unknown };
 type Entry = { kind: string; option: string; name: string; email: string; detail: string; consent: boolean; website: string; page_url: string; turnstileToken: string; [key: string]: unknown };
@@ -64,7 +65,9 @@ export default async function handler(req: Request, res: ServerResponse) {
           if (typeof candidate === 'string' && /^[A-Z_]{1,64}$/.test(candidate)) code = candidate;
         } catch { /* Keep the status when the upstream body is malformed. */ }
       }
-      console.error('Directus waitlist write failed:', response.status, code, contentType);
+      const credential = process.env.DIRECTUS_WAITLIST_TOKEN ? 'waitlist' : 'build';
+      const fingerprint = createHash('sha256').update(token).digest('hex').slice(0, 12);
+      console.error('Directus waitlist write failed:', response.status, code, contentType, credential, token.length, fingerprint);
       res.statusCode = 502; return res.end('{"error":"storage_failed"}');
     }
     res.statusCode = 201; return res.end('{"ok":true}');
