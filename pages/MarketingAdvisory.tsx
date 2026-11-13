@@ -13,7 +13,7 @@ const MarketingAdvisory = () => {
                     name="description"
                     content="Asesoría para revisar tu marketing, ordenar prioridades y definir qué acciones conviene ejecutar primero."
                 />
-                <link rel="canonical" href="https://growthvideolab.com/asesoria" />
+                <link rel="canonical" href="https://www.growthvideolab.com/asesoria" />
             </Helmet>
 
             {/* Hero Section */}
