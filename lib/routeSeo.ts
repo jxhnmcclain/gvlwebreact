@@ -9,9 +9,9 @@ export const PUBLIC_ROUTE_SEO: RouteSEOMetadata[] = [
     path: '/',
     title: 'Growth Video Lab | Agencia B2B reservada en Santiago',
     description: 'Webs, marca, contenido y sistemas de prospección para empresas B2B que quieren generar más oportunidades comerciales.',
-    canonical: SITE_URL,
+    canonical: `${SITE_URL}/`,
     ogType: 'website',
-    ogUrl: SITE_URL,
+    ogUrl: `${SITE_URL}/`,
     ogImage: '/og-image.jpg',
   },
   {

@@ -2,7 +2,7 @@
  * SEO utilities for meta tags, Open Graph, and structured data
  */
 
-export const SITE_URL = 'https://growthvideolab.com';
+export const SITE_URL = 'https://www.growthvideolab.com';
 
 export interface SEOMetadata {
     title: string;
@@ -46,7 +46,7 @@ export function generateBlogPostStructuredData(post: {
             name: 'Growth Video Lab',
             logo: {
                 '@type': 'ImageObject',
-                url: 'https://growthvideolab.com/logo.png',
+                url: 'https://www.growthvideolab.com/logo.png',
             },
         },
         mainEntityOfPage: {
@@ -64,9 +64,9 @@ export function generateOrganizationStructuredData() {
         '@context': 'https://schema.org',
         '@type': 'Organization',
         name: 'Growth Video Lab',
-        url: 'https://growthvideolab.com',
-        logo: 'https://growthvideolab.com/logo.png',
-        image: 'https://growthvideolab.com/og-image.jpg',
+        url: 'https://www.growthvideolab.com',
+        logo: 'https://www.growthvideolab.com/logo.png',
+        image: 'https://www.growthvideolab.com/og-image.jpg',
         description: 'Agencia especializada en producción de video, branding y estrategia de contenido digital',
         sameAs: [
             'https://www.instagram.com/growthvideolab',

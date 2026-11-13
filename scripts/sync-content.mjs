@@ -3,7 +3,7 @@ import path from 'node:path';
 import matter from 'gray-matter';
 
 const root = process.cwd();
-const siteUrl = 'https://growthvideolab.com';
+const siteUrl = 'https://www.growthvideolab.com';
 const prodUrl = process.env.SUPABASE_PROD_URL;
 const serviceKey = process.env.SUPABASE_PROD_SERVICE_ROLE_KEY;
 const useLocalDirectus = process.argv.includes('--directus-local');
